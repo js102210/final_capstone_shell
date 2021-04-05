@@ -1,8 +1,9 @@
 <template>
   <div>
       <h3>{{cake.name}}</h3>
-      <img src="{{cake.image_url}}" />
-
+      <img src="#" /> <br>
+      <h2>{{cake.price}}</h2>
+      <p>{{cake.description}}</p>
 
   </div>
 </template>
