@@ -19,7 +19,25 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    placeholderCakes: [
+      {
+        name: "fudge cake",
+        cake_id: 1,
+        price: 13.99,
+        image_url: "https://hips.hearstapps.com/del.h-cdn.co/assets/17/16/2048x1468/gallery-1492694005-108-sein-9781101967140-art-r1-1.jpg?resize=980:*",
+        description: "delicious fudge mmm mmm mmm!"
+      },
+
+      {
+        name: "vanilla cake",
+        cake_id: 2,
+        price: 39.99,
+        image_url: "https://natashaskitchen.com/wp-content/uploads/2020/07/Vanilla-Cake-6-1024x1536.jpg",
+        description: "basic yum yum"
+      }
+
+    ]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
