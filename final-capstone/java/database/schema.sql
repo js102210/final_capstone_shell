@@ -144,9 +144,9 @@ CREATE TABLE statuses
         );               
               
         
-DROP TABLE IF EXISTS cake_config;  
-DROP SEQUENCE IF EXISTS seq_cake_config_id;  
-CREATE SEQUENCE seq_cake_config_id
+DROP TABLE IF EXISTS cake_configs;  
+DROP SEQUENCE IF EXISTS seq_cake_configs_id;  
+CREATE SEQUENCE seq_cake_configs_id
   INCREMENT BY 1
   NO MAXVALUE
   NO MINVALUE
@@ -168,7 +168,57 @@ CREATE TABLE cake_config
         );          
  INSERT INTO cake_config (cake_config_name, cake_config_img_url, cake_config_description, flavor_id, frosting_id, filling_id) 
         VALUES ('CUSTOM', '', 'DESCRIPTION', 1, 1, 1);
-        --bc of our INSERT statements IDs for NULL values are 1     
-     
-  
+        --bc of our INSERT statements IDs for NULL values are 1    
+        
+DROP TABLE IF EXISTS cake_items;  
+DROP SEQUENCE IF EXISTS seq_cake_item_id;  
+CREATE SEQUENCE seq_cake_item_id
+  INCREMENT BY 1
+  NO MAXVALUE
+  NO MINVALUE
+  CACHE 1;    
+CREATE TABLE cake_items
+        (cake_item_id int DEFAULT nextval('seq_cake_item_id'::regclass) NOT NULL,
+        cake_style_id int NOT NULL,
+        cake_size_id int NOT NULL,
+        flavor_id int NOT NULL,
+        frosting_id int NOT NULL,
+        filling_id int NOT NULL,
+        message VARCHAR NOT NULL,
+        config_id int NOT NULL,
+        
+        
+        CONSTRAINT pk_cake_item_id PRIMARY KEY (cake_item_id),
+        CONSTRAINT fk_cake_item_style FOREIGN KEY (cake_style_id) REFERENCES styles (style_id),
+        CONSTRAINT fk_cake_item_size FOREIGN KEY (cake_size_id) REFERENCES sizes (size_id),
+        CONSTRAINT fk_cake_item_flavor FOREIGN KEY (flavor_id) REFERENCES flavors (flavor_id),
+        CONSTRAINT fk_cake_item_frosting FOREIGN KEY (frosting_id) REFERENCES frostings (frosting_id),
+        CONSTRAINT fk_cake_item_filling FOREIGN KEY (filling_id) REFERENCES fillings (filling_id),
+        CONSTRAINT fk_cake_item_config FOREIGN KEY (config_id) REFERENCES cake_config (cake_config_id)
+        );    
+        
+DROP TABLE IF EXISTS orders;  
+DROP SEQUENCE IF EXISTS seq_order_id;  
+CREATE SEQUENCE seq_order_id
+  INCREMENT BY 1
+  NO MAXVALUE
+  NO MINVALUE
+  CACHE 1;    
+CREATE TABLE orders
+ (order_id int DEFAULT nextval('seq_order_id'::regclass) NOT NULL,
+ status_id int NOT NULL,
+ total_price DECIMAL (19,2) NOT NULL,
+ datetime_placed timestamp DEFAULT CURRENT_TIMESTAMP(), --think about validation for this
+ datetime_delivery timestamp NOT NULL,
+ 
+  CONSTRAINT pk_orders PRIMARY KEY (order_id),
+  CONSTRAINT fk_cake_item_style FOREIGN KEY (cake_style_id) REFERENCES styles (style_id),
+ 
+ 
+ 
+
+
+     --note for testing datetime local insert: 2017-06-30T16:30
+     --note to add order ID as FK to cake item
+
 COMMIT TRANSACTION;
