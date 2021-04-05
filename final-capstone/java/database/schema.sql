@@ -158,7 +158,7 @@ CREATE TABLE cake_config
         cake_config_description VARCHAR NOT NULL,
         flavor_id int NOT NULL,
         frosting_id int NOT NULL,
-        filling_id int NOT NULL
+        filling_id int NOT NULL,
         
         
         CONSTRAINT pk_cake_config PRIMARY KEY (cake_config_id),
@@ -167,12 +167,8 @@ CREATE TABLE cake_config
         CONSTRAINT fk_cake_config_filling FOREIGN KEY (filling_id) REFERENCES fillings (filling_id)
         );          
  INSERT INTO cake_config (cake_config_name, cake_config_img_url, cake_config_description, flavor_id, frosting_id, filling_id) 
-        VALUES ('CUSTOM', '', 'DESCRIPTION', 1, 1, 1)
+        VALUES ('CUSTOM', '', 'DESCRIPTION', 1, 1, 1);
         --bc of our INSERT statements IDs for NULL values are 1     
-CREATE TABLE cakes
-
-(
-        cake_id int DEFAULT nextval('seq_cake_id'::regclass) NOT NULL,
-        
+     
   
 COMMIT TRANSACTION;
