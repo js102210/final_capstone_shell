@@ -113,6 +113,7 @@ INSERT INTO fillings (filling_name) VALUES ('NULL');
 --first value in table should be 'NULL' to account for custom made cakes so that IDs for custom are 'NULL'. IDs for all
 --'NULL values will be 1     
            
+           -- consider deleting table
 DROP TABLE IF EXISTS extras;   
 DROP SEQUENCE IF EXISTS seq_extra_id; 
 CREATE SEQUENCE seq_extra_id
@@ -208,17 +209,24 @@ CREATE TABLE orders
  (order_id int DEFAULT nextval('seq_order_id'::regclass) NOT NULL,
  status_id int NOT NULL,
  total_price DECIMAL (19,2) NOT NULL,
- datetime_placed timestamp DEFAULT CURRENT_TIMESTAMP(), --think about validation for this
+ datetime_placed timestamp DEFAULT CURRENT_TIMESTAMP, --think about validation for this
  datetime_delivery timestamp NOT NULL,
  
   CONSTRAINT pk_orders PRIMARY KEY (order_id),
-  CONSTRAINT fk_cake_item_style FOREIGN KEY (cake_style_id) REFERENCES styles (style_id),
+  CONSTRAINT fk_order_status FOREIGN KEY (status_id) REFERENCES statuses (status_id)
+);
  
- 
- 
-
 
      --note for testing datetime local insert: 2017-06-30T16:30
-     --note to add order ID as FK to cake item
+ALTER TABLE cake_items ADD order_id int NOT NULL;
+ALTER TABLE cake_items ADD CONSTRAINT order_id FOREIGN KEY (order_id) REFERENCES orders(order_id);
+
+CREATE TABLE cake_item_extras
+(cake_item_id int NOT NULL,
+extra_id int NOT NULL,
+
+CONSTRAINT fk_rel_item_id FOREIGN KEY (cake_item_id) REFERENCES cake_items(cake_item_id),
+CONSTRAINT fk_rel_extra_id FOREIGN KEY (extra_id) REFERENCES extras(extra_id)
+);
 
 COMMIT TRANSACTION;
