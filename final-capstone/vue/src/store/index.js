@@ -20,6 +20,15 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    standardCakeId: null,
+    standardOrderCakeObject: {},
+    customOrderCakeObject: {},
+    availableCakeStyles: ["cupcakes", "sheet cake", "layer cake"],
+    availableCakeSizes:["small", "medium", "large"],
+    availableCakeFlavors:["vanilla", "chocolate", "carrot"],
+    availableFrostings: ["vanilla", "chocolate", "cream cheese"],
+    availableFillings: ["lemon card", "strawberries", "chocolate chips"],
+    availableExtras: ["edible image", "superhero toys"],
     placeholderCakes: [
       {
         name: "fudge cake",

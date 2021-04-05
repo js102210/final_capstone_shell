@@ -6,6 +6,8 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import AvailableCakeView from '../views/AvailableCakeView.vue'
+import OrderStandardCakeView from '../views/OrderStandardCakeView.vue'
+import CustomOrderView from '../views/CustomOrderView.vue'
 
 Vue.use(Router)
 
@@ -62,6 +64,23 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/standardorder",
+      name: "standard order",
+      component: OrderStandardCakeView,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/customorder",
+      name: "custom order",
+      component: CustomOrderView,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    
   ]
 })
 

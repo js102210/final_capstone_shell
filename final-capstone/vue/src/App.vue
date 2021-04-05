@@ -9,3 +9,10 @@
     <router-view />
   </div>
 </template>
+
+<style>
+#nav {
+  display: flex;
+  justify-content: center;
+}
+</style>
