@@ -1,7 +1,7 @@
 <template>
   <div>
       <h3>{{cake.name}}</h3>
-      <img src="#" /> <br>
+      <img v-bind:src=cake.image_url /> <br>
       <h2>{{cake.price}}</h2>
       <p>{{cake.description}}</p>
 
