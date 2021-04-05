@@ -1,6 +1,20 @@
 BEGIN TRANSACTION;
-
+--ROLLBACK
+DROP TABLE IF EXISTS cake_item_extras;
+DROP TABLE IF EXISTS cake_items;  
+DROP TABLE IF EXISTS extras;
+DROP TABLE IF EXISTS orders;    
+DROP TABLE IF EXISTS statuses;   
+DROP TABLE IF EXISTS frostings; 
+DROP TABLE IF EXISTS flavors;
+DROP TABLE IF EXISTS fillings; 
+DROP TABLE IF EXISTS cake_configs;
+DROP TABLE IF EXISTS sizes; 
+DROP TABLE IF EXISTS styles;
 DROP TABLE IF EXISTS users;
+
+
+
 DROP SEQUENCE IF EXISTS seq_user_id;
 
 CREATE SEQUENCE seq_user_id
@@ -21,7 +35,7 @@ CREATE TABLE users (
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
-DROP TABLE IF EXISTS styles;
+
 DROP SEQUENCE IF EXISTS seq_style_id;
 CREATE SEQUENCE seq_style_id
   INCREMENT BY 1
@@ -40,7 +54,7 @@ CREATE TABLE styles
         ); 
         
         
-DROP TABLE IF EXISTS sizes; 
+
 DROP SEQUENCE IF EXISTS seq_size_id;   
 CREATE SEQUENCE seq_size_id
   INCREMENT BY 1
@@ -56,7 +70,7 @@ CREATE TABLE sizes
         CONSTRAINT pk_sizes PRIMARY KEY (size_id)
         ); 
         
-DROP TABLE IF EXISTS flavors;   
+
 DROP SEQUENCE IF EXISTS seq_flavor_id; 
 CREATE SEQUENCE seq_flavor_id
   INCREMENT BY 1
@@ -75,7 +89,7 @@ CREATE TABLE flavors
 --first value in table should be 'NULL' to account for custom made cakes so that IDs for custom are 'NULL'. IDs for all
 --'NULL values will be 1
  
- DROP TABLE IF EXISTS frostings; 
+
  DROP SEQUENCE IF EXISTS seq_frosting_id;   
 CREATE SEQUENCE seq_frosting_id
   INCREMENT BY 1
@@ -94,7 +108,7 @@ INSERT INTO frostings (frosting_name) VALUES ('NULL');
 --first value in table should be 'NULL' to account for custom made cakes so that IDs for custom are 'NULL'. IDs for all
 --'NULL values will be 1     
    
-DROP TABLE IF EXISTS fillings; 
+
 DROP SEQUENCE IF EXISTS seq_filling_id;   
 CREATE SEQUENCE seq_filling_id
   INCREMENT BY 1
@@ -114,7 +128,7 @@ INSERT INTO fillings (filling_name) VALUES ('NULL');
 --'NULL values will be 1     
            
            -- consider deleting table
-DROP TABLE IF EXISTS extras;   
+ 
 DROP SEQUENCE IF EXISTS seq_extra_id; 
 CREATE SEQUENCE seq_extra_id
   INCREMENT BY 1
@@ -130,7 +144,7 @@ CREATE TABLE extras
         CONSTRAINT pk_extras PRIMARY KEY (extra_id)
         );        
                   
- DROP TABLE IF EXISTS statuses; 
+ 
  DROP SEQUENCE IF EXISTS seq_status_id;   
 CREATE SEQUENCE seq_status_id
   INCREMENT BY 1
@@ -145,7 +159,7 @@ CREATE TABLE statuses
         );               
               
         
-DROP TABLE IF EXISTS cake_configs;  
+
 DROP SEQUENCE IF EXISTS seq_cake_configs_id;  
 CREATE SEQUENCE seq_cake_configs_id
   INCREMENT BY 1
@@ -171,7 +185,7 @@ CREATE TABLE cake_config
         VALUES ('CUSTOM', '', 'DESCRIPTION', 1, 1, 1);
         --bc of our INSERT statements IDs for NULL values are 1    
         
-DROP TABLE IF EXISTS cake_items;  
+
 DROP SEQUENCE IF EXISTS seq_cake_item_id;  
 CREATE SEQUENCE seq_cake_item_id
   INCREMENT BY 1
@@ -198,7 +212,7 @@ CREATE TABLE cake_items
         CONSTRAINT fk_cake_item_config FOREIGN KEY (config_id) REFERENCES cake_config (cake_config_id)
         );    
         
-DROP TABLE IF EXISTS orders;  
+
 DROP SEQUENCE IF EXISTS seq_order_id;  
 CREATE SEQUENCE seq_order_id
   INCREMENT BY 1
