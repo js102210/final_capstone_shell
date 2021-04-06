@@ -29,6 +29,7 @@ export default new Vuex.Store({
     availableFrostings: ["vanilla", "chocolate", "cream cheese"],
     availableFillings: ["lemon card", "strawberries", "chocolate chips"],
     availableExtras: ["edible image", "superhero toys"],
+    standardCakeConfigs: [],
     placeholderCakes: [
       {
         name: "fudge cake",
