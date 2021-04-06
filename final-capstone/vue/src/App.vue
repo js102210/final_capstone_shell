@@ -15,12 +15,20 @@
 </template>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+
 html {
   background: repeating-linear-gradient(70deg, #6ac1e6, #e1f2f8 50px, #ff7de3b6 100px);
   min-height:100%;
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+h1 {
+  font-family: 'Pacifico';
 }
 
 #app {
@@ -34,7 +42,7 @@ html {
   top: 0;
   background-color: rgba(255, 153, 247, 0.856);
   width: 100%;
-  height: 3.7%;
+  height: 10%;
   height: fit-content;
 }
 
@@ -54,7 +62,7 @@ html {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(173, 243, 255);
-  border-radius: 3px;
+  border-radius: 30px;
 }
 
 .emp-section {
