@@ -1,18 +1,19 @@
 <template>
-    <div>
+    <div class="order-display">
         <div class="cakedisplay">
-        <!-- <h1>{{selected.name}}
-        Cake here </h1> -->
+        <h1>{{selected.name}}</h1>
+         <img v-bind:src=selected.image /> <br>
+        <h2>{{selected.description}}</h2>
             </div>
   <form>
       <label for="standard cake selection">Select your standard cake:</label>
       <!-- the v-model sets the select to whatever the standardCakeIdForOrder is. If null, it's blank.-->
-      <select name="standard cake" v-model="$store.state.placeholderCakes">
+      <select name="standard cake" v-model="selected">
           <!-- sets text for options to all cake names in placeholderCakes. value is the cake's cake_id-->
           <option 
           v-for="cake in $store.state.placeholderCakes" 
           v-bind:key="cake.cake_id"
-          v-bind:value="{id: cake.cake_id, name: cake.name}"
+          v-bind:value="{id: cake.cake_id, name: cake.name, description: cake.description, image: cake.image_url}"
           >
               {{cake.name}}
               </option>
@@ -29,9 +30,14 @@
 <script>
 // import CakeOrderDisplay from './CakeOrderDisplay.vue';
 export default {
-  components: { 
-    //   CakeOrderDisplay
-      },
+    data() {
+       return {
+           selected: ''
+       };
+    },
+//   components: { 
+//     //   CakeOrderDisplay
+//       },
     name: "standard order cake",
     methods: {
         
@@ -46,5 +52,26 @@ export default {
 </script>
 
 <style>
+.order-display {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.cakedisplay {
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 150px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.cakedisplay img {
+    width: 100%;
+}
 
 </style>
