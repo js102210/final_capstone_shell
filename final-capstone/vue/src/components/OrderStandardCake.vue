@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="order-display">
         <div class="cakedisplay">
         <h1>{{selected.name}}</h1>
          <img v-bind:src=selected.image /> <br>
@@ -52,5 +52,26 @@ export default {
 </script>
 
 <style>
+.order-display {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.cakedisplay {
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 150px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.cakedisplay img {
+    width: 100%;
+}
 
 </style>
