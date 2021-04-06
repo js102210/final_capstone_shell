@@ -16,15 +16,15 @@
 
 <style>
 html {
-    min-height: 100%;
-}
-
-#app {
-  background: repeating-linear-gradient(45deg, #6ac1e6, #e1f2f8 50px, #ff7de3b6 100px);
+  background: repeating-linear-gradient(70deg, #6ac1e6, #e1f2f8 50px, #ff7de3b6 100px);
   min-height:100%;
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+#app {
+  margin: 0;
 }
 
 #nav {
