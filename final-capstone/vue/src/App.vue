@@ -30,8 +30,21 @@ html {
 #nav {
   /* display: flex;
   justify-content: center; */
-  position: relative;
-  background-color: rgba(255, 0, 234, 0.856);
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 153, 247, 0.856);
+  width: 100%;
+  height: 3.7%;
+  height: fit-content;
+}
+
+#nav a {
+  text-decoration: none;
+}
+
+#nav a:hover {
+  background-color: rgba(255, 152, 238, 0.39);
+  border-radius: 5px;
 }
 
 .cust-section {
@@ -40,10 +53,15 @@ html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: rgb(173, 243, 255);
+  border-radius: 3px;
 }
 
 .emp-section {
   float: right;
+  margin-right: .7%;
+  background-color: rgb(173, 243, 255);
+  border-radius: 3%;
 }
 
 @media screen and (max-width: 600px) {

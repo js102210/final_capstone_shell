@@ -11,10 +11,13 @@ export default {
 };
 </script>
 <style>
-.home {
+div.home {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color:rgb(255, 77, 136);
+  font-size: 180%;
+  font-display: 'lucida handwriting';
 }
 </style>
