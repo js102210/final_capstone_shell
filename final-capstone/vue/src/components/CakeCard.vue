@@ -4,6 +4,8 @@
       <img class="cake-pic" v-bind:src=cake.image_url /> <br>
       <h2>{{cake.price}}</h2>
       <p>{{cake.description}}</p>
+
+      
       <button v-on:click="moveToStandardOrderPage">Order this cake!</button>
 
   </div>

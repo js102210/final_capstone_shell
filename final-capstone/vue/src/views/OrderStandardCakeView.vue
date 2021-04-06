@@ -1,5 +1,7 @@
 <template>
+<div class="order-page">
   <order-standard-cake />
+  </div>
 </template>
 
 <script>
@@ -11,5 +13,7 @@ export default {
 </script>
 
 <style>
-
+.order-page {
+  margin-top: 3%;
+}
 </style>
