@@ -21,8 +21,25 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     standardCakeIdForOrder: null,
-    standardOrderCakeObject: {},
-    customOrderCakeObject: {},
+    standardOrderCakeObject: {
+      style_id: 0,
+      size_id: 0,
+      flavor_id: 1,
+      frosting_id: 1,
+      filling_id: 1,
+      message: '',
+      price: 0.00,
+      cake_config_id: 1
+    },
+    customOrderCakeObject: {
+      style_id: 0,
+      size_id: 0,
+      flavor_id: 1,
+      frosting_id: 1,
+      filling_id: 1,
+      message: '',
+      price: 0.00
+    },
     availableCakeStyles: [
       {
         style_id: 1,
@@ -70,7 +87,35 @@ export default new Vuex.Store({
     availableFrostings: ["vanilla", "chocolate", "cream cheese"],
     availableFillings: ["lemon card", "strawberries", "chocolate chips"],
     availableExtras: ["edible image", "superhero toys"],
-    standardCakeConfigs: [],
+    standardCakeConfigs: [
+      {
+        cake_config_id: 2,
+        cake_config_name: "Curls Confetti Birthday Cake",
+        cake_config_img_url: "https://preppykitchen.com/wp-content/uploads/2018/04/Funfetti-original-redone-blog-1.jpg",
+        cake_config_description: "Our fun-filled confetti cake with luscious vanilla frosting!",
+        flavor_id: 4,
+        frosting_id: 2,
+        filling_id: 1
+      },
+      {
+        cake_config_id: 3,
+        cake_config_name: "Deadlift Devil's Food Cake",
+        cake_config_img_url: "https://www.girlversusdough.com/wp-content/uploads/2019/10/devils-food-cake-5.jpg",
+        cake_config_description: "Our award-winning deep devil's food cake with deep chocolate frosting. Go ahead, it's cheat day!",
+        flavor_id: 3,
+        frosting_id: 3,
+        filling_id: 1
+      },
+      {
+        cake_config_id: 4,
+        cake_config_name: "Gym Bunny Carrot Cake",
+        cake_config_img_url: "https://grandbaby-cakes.com/wp-content/uploads/2020/03/Carrot-Cake-10.jpg",
+        cake_config_description: "Our moist carrot cake is jam-packed with healthy antoxidants and unbeatable flavor! It comes with our incredible cream cheese frosting.",
+        flavor_id: 5,
+        frosting_id: 4,
+        filling_id: 1
+      }
+    ],
     placeholderCakes: [
       {
         name: "fudge cake",
