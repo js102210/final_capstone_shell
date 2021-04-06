@@ -83,10 +83,67 @@ export default new Vuex.Store({
         price_mod: 19.99
       }
     ],
-    availableCakeFlavors:["vanilla", "chocolate", "carrot"],
-    availableFrostings: ["vanilla", "chocolate", "cream cheese"],
-    availableFillings: ["lemon card", "strawberries", "chocolate chips"],
-    availableExtras: ["edible image", "superhero toys"],
+    availableCakeFlavors:[
+      {
+        flavor_id: 2,
+        flavor_name: "vanilla",
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        flavor_id: 3,
+        flavor_name: "chocolate",
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        flavor_id: 4,
+        flavor_name: "confetti",
+        is_available: true,
+        price_mod: 2.00
+      },
+      {
+        flavor_id: 5,
+        flavor_name: "carrot",
+        is_available: true,
+        price_mod: 3.00
+      }
+    ],
+    availableFrostings: [
+      {
+        frosting_id: 2,
+        flavor_name: "vanilla",
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        frosting_id: 3,
+        flavor_name: "chocolate",
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        frosting_id: 4,
+        flavor_name: "cream cheese",
+        is_available: true,
+        price_mod: 3.00
+      }
+    ],
+    availableFillings: [
+      {
+        filling_id: 2,
+        filling_name: "strawberry jam",
+        is_available: true,
+        price_mod: 1.00
+      },
+      {
+        filling_id: 3,
+        filling_name: "blackberry jam",
+        is_available: true,
+        price_mod: 1.00
+      }
+    ],
+    availableCakeItemExtras: ["edible image", "superhero toys"],
     standardCakeConfigs: [
       {
         cake_config_id: 2,
