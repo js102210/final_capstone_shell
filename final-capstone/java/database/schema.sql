@@ -199,7 +199,7 @@ CREATE TABLE cake_items
         flavor_id int NOT NULL,
         frosting_id int NOT NULL,
         filling_id int NOT NULL,
-        message VARCHAR NOT NULL,
+        message VARCHAR NOT NULL DEFAULT '',
         config_id int NOT NULL,
         item_price DECIMAL (19,2) NOT NULL, 
         
