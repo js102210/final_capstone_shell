@@ -5,6 +5,7 @@
          <img v-bind:src=selected.image /> <br>
         <h2>{{selected.description}}</h2>
             </div>
+            
   <form>
       <label for="standard cake selection">Select your standard cake:</label>
       <!-- the v-model sets the select to whatever the standardCakeIdForOrder is. If null, it's blank.-->
