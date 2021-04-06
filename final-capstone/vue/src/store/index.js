@@ -20,7 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    standardCakeIdOrder: null,
+    standardCakeIdForOrder: null,
     standardOrderCakeObject: {},
     customOrderCakeObject: {},
     availableCakeStyles: ["cupcakes", "sheet cake", "layer cake"],

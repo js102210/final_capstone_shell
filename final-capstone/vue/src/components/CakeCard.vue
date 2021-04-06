@@ -4,7 +4,7 @@
       <img class="cake-pic" v-bind:src=cake.image_url /> <br>
       <h2>{{cake.price}}</h2>
       <p>{{cake.description}}</p>
-      <button>Order this cake!</button>
+      <button v-on:click="moveToStandardOrderPage">Order this cake!</button>
 
   </div>
 </template>
@@ -14,7 +14,13 @@ export default {
     name: "cake-card",
     props: [
         "cake"
-    ]
+    ],
+    methods: {
+        moveToStandardOrderPage(){
+            this.$store.state.standardCakeIdForOrder = this.cake.cake_id;
+            this.$router.push('/standardorder')
+        }
+    }
 
 }
 </script>
