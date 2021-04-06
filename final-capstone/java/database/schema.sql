@@ -201,6 +201,7 @@ CREATE TABLE cake_items
         filling_id int NOT NULL,
         message VARCHAR NOT NULL,
         config_id int NOT NULL,
+        item_price DECIMAL (19,2) NOT NULL, 
         
         
         CONSTRAINT pk_cake_item_id PRIMARY KEY (cake_item_id),
@@ -225,6 +226,9 @@ CREATE TABLE orders
  total_price DECIMAL (19,2) NOT NULL,
  datetime_placed timestamp DEFAULT CURRENT_TIMESTAMP, --think about validation for this
  datetime_delivery timestamp NOT NULL,
+ customer_name VARCHAR(50) NOT NULL,
+ customer_phone_number VARCHAR(20) NOT NULL,
+
  
   CONSTRAINT pk_orders PRIMARY KEY (order_id),
   CONSTRAINT fk_order_status FOREIGN KEY (status_id) REFERENCES statuses (status_id)
