@@ -23,8 +23,49 @@ export default new Vuex.Store({
     standardCakeIdForOrder: null,
     standardOrderCakeObject: {},
     customOrderCakeObject: {},
-    availableCakeStyles: ["cupcakes", "sheet cake", "layer cake"],
-    availableCakeSizes:["small", "medium", "large"],
+    availableCakeStyles: [
+      {
+        style_id: 1,
+        style_name: "layer cake",
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        style_id: 2,
+        style_name: "cupcakes",
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        style_id: 3,
+        style_name: "sheet cake",
+        is_available: true,
+        price_mod: 0.00
+      }
+    ],
+    availableCakeSizes:[
+      {
+        size_id: 1,
+        size_name: "small",
+        size_description: 'a 6" double layer cake OR 12 cupcakes OR a 8"x8" sheet cake',
+        is_available: true,
+        price_mod: 9.99
+      },
+      {
+        size_id: 2,
+        size_name: "medium",
+        size_description: 'a 9" double layer cake OR 18 cupcakes OR a 9"x14" sheet cake',
+        is_available: true,
+        price_mod: 15.99
+      },
+      {
+        size_id: 3,
+        size_name: "large",
+        size_description: 'a 12" double layer cake OR 24 cupcakes OR a 20"x24" sheet cake',
+        is_available: true,
+        price_mod: 19.99
+      }
+    ],
     availableCakeFlavors:["vanilla", "chocolate", "carrot"],
     availableFrostings: ["vanilla", "chocolate", "cream cheese"],
     availableFillings: ["lemon card", "strawberries", "chocolate chips"],
