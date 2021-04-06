@@ -11,13 +11,15 @@ export default {
 };
 </script>
 <style>
-div.home {
+.home {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color:rgb(255, 77, 136);
-  font-size: 180%;
-  font-display: 'lucida handwriting';
+}
+
+.home p {
+  font-family: 'Quicksand';
 }
 </style>

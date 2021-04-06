@@ -17,10 +17,12 @@
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 
 
 html {
-  background: repeating-linear-gradient(70deg, #6ac1e6, #e1f2f8 50px, #ff7de3b6 100px);
+  background: repeating-linear-gradient(90deg, #6ac1e6, #e1f2f8 50px, #ff7de3b6 100px);
   min-height:100%;
   margin: 0;
   background-repeat: no-repeat;
@@ -28,7 +30,9 @@ html {
 }
 
 h1 {
-  font-family: 'Pacifico';
+  font-family: 'Sacramento';
+  font-weight: 500;
+  font-size: 4rem;
 }
 
 #app {
@@ -40,10 +44,11 @@ h1 {
   justify-content: center; */
   position: fixed;
   top: 0;
-  background-color: rgba(255, 153, 247, 0.856);
+  background-color: rgba(255, 153, 247, 0.616);
   width: 100%;
   height: 10%;
   height: fit-content;
+  font-family: 'Quicksand';
 }
 
 #nav a {
@@ -61,8 +66,9 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(173, 243, 255);
-  border-radius: 30px;
+  background-color: rgba(173, 243, 255, 0.623);
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .emp-section {
@@ -83,6 +89,10 @@ h1 {
     top: 0;
     left: 0;
     transform: none;
+  }
+
+  #app {
+    margin-top: 40px;
   }
 }
 </style>
