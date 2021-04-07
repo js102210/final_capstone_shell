@@ -21,12 +21,14 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     standardCakeIdForOrder: null,
-    standardOrderCakeObject: {},
+    cakeOrderJSON: {}, //renamed
     selectedCake: {
       
     },
-    customOrderCakeObject: {}, //jake: why do we have both of these? I thought custom cakes were just a config
-    availableCakeStyles: [
+     //jake: why do we have both of these? I thought custom cakes were just a config
+     //dan: took out customOrderCakeObject, superfluous now that we've reconsidered
+     //and make a cake JSON standard.
+    availableCakeStylesBE: [
       {
         style_id: 1,
         style_name: "layer cake",
@@ -46,7 +48,7 @@ export default new Vuex.Store({
         price_mod: 0.00
       }
     ],
-    availableCakeSizes:[
+    availableCakeSizesBE:[
       {
         size_id: 1,
         size_name: "small",
@@ -70,10 +72,24 @@ export default new Vuex.Store({
       }
     ],
     availableCakeFlavors:["vanilla", "chocolate", "carrot"],
+    availableFlavorsBE:[],
     availableFrostings: ["vanilla", "chocolate", "cream cheese"],
+    availableFrostingsBE:[],
     availableFillings: ["no filling", "lemon card", "strawberries", "chocolate chips"],
+    availableFillingsBE:[],
     availableExtras: ["edible image", "superhero toys"],
-    standardCakeConfigs: [],
+    standardCakeConfigsBE: [
+      {
+        cake_config_id: 1,
+        cake_config_name: "Custom Cake",
+        cake_config_img_url: "https://www.pngkit.com/png/detail/918-9180589_wedding-cake-icon-png-conzelmann-b-228-ckerei.png",
+        cake_config_description: "Build your own cake!",
+        flavor_id: 1,
+        frosting_id: 1,
+        filling_id: 1
+      },
+      
+    ],
     placeholderCakes: [
       {
         name: "Fudge Cake",
