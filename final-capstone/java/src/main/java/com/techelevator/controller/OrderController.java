@@ -10,8 +10,10 @@ public class OrderController {
     public OrderController(OrderDAO orderDAO) {
         this.orderDAO = orderDAO;
     }
+
     /**
-     *
+     * place an order and all of its cake items into the database
+     * @param order Order object
      */
     @RequestMapping( path= "/placeOrder", method = RequestMethod.POST)
     @ResponseStatus (value= HttpStatus.CREATED)

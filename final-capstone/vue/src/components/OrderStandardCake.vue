@@ -1,7 +1,7 @@
 <template>
   <div class="order-display">
     <div class="cakedisplay">
-      <h1>{{ selected.name }}</h1>
+      <h2>{{ selected.name }}</h2>
       <img v-bind:src="selected.image" /> <br />
       <h2>{{ selected.description }}</h2>
     </div>
@@ -12,20 +12,25 @@
       <select name="standard cake" v-model="selected">
         <!-- sets text for options to all cake names in standardCakeConfigs. value is the cake's cake_id-->
         <option
-          v-for="cake in $store.state.standardCakeConfigs"
-          v-bind:key="cake.cake_config_id"
+          v-for="cake in $store.state.placeholderCakes"
+          v-bind:key="cake.name"
           v-bind:value="{
-            cake_config_id: cake.cake_config_id,
+            cake_id: cake.cake_id,
+            name: cake.name,
+            description: cake.description,
+            image: cake.image_url
+          }"
+        >
+          {{ cake.name }}
+        </option>
+          <!-- cake_config_id: cake.cake_config_id, /these went inside value above/ 
             name: cake.cake_config_name,
             description: cake.cake_config_description,
             image: cake.cake_config_img_url,
             flavor: cake.flavor_id,
             filling: cake.filling_id,
-            frosting: cake.frosting_id
-          }"
-        >
-          {{ cake.cake_config_name }}
-        </option></select
+            frosting: cake.frosting_id -->
+        </select
       ><br />
       <label for="standard cake size">Select your size:</label>
       <select name="standard cake size">
@@ -111,7 +116,8 @@ export default {
   justify-content: space-evenly;
   flex-wrap: wrap;
   align-items: center;
-  width: 400px;
+  width: 300px;
+  height: 300px;
   border: 2px solid black;
   border-radius: 10px;
   padding: 20px;
@@ -120,5 +126,6 @@ export default {
 
 .cakedisplay img {
   width: 100%;
+  height: 60%;
 }
 </style>

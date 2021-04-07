@@ -3,7 +3,7 @@ package com.techelevator.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class Order {
+public class    Order {
     private int orderId;
     private String orderStatus;
     private BigDecimal orderPriceTotal;

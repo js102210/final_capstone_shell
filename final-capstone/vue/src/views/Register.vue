@@ -14,7 +14,8 @@
         v-model="user.username"
         required
         autofocus
-      />
+      /><br>
+
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -23,7 +24,8 @@
         placeholder="Password"
         v-model="user.password"
         required
-      />
+      /><br>
+
       <input
         type="password"
         id="confirmPassword"
@@ -31,11 +33,13 @@
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
-      />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      /><br><br>
+     
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
-      </button>
+      </button><br><br>
+
+       <router-link :to="{ name: 'login' }">Already have an account?</router-link>
     </form>
   </div>
 </template>
@@ -90,4 +94,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.form-register {
+  font-family: 'Quicksand';
+}
+
+.form-register input {
+  margin: 5px;
+}
+</style>

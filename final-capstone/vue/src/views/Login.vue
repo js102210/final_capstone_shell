@@ -21,7 +21,8 @@
         v-model="user.username"
         required
         autofocus
-      />
+      /><br>
+
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -30,9 +31,12 @@
         placeholder="Password"
         v-model="user.password"
         required
-      />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      /><br><br>
+      
       <button type="submit">Sign in</button>
+      <br>
+      <br>
+      <router-link :to="{ name: 'register' }">Create a New account</router-link>
     </form>
   </div>
 </template>
@@ -74,3 +78,13 @@ export default {
   }
 };
 </script>
+
+<style>
+.form-signin {
+  font-family: 'Quicksand';
+}
+
+.form-signin input {
+  margin: 5px;
+}
+</style>
