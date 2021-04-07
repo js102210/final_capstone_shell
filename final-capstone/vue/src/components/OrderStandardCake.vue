@@ -6,7 +6,7 @@
       <p>{{ selected.description }}</p>
     </div>
 
-    <form class="order-form">
+    <form class="order-form" @submit.prevent="orderThisCake">
       <p>Your Cake:</p>
       <label for="standard cake selection">Select your standard cake:</label>
       <!-- the v-model sets the select to whatever the standardCakeIdForOrder is. If null, it's blank.-->
@@ -65,12 +65,12 @@
       <label for="customerName">Please enter your name:</label>
       <input name="customerName" type="text" placeholder="Your Name" /><br>
       <label for="customerPhoneNumber">Please enter your phone number:</label>
-      <input name="customerPHoneNumber" type="tel" />
+      <input name="customerPhoneNumber" type="tel" /><br>
 
       <label for="pickup time">When do you want to pick up your cake?</label>
-      <input name="pickup time" type="datetime-local" /><br>
-      
+      <input name="pickup time" type="datetime-local" /><br><br>
 
+      <button type="submit">Place your Order!</button>
     </form>
   </div>
 </template>
