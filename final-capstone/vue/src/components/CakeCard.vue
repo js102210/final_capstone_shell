@@ -5,7 +5,7 @@
       <p>{{cake.description}}</p>
 
       
-      <button v-on:click="moveToStandardOrderPage">Order this cake!</button>
+      <button v-on:click="moveToStandardOrderPage(cake.id)">Order this cake!</button>
 
   </div>
 </template>
@@ -17,8 +17,8 @@ export default {
         "cake"
     ],
     methods: {
-        moveToStandardOrderPage(){
-            this.$store.state.standardCakeIdForOrder = this.cake.cake_id;
+        moveToStandardOrderPage(id){
+            this.$store.commit("SET_SELECTED_CAKE", id);
             this.$router.push('/standardorder')
         }
     }

@@ -3,23 +3,23 @@
         <br>
   <form>
       <label for="custom cake flavor">Select your flavor:</label>
-      <select name="custom cake flavor" v-model="flavor_id">
+      <select name="custom cake flavor" v-model="flavor">
         <option
-          v-for="flavor in $store.state.availableFlavors"
-          v-bind:key="flavor.flavor_id"
-          v-bind:value="{ id: flavor.flavor_id}"
+          v-for="flavor in $store.state.availableCakeFlavors"
+          v-bind:key="flavor"
+          v-bind:value="flavor"
         >
-          {{ flavor.flavor_name }}
+          {{ flavor }}
         </option>
       </select><br>
          <label for="custom cake frosting">Select your frosting:</label>
-      <select name="custom cake frosting" v-model="frosting_id">
+      <select name="custom cake frosting" v-model="frosting">
         <option
           v-for="frosting in $store.state.availableFrostings"
-          v-bind:key="frosting.frosting_id"
-          v-bind:value="{ id: frosting.frosting_id}"
+          v-bind:key="frosting"
+          v-bind:value="frosting"
         >
-          {{ frosting.frosting_name }}
+          {{ frosting }}
         </option>
       </select><br>
                <label for="custom cake filling">Select your filling:</label>
@@ -29,7 +29,7 @@
           v-bind:key="filling.filling_id"
           v-bind:value="{ id: filling.filling_id}"
         >
-          {{ filling.filling_name }}
+          {{ filling }}
         </option>
       </select><br>
             <label for="custom cake size">Select your size:</label>
@@ -68,9 +68,9 @@ export default {
     return{      
         style_id: 1,
         size_id: 1,
-        flavor_id: 1,
-        frosting_id: 1,
-        filling_id: 1,
+        flavor: 1,
+        frosting: 1,
+        filling: 1,
         message: "",
         price: 0.0,
         pickup_date: '',

@@ -22,6 +22,9 @@ export default new Vuex.Store({
     user: currentUser || {},
     standardCakeIdForOrder: null,
     standardOrderCakeObject: {},
+    selectedCake: {
+      
+    },
     customOrderCakeObject: {}, //jake: why do we have both of these? I thought custom cakes were just a config
     availableCakeStyles: [
       {
@@ -68,7 +71,7 @@ export default new Vuex.Store({
     ],
     availableCakeFlavors:["vanilla", "chocolate", "carrot"],
     availableFrostings: ["vanilla", "chocolate", "cream cheese"],
-    availableFillings: ["lemon card", "strawberries", "chocolate chips"],
+    availableFillings: ["no filling", "lemon card", "strawberries", "chocolate chips"],
     availableExtras: ["edible image", "superhero toys"],
     standardCakeConfigs: [],
     placeholderCakes: [
@@ -96,7 +99,7 @@ export default new Vuex.Store({
       },
       {
         name: "Custom Cake",
-        cake_id: 2,
+        cake_id: 4,
         price: 39.99,
         image_url: "https://www.pngkit.com/png/detail/918-9180589_wedding-cake-icon-png-conzelmann-b-228-ckerei.png",
         description: "Build your own cake!"
@@ -120,6 +123,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_SELECTED_CAKE(state, id){
+      state.selectedCake.id = id;
     }
   }
 })
