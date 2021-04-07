@@ -271,6 +271,11 @@ INSERT INTO frostings (frosting_name, is_available, price_mod)
 VALUES ('vanilla', true, 0.00),
 	('chocolate', true, 0.00),
 	('cream cheese', true, 3.00);
+	
+INSERT INTO extras (extra_name, is_available, price_mod)
+VALUES ('superhero decorations',true, 3.00),
+        ('plastic bunny',true, 1.00),
+        ('birthday candles',true, 2.00);
 
 
 INSERT INTO statuses (status_name)
