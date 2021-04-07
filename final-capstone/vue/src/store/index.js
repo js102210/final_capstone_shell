@@ -21,25 +21,8 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     standardCakeIdForOrder: null,
-    standardOrderCakeObject: {
-      style_id: 0,
-      size_id: 0,
-      flavor_id: 1,
-      frosting_id: 1,
-      filling_id: 1,
-      message: '',
-      price: 0.00,
-      cake_config_id: 1
-    },
-    customOrderCakeObject: {
-      style_id: 0,
-      size_id: 0,
-      flavor_id: 1,
-      frosting_id: 1,
-      filling_id: 1,
-      message: '',
-      price: 0.00
-    },
+    standardOrderCakeObject: {},
+    customOrderCakeObject: {}, //jake: why do we have both of these? I thought custom cakes were just a config
     availableCakeStyles: [
       {
         style_id: 1,
@@ -64,121 +47,30 @@ export default new Vuex.Store({
       {
         size_id: 1,
         size_name: "small",
-        size_description: 'SMALL: a 6" double layer cake OR 12 cupcakes OR a 8"x8" sheet cake',
+        size_description: 'a 6" double layer cake OR 12 cupcakes OR a 8"x8" sheet cake',
         is_available: true,
         price_mod: 9.99
       },
       {
         size_id: 2,
         size_name: "medium",
-        size_description: 'MEDIUM: a 9" double layer cake OR 18 cupcakes OR a 9"x14" sheet cake',
+        size_description: 'a 9" double layer cake OR 18 cupcakes OR a 9"x14" sheet cake',
         is_available: true,
         price_mod: 15.99
       },
       {
         size_id: 3,
         size_name: "large",
-        size_description: 'LARGE: a 12" double layer cake OR 24 cupcakes OR a 20"x24" sheet cake',
+        size_description: 'a 12" double layer cake OR 24 cupcakes OR a 20"x24" sheet cake',
         is_available: true,
         price_mod: 19.99
       }
     ],
-    availableFlavors:[
-      {
-        flavor_id: 2,
-        flavor_name: "vanilla",
-        is_available: true,
-        price_mod: 0.00
-      },
-      {
-        flavor_id: 3,
-        flavor_name: "chocolate",
-        is_available: true,
-        price_mod: 0.00
-      },
-      {
-        flavor_id: 4,
-        flavor_name: "confetti",
-        is_available: true,
-        price_mod: 2.00
-      },
-      {
-        flavor_id: 5,
-        flavor_name: "carrot",
-        is_available: true,
-        price_mod: 3.00
-      }
-    ],
-    availableFrostings: [
-      {
-        frosting_id: 2,
-        frosting_name: "vanilla",
-        is_available: true,
-        price_mod: 0.00
-      },
-      {
-        frosting_id: 3,
-        frosting_name: "chocolate",
-        is_available: true,
-        price_mod: 0.00
-      },
-      {
-        frosting_id: 4,
-        frosting_name: "cream cheese",
-        is_available: true,
-        price_mod: 3.00
-      }
-    ],
-    availableFillings: [
-      {
-        filling_id: 1,
-        filling_name: "no extra filling",
-        is_available: true,
-        price_mod: 0.00
-      },
-      {
-        filling_id: 2,
-        filling_name: "strawberry jam",
-        is_available: true,
-        price_mod: 1.00
-      },
-      {
-        filling_id: 3,
-        filling_name: "blackberry jam",
-        is_available: true,
-        price_mod: 1.00
-      }
-    ],
-    availableCakeItemExtras: ["edible image", "superhero toys"],
-    standardCakeConfigs: [
-      {
-        cake_config_id: 2,
-        cake_config_name: "Curls Confetti Birthday Cake",
-        cake_config_img_url: "https://preppykitchen.com/wp-content/uploads/2018/04/Funfetti-original-redone-blog-1.jpg",
-        cake_config_description: "Our fun-filled confetti cake with luscious vanilla frosting!",
-        flavor_id: 4,
-        frosting_id: 2,
-        filling_id: 1
-      },
-      {
-        cake_config_id: 3,
-        cake_config_name: "Deadlift Devil's Food Cake",
-        cake_config_img_url: "https://www.girlversusdough.com/wp-content/uploads/2019/10/devils-food-cake-5.jpg",
-        cake_config_description: "Our award-winning deep devil's food cake with deep chocolate frosting. Go ahead, it's cheat day!",
-        flavor_id: 3,
-        frosting_id: 3,
-        filling_id: 1
-      },
-      {
-        cake_config_id: 4,
-        cake_config_name: "Gym Bunny Carrot Cake",
-        cake_config_img_url: "https://grandbaby-cakes.com/wp-content/uploads/2020/03/Carrot-Cake-10.jpg",
-        cake_config_description: "Our moist carrot cake is jam-packed with healthy antoxidants and unbeatable flavor! It comes with our incredible cream cheese frosting.",
-        flavor_id: 5,
-        frosting_id: 4,
-        filling_id: 1
-      }
-    ],
+    availableCakeFlavors:["vanilla", "chocolate", "carrot"],
+    availableFrostings: ["vanilla", "chocolate", "cream cheese"],
+    availableFillings: ["lemon card", "strawberries", "chocolate chips"],
+    availableExtras: ["edible image", "superhero toys"],
+    standardCakeConfigs: [],
     placeholderCakes: [
       {
         name: "fudge cake",

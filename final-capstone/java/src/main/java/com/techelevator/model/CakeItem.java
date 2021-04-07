@@ -8,31 +8,33 @@ public class CakeItem {
     private String cakeItemStyle;
     private String cakeItemSize;
     private String cakeItemMessage = "";
-    private CakeConfig cakeItemConfig;
+    private String cakeItemFilling;
+    private String cakeItemFrosting;
+    private String cakeItemFlavor;
     private BigDecimal cakeItemPrice;
 
     /**
-     * Constructor for cake item
-     * Note- other properties of cake item should be read from the config passed as an arg
+     * constructor for cake item
      * @param itemId int
-     * @param itemConfig CakeConfig
-     * query should correctly populate with properties, from the DB config if it's a standard cake,
-     *  or from the input if the config is 'custom'
      * @param itemStyle String
      * @param itemSize String
-     * @param  itemMessage String
-     * defaults to empty string from db if not provided on insert
+     * @param itemMessage String
      * @param itemPrice BigDecimal
+     * @param cakeItemFilling String
+     * @param cakeItemFrosting String
+     * @param cakeItemFlavor String
      */
-    public CakeItem(int itemId, CakeConfig itemConfig, String itemStyle, String itemSize, String itemMessage, BigDecimal itemPrice){
+    public CakeItem(int itemId, String itemStyle, String itemSize, String itemMessage, BigDecimal itemPrice,
+                    String cakeItemFilling, String cakeItemFrosting, String cakeItemFlavor){
         this.cakeItemId = itemId;
-        this.cakeItemConfig = itemConfig;
         this.cakeItemSize = itemSize;
         this.cakeItemStyle = itemStyle;
         this.cakeItemMessage = itemMessage;
         this.cakeItemPrice = itemPrice;
+        this.cakeItemFilling = cakeItemFilling;
+        this.cakeItemFrosting = cakeItemFrosting;
+        this.cakeItemFlavor = cakeItemFlavor;
     }
-
 
     public int getCakeItemId() {
         return cakeItemId;
@@ -66,14 +68,46 @@ public class CakeItem {
         this.cakeItemMessage = cakeMessage;
     }
 
-    public CakeConfig getCakeItemConfig() {
-        return cakeItemConfig;
+
+
+    public String getCakeItemMessage() {
+        return cakeItemMessage;
     }
 
-    public void setCakeItemConfig(CakeConfig cakeItemConfig) {
-        this.cakeItemConfig = cakeItemConfig;
+    public void setCakeItemMessage(String cakeItemMessage) {
+        this.cakeItemMessage = cakeItemMessage;
     }
 
+    public BigDecimal getCakeItemPrice() {
+        return cakeItemPrice;
+    }
 
+    public void setCakeItemPrice(BigDecimal cakeItemPrice) {
+        this.cakeItemPrice = cakeItemPrice;
+    }
+
+    public String getCakeItemFilling() {
+        return cakeItemFilling;
+    }
+
+    public void setCakeItemFilling(String cakeItemFilling) {
+        this.cakeItemFilling = cakeItemFilling;
+    }
+
+    public String getCakeItemFrosting() {
+        return cakeItemFrosting;
+    }
+
+    public void setCakeItemFrosting(String cakeItemFrosting) {
+        this.cakeItemFrosting = cakeItemFrosting;
+    }
+
+    public String getCakeItemFlavor() {
+        return cakeItemFlavor;
+    }
+
+    public void setCakeItemFlavor(String cakeItemFlavor) {
+        this.cakeItemFlavor = cakeItemFlavor;
+    }
 
 }
