@@ -1,12 +1,13 @@
 <template>
   <div class="order-display">
     <div class="cakedisplay">
-      <h2>{{ selected.name }}</h2>
+      <h3>{{ selected.name }}</h3>
       <img v-bind:src="selected.image" /> <br />
-      <h2>{{ selected.description }}</h2>
+      <p>{{ selected.description }}</p>
     </div>
 
-    <form>
+    <form class="order-form">
+      <p>Your Cake:</p>
       <label for="standard cake selection">Select your standard cake:</label>
       <!-- the v-model sets the select to whatever the standardCakeIdForOrder is. If null, it's blank.-->
       <select name="standard cake" v-model="selected">
@@ -57,9 +58,19 @@
       <label for="optional message"
         >Put what message you want on your cake! (Optional: $1.50 extra)</label
       >
-      <input name="message" type="text" /><br />
+      <input name="message" type="text" placeholder="Optional Message"/><br />
+
+      <p>Your Info:</p>
+      
+      <label for="customerName">Please enter your name:</label>
+      <input name="customerName" type="text" placeholder="Your Name" /><br>
+      <label for="customerPhoneNumber">Please enter your phone number:</label>
+      <input name="customerPHoneNumber" type="tel" />
+
       <label for="pickup time">When do you want to pick up your cake?</label>
-      <input name="pickup time" type="datetime-local" />
+      <input name="pickup time" type="datetime-local" /><br>
+      
+
     </form>
   </div>
 </template>
@@ -113,19 +124,31 @@ export default {
 
 .cakedisplay {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
   width: 300px;
-  height: 300px;
+  height: 200px;
   border: 2px solid black;
   border-radius: 10px;
   padding: 20px;
   margin-top: 20px;
 }
 
+.order-form input, select {
+  margin: 6px;
+}
+
 .cakedisplay img {
-  width: 100%;
-  height: 60%;
+  width: 70%;
+  height: 45%;
+}
+
+.cakedisplay h3 {
+  margin-top: -3%;
+}
+
+.cakedisplay p {
+  font-family: 'Quicksand';
 }
 </style>
