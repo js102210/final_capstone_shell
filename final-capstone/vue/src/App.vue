@@ -58,6 +58,7 @@ h1 {
 #nav a:hover {
   background-color: rgba(255, 152, 238, 0.39);
   border-radius: 5px;
+  transition-duration: 0.4s;
 }
 
 .cust-section {
@@ -73,7 +74,7 @@ h1 {
 
 .emp-section {
   float: right;
-  margin-right: .7%;
+  margin-right: 1.5%;
   background-color: rgb(173, 243, 255);
   border-radius: 3%;
 }
