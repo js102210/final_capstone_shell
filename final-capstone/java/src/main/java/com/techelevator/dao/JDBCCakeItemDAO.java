@@ -11,7 +11,7 @@ public class JDBCCakeItemDAO implements CakeItemDAO{
     public JDBCCakeItemDAO(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
     }
-    
+
     @Override
     public List<CakeItem> getCakeItemsForOrder(int orderId) {
         return null;
@@ -19,6 +19,9 @@ public class JDBCCakeItemDAO implements CakeItemDAO{
 
     @Override
     public void addCakeItem(CakeItem cakeItem, int orderID) {
-
+    String sqlToAddCakeItem = "INSERT INTO cake_items (cake_style_id, cake_size_id, flavor_id, frosting_id, " +
+            "filling_id, message, config_id,\n" +
+            "item_price, order_id)\n" +
+            "VALUES (1, 1, 1, 1, 1, 'aaah', 1, 0.5, 1);";
     }
 }

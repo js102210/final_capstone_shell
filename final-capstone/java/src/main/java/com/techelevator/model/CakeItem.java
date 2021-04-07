@@ -5,12 +5,12 @@ import java.math.BigDecimal;
 //this will be our cake object
 public class CakeItem {
     private int cakeItemId;
-    private String cakeItemStyle;
-    private String cakeItemSize;
+    private int cakeItemStyleID;
+    private int cakeItemSizeID;
     private String cakeItemMessage = "";
-    private String cakeItemFilling;
-    private String cakeItemFrosting;
-    private String cakeItemFlavor;
+    private int cakeItemFillingID;
+    private int cakeItemFrostingID;
+    private int cakeItemFlavorID;
     private BigDecimal cakeItemPrice;
 
     /**
@@ -24,16 +24,16 @@ public class CakeItem {
      * @param cakeItemFrosting String
      * @param cakeItemFlavor String
      */
-    public CakeItem(int itemId, String itemStyle, String itemSize, String itemMessage, BigDecimal itemPrice,
-                    String cakeItemFilling, String cakeItemFrosting, String cakeItemFlavor){
+    public CakeItem(int itemId, int itemStyle, int itemSize, String itemMessage, BigDecimal itemPrice,
+                    int cakeItemFilling, int cakeItemFrosting, int cakeItemFlavor){
         this.cakeItemId = itemId;
-        this.cakeItemSize = itemSize;
-        this.cakeItemStyle = itemStyle;
+        this.cakeItemSizeID = itemSize;
+        this.cakeItemStyleID = itemStyle;
         this.cakeItemMessage = itemMessage;
         this.cakeItemPrice = itemPrice;
-        this.cakeItemFilling = cakeItemFilling;
-        this.cakeItemFrosting = cakeItemFrosting;
-        this.cakeItemFlavor = cakeItemFlavor;
+        this.cakeItemFillingID = cakeItemFilling;
+        this.cakeItemFrostingID = cakeItemFrosting;
+        this.cakeItemFlavorID = cakeItemFlavor;
     }
 
     public int getCakeItemId() {
@@ -44,30 +44,21 @@ public class CakeItem {
         this.cakeItemId = cakeItemId;
     }
 
-    public String getCakeItemStyle() {
-        return cakeItemStyle;
+    public int getCakeItemStyleID() {
+        return cakeItemStyleID;
     }
 
-    public void setCakeItemStyle(String cakeItemStyle) {
-        this.cakeItemStyle = cakeItemStyle;
+    public void setCakeItemStyleID(int cakeItemStyleID) {
+        this.cakeItemStyleID = cakeItemStyleID;
     }
 
-    public String getCakeItemSize() {
-        return cakeItemSize;
+    public int getCakeItemSizeID() {
+        return cakeItemSizeID;
     }
 
-    public void setCakeItemSize(String cakeItemSize) {
-        this.cakeItemSize = cakeItemSize;
+    public void setCakeItemSizeID(int cakeItemSizeID) {
+        this.cakeItemSizeID = cakeItemSizeID;
     }
-
-    public String getCakeMessage() {
-        return cakeItemMessage;
-    }
-
-    public void setCakeMessage(String cakeMessage) {
-        this.cakeItemMessage = cakeMessage;
-    }
-
 
 
     public String getCakeItemMessage() {
@@ -86,28 +77,28 @@ public class CakeItem {
         this.cakeItemPrice = cakeItemPrice;
     }
 
-    public String getCakeItemFilling() {
-        return cakeItemFilling;
+    public int getCakeItemFillingID() {
+        return cakeItemFillingID;
     }
 
-    public void setCakeItemFilling(String cakeItemFilling) {
-        this.cakeItemFilling = cakeItemFilling;
+    public void setCakeItemFillingID(int cakeItemFillingID) {
+        this.cakeItemFillingID = cakeItemFillingID;
     }
 
-    public String getCakeItemFrosting() {
-        return cakeItemFrosting;
+    public int getCakeItemFrostingID() {
+        return cakeItemFrostingID;
     }
 
-    public void setCakeItemFrosting(String cakeItemFrosting) {
-        this.cakeItemFrosting = cakeItemFrosting;
+    public void setCakeItemFrostingID(int cakeItemFrostingID) {
+        this.cakeItemFrostingID = cakeItemFrostingID;
     }
 
-    public String getCakeItemFlavor() {
-        return cakeItemFlavor;
+    public int getCakeItemFlavorID() {
+        return cakeItemFlavorID;
     }
 
-    public void setCakeItemFlavor(String cakeItemFlavor) {
-        this.cakeItemFlavor = cakeItemFlavor;
+    public void setCakeItemFlavorID(int cakeItemFlavorID) {
+        this.cakeItemFlavorID = cakeItemFlavorID;
     }
 
 }
