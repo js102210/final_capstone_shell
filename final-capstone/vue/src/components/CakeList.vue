@@ -20,4 +20,13 @@ export default {
   flex-wrap: flex;
   justify-content: space-evenly;
 }
+
+@media screen and (max-width: 600px) {
+
+.cakes-layout{  
+  flex-direction: column;
+  align-items: center;
+}
+
+}
 </style>
