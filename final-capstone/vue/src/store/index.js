@@ -139,8 +139,47 @@ export default new Vuex.Store({
       }
     ],
     availableFillings: ["no filling", "lemon card", "strawberries", "chocolate chips"],
-    availableFillingsBE:[],
+    availableFillingsBE:[
+      {
+        filling_id: 1,
+        filling_name: null,
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        filling_id: 2,
+        filling_name: "strawberry jam",
+        is_available: true,
+        price_mod: 1.00
+      },
+      {
+        filling_id: 3,
+        filling_name: "blackberry jam",
+        is_available: true,
+        price_mod: 1.00
+      }
+    ],
     availableExtras: ["edible image", "superhero toys"],
+    availableExtrasBE:[
+      {
+        extra_id: 1,
+        extra_name: 'superhero decorations',
+        is_available: true,
+        price_mod: 3.00
+      },
+      {
+        extra_id: 2,
+        extra_name: 'plastic bunny',
+        is_available: true,
+        price_mod: 1.00
+      },
+      {
+        extra_id: 3,
+        extra_name: 'birthday candles',
+        is_available: true,
+        price_mod: 2.00
+      }
+    ],
     standardCakeConfigsBE: [
       {
         cake_config_id: 1,
