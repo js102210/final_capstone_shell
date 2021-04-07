@@ -35,6 +35,12 @@ h1 {
   font-size: 4rem;
 }
 
+h3 {
+  font-family: 'Sacramento';
+  font-weight: 500;
+  font-size: 2rem;
+}
+
 #app {
   margin: 0;
 }

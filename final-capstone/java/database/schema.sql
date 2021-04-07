@@ -283,7 +283,7 @@ INSERT INTO statuses (status_name)
 	VALUES ('Complete');
 
 INSERT INTO orders (status_id, total_price, datetime_placed, datetime_delivery, customer_name, customer_phone_number)
-	VALUES (1, 14.99, '2021-4-6 11:18:55', '2021-4-7 12:00:00', 'Ernest Hemingway', 5138675309);
+	VALUES (1, 14.99, '2021-4-6 11:18:55', '2021-4-7 12:00:00', 'Ernest Hemingway', '5138675309');
 
 INSERT INTO cake_config (cake_config_name, cake_config_img_url, cake_config_description, flavor_id, frosting_id, filling_id)
 	VALUES('Curls Confetti Birthday Cake', 'https://preppykitchen.com/wp-content/uploads/2018/04/Funfetti-original-redone-blog-1.jpg', 
@@ -291,5 +291,22 @@ INSERT INTO cake_config (cake_config_name, cake_config_img_url, cake_config_desc
 	),
 	('Deadlift Devil''s Food Cake', 'https://www.girlversusdough.com/wp-content/uploads/2019/10/devils-food-cake-5.jpg', 'Our award-winning deep devil''s food cake with deep chocolate frosting. Go ahead, it''s cheat day!', 3, 3, 1),
 	('Gym Bunny Carrot Cake', 'https://grandbaby-cakes.com/wp-content/uploads/2020/03/Carrot-Cake-10.jpg', 'Our moist carrot cake is jam-packed with healthy antoxidants and unbeatable flavor! It comes with our incredible cream cheese frosting.', 5, 4, 1);
-	
+
+SELECT cake_config.cake_config_id, cake_config.cake_config_name, cake_config.cake_config_img_url,
+                 cake_config.cake_config_description, fillings.filling_name, frostings.frosting_name, flavors.flavor_name
+                FROM cake_config
+                INNER JOIN fillings ON fillings.filling_id = cake_config.filling_id
+                INNER JOIN frostings ON frostings.frosting_id = cake_config.frosting_id
+                INNER JOIN flavors ON flavors.flavor_id = cake_config.flavor_id;
+                
+                
+
+
+--query to insert a cake item from an order into the db
+INSERT INTO cake_items (cake_style_id, cake_size_id, flavor_id, frosting_id, filling_id, message, config_id,
+item_price, order_id)
+VALUES (1, 1, 1, 1, 1, 'aaah', 1, 0.5, 1);
+--inserting an order returning the id
+INSERT INTO orders (status_id, total_price, datetime_placed, datetime_delivery, customer_name, customer_phone_number)
+	VALUES (1, 14.99, '2021-4-6 11:18:55', '2021-4-7 12:00:00', 'Ernest Hemingway', '5138675309') RETURNING order_id;
 COMMIT TRANSACTION;

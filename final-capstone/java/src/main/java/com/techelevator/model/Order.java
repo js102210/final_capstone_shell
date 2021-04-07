@@ -9,8 +9,7 @@ public class    Order {
     private BigDecimal orderPriceTotal;
     private LocalDateTime orderPlacedDateTime;
     private LocalDateTime orderDeliveryDateTime;
-
-       private CakeItem[] itemsInOrder;
+    private CakeItemDTO[] itemsInOrder;
     private String customerName;
     private String customerPhoneNumber;
 
@@ -26,7 +25,7 @@ public class    Order {
      * @param customerPhoneNumber String
      */
     public Order(int orderId, String orderStatus, BigDecimal orderPriceTotal, LocalDateTime orderPlacedDateTime, LocalDateTime orderDeliveryDateTime,
-                 CakeItem[] itemsInOrder, String customerName, String customerPhoneNumber){
+                 CakeItemDTO[] itemsInOrder, String customerName, String customerPhoneNumber){
         this.orderId = orderId;
         this.orderStatus = orderStatus;
         this.orderPriceTotal = orderPriceTotal;
@@ -77,11 +76,11 @@ public class    Order {
         this.orderDeliveryDateTime = orderDeliveryDateTime;
     }
 
-    public CakeItem[] getItemsInOrder() {
+    public CakeItemDTO[] getItemsInOrder() {
         return itemsInOrder;
     }
 
-    public void setItemsInOrder(CakeItem[] itemsInOrder) {
+    public void setItemsInOrder(CakeItemDTO[] itemsInOrder) {
         this.itemsInOrder = itemsInOrder;
     }
 

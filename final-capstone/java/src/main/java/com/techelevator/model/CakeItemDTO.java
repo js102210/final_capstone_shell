@@ -3,7 +3,7 @@ package com.techelevator.model;
 import java.math.BigDecimal;
 
 //this will be our cake object
-public class CakeItem {
+public class CakeItemDTO {
     private int cakeItemId;
     private int cakeItemStyleID;
     private int cakeItemSizeID;
@@ -17,7 +17,7 @@ public class CakeItem {
 
     /**
      * constructor for cake item
-     * @param itemId int
+     *
      * @param itemStyle String
      * @param itemSize String
      * @param itemMessage String
@@ -26,9 +26,9 @@ public class CakeItem {
      * @param cakeItemFrosting String
      * @param cakeItemFlavor String
      */
-    public CakeItem(int itemId, int itemStyle, int itemSize, String itemMessage, BigDecimal itemPrice,
-                    int cakeItemFilling, int cakeItemFrosting, int cakeItemFlavor){
-        this.cakeItemId = itemId;
+    public CakeItemDTO(int itemStyle, int itemSize, String itemMessage, BigDecimal itemPrice,
+                       int cakeItemFilling, int cakeItemFrosting, int cakeItemFlavor){
+
         this.cakeItemSizeID = itemSize;
         this.cakeItemStyleID = itemStyle;
         this.cakeItemMessage = itemMessage;

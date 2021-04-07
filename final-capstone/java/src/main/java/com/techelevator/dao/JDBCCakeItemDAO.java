@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.CakeItem;
+import com.techelevator.model.CakeItemDTO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -13,12 +13,12 @@ public class JDBCCakeItemDAO implements CakeItemDAO{
     }
 
     @Override
-    public List<CakeItem> getCakeItemsForOrder(int orderId) {
+    public List<CakeItemDTO> getCakeItemsForOrder(int orderId) {
         return null;
     }
 
     @Override
-    public void addCakeItem(CakeItem cakeItem, int orderID) {
+    public void addCakeItem(CakeItemDTO cakeItem, int orderID) {
     String sqlToAddCakeItem = "INSERT INTO cake_items (cake_style_id, cake_size_id, flavor_id, frosting_id, " +
             "filling_id, message, config_id,\n" +
             "item_price, order_id)\n" +
