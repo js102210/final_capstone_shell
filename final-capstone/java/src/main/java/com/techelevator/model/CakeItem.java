@@ -11,6 +11,8 @@ public class CakeItem {
     private int cakeItemFillingID;
     private int cakeItemFrostingID;
     private int cakeItemFlavorID;
+
+    private int cakeItemConfigId;
     private BigDecimal cakeItemPrice;
 
     /**
@@ -99,6 +101,15 @@ public class CakeItem {
 
     public void setCakeItemFlavorID(int cakeItemFlavorID) {
         this.cakeItemFlavorID = cakeItemFlavorID;
+    }
+
+
+    public int getCakeItemConfigId() {
+        return cakeItemConfigId;
+    }
+
+    public void setCakeItemConfigId(int cakeItemConfigId) {
+        this.cakeItemConfigId = cakeItemConfigId;
     }
 
 }

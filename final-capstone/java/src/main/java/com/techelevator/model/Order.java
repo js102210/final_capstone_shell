@@ -9,7 +9,8 @@ public class Order {
     private BigDecimal orderPriceTotal;
     private LocalDateTime orderPlacedDateTime;
     private LocalDateTime orderDeliveryDateTime;
-    private CakeItem[] itemsInOrder;
+
+       private CakeItem[] itemsInOrder;
     private String customerName;
     private String customerPhoneNumber;
 
@@ -75,6 +76,31 @@ public class Order {
     public void setOrderDeliveryDateTime(LocalDateTime orderDeliveryDateTime) {
         this.orderDeliveryDateTime = orderDeliveryDateTime;
     }
+
+    public CakeItem[] getItemsInOrder() {
+        return itemsInOrder;
+    }
+
+    public void setItemsInOrder(CakeItem[] itemsInOrder) {
+        this.itemsInOrder = itemsInOrder;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerPhoneNumber() {
+        return customerPhoneNumber;
+    }
+
+    public void setCustomerPhoneNumber(String customerPhoneNumber) {
+        this.customerPhoneNumber = customerPhoneNumber;
+    }
+
 
 
 
