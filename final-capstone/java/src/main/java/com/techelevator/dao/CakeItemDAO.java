@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.CakeItem;
+import com.techelevator.model.CakeItemDTO;
 
 import java.util.List;
 
@@ -11,12 +11,12 @@ public interface CakeItemDAO {
      * id for the order
      * @return List<CakeItem>
      */
-    List<CakeItem> getCakeItemsForOrder(int orderId);
+    List<CakeItemDTO> getCakeItemsForOrder(int orderId);
 
     /**
      * write a cake item from an order to the database
      * @param cakeItem cakeItem
      * @param orderID int
      */
-    void addCakeItem(CakeItem cakeItem, int orderID);
+    void addCakeItem(CakeItemDTO cakeItem, int orderID);
 }

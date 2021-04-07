@@ -1,9 +1,11 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.CakeItem;
+import com.techelevator.model.CakeItemDTO;
 import com.techelevator.model.Order;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+
+import java.sql.Timestamp;
 
 @Component
 public class JDBCOrderDAO  implements  OrderDAO{
@@ -19,13 +21,14 @@ public class JDBCOrderDAO  implements  OrderDAO{
     public void placeOrder(Order order) {
         String sqlToInsertOrder = "INSERT INTO orders (status_id, total_price, datetime_placed, datetime_delivery, " +
                 "customer_name, customer_phone_number)\n" +
-                "\tVALUES (1, ?, ?, ?, ?, ?);";
+                "\tVALUES (1, ?, ?, ?, ?, ?) RETURNING order_id;";
         //TODO change the datetime representations when we get that whole thing figured out
-        jdbcTemplate.update(sqlToInsertOrder, order.getOrderPriceTotal(), "2021-04-06 01:01:01",
-                "2021-04-06 01:01:01",  order.getCustomerName(), order.getCustomerPhoneNumber());
-        for (CakeItem cakeItem : order.getItemsInOrder()){
-            cakeItemDAO.addCakeItem(cakeItem, order.getOrderId());
+       Integer newID = jdbcTemplate.queryForObject(sqlToInsertOrder, Integer.class, order.getOrderPriceTotal(), Timestamp.valueOf("2021-01-01 12:12:12"),
+
+                Timestamp.valueOf("2021-01-01 12:12:12"),  order.getCustomerName(), order.getCustomerPhoneNumber());
+        for (CakeItemDTO cakeItem : order.getItemsInOrder()){
+            cakeItemDAO.addCakeItem(cakeItem, newID);
         }
-        
+
     }
 }
