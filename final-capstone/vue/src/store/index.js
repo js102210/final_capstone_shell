@@ -72,9 +72,72 @@ export default new Vuex.Store({
       }
     ],
     availableCakeFlavors:["vanilla", "chocolate", "carrot"],
-    availableFlavorsBE:[],
+    availableFlavorsBE:[
+      {
+        flavor_id: 1,
+        flavor_name: null,
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        flavor_id: 2,
+        flavor_name: "vanilla",
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        flavor_id: 3,
+        flavor_name: "chocolate",
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        flavor_id: 3,
+        flavor_name: "chocolate",
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        flavor_id: 4,
+        flavor_name: "confetti",
+        is_available: true,
+        price_mod: 2.00
+      },
+      {
+        flavor_id: 5,
+        flavor_name: "carrot",
+        is_available: true,
+        price_mod: 3.00
+      }
+
+    ],
     availableFrostings: ["vanilla", "chocolate", "cream cheese"],
-    availableFrostingsBE:[],
+    availableFrostingsBE:[
+      {
+        frosting_id: 1,
+        frosting_name: null,
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        frosting_id: 2,
+        frosting_name: "vanilla",
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        frosting_id: 3,
+        frosting_name: "chocolate",
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        frosting_id: 4,
+        frosting_name: "cream cheese",
+        is_available: true,
+        price_mod: 3.00
+      }
+    ],
     availableFillings: ["no filling", "lemon card", "strawberries", "chocolate chips"],
     availableFillingsBE:[],
     availableExtras: ["edible image", "superhero toys"],
@@ -88,7 +151,34 @@ export default new Vuex.Store({
         frosting_id: 1,
         filling_id: 1
       },
-      
+      {
+        cake_config_id: 2,
+        cake_config_name: "Curls Confetti Birthday Cake",
+        cake_config_img_url: "https://preppykitchen.com/wp-content/uploads/2018/04/Funfetti-original-redone-blog-1.jpg",
+        cake_config_description: "Our fun-filled confetti cake with luscious vanilla frosting",
+        flavor_id: 4,
+        frosting_id: 2,
+        filling_id: 1
+      },
+      {
+        cake_config_id: 3,
+        cake_config_name: "Deadlift Devil's Food Cake",
+        cake_config_img_url: "https://www.girlversusdough.com/wp-content/uploads/2019/10/devils-food-cake-5.jpg",
+        cake_config_description: "Our award-winning deep devil's food cake with deep chocolate frosting. Go ahead, it's cheat day!",
+        flavor_id: 3,
+        frosting_id: 3,
+        filling_id: 1
+      },
+      {
+        cake_config_id: 4,
+        cake_config_name: "Gym Bunny Carrot Cake",
+        cake_config_img_url: "https://grandbaby-cakes.com/wp-content/uploads/2020/03/Carrot-Cake-10.jpg",
+        cake_config_description: "Our moist carrot cake is jam-packed with healthy antoxidants and unbeatable flavor! It comes with our incredible cream cheese frosting.",
+        flavor_id: 5,
+        frosting_id: 4,
+        filling_id: 1
+      }
+
     ],
     placeholderCakes: [
       {
