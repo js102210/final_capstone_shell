@@ -64,26 +64,26 @@ export default new Vuex.Store({
       {
         size_id: 1,
         size_name: "small",
-        size_description: 'a 6" double layer cake OR 12 cupcakes OR a 8"x8" sheet cake',
+        size_description: 'SMALL: a 6" double layer cake OR 12 cupcakes OR a 8"x8" sheet cake',
         is_available: true,
         price_mod: 9.99
       },
       {
         size_id: 2,
         size_name: "medium",
-        size_description: 'a 9" double layer cake OR 18 cupcakes OR a 9"x14" sheet cake',
+        size_description: 'MEDIUM: a 9" double layer cake OR 18 cupcakes OR a 9"x14" sheet cake',
         is_available: true,
         price_mod: 15.99
       },
       {
         size_id: 3,
         size_name: "large",
-        size_description: 'a 12" double layer cake OR 24 cupcakes OR a 20"x24" sheet cake',
+        size_description: 'LARGE: a 12" double layer cake OR 24 cupcakes OR a 20"x24" sheet cake',
         is_available: true,
         price_mod: 19.99
       }
     ],
-    availableCakeFlavors:[
+    availableFlavors:[
       {
         flavor_id: 2,
         flavor_name: "vanilla",
@@ -112,24 +112,30 @@ export default new Vuex.Store({
     availableFrostings: [
       {
         frosting_id: 2,
-        flavor_name: "vanilla",
+        frosting_name: "vanilla",
         is_available: true,
         price_mod: 0.00
       },
       {
         frosting_id: 3,
-        flavor_name: "chocolate",
+        frosting_name: "chocolate",
         is_available: true,
         price_mod: 0.00
       },
       {
         frosting_id: 4,
-        flavor_name: "cream cheese",
+        frosting_name: "cream cheese",
         is_available: true,
         price_mod: 3.00
       }
     ],
     availableFillings: [
+      {
+        filling_id: 1,
+        filling_name: "no extra filling",
+        is_available: true,
+        price_mod: 0.00
+      },
       {
         filling_id: 2,
         filling_name: "strawberry jam",
