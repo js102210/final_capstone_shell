@@ -55,9 +55,9 @@
       </select>
       <br />
             <label for="optional message">Put what message you want on your cake! (Optional: $1.50 extra)</label>
-      <input name="message" type="text"><br>
+      <input name="message" type="text" v-model="message"><br>
       <label for="pickup time">When do you want to pick up your cake?</label>
-      <input name="pickup time" type="datetime-local">
+      <input name="pickup time" type="datetime-local" v-model="pickup_date">
   </form>
   </div>
 </template>
@@ -65,8 +65,7 @@
 <script>
 export default {
   data(){
-    return{
-      
+    return{      
         style_id: 1,
         size_id: 1,
         flavor_id: 1,
@@ -74,6 +73,8 @@ export default {
         filling_id: 1,
         message: "",
         price: 0.0,
+        pickup_date: '',
+        order_date: ''
       } 
 
     },

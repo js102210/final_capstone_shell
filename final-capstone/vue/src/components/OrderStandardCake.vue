@@ -23,8 +23,6 @@
             filling: cake.filling_id,
             frosting: cake.frosting_id
           }"
-          v-bind:flavor="standardCakeOrderJSon.flavor_id"
-          v-bind:filling="standardCakeOrderJSon.filling_id"
         >
           {{ cake.cake_config_name }}
         </option></select
@@ -34,7 +32,7 @@
         <option
           v-for="size in $store.state.availableCakeSizes"
           v-bind:key="size.size_id"
-          v-bind:value="{ id: size.size_id}"
+          v-bind:value="size.size_id"
         >
           {{ size.size_description }}
         </option>
@@ -45,7 +43,7 @@
         <option
           v-for="style in $store.state.availableCakeStyles"
           v-bind:key="style.style_id"
-          v-bind:value="{ id: style.style_id, name: style.style_name }"
+          v-bind:value="style.style_id"
         >
           {{ style.style_name }}
         </option>
