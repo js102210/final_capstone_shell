@@ -29,6 +29,31 @@ public class JDBCOrderDAO  implements  OrderDAO{
         for (CakeItemDTO cakeItem : order.getItemsInOrder()){
             cakeItemDAO.addCakeItem(cakeItem, newID);
         }
+        /**
+         * To parse string from JSON using "CreatedOn" date:
+         * DateTimeFormatter jsonDateFormatter = new DateTimeFormatterBuilder()
+         *  .appendLiteral("/Date(")
+         *  .appendValue(ChronoField.INSTANT_SECONDS)
+         *  .appendLiteral(")/")
+         *  .toFormatter();
+         *
+         * String createdOn = "/Date(GIANT NUMBER OF SECONDS SINCE CREATION)/";
+         * Instant created = jsonDateFormatter.parse(createdOn, Instant::from);
+         * System.out.println("Created on" + created);
+         *
+         * OR a simpler less elegant way:
+         *
+         * String input = "2021-01-01 12:12:12"
+         * try {
+         *      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+         *      LocalDate date = LocalDate.parse(input, formatter);
+         *      System.out.printf("%s%n", date);
+         *      }
+         *      catch (DateTimeParseException e) {
+         *      System.out.printf("%s is not valid!%n", input);
+         *      throw e;
+         *      }
+         */
 
     }
 }
