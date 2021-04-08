@@ -102,7 +102,7 @@
       <label for="pickup time">When do you want to pick up your cake?</label>
       <input name="pickup time" type="datetime-local" /><br /><br />
 
-      <button type="submit">Add Cake to Order!</button>
+      <input type="submit" value="Order Your Cake!" v-on:click="orderThisCake">
     </form>
   </div>
 </template>
@@ -121,11 +121,9 @@ export default {
           cakeItemFrostingID : 1,
           cakeItemFillingID : 1,
           cakeItemMessage : null,
-          cakeItemPrice : null,
+          cakeItemPrice : 0.00,
           cakeItemConfigId : null,
-          cakeItemConfigURL : null,
-          cakeItemConfigName: null,
-          cakeItemConfigDescription: null
+
       },
     };
   },
@@ -186,6 +184,10 @@ export default {
       this.standardCakeOrderJSON.cakeItemFrostingID = this.selected.cakeItemFrostingID;
       this.standardCakeOrderJSON.cakeItemFillingID = this.selected.cakeItemFillingID;
 
+  },
+  orderThisCake(){
+    this.$store.commit("MAKE_CAKE_ITEM",this.standardCakeOrderJSON);
+    this.$store.commit("SET_CAKE_ITEM_PRICE",this.itemPrice);
   }
   },
 

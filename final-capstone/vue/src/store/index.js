@@ -31,18 +31,24 @@ export default new Vuex.Store({
     availableCakeStylesBE: [
       {
         style_id: 1,
-        style_name: "layer cake",
+        style_name: 'pick a cake style!',
         is_available: true,
         price_mod: 0.00
       },
       {
         style_id: 2,
-        style_name: "cupcakes",
+        style_name: "layer cake",
         is_available: true,
         price_mod: 0.00
       },
       {
         style_id: 3,
+        style_name: "cupcakes",
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        style_id: 4,
         style_name: "sheet cake",
         is_available: true,
         price_mod: 0.00
@@ -51,20 +57,27 @@ export default new Vuex.Store({
     availableCakeSizesBE:[
       {
         size_id: 1,
+        size_name: null,
+        size_description: 'pick a cake size!',
+        is_available: true,
+        price_mod: 0.00
+      },
+      {
+        size_id: 2,
         size_name: "small",
         size_description: 'SMALL: a 6" double layer cake OR 12 cupcakes OR a 8"x8" sheet cake',
         is_available: true,
         price_mod: 9.99
       },
       {
-        size_id: 2,
+        size_id: 3,
         size_name: "medium",
         size_description: 'MEDIUM: a 9" double layer cake OR 18 cupcakes OR a 9"x14" sheet cake',
         is_available: true,
         price_mod: 15.99
       },
       {
-        size_id: 3,
+        size_id: 4,
         size_name: "large",
         size_description: 'LARGE: a 12" double layer cake OR 24 cupcakes OR a 20"x24" sheet cake',
         is_available: true,
@@ -75,7 +88,7 @@ export default new Vuex.Store({
     availableFlavorsBE:[
       {
         flavor_id: 1,
-        flavor_name: null,
+        flavor_name: 'pick a cake flavor!',
         is_available: true,
         price_mod: 0.00
       },
@@ -109,7 +122,7 @@ export default new Vuex.Store({
     availableFrostingsBE:[
       {
         frosting_id: 1,
-        frosting_name: null,
+        frosting_name: "no frosting - have a naked cake!",
         is_available: true,
         price_mod: 0.00
       },
@@ -136,7 +149,7 @@ export default new Vuex.Store({
     availableFillingsBE:[
       {
         filling_id: 1,
-        filling_name: null,
+        filling_name: "no filling",
         is_available: true,
         price_mod: 0.00
       },
@@ -284,6 +297,12 @@ export default new Vuex.Store({
     },
     SET_SELECTED_CAKE(state, id){
       state.selectedCake.id = id;
+    },
+    MAKE_CAKE_ITEM(state, cakeJSON){
+      state.cakeItemToOrder = cakeJSON;
+    },
+    SET_CAKE_ITEM_PRICE(state, price){
+      state.cakeItemToOrder.cakeItemPrice = price;
     },
     ADD_CAKEITEM_TO_ACTIVE_ORDER(state, cakeItem){
       state.cakeItemToOrder = cakeItem;
