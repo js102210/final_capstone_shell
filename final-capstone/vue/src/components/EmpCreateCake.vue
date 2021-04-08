@@ -1,6 +1,6 @@
 <template>
   <div class="create-cake-display">
-   <p>Create New Standard Cake:</p>
+   <p>Create New Standard Cake: (All Fields must be completed)</p>
       <form class="create-cake" @submit.prevent="createNewCake">
         <label for="cakeName">Cake Name:</label>
         <input type="text" name="cakeName" v-model="newCake.newCakeName" />
@@ -30,11 +30,14 @@
         <select name="custom cake frosting" v-model="newCake.newCakeItemFrostingID">
         <option v-for="frosting in $store.state.availableFrostings"
           v-bind:key="frosting" v-bind:value="frosting">
-            {{ frosting }}
+          {{ frosting }}
         </option></select>
 
         <!-- add price input -->
+        <!-- add image input -->
+        <!-- add description input -->
 
+      <!-- disable submit button if any field is blank -->
       <button type="submit">Create New Standard Cake</button>
       </form>
   </div>
