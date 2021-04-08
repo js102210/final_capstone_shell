@@ -5,6 +5,13 @@
 
 <script>
 export default {
+  data() {
+    return {
+      newCakeFlavor: "",
+        newCakeFrosting: "",
+        newCakeFilling: "",
+    }
+  }
 
 }
 </script>

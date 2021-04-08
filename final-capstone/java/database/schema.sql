@@ -64,6 +64,7 @@ CREATE SEQUENCE seq_size_id
 CREATE TABLE sizes
         (size_id int DEFAULT nextval('seq_size_id'::regclass) NOT NULL,
         size_name VARCHAR NOT NULL,
+        size_description VARCHAR NOT NULL,
         is_available BOOLEAN NOT NULL DEFAULT TRUE,
         price_mod DECIMAL (19,2) NOT NULL DEFAULT 0.00,
         
@@ -251,10 +252,10 @@ INSERT INTO fillings (filling_name, is_available, price_mod)
 VALUES ('strawberry jam', true, 1.00),
 	('blackberry jam', true, 1.00);
 
-INSERT INTO sizes (size_name, is_available, price_mod)
-VALUES ('small', true, 9.99),
-	('medium', true, 15.99),
-	('large', true, 19.99);
+INSERT INTO sizes (size_name, size_description, is_available, price_mod)
+VALUES ('small', 'SMALL: a 6" double layer cake OR 12 cupcakes OR a 8"x8" sheet cake', true, 9.99),
+	('medium', 'MEDIUM: a 9" double layer cake OR 18 cupcakes OR a 9"x14" sheet cake', true, 15.99),
+	('large', 'LARGE: a 12" double layer cake OR 24 cupcakes OR a 20"x24" sheet cake', true, 19.99);
 
 INSERT INTO styles (style_name, is_available, price_mod)
 VALUES ('layer cake', true, 0.00),

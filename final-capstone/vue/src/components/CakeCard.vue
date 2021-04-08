@@ -3,10 +3,6 @@
       <h3>{{cake.name}}</h3>
       <img class="cake-pic" v-bind:src=cake.image_url /> <br>
       <p>{{cake.description}}</p>
-
-      
-      <button v-on:click="moveToStandardOrderPage(cake.id)">Order this cake!</button>
-
   </div>
 </template>
 
