@@ -1,16 +1,16 @@
 <template>
   <div class="order-display">
     <div class="cakedisplay">
-      <h3>{{ standardCakeOrderJSON.cakeItemConfigName }}</h3>
-      <img v-bind:src="standardCakeOrderJSON.cakeItemConfigURL" /> <br />
-      <p>{{ standardCakeOrderJSON.cakeItemConfigDescription }}</p>
+      <h3>{{ selected.cakeItemConfigName }}</h3>
+      <img v-bind:src="selected.cakeItemConfigURL" /> <br />
+      <p>{{selected.cakeItemConfigDescription }}</p>
     </div>
 
     <form class="order-form" @submit.prevent="orderThisCake">
       <p>Your Cake:</p>
-      <label for="standard cake selection">Select your cake:</label>
+      <label for="cake selection">Select your cake:</label>
       <!-- the v-model sets the select to whatever the standardCakeIdForOrder is. If null, it's blank.-->
-      <select name="standard cake" v-model="standardCakeOrderJSON" >
+      <select name="cake selection" v-model="selected" v-on:change="selectCakeConfig" >
         <!-- sets text for options to all cake names in standardCakeConfigs. value is the cake's cake_id-->
         <option
           v-for="config in $store.state.standardCakeConfigsBE"
@@ -90,7 +90,7 @@
       >
       <input name="message" type="text" placeholder="Optional Message" v-model="standardCakeOrderJSON.cakeItemMessage"/><br />
       <br>
-      <p class="price-display">Your item's current price is $ {{itemPrice}} !</p>
+      <p class="price-display">Your item's current price is <span id="calculated-price" >$ {{itemPrice}} </span>!</p>
       <br>
       <p>Your Info:</p>
 
@@ -113,8 +113,6 @@ export default {
   data() {
     return {
       selected: {
-        
-
       },
       standardCakeOrderJSON: {
           cakeItemStyleID : 1,
@@ -167,7 +165,7 @@ export default {
         price += 1.50
       }
      
-      return price;
+      return price.toFixed(2);
 
     }
   },
@@ -180,9 +178,17 @@ export default {
       this.$store.state.selectedCake = this.$store.state.placeholderCakes[
         cakeIndex
       ];
-    }
+    },
+      selectCakeConfig(){
+        
+     this.standardCakeOrderJSON.cakeItemConfigId = this.selected.cakeItemConfigId;
+      this.standardCakeOrderJSON.cakeItemFlavorID = this.selected.cakeItemFlavorID;
+      this.standardCakeOrderJSON.cakeItemFrostingID = this.selected.cakeItemFrostingID;
+      this.standardCakeOrderJSON.cakeItemFillingID = this.selected.cakeItemFillingID;
+
+  }
   },
-  grabinfoFromCakeConfigForJSON(){}
+
 };
 </script>
 
@@ -223,5 +229,11 @@ select {
 
 .cakedisplay p {
   font-family: "Quicksand";
+}
+
+#calculated-price{
+  color:crimson;
+  font-weight: bold;
+  font-size: 2rem;
 }
 </style>
