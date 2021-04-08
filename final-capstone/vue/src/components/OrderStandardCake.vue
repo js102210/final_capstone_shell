@@ -98,7 +98,7 @@
       <input name="customerName" type="text" placeholder="Your Name" /><br />
       <label for="customerPhoneNumber">Please enter your phone number:</label>
       <input name="customerPhoneNumber" type="tel" /><br />
-
+<!-- let's change this to separate date and time field inputs. see if we can limit time to bakery open hours-->
       <label for="pickup time">When do you want to pick up your cake?</label>
       <input name="pickup time" type="datetime-local" /><br /><br />
 
