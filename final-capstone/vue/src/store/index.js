@@ -250,7 +250,25 @@ export default new Vuex.Store({
         description: "Build your own cake!"
       }
 
-    ]
+    ],
+    cakeItemToOrder : {
+      cakeItemStyleId : null,
+      cakeItemSizeId : null,
+      cakeItemFlavorId : null,
+      cakeItemFrostingID : null,
+      cakeItemFillingID : null,
+      cakeItemMessage : null,
+      cakeItemPrice : null,
+      cakeItemConfigId : null
+    },
+    currentActiveOrder: {
+      orderStatus : null,
+      orderPriceTotal: null,
+      orderPlacedDateTime: null,
+      itemsInOrder: [],
+      customerName : null,
+      customerPhoneNumber : null
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
