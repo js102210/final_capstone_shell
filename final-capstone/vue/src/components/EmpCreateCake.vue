@@ -4,10 +4,7 @@
       <form>
           <label for="cakeName">Cake Name:</label>
         <input type="text" name="cakeName" v-model="newCake.newCakeName" />
-        <label for="cakeFlavor">Cake Flavor:</label>
-        <input type="text" name="cakeName" v-model="newCake.newCakeFlavor" />
-        <label for="cakeName">Cake Name:</label>
-        <input type="text" name="cakeName" v-model="newCake.newCakeFrosting" />
+      <button>Create New Standard Cake</button>
       </form>
   </div>
 </template>
@@ -34,5 +31,7 @@ export default {
 
 .create-cake-display {
   margin-top: 30px;
+  border:2px solid black;
+  border-radius: 10px;
 }
 </style>
