@@ -6,20 +6,6 @@
         <label for="cakeName">Cake Name:</label>
         <input type="text" name="cakeName" v-model="newCake.name" />
 
-        <label for="style">Style:</label>
-        <select name="style" v-model="newCake.styleId">
-        <option v-for="style in $store.state.availableCakeStylesBE"
-          v-bind:key="style.style_id" v-bind:value="style.style_id">
-          {{ style.style_name }}
-        </option></select>
-
-        <label for="size">Size:</label>
-        <select name="size" v-model="newCake.sizeID">
-        <option v-for="size in $store.state.availableCakeSizesBE"
-          v-bind:key="size.size_id" v-bind:value="size.size_id">
-          {{ size.size_description }}
-        </option></select>
-
         <label for="flavor">Flavor:</label>
         <select name="flavor" v-model="newCake.flavorID">
         <option v-for="flavor in $store.state.availableFlavorsBE"
@@ -34,8 +20,13 @@
           {{ frosting.frosting_name }}
         </option></select>
 
-        <label for="price">Price: $</label>
-        <input type="number" name="price" step=".01" v-model="newCake.price" />
+         <!-- <label for="frosting">Frosting:</label>
+        <select name="frosting" v-model="newCake.frostingID">
+        <option v-for="frosting in $store.state.availableFrostingsBE"
+          v-bind:key="frosting.frosting_id" v-bind:value="frosting.frosting_id">
+          {{ frosting.frosting_name }}
+        </option></select>   for filing  -->
+
         
         <label for="imageURL">Image URL:</label>
         <input type="url" name="imageURL" v-model="newCake.imageURL" />
@@ -56,13 +47,9 @@ export default {
     return {
     newCake: {
         name: "",
-        styleID: 1,
-        sizeID: 1,
         flavorID: 1,
         frostingID: 1,
         fillingID: 1,
-        message: "",
-        price: 0.0,
         imageURL: "",
         description: ""
 
