@@ -2,40 +2,46 @@
   <div class="create-cake-display">
    <p>Create New Standard Cake: (All Fields must be completed)</p>
       <form class="create-cake" @submit.prevent="createNewCake">
+        
         <label for="cakeName">Cake Name:</label>
-        <input type="text" name="cakeName" v-model="newCake.newCakeName" />
+        <input type="text" name="cakeName" v-model="newCake.name" />
 
-        <label for="standard cake style">Select Style:</label>
-        <select name="standard cake style" v-model="newCake.newCakeItemStyleId">
+        <label for="style">Style:</label>
+        <select name="style" v-model="newCake.styleId">
         <option v-for="style in $store.state.availableCakeStylesBE"
           v-bind:key="style.style_id" v-bind:value="style.style_id">
           {{ style.style_name }}
         </option></select>
 
-        <label for="standard cake size">Select Size:</label>
-        <select name="standard cake size" v-model="newCake.newCakeItemSizeID">
+        <label for="size">Size:</label>
+        <select name="size" v-model="newCake.sizeID">
         <option v-for="size in $store.state.availableCakeSizesBE"
           v-bind:key="size.size_id" v-bind:value="size.size_id">
           {{ size.size_description }}
         </option></select>
 
-        <label for="custom cake flavor">Select Flavor:</label>
-        <select name="custom cake flavor" v-model="newCake.newCakeItemFlavorID">
+        <label for="flavor">Flavor:</label>
+        <select name="flavor" v-model="newCake.flavorID">
         <option v-for="flavor in $store.state.availableCakeFlavors"
           v-bind:key="flavor" v-bind:value="flavor">
           {{ flavor}}
         </option></select>
 
-        <label for="custom cake frosting">Select your frosting:</label>
-        <select name="custom cake frosting" v-model="newCake.newCakeItemFrostingID">
+        <label for="frosting">Frosting:</label>
+        <select name="frosting" v-model="newCake.frostingID">
         <option v-for="frosting in $store.state.availableFrostings"
           v-bind:key="frosting" v-bind:value="frosting">
           {{ frosting }}
         </option></select>
 
-        <!-- add price input -->
-        <!-- add image input -->
-        <!-- add description input -->
+        <label for="price">Price: $</label>
+        <input type="number" name="price" step=".01" v-model="newCake.price" />
+        
+        <label for="imageURL">Image URL:</label>
+        <input type="url" name="imageURL" v-model="newCake.imageURL" />
+        
+        <label for="description">Description:</label>
+        <input type="text" name="description" v-model="newCake.description" />
 
       <!-- disable submit button if any field is blank -->
       <button type="submit">Create New Standard Cake</button>
@@ -49,14 +55,16 @@ export default {
   data(){
     return {
     newCake: {
-        newCakeName: "",
-        newCakeItemStyleID: 1,
-        newCakeItemSizeID: 1,
-        newCakeItemFlavorID: 1,
-        newCakeItemFrostingID: 1,
-        newCakeItemFillingID: 1,
-        newCakeItemMessage: "",
-        newCakeItemPrice: 0.0,
+        name: "",
+        styleID: 1,
+        sizeID: 1,
+        flavorID: 1,
+        frostingID: 1,
+        fillingID: 1,
+        message: "",
+        price: 0.0,
+        imageURL: "",
+        description: ""
 
     }
     }
