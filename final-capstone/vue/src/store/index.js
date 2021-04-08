@@ -92,12 +92,6 @@ export default new Vuex.Store({
         price_mod: 0.00
       },
       {
-        flavor_id: 3,
-        flavor_name: "chocolate",
-        is_available: true,
-        price_mod: 0.00
-      },
-      {
         flavor_id: 4,
         flavor_name: "confetti",
         is_available: true,

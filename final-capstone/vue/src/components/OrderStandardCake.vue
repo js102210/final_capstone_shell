@@ -28,16 +28,10 @@
         >
           {{ config.cake_config_name }}
         </option>
-        <!-- cake_config_id: cake.cake_config_id, /these went inside value above/ 
-            name: cake.cake_config_name,
-            description: cake.cake_config_description,
-            image: cake.cake_config_img_url,
-            flavor: cake.flavor_id,
-            filling: cake.filling_id,
-            frosting: cake.frosting_id --></select
+</select
       ><br />
-      <label for="standard cake size">Select your size:</label>
-      <select name="standard cake size" v-model="standardCakeOrderJSON.cakeItemSizeId">
+      <label for="cake size">Select your size:</label>
+      <select name="cake size" v-model="standardCakeOrderJSON.cakeItemSizeID">
         <option
           v-for="size in $store.state.availableCakeSizesBE"
           v-bind:key="size.size_id"
@@ -49,7 +43,7 @@
       </select>
       <br />
       <label for="standard cake style">Select your cake style:</label>
-      <select name="standard cake style" v-model="standardCakeOrderJSON.cakeItemStyleId">
+      <select name="standard cake style" v-model="standardCakeOrderJSON.cakeItemStyleID">
         <option
           v-for="style in $store.state.availableCakeStylesBE"
           v-bind:key="style.style_id"
@@ -61,33 +55,33 @@
       <br />
       <section class="custom cake options" v-show="standardCakeOrderJSON.cakeItemConfigId === 1"> 
         <label for="custom cake flavor">Select your flavor:</label>
-        <select name="custom cake flavor" v-model="standardCakeOrderJSON.cakeItemFlavorId">
+        <select name="custom cake flavor" v-model="standardCakeOrderJSON.cakeItemFlavorID">
           <option
-            v-for="flavor in $store.state.availableCakeFlavors"
-            v-bind:key="flavor"
-            v-bind:value="flavor"
+            v-for="flavor in $store.state.availableFlavorsBE"
+            v-bind:key="flavor.flavor_id"
+            v-bind:value="flavor.flavor_id"
           >
-            {{ flavor}}
+            {{ flavor.flavor_name}}
           </option></select
         ><br />
         <label for="custom cake frosting">Select your frosting:</label>
-        <select name="custom cake frosting" v-model="standardCakeOrderJSON.cakeItemFrostingId">
+        <select name="custom cake frosting" v-model="standardCakeOrderJSON.cakeItemFrostingID">
           <option
-            v-for="frosting in $store.state.availableFrostings"
-            v-bind:key="frosting"
-            v-bind:value="frosting"
+            v-for="frosting in $store.state.availableFrostingsBE"
+            v-bind:key="frosting.frosting_id"
+            v-bind:value="frosting.frosting_id"
           >
-            {{ frosting }}
+            {{ frosting.frosting_name }}
           </option></select
         ><br />
         <label for="custom cake filling">Select your filling:</label>
-        <select name="custom cake filling" v-model="standardCakeOrderJSON.cakeItemFillingId">
+        <select name="custom cake filling" v-model="standardCakeOrderJSON.cakeItemFillingID">
           <option
-            v-for="filling in $store.state.availableFillings"
-            v-bind:key="filling"
-            v-bind:value="filling"
+            v-for="filling in $store.state.availableFillingsBE"
+            v-bind:key="filling.filling_id"
+            v-bind:value="filling.filling_id"
           >
-            {{ filling }}
+            {{ filling.filling_name }}
           </option></select
         ><br />
    </section> 
@@ -121,9 +115,9 @@ export default {
 
       },
       standardCakeOrderJSON: {
-          cakeItemStyleId : null,
-          cakeItemSizeId : null,
-          cakeItemFlavorId : null,
+          cakeItemStyleID : null,
+          cakeItemSizeID : null,
+          cakeItemFlavorID : null,
           cakeItemFrostingID : null,
           cakeItemFillingID : null,
           cakeItemMessage : null,
