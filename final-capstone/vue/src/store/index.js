@@ -251,6 +251,7 @@ export default new Vuex.Store({
       }
 
     ],
+  //we can actually remove this if we have the order component send a cakeItem object, but I have it here now for convenient reference
     cakeItemToOrder : {
       cakeItemStyleId : null,
       cakeItemSizeId : null,
@@ -289,6 +290,35 @@ export default new Vuex.Store({
     },
     SET_SELECTED_CAKE(state, id){
       state.selectedCake.id = id;
+    },
+    ADD_CAKEITEM_TO_ACTIVE_ORDER(state, cakeItem){
+      state.cakeItemToOrder = cakeItem;
+      state.currentActiveOrder.itemsInOrder.push(cakeItem);
+      //again, we can actually get rid of this whole thing if we decide to pass a cakeItem in, but it's here now for reference and in case we decide to
+      //mutate the data store by properties instead of sending a whole object
+      state.cakeItemToOrder = 
+        {
+          cakeItemStyleId : null,
+          cakeItemSizeId : null,
+          cakeItemFlavorId : null,
+          cakeItemFrostingID : null,
+          cakeItemFillingID : null,
+          cakeItemMessage : null,
+          cakeItemPrice : null,
+          cakeItemConfigId : null
+        };
+      },
+      FINALIZE_ACTIVE_ORDER(state, order){
+        state.currentActiveOrder.orderStatus = order.orderStatus;
+        state.currentActiveOrder.orderPriceTotal = order.orderPriceTotal;
+        state.currentActiveOrder.orderPlacedDateTime = order.orderPlacedDateTime;
+        state.currentActiveOrder.customerName = order.customerName;
+        state.currentActiveOrder.customerPhoneNumber = order.customerPhoneNumber;
+
+        //we can either push the active order in a POST request here or in the component, wherever we do it, we have to add code to set the current 
+        //active order back to its blank state
+      }
+
     }
   }
-})
+)
