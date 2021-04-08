@@ -1,8 +1,13 @@
 <template>
+  <div>
   <div class="cakes-layout">
       <cake-card v-for="cake in $store.state.placeholderCakes"
       v-bind:key="cake.cake_id"
       v-bind:cake="cake" />
+      
+  </div>
+  <br>
+  <button class="order-button" v-on:click="moveToOrder">Order A Cake!</button>
   </div>
 </template>
 
@@ -10,6 +15,11 @@
 import CakeCard from './CakeCard.vue'
 export default {
   components: { CakeCard },
+  methods: {
+    moveToOrder(){
+      this.$router.push('/standardorder');
+    }
+  }
 
 }
 </script>
@@ -19,6 +29,9 @@ export default {
   display: flex;
   flex-wrap: flex;
   justify-content: space-evenly;
+}
+.order-button{
+  align-items:center;
 }
 
 @media screen and (max-width: 600px) {

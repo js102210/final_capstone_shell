@@ -35,7 +35,7 @@
       <label for="standard cake size">Select your size:</label>
       <select name="standard cake size">
         <option
-          v-for="size in $store.state.availableCakeSizes"
+          v-for="size in $store.state.availableCakeSizesBE"
           v-bind:key="size.size_id"
           v-bind:value="size.size_id"
         >
@@ -46,7 +46,7 @@
       <label for="standard cake style">Select your cake style:</label>
       <select name="standard cake style">
         <option
-          v-for="style in $store.state.availableCakeStyles"
+          v-for="style in $store.state.availableCakeStylesBE"
           v-bind:key="style.style_id"
           v-bind:value="style.style_id"
         >
