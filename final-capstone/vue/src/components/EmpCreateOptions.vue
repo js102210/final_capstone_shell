@@ -27,10 +27,11 @@ export default {
       newCakeFilling: "",
     }
   },
+  methods: {
   createFlavor(){
-    // call add flavor mutation?
+    // call add flavor mutation
   }
-
+  }
 }
 </script>
 
