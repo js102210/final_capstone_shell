@@ -2,8 +2,9 @@
   <div id="app">
     <div id="nav">
       <div class="cust-section">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'cakes' }">Show me your Cakes!</router-link>
+      <router-link v-bind:to="{ name: 'home' }" v-show="!$store.state.token">Home</router-link>
+      <span v-show="!$store.state.token">&nbsp;|&nbsp;</span>
+      <router-link v-bind:to="{ name: 'cakes' }" v-show="!$store.state.token">Show me your Cakes!</router-link>
       </div>
       <div class="emp-section">
       <router-link v-bind:to="{ name: 'login' }">Employee Login</router-link>

@@ -1,6 +1,9 @@
 <template>
-  <div>
-      
+  <div class="create-cake-display">
+   <p>Create New Standard Cake:</p>
+      <form>
+        
+      </form>
   </div>
 </template>
 
@@ -12,4 +15,7 @@ export default {
 
 <style>
 
+.create-cake-display {
+  margin-top: 30px;
+}
 </style>
