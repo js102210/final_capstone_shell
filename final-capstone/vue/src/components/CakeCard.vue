@@ -5,7 +5,7 @@
       <p>{{cake.description}}</p>
 
       
-      <button v-on:click="moveToStandardOrderPage(cake.cake_id)">Order this cake!</button>
+      <button v-on:click="moveToStandardOrderPage(cake.id)">Order this cake!</button>
 
   </div>
 </template>

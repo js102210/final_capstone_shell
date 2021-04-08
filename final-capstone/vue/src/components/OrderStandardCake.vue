@@ -2,7 +2,7 @@
   <div class="order-display">
     <div class="cakedisplay">
       <h3>{{ selected.name }}</h3>
-      <img v-bind:src="$store.state.selectedCakePicUrl" /> <br />
+      <img v-bind:src="selected.image" /> <br />
       <p>{{ selected.description }}</p>
     </div>
 
