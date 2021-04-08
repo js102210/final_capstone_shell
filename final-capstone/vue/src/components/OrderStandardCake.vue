@@ -1,28 +1,32 @@
 <template>
   <div class="order-display">
     <div class="cakedisplay">
-      <h3>{{ selected.name }}</h3>
-      <img v-bind:src="selected.image" /> <br />
-      <p>{{ selected.description }}</p>
+      <h3>{{ standardCakeOrderJSON.cakeItemConfigName }}</h3>
+      <img v-bind:src="standardCakeOrderJSON.cakeItemConfigURL" /> <br />
+      <p>{{ standardCakeOrderJSON.cakeItemConfigDescription }}</p>
     </div>
 
     <form class="order-form" @submit.prevent="orderThisCake">
       <p>Your Cake:</p>
       <label for="standard cake selection">Select your cake:</label>
       <!-- the v-model sets the select to whatever the standardCakeIdForOrder is. If null, it's blank.-->
-      <select name="standard cake" v-model="selected" >
+      <select name="standard cake" v-model="standardCakeOrderJSON" >
         <!-- sets text for options to all cake names in standardCakeConfigs. value is the cake's cake_id-->
         <option
-          v-for="cake in $store.state.placeholderCakes"
-          v-bind:key="cake.name"
+          v-for="config in $store.state.standardCakeConfigsBE"
+          v-bind:key="config.cake_config_id"
           v-bind:value="{
-            cake_id: cake.cake_id,
-            name: cake.name,
-            description: cake.description,
-            image: cake.image_url,
+            cakeItemConfigName: config.config_name,
+            cakeItemConfigId: config.cake_config_id,
+            cakeItemFrostingID: config.frosting_id,
+            cakeItemFillingID: config.filling_id,
+            cakeItemFlavorID: config.flavor_id,
+            cakeItemConfigURL: config.cake_config_img_url,
+            cakeItemConfigDescription: config.cake_config_description
+
           }"
         >
-          {{ cake.name }}
+          {{ config.cake_config_name }}
         </option>
         <!-- cake_config_id: cake.cake_config_id, /these went inside value above/ 
             name: cake.cake_config_name,
@@ -55,7 +59,7 @@
         </option>
       </select>
       <br />
-      <section class="custom cake options" v-show="selected.name === 'Custom Cake'"> 
+      <section class="custom cake options" v-show="standardCakeOrderJSON.cakeItemConfigId === 1"> 
         <label for="custom cake flavor">Select your flavor:</label>
         <select name="custom cake flavor" v-model="standardCakeOrderJSON.cakeItemFlavorId">
           <option
@@ -113,7 +117,8 @@ export default {
   data() {
     return {
       selected: {
-        id: this.$store.state.standardCakeIdForOrder
+        
+
       },
       standardCakeOrderJSON: {
           cakeItemStyleId : null,
@@ -123,7 +128,10 @@ export default {
           cakeItemFillingID : null,
           cakeItemMessage : null,
           cakeItemPrice : null,
-          cakeItemConfigId : null
+          cakeItemConfigId : null,
+          cakeItemConfigURL : null,
+          cakeItemConfigName: null,
+          cakeItemConfigDescription: null
       },
     };
   },
