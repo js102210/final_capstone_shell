@@ -23,7 +23,6 @@
             cakeItemFlavorID: config.flavor_id,
             cakeItemConfigURL: config.cake_config_img_url,
             cakeItemConfigDescription: config.cake_config_description
-
           }"
         >
           {{ config.cake_config_name }}
@@ -31,7 +30,8 @@
 </select
       ><br />
       <label for="cake size">Select your size:</label>
-      <select name="cake size" v-model="standardCakeOrderJSON.cakeItemSizeID">
+      <select name="cake size" 
+      v-model="standardCakeOrderJSON.cakeItemSizeID">
         <option
           v-for="size in $store.state.availableCakeSizesBE"
           v-bind:key="size.size_id"
@@ -89,7 +89,9 @@
         >Put what message you want on your cake! (Optional: $1.50 extra)</label
       >
       <input name="message" type="text" placeholder="Optional Message" v-model="standardCakeOrderJSON.cakeItemMessage"/><br />
-
+      <br>
+      <p class="price-display">Your item's current price is $ {{itemPrice}} !</p>
+      <br>
       <p>Your Info:</p>
 
       <label for="customerName">Please enter your name:</label>
@@ -115,11 +117,11 @@ export default {
 
       },
       standardCakeOrderJSON: {
-          cakeItemStyleID : null,
-          cakeItemSizeID : null,
-          cakeItemFlavorID : null,
-          cakeItemFrostingID : null,
-          cakeItemFillingID : null,
+          cakeItemStyleID : 1,
+          cakeItemSizeID : 1,
+          cakeItemFlavorID : 1,
+          cakeItemFrostingID : 1,
+          cakeItemFillingID : 1,
           cakeItemMessage : null,
           cakeItemPrice : null,
           cakeItemConfigId : null,
@@ -133,6 +135,42 @@ export default {
   //     //   CakeOrderDisplay
   //       },
   name: "order-standard-cake",
+  computed: {
+    itemPrice(){
+      let price = 0.00;
+      if(this.standardCakeOrderJSON.cakeItemSizeID){
+      let sizeElement = this.$store.state.availableCakeSizesBE.find(
+        (element) => element.size_id === this.standardCakeOrderJSON.cakeItemSizeID);
+        price += sizeElement.price_mod}
+      
+      if(this.standardCakeOrderJSON.cakeItemStyleID){
+      let styleElement = this.$store.state.availableCakeStylesBE.find(
+        (element) => element.style_id === this.standardCakeOrderJSON.cakeItemStyleID);
+      price += styleElement.price_mod
+      }
+      if(this.standardCakeOrderJSON.cakeItemFlavorID){
+      let flavorElement =  this.$store.state.availableFlavorsBE.find(
+        (element) => element.flavor_id === this.standardCakeOrderJSON.cakeItemFlavorID);
+      price += flavorElement.price_mod
+      }
+      if(this.standardCakeOrderJSON.cakeItemFrostingID){
+      let frostingElement = this.$store.state.availableFrostingsBE.find(
+        (element) => element.frosting_id === this.standardCakeOrderJSON.cakeItemFrostingID);
+      price += frostingElement.price_mod;
+      }
+      if(this.standardCakeOrderJSON.cakeItemFillingID){
+      let fillingElement = this.$store.state.availableFillingsBE.find(
+        (element) => element.filling_id === this.standardCakeOrderJSON.cakeItemFillingID);
+        price += fillingElement.price_mod;
+      }
+      if(this.standardCakeOrderJSON.cakeItemMessage){
+        price += 1.50
+      }
+     
+      return price;
+
+    }
+  },
   methods: {
     getSelectedStandardCake() {
       let cakeID = this.$store.state.standardCakeIdOrder;
@@ -144,6 +182,7 @@ export default {
       ];
     }
   },
+  grabinfoFromCakeConfigForJSON(){}
 };
 </script>
 
