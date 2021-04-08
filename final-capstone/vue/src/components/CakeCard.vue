@@ -1,8 +1,8 @@
 <template>
   <div class="cake-container">
-      <h3>{{cake.name}}</h3>
-      <img class="cake-pic" v-bind:src=cake.image_url /> <br>
-      <p>{{cake.description}}</p>
+      <h3>{{cake.cake_config_name}}</h3>
+      <img class="cake-pic" v-bind:src=cake.cake_config_img_url /> <br>
+      <p>{{cake.cake_config_description}}</p>
   </div>
 </template>
 
@@ -29,7 +29,7 @@ export default {
     flex-wrap: wrap;
     align-items: center;
     width: 160px;
-    height: 300px;
+    height: 500px;
     border: 2px solid black;
     border-radius: 10px;
     padding: 20px;
