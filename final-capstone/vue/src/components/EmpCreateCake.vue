@@ -22,16 +22,16 @@
 
         <label for="flavor">Flavor:</label>
         <select name="flavor" v-model="newCake.flavorID">
-        <option v-for="flavor in $store.state.availableCakeFlavors"
-          v-bind:key="flavor" v-bind:value="flavor">
-          {{ flavor}}
+        <option v-for="flavor in $store.state.availableFlavorsBE"
+          v-bind:key="flavor.flavor_id" v-bind:value="flavor.flavor_id">
+          {{ flavor.flavor_name}}
         </option></select>
 
         <label for="frosting">Frosting:</label>
         <select name="frosting" v-model="newCake.frostingID">
-        <option v-for="frosting in $store.state.availableFrostings"
-          v-bind:key="frosting" v-bind:value="frosting">
-          {{ frosting }}
+        <option v-for="frosting in $store.state.availableFrostingsBE"
+          v-bind:key="frosting.frosting_id" v-bind:value="frosting.frosting_id">
+          {{ frosting.frosting_name }}
         </option></select>
 
         <label for="price">Price: $</label>
@@ -44,7 +44,7 @@
         <input type="text" name="description" v-model="newCake.description" />
 
       <!-- disable submit button if any field is blank -->
-      <button type="submit">Create New Standard Cake</button>
+      <button type="submit">Create New Cake</button>
       </form>
   </div>
 </template>
