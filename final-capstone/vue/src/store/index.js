@@ -307,7 +307,18 @@ export default new Vuex.Store({
           cakeItemPrice : null,
           cakeItemConfigId : null
         };
+      },
+      FINALIZE_ACTIVE_ORDER(state, order){
+        state.currentActiveOrder.orderStatus = order.orderStatus;
+        state.currentActiveOrder.orderPriceTotal = order.orderPriceTotal;
+        state.currentActiveOrder.orderPlacedDateTime = order.orderPlacedDateTime;
+        state.currentActiveOrder.customerName = order.customerName;
+        state.currentActiveOrder.customerPhoneNumber = order.customerPhoneNumber;
+
+        //we can either push the active order in a POST request here or in the component, wherever we do it, we have to add code to set the current 
+        //active order back to its blank state
       }
+
     }
   }
 )
