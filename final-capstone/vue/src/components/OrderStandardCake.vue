@@ -6,7 +6,7 @@
       <p>{{selected.cakeItemConfigDescription }}</p>
     </div>
 
-    <form class="order-form" @submit.prevent="orderThisCake">
+    <form class="order-form" @submit="orderThisCake">
       <p>Your Cake:</p>
       <label for="cake selection">Select your cake:</label>
       <!-- the v-model sets the select to whatever the standardCakeIdForOrder is. If null, it's blank.-->
@@ -95,15 +95,15 @@
       <p>Your Info:</p>
 
       <label for="customerName">Please enter your name:</label>
-      <input name="customerName" type="text" placeholder="Your Name" v-model="pickupInfo.customerName" /><br />
+      <input name="customerName" type="text" placeholder="Your Name" v-model="pickupInfo.customerName" required/><br />
       <label for="customerPhoneNumber">Please enter your phone number:</label>
-      <input name="customerPhoneNumber" type="tel" v-model="pickupInfo.customerPhoneNumber"/><br />
+      <input name="customerPhoneNumber" type="tel" v-model="pickupInfo.customerPhoneNumber" required/><br />
 <!-- let's change this to separate date and time field inputs. see if we can limit time to bakery open hours-->
       <label for="pickup time">When do you want to pick up your cake?</label>
-      <input name="pickup date" type="date" v-model="pickupInfo.orderPickupTime" /> 
-      <input name="pickup time" type="time" v-model="pickupInfo.orderPickupDate"/><br /><br />
+      <input name="pickup date" type="date" v-model="pickupInfo.orderPickupTime" required/> 
+      <input name="pickup time" type="time" v-model="pickupInfo.orderPickupDate" required/><br /><br />
 
-      <input type="submit" value="Order Your Cake!" v-on:click="orderThisCake">
+      <input type="submit" value="Order Your Cake!">
     </form>
   </div>
 </template>
@@ -134,7 +134,7 @@ export default {
       customerName : null,
       customerPhoneNumber : null
       }
-    };
+    }
   },
   //   components: {
   //     //   CakeOrderDisplay
@@ -169,8 +169,9 @@ export default {
         price += fillingElement.price_mod;
       }
       if(this.standardCakeOrderJSON.cakeItemMessage){
-        price += 1.50
-      }
+        //need to create a table in database for the message price
+        price += this.$store.state.messagePrice.price_mod
+        }
      
       return price.toFixed(2);
 
@@ -202,17 +203,22 @@ export default {
 
   },
   orderThisCake(){
+    if (this.standardCakeOrderJSON.flavor_id!=1 &&
+    this.standardCakeOrderJSON.style_id !=1 &&
+    this.standardCakeOrderJSON.size_id !=1 ){
     this.$store.commit("MAKE_CAKE_ITEM",this.standardCakeOrderJSON);
     this.$store.commit("SET_CAKE_ITEM_PRICE",this.itemPrice);
      this.$store.commit("ADD_CAKEITEM_TO_ACTIVE_ORDER", this.$store.state.cakeItemToOrder);
      this.$store.commit("SET_ORDER_INFO", this.pickupInfo);
     BakeShopService.sendOrderJSON(this.$store.state.currentActiveOrder);
     this.$store.commit("CLEAR_ACTIVE_ORDER");
-
+  } else {
+    alert("You must select a flavor, size, and style to order.");
   }
-  },
+  }
 
-};
+}
+}
 </script>
 
 <style>

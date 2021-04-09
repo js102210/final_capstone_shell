@@ -183,6 +183,9 @@ export default new Vuex.Store({
         price_mod: 2.00
       }
     ],
+    messagePrice:{
+      price_mod: 1.50
+    },
     standardCakeConfigsBE: [
       {
         cake_config_id: 1,
