@@ -3,7 +3,7 @@
     <h1>BeefCakes BakeShop</h1>
       <h2>Welcome to BeefCakes BakeShop.<br>
         You've come to the right place!</h2>
-    <img src="https://i.pinimg.com/474x/57/81/eb/5781ebdcf6a0b23678ebf9bc1cbee0f8.jpg" />
+    <img src="..\assets\beefcakes.png" />
     
   
   </div>
@@ -24,10 +24,10 @@ export default {
 }
 
 .home img {
-  width: 30%;
-  border: 2px solid black;
+  width: 40%;
+  border: 1px solid black;
   border-radius: 10px;
-  opacity: 65%;
+  opacity: 85%;
 }
 
 .home h2 {
