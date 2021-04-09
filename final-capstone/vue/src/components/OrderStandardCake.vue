@@ -95,12 +95,13 @@
       <p>Your Info:</p>
 
       <label for="customerName">Please enter your name:</label>
-      <input name="customerName" type="text" placeholder="Your Name" /><br />
+      <input name="customerName" type="text" placeholder="Your Name" v-model="pickupInfo.customerName" /><br />
       <label for="customerPhoneNumber">Please enter your phone number:</label>
-      <input name="customerPhoneNumber" type="tel" /><br />
+      <input name="customerPhoneNumber" type="tel" v-model="pickupInfo.customerPhoneNumber"/><br />
 <!-- let's change this to separate date and time field inputs. see if we can limit time to bakery open hours-->
       <label for="pickup time">When do you want to pick up your cake?</label>
-      <input name="pickup time" type="datetime-local" /><br /><br />
+      <input name="pickup date" type="date" v-model="pickupInfo.orderPickupTime" /> 
+      <input name="pickup time" type="time" v-model="pickupInfo.orderPickupDate"/><br /><br />
 
       <input type="submit" value="Order Your Cake!" v-on:click="orderThisCake">
     </form>
@@ -109,6 +110,8 @@
 
 <script>
 // import CakeOrderDisplay from './CakeOrderDisplay.vue';
+import BakeShopService from '../services/BakeShopService.js'
+
 export default {
   data() {
     return {
@@ -125,6 +128,12 @@ export default {
           cakeItemConfigId : null,
 
       },
+      pickupInfo:{
+        orderPickupDate: null,
+      orderPickupTime: null,
+      customerName : null,
+      customerPhoneNumber : null
+      }
     };
   },
   //   components: {
@@ -165,6 +174,13 @@ export default {
      
       return price.toFixed(2);
 
+    },
+    dateMinimum(){
+      let today = new Date();
+      let tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      return tomorrow;
+      
     }
   },
   methods: {
@@ -188,6 +204,11 @@ export default {
   orderThisCake(){
     this.$store.commit("MAKE_CAKE_ITEM",this.standardCakeOrderJSON);
     this.$store.commit("SET_CAKE_ITEM_PRICE",this.itemPrice);
+     this.$store.commit("ADD_CAKEITEM_TO_ACTIVE_ORDER", this.$store.state.cakeItemToOrder);
+     this.$store.commit("SET_ORDER_INFO", this.pickupInfo);
+    BakeShopService.sendOrderJSON(this.$store.state.currentActiveOrder);
+    this.$store.commit("CLEAR_ACTIVE_ORDER");
+
   }
   },
 
