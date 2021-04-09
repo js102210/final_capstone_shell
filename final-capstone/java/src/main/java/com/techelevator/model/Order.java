@@ -39,20 +39,8 @@ public class    Order {
         this.customerPhoneNumber = customerPhoneNumber;
 
     }
-<<<<<<< HEAD
-
-    /**
-     * Future self: is this a workaround Constructor or a best practice?
-     */
-    public Order (){
-
-    }
-    public int getOrderId() {
-        return orderId;
-=======
     public int getOrderID() {
         return orderID;
->>>>>>> 68978c0fba87c2bef4ddbcfad10a8340f78655e7
     }
 
     public void setOrderID(int orderID) {
