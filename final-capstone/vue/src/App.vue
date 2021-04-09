@@ -23,7 +23,7 @@
 
 
 html {
-  background: repeating-linear-gradient(90deg, #6ac1e6, #e1f2f8 50px, #ff7de3b6 100px);
+  background: repeating-linear-gradient(90deg, #6ac1e6, #6ac1e6 50px, #ff7de3 50px, #ff7de3 100px);
   min-height:100%;
   margin: 0;
   background-repeat: no-repeat;

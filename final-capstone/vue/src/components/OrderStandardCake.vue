@@ -102,8 +102,12 @@
       <label for="pickup time">When do you want to pick up your cake?</label>
       <input name="pickup date" type="date" v-model="pickupInfo.orderPickupTime" required/> 
       <input name="pickup time" type="time" v-model="pickupInfo.orderPickupDate" required/><br /><br />
-
+      <section v-if="cakeValidated">
       <input type="submit" value="Order Your Cake!">
+      </section>
+      <section v-else>
+        <h4>You must select a cake style, size, and flavor in order to place your order!</h4>
+        </section>
     </form>
   </div>
 </template>
@@ -178,12 +182,19 @@ export default {
     },
     dateMinimum(){
       let today = new Date();
-      let tomorrow = new Date(today);
+      let tomorrow = new Date(today.getDate());
       tomorrow.setDate(tomorrow.getDate() + 1);
       return tomorrow;
       
-    }
-  },
+    },
+    cakeValidated(){
+      if (this.standardCakeOrderJSON.cakeItemSizeID != 1 && this.standardCakeOrderJSON.cakeItemFlavorID !=1 && this.standardCakeOrderJSON.cakeItemStyleID != 1){
+        return true;
+      } else{
+        return false;
+      }
+    } 
+    },
   methods: {
     getSelectedStandardCake() {
       let cakeID = this.$store.state.standardCakeIdOrder;
@@ -203,20 +214,38 @@ export default {
 
   },
   orderThisCake(){
-    if (this.standardCakeOrderJSON.flavor_id!=1 &&
-    this.standardCakeOrderJSON.style_id !=1 &&
-    this.standardCakeOrderJSON.size_id !=1 ){
+    
+ //jake's comment: let's make sure we understand when to clear the store versus not clear the store based on errors in the process. 
     this.$store.commit("MAKE_CAKE_ITEM",this.standardCakeOrderJSON);
     this.$store.commit("SET_CAKE_ITEM_PRICE",this.itemPrice);
      this.$store.commit("ADD_CAKEITEM_TO_ACTIVE_ORDER", this.$store.state.cakeItemToOrder);
      this.$store.commit("SET_ORDER_INFO", this.pickupInfo);
-    BakeShopService.sendOrderJSON(this.$store.state.currentActiveOrder);
-    this.$store.commit("CLEAR_ACTIVE_ORDER");
-  } else {
-    alert("You must select a flavor, size, and style to order.");
-  }
-  }
+    BakeShopService.sendOrderJSON(this.$store.state.currentActiveOrder)
+    .then(response => {
+      if(response.status === 201){
+        // this.$store.commit("CLEAR_ACTIVE_ORDER");
+        this.$router.push('/cakes')
+      }
+    })
+    .catch(error => {
+      this.handleErrorResponse(error, "creating");
+    });
+  },
+  handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " + verb + " cake. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " cake. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " cake. Request could not be created.";
+      }
 
+}
 }
 }
 </script>

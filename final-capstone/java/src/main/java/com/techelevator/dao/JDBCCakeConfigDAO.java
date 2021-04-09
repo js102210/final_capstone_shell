@@ -28,7 +28,7 @@ public JDBCCakeConfigDAO(JdbcTemplate jdbcTemplate){
         return allConfigs;
     }
 
-    //TODO
+
     @Override
     public CakeConfig getCakeConfig(String configName) {
         return null;

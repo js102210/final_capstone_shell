@@ -1,6 +1,12 @@
 package com.techelevator.model;
 
 import java.math.BigDecimal;
+<<<<<<< HEAD
+=======
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+>>>>>>> e0b810eb6f708bac1fd4cba177e3ee02b9ee0ec0
 
 public class    Order {
     private int orderId;
