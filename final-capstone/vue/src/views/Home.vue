@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <h1>BeefCakes BakeShop</h1>
-      <h2>Welcome to BeefCakes BakeShop.<br>
-        You've come to the right place!</h2>
+   <span class="banner"><h1>BeefCakes BakeShop</h1>
+      <p>Welcome to BeefCakes BakeShop.<br>
+        You've come to the right place!</p></span>
     <img src="..\assets\beefcakes.png" />
     
   
@@ -23,11 +23,22 @@ export default {
   color:rgb(255, 77, 136);
 }
 
+.banner {
+  background-color: rgba(255, 255, 255, 0.363);
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  line-height: 20px;
+  font-family: 'Quicksand';
+  margin-top: 15px;
+}
+
 .home img {
   width: 40%;
   border: 1px solid black;
   border-radius: 10px;
-  opacity: 85%;
+  opacity: 100%;
 }
 
 .home h2 {
