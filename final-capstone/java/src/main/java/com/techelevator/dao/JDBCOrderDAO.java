@@ -4,6 +4,7 @@ import com.techelevator.model.CakeItemDTO;
 import com.techelevator.model.Order;
 import org.apache.tomcat.jni.Local;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
@@ -11,7 +12,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Component
@@ -38,5 +41,25 @@ public class JDBCOrderDAO  implements  OrderDAO{
             cakeItemDAO.addCakeItem(cakeItem, newID);
         }
         return newID;
+    }
+
+    @Override
+    public List <Order> getAllOrders(){
+        List<Order> result = new ArrayList <> ();
+        String sqlGetAllOrders = "SELECT * FROM orders ORDER BY order_id;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet (sqlGetAllOrders);
+
+        while(rowSet.next ()) {
+            Order order = new Order();
+            order.setOrderId (rowSet.getInt ("order_id"));
+            order.setOrderStatus (rowSet.getString ("status_id"));
+            order.setOrderPriceTotal (rowSet.getBigDecimal ("total_price"));
+            order.setOrderDatePlaced (rowSet.getString ("date_placed"));
+            order.setOrderPickupDate (rowSet.getString ("pickup_date"));
+            order.setOrderPickupTime (rowSet.getString ("pickup_time"));
+            order.setCustomerName (rowSet.getString ("customer_name"));
+            order.setCustomerPhoneNumber (rowSet.getString ("customer_phone_number"));
+        }
+        return result;
     }
 }

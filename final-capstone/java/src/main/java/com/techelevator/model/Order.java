@@ -43,6 +43,13 @@ public class    Order {
         this.customerPhoneNumber = customerPhoneNumber;
 
     }
+
+    /**
+     * Future self: is this a workaround Constructor or a best practice?
+     */
+    public Order (){
+
+    }
     public int getOrderId() {
         return orderId;
     }

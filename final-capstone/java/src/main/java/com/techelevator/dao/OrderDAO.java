@@ -12,6 +12,6 @@ public interface OrderDAO {
      * @return Integer id of the new order
      */
    Integer placeOrder(Order order) throws ParseException;
-//    List <Order> getAllOrders();
+    List <Order> getAllOrders();
 
 }
