@@ -188,14 +188,13 @@ export default {
       
     },
     cakeValidated(){
-      let cakeToOrder = this.standardCakeOrderJSON;
-      if(cakeToOrder.size_id != 1 && cakeToOrder.flavor_id != 1 && cakeToOrder.style_id != 1){
+      if (this.standardCakeOrderJSON.cakeItemSizeID != 1 && this.standardCakeOrderJSON.cakeItemFlavorID !=1 && this.standardCakeOrderJSON.cakeItemStyleID != 1){
         return true;
       } else{
         return false;
       }
-    }
-  },
+    } 
+    },
   methods: {
     getSelectedStandardCake() {
       let cakeID = this.$store.state.standardCakeIdOrder;
@@ -216,6 +215,7 @@ export default {
   },
   orderThisCake(){
     
+ //jake's comment: let's make sure we understand when to clear the store versus not clear the store based on errors in the process. 
     this.$store.commit("MAKE_CAKE_ITEM",this.standardCakeOrderJSON);
     this.$store.commit("SET_CAKE_ITEM_PRICE",this.itemPrice);
      this.$store.commit("ADD_CAKEITEM_TO_ACTIVE_ORDER", this.$store.state.cakeItemToOrder);
@@ -223,7 +223,7 @@ export default {
     BakeShopService.sendOrderJSON(this.$store.state.currentActiveOrder)
     .then(response => {
       if(response.status === 201){
-        this.$store.commit("CLEAR_ACTIVE_ORDER");
+        // this.$store.commit("CLEAR_ACTIVE_ORDER");
         this.$router.push('/cakes')
       }
     })
