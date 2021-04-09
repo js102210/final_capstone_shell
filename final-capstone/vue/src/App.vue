@@ -16,10 +16,12 @@
 </template>
 
 <style>
-
+/* Font imports */
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap');
 
 
 html {
@@ -31,9 +33,11 @@ html {
 }
 
 h1 {
-  font-family: 'Sacramento';
+  font-family: 'Rye', cursive;
   font-weight: 500;
   font-size: 4rem;
+  margin-bottom: 1%;
+  color:rgb(184, 12, 69);
 }
 
 h3 {
@@ -42,19 +46,23 @@ h3 {
   font-size: 2rem;
 }
 
+p {
+  color:rgb(73, 2, 26);
+  font-family: 'Josefin Slab', serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 #app {
   margin: 0;
 }
 
 #nav {
-  /* display: flex;
-  justify-content: center; */
   position: fixed;
   top: 0;
   background-color: rgba(255, 153, 247, 0.616);
   width: 100%;
-  height: 10%;
-  height: fit-content;
+  height: 35px;
   font-family: 'Quicksand';
 }
 
@@ -74,16 +82,18 @@ h3 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(173, 243, 255, 0.623);
+  background-color: rgba(173, 243, 255, 0.87);
   border-radius: 5px;
   padding: 5px;
 }
 
 .emp-section {
   float: right;
+  margin-top: 1px;
   margin-right: 1.5%;
-  background-color: rgb(173, 243, 255);
-  border-radius: 3%;
+  background-color: rgba(173, 243, 255, 0.493);
+  border-radius: 5px;
+  padding: 5px;
 }
 
 @media screen and (max-width: 600px) {

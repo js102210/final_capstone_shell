@@ -20,18 +20,18 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color:rgb(255, 77, 136);
 }
 
 .banner {
-  background-color: rgba(255, 255, 255, 0.363);
+  background-color: rgba(255, 255, 255, 0.521);
   display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
   line-height: 20px;
-  font-family: 'Quicksand';
-  margin-top: 15px;
+  margin-top: 19px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .home img {
