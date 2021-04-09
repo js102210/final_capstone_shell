@@ -5,9 +5,9 @@ public class CakeConfig {
     private String cakeConfigName;
     private String cakeConfigUrl;
     private String cakeConfigDescription;
-    private String cakeConfigFilling;
-    private String cakeConfigFrosting;
-    private String cakeConfigFlavor;
+    private int cakeConfigFillingID;
+    private int cakeConfigFrostingID;
+    private int cakeConfigFlavorID;
 
     /**
      * Constructor for CakeConfig, should be passed into cakeItems as an arg, can also be used to populate menu
@@ -16,19 +16,19 @@ public class CakeConfig {
      * @param cakeConfigName String
      * @param cakeConfigUrl String
      * @param cakeConfigDescription String
-     * @param cakeConfigFilling String
-     * @param cakeConfigFrosting String
-     * @param cakeConfigFlavor Sting
+     * @param cakeConfigFillingID int
+     * @param cakeConfigFrostingID int
+     * @param cakeConfigFlavorID int
      */
-    public CakeConfig(int cakeConfigId, String cakeConfigName, String cakeConfigUrl, String cakeConfigDescription, String cakeConfigFilling,
-     String cakeConfigFrosting, String cakeConfigFlavor){
+    public CakeConfig(int cakeConfigId, String cakeConfigName, String cakeConfigUrl, String cakeConfigDescription, int cakeConfigFillingID,
+     int cakeConfigFrostingID, int cakeConfigFlavorID){
         this.cakeConfigId = cakeConfigId;
         this.cakeConfigName = cakeConfigName;
         this.cakeConfigUrl = cakeConfigUrl;
         this.cakeConfigDescription = cakeConfigDescription;
-        this.cakeConfigFilling = cakeConfigFilling;
-        this.cakeConfigFrosting = cakeConfigFrosting;
-        this.cakeConfigFlavor = cakeConfigFlavor;
+        this.cakeConfigFillingID = cakeConfigFillingID;
+        this.cakeConfigFrostingID = cakeConfigFrostingID;
+        this.cakeConfigFlavorID = cakeConfigFlavorID;
 
     }
 
@@ -65,28 +65,28 @@ public class CakeConfig {
         this.cakeConfigDescription = cakeConfigDescription;
     }
 
-    public String getCakeConfigFilling() {
-        return cakeConfigFilling;
+    public int getCakeConfigFillingID() {
+        return cakeConfigFillingID;
     }
 
-    public void setCakeConfigFilling(String cakeConfigFilling) {
-        this.cakeConfigFilling = cakeConfigFilling;
+    public void setCakeConfigFillingID(int cakeConfigFillingID) {
+        this.cakeConfigFillingID = cakeConfigFillingID;
     }
 
-    public String getCakeConfigFrosting() {
-        return cakeConfigFrosting;
+    public int getCakeConfigFrostingID() {
+        return cakeConfigFrostingID;
     }
 
-    public void setCakeConfigFrosting(String cakeConfigFrosting) {
-        this.cakeConfigFrosting = cakeConfigFrosting;
+    public void setCakeConfigFrostingID(int cakeConfigFrostingID) {
+        this.cakeConfigFrostingID = cakeConfigFrostingID;
     }
 
-    public String getCakeConfigFlavor() {
-        return cakeConfigFlavor;
+    public int getCakeConfigFlavorID() {
+        return cakeConfigFlavorID;
     }
 
-    public void setCakeConfigFlavor(String cakeConfigFlavor) {
-        this.cakeConfigFlavor = cakeConfigFlavor;
+    public void setCakeConfigFlavorID(int cakeConfigFlavorID) {
+        this.cakeConfigFlavorID = cakeConfigFlavorID;
     }
 
 }

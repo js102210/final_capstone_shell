@@ -18,12 +18,7 @@ public JDBCCakeConfigDAO(JdbcTemplate jdbcTemplate){
 @Override
  public List<CakeConfig> getAllConfigs() {
         String sqlForAllConfigs =
-                "SELECT cake_config.cake_config_id, cake_config.cake_config_name, cake_config.cake_config_img_url,\n" +
-                " cake_config.cake_config_description, fillings.filling_name, frostings.frosting_name, flavors.flavor_name\n" +
-                "FROM cake_config\n" +
-                "INNER JOIN fillings ON fillings.filling_id = cake_config.filling_id\n" +
-                "INNER JOIN frostings ON frostings.frosting_id = cake_config.frosting_id\n" +
-                "INNER JOIN flavors ON flavors.flavor_id = cake_config.flavor_id;";
+                "SELECT *  FROM cake_config;";
         List<CakeConfig> allConfigs = new ArrayList<>();
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlForAllConfigs);
         while (result.next()){
@@ -41,8 +36,8 @@ public JDBCCakeConfigDAO(JdbcTemplate jdbcTemplate){
     public CakeConfig mapRowToCakeConfig (SqlRowSet result){
      return new CakeConfig(result.getInt("cake_config_id"),
      result.getString("cake_config_name"), result.getString("cake_config_img_url"),
-     result.getString("cake_config_description"), result.getString("filling_name"),
-     result.getString("flavor_name"), result.getString("frosting_name"));
+     result.getString("cake_config_description"), result.getInt("filling_id"),
+     result.getInt("flavor_id"), result.getInt("frosting_id"));
     }
 
 }
