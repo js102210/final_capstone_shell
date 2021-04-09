@@ -1,7 +1,7 @@
 package com.techelevator.model;
 
 public class CakeConfig {
-    private int cakeConfigId;
+    private int cakeConfigID;
     private String cakeConfigName;
     private String cakeConfigUrl;
     private String cakeConfigDescription;
@@ -11,7 +11,7 @@ public class CakeConfig {
 
     /**
      * Constructor for an existing CakeConfig
-     * @param cakeConfigId int
+     * @param cakeConfigID int
      * @param cakeConfigName String
      * @param cakeConfigUrl String
      * @param cakeConfigDescription String
@@ -19,9 +19,9 @@ public class CakeConfig {
      * @param cakeConfigFrostingID int
      * @param cakeConfigFlavorID int
      */
-    public CakeConfig(int cakeConfigId, String cakeConfigName, String cakeConfigUrl, String cakeConfigDescription, int cakeConfigFillingID,
+    public CakeConfig(int cakeConfigID, String cakeConfigName, String cakeConfigUrl, String cakeConfigDescription, int cakeConfigFillingID,
      int cakeConfigFrostingID, int cakeConfigFlavorID){
-        this.cakeConfigId = cakeConfigId;
+        this.cakeConfigID = cakeConfigID;
         this.cakeConfigName = cakeConfigName;
         this.cakeConfigUrl = cakeConfigUrl;
         this.cakeConfigDescription = cakeConfigDescription;
@@ -54,12 +54,12 @@ public class CakeConfig {
     };
 
 
-    public int getCakeConfigId() {
-        return cakeConfigId;
+    public int getCakeConfigID() {
+        return cakeConfigID;
     }
 
-    public void setCakeConfigId(int cakeConfigId) {
-        this.cakeConfigId = cakeConfigId;
+    public void setCakeConfigID(int cakeConfigID) {
+        this.cakeConfigID = cakeConfigID;
     }
 
     public String getCakeConfigName() {

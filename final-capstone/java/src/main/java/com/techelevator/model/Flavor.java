@@ -3,16 +3,16 @@ package com.techelevator.model;
 import java.math.BigDecimal;
 
 public class Flavor {
-    private int flavorId;
+    private int flavorID;
     private String flavorName;
     private boolean isAvailable;
     private BigDecimal priceMod;
-    public int getFlavorId() {
-        return flavorId;
+    public int getFlavorID() {
+        return flavorID;
     }
 
-    public void setFlavorId(int flavorId) {
-        this.flavorId = flavorId;
+    public void setFlavorID(int flavorID) {
+        this.flavorID = flavorID;
     }
 
     public String getFlavorName() {
