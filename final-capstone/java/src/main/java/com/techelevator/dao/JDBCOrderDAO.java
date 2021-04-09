@@ -50,7 +50,7 @@ public class JDBCOrderDAO  implements  OrderDAO{
 
         while(rowSet.next ()) {
             Order order = new Order();
-            order.setOrderId (rowSet.getInt ("order_id"));
+            order.setOrderID (rowSet.getInt ("order_id"));
             order.setOrderStatus (rowSet.getString ("status_id"));
             order.setOrderPriceTotal (rowSet.getBigDecimal ("total_price"));
             order.setOrderDatePlaced (rowSet.getString ("date_placed"));

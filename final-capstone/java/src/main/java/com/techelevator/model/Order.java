@@ -39,6 +39,11 @@ public class    Order {
         this.customerPhoneNumber = customerPhoneNumber;
 
     }
+
+    public Order() {
+
+    }
+
     public int getOrderID() {
         return orderID;
     }
