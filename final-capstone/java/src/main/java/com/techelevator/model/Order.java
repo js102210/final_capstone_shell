@@ -7,8 +7,9 @@ public class    Order {
     private int orderId;
     private String orderStatus;
     private BigDecimal orderPriceTotal;
-    private LocalDateTime orderPlacedDateTime;
-    private LocalDateTime orderDeliveryDateTime;
+    private LocalDate orderDatePlaced;
+    private LocalDate orderPickupDate;
+    private LocalTime orderPickupTime;
     private CakeItemDTO[] itemsInOrder;
     private String customerName;
     private String customerPhoneNumber;
@@ -18,19 +19,21 @@ public class    Order {
      * @param orderId int
      * @param orderStatus String
      * @param orderPriceTotal BigDecimal
-     * @param orderPlacedDateTime LocalDateTime
-     * @param orderDeliveryDateTime LocalDateTime
+     * @param  orderDatePlaced LocalDate
+     * @param orderPickupDate LocalDate
+     * @param orderPickupTime LocalTime 
      * @param itemsInOrder CakeItems[]
      * @param customerName String
      * @param customerPhoneNumber String
      */
-    public Order(int orderId, String orderStatus, BigDecimal orderPriceTotal, LocalDateTime orderPlacedDateTime, LocalDateTime orderDeliveryDateTime,
-                 CakeItemDTO[] itemsInOrder, String customerName, String customerPhoneNumber){
+    public Order(int orderId, String orderStatus, BigDecimal orderPriceTotal, LocalDate orderDatePlaced, LocalDate orderPickupDate,
+                 LocalTime orderPickupTime, CakeItemDTO[] itemsInOrder, String customerName, String customerPhoneNumber){
         this.orderId = orderId;
         this.orderStatus = orderStatus;
         this.orderPriceTotal = orderPriceTotal;
-        this.orderPlacedDateTime = orderPlacedDateTime;
-        this.orderDeliveryDateTime = orderDeliveryDateTime;
+        this.orderDatePlaced = orderDatePlaced;
+        this.orderPickupDate = orderPickupDate;
+        this.orderPickupTime = orderPickupTime;
         this.itemsInOrder = itemsInOrder;
         this.customerName = customerName;
         this.customerPhoneNumber = customerPhoneNumber;
@@ -60,20 +63,28 @@ public class    Order {
         this.orderPriceTotal = orderPriceTotal;
     }
 
-    public LocalDateTime getOrderPlacedDateTime() {
-        return orderPlacedDateTime;
+    public LocalDate getOrderDatePlaced() {
+        return orderDatePlaced;
     }
 
-    public void setOrderPlacedDateTime(LocalDateTime orderPlacedDateTime) {
-        this.orderPlacedDateTime = orderPlacedDateTime;
+    public void setOrderDatePlaced(LocalDate orderDatePlaced) {
+    this.orderDatePlaced = orderDatePlaced;
     }
 
-    public LocalDateTime getOrderDeliveryDateTime() {
-        return orderDeliveryDateTime;
+    public LocalDate getOrderPickupDate() {
+        return orderPickupDate;
     }
 
-    public void setOrderDeliveryDateTime(LocalDateTime orderDeliveryDateTime) {
-        this.orderDeliveryDateTime = orderDeliveryDateTime;
+    public void setOrderPickupDate(LocalDate orderPickupDate) {
+        this.orderPickupDate = orderPickupDate;
+    }
+
+    public LocalTime getOrderPickupTime() {
+        return orderPickupTime;
+    }
+
+    public void setOrderPickupTime(LocalTime orderPickupTime) {
+        this.orderPickupTime = orderPickupTime;
     }
 
     public CakeItemDTO[] getItemsInOrder() {
