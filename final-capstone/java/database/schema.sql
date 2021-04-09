@@ -225,8 +225,8 @@ CREATE TABLE orders
  status_id int NOT NULL,
  total_price DECIMAL (19,2) NOT NULL,
  date_placed DATE DEFAULT CURRENT_DATE, --think about including timestamp validation for this
- date_delivery DATE NOT NULL,
- time_delivery TIME NOT NULL, 
+ pickup_date DATE NOT NULL,
+ pickup_time TIME NOT NULL, 
  customer_name VARCHAR(50) NOT NULL,
  customer_phone_number VARCHAR(20) NOT NULL,
 
@@ -288,7 +288,7 @@ INSERT INTO statuses (status_name)
 INSERT INTO statuses (status_name)
 	VALUES ('Complete');
 
-INSERT INTO orders (status_id, total_price, date_placed, date_delivery, time_delivery, customer_name, customer_phone_number)
+INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_time, customer_name, customer_phone_number)
 	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '12:00', 'Ernest Hemingway', '5138675309');
 
 INSERT INTO cake_config (cake_config_name, cake_config_img_url, cake_config_description, flavor_id, frosting_id, filling_id)
@@ -315,6 +315,6 @@ INSERT INTO cake_items (cake_style_id, cake_size_id, flavor_id, frosting_id, fil
 item_price, order_id)
 VALUES (1, 1, 1, 1, 1, 'aaah', 1, 0.5, 1);
 --inserting an order returning the id
-INSERT INTO orders (status_id, total_price, date_placed, date_delivery, time_delivery, customer_name, customer_phone_number)
+INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_time, customer_name, customer_phone_number)
 	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '13:00', 'Ernest Hemingway', '5138675309') RETURNING order_id;
 COMMIT TRANSACTION;

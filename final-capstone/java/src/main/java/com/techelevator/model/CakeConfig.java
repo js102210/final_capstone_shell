@@ -10,8 +10,7 @@ public class CakeConfig {
     private int cakeConfigFlavorID;
 
     /**
-     * Constructor for CakeConfig, should be passed into cakeItems as an arg, can also be used to populate menu
-     * Standard configs will query from DB to map properties, 'custom' config will set properties by user input
+     * Constructor for an existing CakeConfig
      * @param cakeConfigId int
      * @param cakeConfigName String
      * @param cakeConfigUrl String
@@ -31,6 +30,28 @@ public class CakeConfig {
         this.cakeConfigFlavorID = cakeConfigFlavorID;
 
     }
+
+    /**
+     * Constructor for adding instantiating a new Cake Config in memory to add it to the datastore, where it will be assigned an id
+     * @param cakeConfigName String
+     * @param cakeConfigUrl String
+     * @param cakeConfigDescription String
+     * @param cakeConfigFillingID int
+     * @param cakeConfigFrostingID int
+     * @param cakeConfigFlavorID int
+     */
+    public CakeConfig(String cakeConfigName, String cakeConfigUrl, String cakeConfigDescription, int cakeConfigFillingID,
+                      int cakeConfigFrostingID, int cakeConfigFlavorID){
+        this.cakeConfigName = cakeConfigName;
+        this.cakeConfigUrl = cakeConfigUrl;
+        this.cakeConfigDescription = cakeConfigDescription;
+        this.cakeConfigFillingID = cakeConfigFillingID;
+        this.cakeConfigFrostingID = cakeConfigFrostingID;
+        this.cakeConfigFlavorID = cakeConfigFlavorID;
+    }
+    public CakeConfig(){
+
+    };
 
 
     public int getCakeConfigId() {

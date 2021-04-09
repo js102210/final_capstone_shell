@@ -19,4 +19,11 @@ public interface CakeConfigDAO {
      */
     CakeConfig getCakeConfig(String configName);
 
+    /**
+     * add a new cakeConfig to the DB
+     * @param configToAdd
+     * @return Integer, id of the new Config
+     */
+    Integer addCakeConfig(CakeConfig configToAdd);
+
 }
