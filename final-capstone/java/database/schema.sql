@@ -52,8 +52,7 @@ CREATE TABLE styles
         
         CONSTRAINT pk_styles PRIMARY KEY (style_id)
         ); 
-        
-        
+        INSERT INTO styles (style_name) VALUES ('Pick a cake style!');
 
 DROP SEQUENCE IF EXISTS seq_size_id;   
 CREATE SEQUENCE seq_size_id
@@ -70,7 +69,7 @@ CREATE TABLE sizes
         
         CONSTRAINT pk_sizes PRIMARY KEY (size_id)
         ); 
-        
+          INSERT INTO sizes (size_name, size_description) VALUES ('No size', 'Pick a cake size!');
 
 DROP SEQUENCE IF EXISTS seq_flavor_id; 
 CREATE SEQUENCE seq_flavor_id
@@ -86,7 +85,7 @@ CREATE TABLE flavors
         
         CONSTRAINT pk_flavors PRIMARY KEY (flavor_id)
         );         
- INSERT INTO flavors (flavor_name) VALUES ('NULL');
+ INSERT INTO flavors (flavor_name) VALUES ('Pick a cake flavor!');
 --first value in table should be 'NULL' to account for custom made cakes so that IDs for custom are 'NULL'. IDs for all
 --'NULL values will be 1
  
@@ -105,7 +104,7 @@ CREATE TABLE frostings
         
         CONSTRAINT pk_frostings PRIMARY KEY (frosting_id)
         );           
-INSERT INTO frostings (frosting_name) VALUES ('NULL');
+INSERT INTO frostings (frosting_name) VALUES ('no frosting - have a naked cake!');
 --first value in table should be 'NULL' to account for custom made cakes so that IDs for custom are 'NULL'. IDs for all
 --'NULL values will be 1     
    
@@ -124,7 +123,7 @@ CREATE TABLE fillings
         
         CONSTRAINT pk_fillings PRIMARY KEY (filling_id)
         );    
-INSERT INTO fillings (filling_name) VALUES ('NULL');
+INSERT INTO fillings (filling_name) VALUES ('no filling');
 --first value in table should be 'NULL' to account for custom made cakes so that IDs for custom are 'NULL'. IDs for all
 --'NULL values will be 1     
            
@@ -225,8 +224,9 @@ CREATE TABLE orders
  (order_id int DEFAULT nextval('seq_order_id'::regclass) NOT NULL,
  status_id int NOT NULL,
  total_price DECIMAL (19,2) NOT NULL,
- datetime_placed timestamp DEFAULT CURRENT_TIMESTAMP, --think about validation for this
- datetime_delivery timestamp NOT NULL,
+ date_placed DATE DEFAULT CURRENT_DATE, --think about including timestamp validation for this
+ date_delivery DATE NOT NULL,
+ time_delivery TIME NOT NULL, 
  customer_name VARCHAR(50) NOT NULL,
  customer_phone_number VARCHAR(20) NOT NULL,
 
@@ -288,8 +288,8 @@ INSERT INTO statuses (status_name)
 INSERT INTO statuses (status_name)
 	VALUES ('Complete');
 
-INSERT INTO orders (status_id, total_price, datetime_placed, datetime_delivery, customer_name, customer_phone_number)
-	VALUES (1, 14.99, '2021-4-6 11:18:55', '2021-4-7 12:00:00', 'Ernest Hemingway', '5138675309');
+INSERT INTO orders (status_id, total_price, date_placed, date_delivery, time_delivery, customer_name, customer_phone_number)
+	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '12:00', 'Ernest Hemingway', '5138675309');
 
 INSERT INTO cake_config (cake_config_name, cake_config_img_url, cake_config_description, flavor_id, frosting_id, filling_id)
 	VALUES('Curls Confetti Birthday Cake', 'https://preppykitchen.com/wp-content/uploads/2018/04/Funfetti-original-redone-blog-1.jpg', 
@@ -313,6 +313,6 @@ INSERT INTO cake_items (cake_style_id, cake_size_id, flavor_id, frosting_id, fil
 item_price, order_id)
 VALUES (1, 1, 1, 1, 1, 'aaah', 1, 0.5, 1);
 --inserting an order returning the id
-INSERT INTO orders (status_id, total_price, datetime_placed, datetime_delivery, customer_name, customer_phone_number)
-	VALUES (1, 14.99, '2021-4-6 11:18:55', '2021-4-7 12:00:00', 'Ernest Hemingway', '5138675309') RETURNING order_id;
+INSERT INTO orders (status_id, total_price, date_placed, date_delivery, time_delivery, customer_name, customer_phone_number)
+	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '13:00', 'Ernest Hemingway', '5138675309') RETURNING order_id;
 COMMIT TRANSACTION;
