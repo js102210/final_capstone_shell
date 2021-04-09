@@ -24,7 +24,7 @@ public class JDBCCakeItemDAO implements CakeItemDAO{
             "item_price, order_id)\n" +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     jdbcTemplate.update(sqlToAddCakeItem, cakeItem.getCakeItemStyleID(), cakeItem.getCakeItemSizeID(), cakeItem.getCakeItemFlavorID(),
-            cakeItem.getCakeItemFrostingID(), cakeItem.getCakeItemFillingID(), cakeItem.getCakeItemMessage(), cakeItem.getCakeItemConfigId(),
+            cakeItem.getCakeItemFrostingID(), cakeItem.getCakeItemFillingID(), cakeItem.getCakeItemMessage(), cakeItem.getCakeItemConfigID(),
             cakeItem.getCakeItemPrice(), orderID);
     }
 }

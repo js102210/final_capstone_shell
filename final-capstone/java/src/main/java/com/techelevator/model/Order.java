@@ -2,13 +2,9 @@ package com.techelevator.model;
 
 import java.math.BigDecimal;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-
 
 public class    Order {
-    private int orderId;
+    private int orderID;
     private String orderStatus;
     private BigDecimal orderPriceTotal;
     private String orderDatePlaced;
@@ -20,7 +16,7 @@ public class    Order {
 
     /**
      * Constructor for Order
-     * @param orderId int
+     * @param orderID int
      * @param orderStatus String
      * @param orderPriceTotal BigDecimal
      * @param  orderDatePlaced LocalDate
@@ -30,9 +26,9 @@ public class    Order {
      * @param customerName String
      * @param customerPhoneNumber String
      */
-    public Order(int orderId, String orderStatus, BigDecimal orderPriceTotal, String orderDatePlaced, String orderPickupDate,
+    public Order(int orderID, String orderStatus, BigDecimal orderPriceTotal, String orderDatePlaced, String orderPickupDate,
                  String orderPickupTime, CakeItemDTO[] itemsInOrder, String customerName, String customerPhoneNumber){
-        this.orderId = orderId;
+        this.orderID = orderID;
         this.orderStatus = orderStatus;
         this.orderPriceTotal = orderPriceTotal;
         this.orderDatePlaced = orderDatePlaced;
@@ -43,6 +39,7 @@ public class    Order {
         this.customerPhoneNumber = customerPhoneNumber;
 
     }
+<<<<<<< HEAD
 
     /**
      * Future self: is this a workaround Constructor or a best practice?
@@ -52,10 +49,14 @@ public class    Order {
     }
     public int getOrderId() {
         return orderId;
+=======
+    public int getOrderID() {
+        return orderID;
+>>>>>>> 68978c0fba87c2bef4ddbcfad10a8340f78655e7
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
     }
 
     public String getOrderStatus() {

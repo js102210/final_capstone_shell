@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 //this will be our cake object
 public class CakeItemDTO {
-    private int cakeItemId;
+    private int cakeItemID;
     private int cakeItemStyleID;
     private int cakeItemSizeID;
     private String cakeItemMessage = "";
@@ -12,7 +12,7 @@ public class CakeItemDTO {
     private int cakeItemFrostingID;
     private int cakeItemFlavorID;
 
-    private int cakeItemConfigId;
+    private int cakeItemConfigID;
     private BigDecimal cakeItemPrice;
 
     /**
@@ -38,12 +38,12 @@ public class CakeItemDTO {
         this.cakeItemFlavorID = cakeItemFlavor;
     }
 
-    public int getCakeItemId() {
-        return cakeItemId;
+    public int getCakeItemID() {
+        return cakeItemID;
     }
 
-    public void setCakeItemId(int cakeItemId) {
-        this.cakeItemId = cakeItemId;
+    public void setCakeItemID(int cakeItemID) {
+        this.cakeItemID = cakeItemID;
     }
 
     public int getCakeItemStyleID() {
@@ -104,12 +104,12 @@ public class CakeItemDTO {
     }
 
 
-    public int getCakeItemConfigId() {
-        return cakeItemConfigId;
+    public int getCakeItemConfigID() {
+        return cakeItemConfigID;
     }
 
-    public void setCakeItemConfigId(int cakeItemConfigId) {
-        this.cakeItemConfigId = cakeItemConfigId;
+    public void setCakeItemConfigID(int cakeItemConfigID) {
+        this.cakeItemConfigID = cakeItemConfigID;
     }
 
 }
