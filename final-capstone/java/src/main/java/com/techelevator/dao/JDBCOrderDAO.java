@@ -30,7 +30,6 @@ public class JDBCOrderDAO  implements  OrderDAO{
     public Integer placeOrder(Order order) throws ParseException {
         String sqlToInsertOrder = "INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_time, customer_name, customer_phone_number)\n" +
                 "\tVALUES (1, ?, CURRENT_DATE, ?, ?, ?, ?) RETURNING order_id;";
-        //TODO change the datetime representations when we get that whole thing figured out
         Date pickupDate = dateFormat.parse(order.getOrderPickupDate());
        LocalTime pickupTime = LocalTime.parse(order.getOrderPickupTime(), timeFormat);
        Integer newID = jdbcTemplate.queryForObject(sqlToInsertOrder, Integer.class, order.getOrderPriceTotal(), pickupDate, pickupTime,order.getCustomerName(), order.getCustomerPhoneNumber());
