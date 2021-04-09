@@ -23,14 +23,14 @@ export default {
 }
 
 .banner {
-  background-color: rgba(255, 255, 255, 0.521);
+  background-color: rgba(255, 255, 255, 0.404);
   display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
   line-height: 20px;
   margin-top: 19px;
-  padding: 10px;
+  padding: 4px;
   border-radius: 10px;
 }
 

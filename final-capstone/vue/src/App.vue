@@ -22,6 +22,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Diplomata&display=swap');
 
 
 html {
@@ -35,9 +36,9 @@ html {
 h1 {
   font-family: 'Rye', cursive;
   font-weight: 500;
-  font-size: 4rem;
   margin-bottom: 1%;
   color:rgb(184, 12, 69);
+  font-size: 3.3rem;
 }
 
 h3 {
@@ -49,7 +50,7 @@ h3 {
 p {
   color:rgb(73, 2, 26);
   font-family: 'Josefin Slab', serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 
@@ -64,6 +65,8 @@ p {
   width: 100%;
   height: 35px;
   font-family: 'Josefin Slab', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
 }
 
 #nav a {
@@ -73,6 +76,7 @@ p {
 #nav a:hover {
   background-color: rgba(255, 152, 238, 0.39);
   border-radius: 5px;
+  padding: 3px;
   transition-duration: 0.4s;
 }
 
