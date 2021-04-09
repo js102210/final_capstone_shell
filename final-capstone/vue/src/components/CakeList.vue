@@ -1,9 +1,9 @@
 <template>
   <div>
   <div class="cakes-layout">
-      <cake-card v-for="cake in $store.state.standardCakeConfigsBE"
-      v-bind:key="cake.cake_config_id"
-      v-bind:cake="cake" />
+      <cake-card v-for="cakeConfig in $store.state.standardCakeConfigsBE"
+      v-bind:key="cakeConfig.cakeConfigID"
+      v-bind:cakeConfig="cakeConfig" />
       
   </div>
   <br>
@@ -17,7 +17,7 @@ export default {
   components: { CakeCard },
   methods: {
     moveToOrder(){
-      this.$router.push('/standardorder');
+      this.$router.push('/ordercake');
     }
   }
 

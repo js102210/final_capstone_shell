@@ -184,7 +184,7 @@ export default new Vuex.Store({
       }
     ],
     messagePrice:{
-      price_mod: 1.50
+      priceMod: 1.50
     },
     standardCakeConfigsBE: [
       {
@@ -238,7 +238,7 @@ export default new Vuex.Store({
       cakeItemConfigID : null
     },
     currentActiveOrder: {
-      orderStatus : null,
+      orderStatusID : null,
       orderPriceTotal: null,
       orderPickupDate: null,
       orderPickupTime: null,
@@ -285,7 +285,7 @@ export default new Vuex.Store({
       //pls note that this line is *only* for the current sprint. will refactor for multiple cakes later when we have shopping cart page.
       state.currentActiveOrder.orderPriceTotal = cakeItem.cakeItemPrice;
       //this is too tightly coupled and will be changed when we do the Order page, but it's okay for now to be able to order a single cake.
-      state.currentActiveOrder.orderStatus = 1;
+      state.currentActiveOrder.orderStatusID = 1;
 
       //again, we can actually get rid of this whole thing if we decide to pass a cakeItem in, but it's here now for reference and in case we decide to
       //mutate the data store by properties instead of sending a whole object
@@ -302,7 +302,7 @@ export default new Vuex.Store({
         };
       },
       FINALIZE_ACTIVE_ORDER(state, order){
-        state.currentActiveOrder.orderStatus = order.orderStatus;
+        state.currentActiveOrder.orderStatusID = order.orderStatusID;
         state.currentActiveOrder.orderPriceTotal = order.orderPriceTotal;
         // state.currentActiveOrder.orderPlacedDateTime = order.orderPlacedDateTime;
         state.currentActiveOrder.customerName = order.customerName;
@@ -313,7 +313,7 @@ export default new Vuex.Store({
       },
       CLEAR_ACTIVE_ORDER(state){
         state.currentActiveOrder = {
-          orderStatus : null,
+          orderStatusID : null,
           orderPriceTotal: null,
           orderPickupDate: null,
           orderPickupTime: null,

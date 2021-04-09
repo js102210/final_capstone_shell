@@ -1,13 +1,13 @@
 <template>
 <div class="order-page">
-  <order-standard-cake />
+  <order-cake />
   </div>
 </template>
 
 <script>
-import OrderStandardCake from '../components/OrderStandardCake.vue'
+import OrderCake from '../components/OrderCake.vue'
 export default {
-  components: { OrderStandardCake },
+  components: { OrderCake },
 
 }
 </script>

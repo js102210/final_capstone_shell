@@ -23,11 +23,11 @@
         </option>
       </select><br>
                <label for="custom cake filling">Select your filling:</label>
-      <select name="custom cake filling" v-model="filling_id">
+      <select name="custom cake filling" v-model="fillingID">
         <option
           v-for="filling in $store.state.availableFillings"
-          v-bind:key="filling.filling_id"
-          v-bind:value="{ id: filling.filling_id}"
+          v-bind:key="filling.fillingID"
+          v-bind:value="{ id: filling.fillingID}"
         >
           {{ filling }}
         </option>
@@ -44,11 +44,11 @@
       </select>
       <br />
       <label for="custom cake style">Select your cake style:</label>
-      <select name="custom cake style" v-model="style_id">
+      <select name="custom cake style" v-model="styleID">
         <option
           v-for="style in $store.state.availableCakeStyles"
-          v-bind:key="style.style_id"
-          v-bind:value="{ id: style.style_id, name: style.style_name }"
+          v-bind:key="style.styleID"
+          v-bind:value="{ id: style.styleID, name: style.style_name }"
         >
           {{ style.style_name }}
         </option>
@@ -66,7 +66,7 @@
 export default {
   data(){
     return{      
-        style_id: 1,
+        styleID: 1,
         size_id: 1,
         flavor: 1,
         frosting: 1,

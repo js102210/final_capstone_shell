@@ -9,21 +9,21 @@
         <label for="flavor">Flavor:</label>
         <select name="flavor" v-model="newCake.flavorID">
         <option v-for="flavor in $store.state.availableFlavorsBE"
-          v-bind:key="flavor.flavor_id" v-bind:value="flavor.flavor_id">
+          v-bind:key="flavor.flavorID" v-bind:value="flavor.flavorID">
           {{ flavor.flavor_name}}
         </option></select>
 
         <label for="frosting">Frosting:</label>
         <select name="frosting" v-model="newCake.frostingID">
         <option v-for="frosting in $store.state.availableFrostingsBE"
-          v-bind:key="frosting.frosting_id" v-bind:value="frosting.frosting_id">
+          v-bind:key="frosting.frostingID" v-bind:value="frosting.frostingID">
           {{ frosting.frosting_name }}
         </option></select>
 
          <!-- <label for="frosting">Frosting:</label>
         <select name="frosting" v-model="newCake.frostingID">
         <option v-for="frosting in $store.state.availableFrostingsBE"
-          v-bind:key="frosting.frosting_id" v-bind:value="frosting.frosting_id">
+          v-bind:key="frosting.frostingID" v-bind:value="frosting.frostingID">
           {{ frosting.frosting_name }}
         </option></select>   for filing  -->
 

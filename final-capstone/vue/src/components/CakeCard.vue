@@ -1,8 +1,8 @@
 <template>
   <div class="cake-container">
-      <h3>{{cake.cake_config_name}}</h3>
-      <img class="cake-pic" v-bind:src=cake.cake_config_img_url /> <br>
-      <p>{{cake.cake_config_description}}</p>
+      <h3>{{cakeConfig.cakeConfigName}}</h3>
+      <img class="cake-pic" v-bind:src=cakeConfig.cakeConfigUrl /> <br>
+      <p>{{cakeConfig.cakeConfigDescription}}</p>
   </div>
 </template>
 
@@ -10,10 +10,10 @@
 export default {
     name: "cake-card",
     props: [
-        "cake"
+        "cakeConfig"
     ],
     methods: {
-        moveToStandardOrderPage(id){
+        moveToOrderPage(id){
             this.$store.commit("SET_SELECTED_CAKE", id);
             this.$router.push('/standardorder')
         }

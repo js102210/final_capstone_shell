@@ -13,19 +13,19 @@
       <select name="cake selection" v-model="selected" v-on:change="selectCakeConfig" >
         <!-- sets text for options to all cake names in standardCakeConfigs. value is the cake's cake_id-->
         <option
-          v-for="config in $store.state.standardCakeConfigsBE"
-          v-bind:key="config.cake_config_id"
+          v-for="cakeConfig in $store.state.standardCakeConfigsBE"
+          v-bind:key="cakeConfig.cakeConfigID"
           v-bind:value="{
-            cakeItemConfigName: config.config_name,
-            cakeItemConfigId: config.cake_config_id,
-            cakeItemFrostingID: config.frosting_id,
-            cakeItemFillingID: config.filling_id,
-            cakeItemFlavorID: config.flavor_id,
-            cakeItemConfigURL: config.cake_config_img_url,
-            cakeItemConfigDescription: config.cake_config_description
+            cakeItemConfigName: cakeConfig.cakeConfigName,
+            cakeItemConfigID: cakeConfig.cakeConfigID,
+            cakeItemFrostingID: cakeConfig.cakeConfigFrostingID,
+            cakeItemFillingID: cakeConfig.cakeConfigFillingID,
+            cakeItemFlavorID: cakeConfig.cakeConfigFlavorID,
+            cakeItemConfigURL: cakeConfig.cakeConfigUrl,
+            cakeItemConfigDescription: cakeConfig.cakeConfigDescription
           }"
         >
-          {{ config.cake_config_name }}
+          {{ cakeConfig.cakeConfigName }}
         </option>
 </select
       ><br />
@@ -34,11 +34,11 @@
       v-model="standardCakeOrderJSON.cakeItemSizeID">
         <option
           v-for="size in $store.state.availableCakeSizesBE"
-          v-bind:key="size.size_id"
-          v-bind:value="size.size_id"
+          v-bind:key="size.sizeID"
+          v-bind:value="size.sizeID"
           
         >
-          {{ size.size_description }}
+          {{ size.sizeDescription }}
         </option>
       </select>
       <br />
@@ -46,40 +46,40 @@
       <select name="standard cake style" v-model="standardCakeOrderJSON.cakeItemStyleID">
         <option
           v-for="style in $store.state.availableCakeStylesBE"
-          v-bind:key="style.style_id"
-          v-bind:value="style.style_id"
+          v-bind:key="style.styleID"
+          v-bind:value="style.styleID"
         >
-          {{ style.style_name }}
+          {{ style.styleName }}
         </option>
       </select>
       <br />
-      <section class="custom cake options" v-show="standardCakeOrderJSON.cakeItemConfigId === 1"> 
+      <section class="custom cake options" v-show="standardCakeOrderJSON.cakeItemConfigID === 1"> 
         <label for="custom cake flavor">Select your flavor:</label>
         <select name="custom cake flavor" v-model="standardCakeOrderJSON.cakeItemFlavorID">
           <option
             v-for="flavor in $store.state.availableFlavorsBE"
-            v-bind:key="flavor.flavor_id"
-            v-bind:value="flavor.flavor_id"
+            v-bind:key="flavor.flavorID"
+            v-bind:value="flavor.flavorID"
           >
-            {{ flavor.flavor_name}}
+            {{ flavor.flavorName}}
           </option></select
         ><br />
         <label for="custom cake frosting">Select your frosting:</label>
         <select name="custom cake frosting" v-model="standardCakeOrderJSON.cakeItemFrostingID">
           <option
             v-for="frosting in $store.state.availableFrostingsBE"
-            v-bind:key="frosting.frosting_id"
-            v-bind:value="frosting.frosting_id"
+            v-bind:key="frosting.frostingID"
+            v-bind:value="frosting.frostingID"
           >
-            {{ frosting.frosting_name }}
+            {{ frosting.frostingName }}
           </option></select
         ><br />
         <label for="custom cake filling">Select your filling:</label>
         <select name="custom cake filling" v-model="standardCakeOrderJSON.cakeItemFillingID">
           <option
             v-for="filling in $store.state.availableFillingsBE"
-            v-bind:key="filling.filling_id"
-            v-bind:value="filling.filling_id"
+            v-bind:key="filling.fillingID"
+            v-bind:value="filling.fillingID"
           >
             {{ filling.filling_name }}
           </option></select
@@ -129,7 +129,7 @@ export default {
           cakeItemFillingID : 1,
           cakeItemMessage : null,
           cakeItemPrice : 0.00,
-          cakeItemConfigId : null,
+          cakeItemConfigID : null,
 
       },
       pickupInfo:{
@@ -143,38 +143,38 @@ export default {
   //   components: {
   //     //   CakeOrderDisplay
   //       },
-  name: "order-standard-cake",
+  name: "order-cake",
   computed: {
     itemPrice(){
       let price = 0.00;
       if(this.standardCakeOrderJSON.cakeItemSizeID){
       let sizeElement = this.$store.state.availableCakeSizesBE.find(
-        (element) => element.size_id === this.standardCakeOrderJSON.cakeItemSizeID);
-        price += sizeElement.price_mod}
+        (element) => element.sizeID === this.standardCakeOrderJSON.cakeItemSizeID);
+        price += sizeElement.priceMod}
       
       if(this.standardCakeOrderJSON.cakeItemStyleID){
       let styleElement = this.$store.state.availableCakeStylesBE.find(
-        (element) => element.style_id === this.standardCakeOrderJSON.cakeItemStyleID);
-      price += styleElement.price_mod
+        (element) => element.styleID === this.standardCakeOrderJSON.cakeItemStyleID);
+      price += styleElement.priceMod
       }
       if(this.standardCakeOrderJSON.cakeItemFlavorID){
       let flavorElement =  this.$store.state.availableFlavorsBE.find(
-        (element) => element.flavor_id === this.standardCakeOrderJSON.cakeItemFlavorID);
-      price += flavorElement.price_mod
+        (element) => element.flavorID === this.standardCakeOrderJSON.cakeItemFlavorID);
+      price += flavorElement.priceMod
       }
       if(this.standardCakeOrderJSON.cakeItemFrostingID){
       let frostingElement = this.$store.state.availableFrostingsBE.find(
-        (element) => element.frosting_id === this.standardCakeOrderJSON.cakeItemFrostingID);
-      price += frostingElement.price_mod;
+        (element) => element.frostingID === this.standardCakeOrderJSON.cakeItemFrostingID);
+      price += frostingElement.priceMod;
       }
       if(this.standardCakeOrderJSON.cakeItemFillingID){
       let fillingElement = this.$store.state.availableFillingsBE.find(
-        (element) => element.filling_id === this.standardCakeOrderJSON.cakeItemFillingID);
-        price += fillingElement.price_mod;
+        (element) => element.fillingID === this.standardCakeOrderJSON.cakeItemFillingID);
+        price += fillingElement.priceMod;
       }
       if(this.standardCakeOrderJSON.cakeItemMessage){
         //need to create a table in database for the message price
-        price += this.$store.state.messagePrice.price_mod
+        price += this.$store.state.messagePrice.priceMod
         }
      
       return price.toFixed(2);
@@ -207,7 +207,7 @@ export default {
     },
       selectCakeConfig(){
         
-     this.standardCakeOrderJSON.cakeItemConfigId = this.selected.cakeItemConfigId;
+     this.standardCakeOrderJSON.cakeItemConfigID = this.selected.cakeItemConfigID;
       this.standardCakeOrderJSON.cakeItemFlavorID = this.selected.cakeItemFlavorID;
       this.standardCakeOrderJSON.cakeItemFrostingID = this.selected.cakeItemFrostingID;
       this.standardCakeOrderJSON.cakeItemFillingID = this.selected.cakeItemFillingID;
