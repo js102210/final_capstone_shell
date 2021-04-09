@@ -78,6 +78,7 @@ p {
   border-radius: 5px;
   padding: 3px;
   transition-duration: 0.6s;
+  font-size: 1.58rem;
 }
 
 .cust-section {
