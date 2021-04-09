@@ -30,7 +30,7 @@ export default {
   align-items: center;
   line-height: 20px;
   margin-top: 19px;
-  padding: 4px;
+  padding: 4npm run servepx;
   border-radius: 10px;
 }
 
