@@ -10,7 +10,7 @@ import java.util.List;
 
 @Component
 public class JDBCCakeConfigDAO implements CakeConfigDAO{
-private JdbcTemplate jdbcTemplate;
+private final JdbcTemplate jdbcTemplate;
 public JDBCCakeConfigDAO(JdbcTemplate jdbcTemplate){
     this.jdbcTemplate = jdbcTemplate;
 }
@@ -28,10 +28,22 @@ public JDBCCakeConfigDAO(JdbcTemplate jdbcTemplate){
         return allConfigs;
     }
 
+    //TODO
     @Override
     public CakeConfig getCakeConfig(String configName) {
         return null;
     }
+
+    @Override
+    public Integer addCakeConfig(CakeConfig configToAdd) {
+        String sqlToAddNewCakeConfig = "INSERT INTO cake_config " +
+                "(cake_config_name, cake_config_img_url, cake_config_description, flavor_id, frosting_id, filling_id)\n" +
+                "\tVALUES(?, ?, ?, ?, ?, ?) RETURNING cake_config_id;";
+        Integer newID = jdbcTemplate.queryForObject(sqlToAddNewCakeConfig, Integer.class, configToAdd.getCakeConfigName(), configToAdd.getCakeConfigUrl(),
+                configToAdd.getCakeConfigDescription(), configToAdd.getCakeConfigFlavorID(), configToAdd.getCakeConfigFrostingID(), configToAdd.getCakeConfigFillingID());
+        return newID;
+    }
+
 
     public CakeConfig mapRowToCakeConfig (SqlRowSet result){
      return new CakeConfig(result.getInt("cake_config_id"),

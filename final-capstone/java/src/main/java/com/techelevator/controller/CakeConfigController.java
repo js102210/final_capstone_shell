@@ -23,12 +23,11 @@ public class CakeConfigController {
     }
 
 
-// post CakeConfigs
-//    @PostMapping("/cakeConfigs")
-//    @ResponseStatus(value = HttpStatus.CREATED)
-//    public void add(@RequestBody CakeConfig cakeConfig) {
-//        cakeConfigDAO.addCakeConfig(cakeConfig);
-//    }
+   @RequestMapping(path = "/configs", method = RequestMethod.POST)
+   @ResponseStatus(value = HttpStatus.CREATED)
+   public Integer add(@RequestBody CakeConfig cakeConfig) {
+   return  cakeConfigDAO.addCakeConfig(cakeConfig);
+    }
 
 
     // delete CakeConfigs
