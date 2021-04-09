@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import CustomOrder from "../components/CustomOrder.vue"
+import CustomOrder from "./CustomOrder.vue"
 
 export default {
   components: { CustomOrder }

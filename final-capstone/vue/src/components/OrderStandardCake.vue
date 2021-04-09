@@ -215,7 +215,7 @@ export default {
   },
   orderThisCake(){
     
- //jake's comment: let's make sure we understand when to clear the store versus not clear the store based on errors in the process. 
+ //jake's comment: let's make sure we understand when to clear the store versus not clear the store based on errors 
     this.$store.commit("MAKE_CAKE_ITEM",this.standardCakeOrderJSON);
     this.$store.commit("SET_CAKE_ITEM_PRICE",this.itemPrice);
      this.$store.commit("ADD_CAKEITEM_TO_ACTIVE_ORDER", this.$store.state.cakeItemToOrder);

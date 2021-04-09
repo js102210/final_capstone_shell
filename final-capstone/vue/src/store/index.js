@@ -30,157 +30,157 @@ export default new Vuex.Store({
      //and make a cake JSON standard.
     availableCakeStylesBE: [
       {
-        style_id: 1,
-        style_name: 'pick a cake style!',
-        is_available: true,
-        price_mod: 0.00
+        styleID: 1,
+        styleName: 'pick a cake style!',
+        isAvailable: true,
+        priceMod: 0.00
       },
       {
-        style_id: 2,
-        style_name: "layer cake",
-        is_available: true,
-        price_mod: 0.00
+        styleID: 2,
+        styleName: "layer cake",
+        isAvailable: true,
+        priceMod: 0.00
       },
       {
-        style_id: 3,
-        style_name: "cupcakes",
-        is_available: true,
-        price_mod: 0.00
+        styleID: 3,
+        styleName: "cupcakes",
+        isAvailable: true,
+        priceMod: 0.00
       },
       {
-        style_id: 4,
-        style_name: "sheet cake",
-        is_available: true,
-        price_mod: 0.00
+        styleID: 4,
+        styleName: "sheet cake",
+        isAvailable: true,
+        priceMod: 0.00
       }
     ],
     availableCakeSizesBE:[
       {
-        size_id: 1,
-        size_name: null,
-        size_description: 'pick a cake size!',
-        is_available: true,
-        price_mod: 0.00
+        sizeID: 1,
+        sizeName: null,
+        sizeDescription: 'pick a cake size!',
+        isAvailable: true,
+        priceMod: 0.00
       },
       {
-        size_id: 2,
-        size_name: "small",
-        size_description: 'SMALL: a 6" double layer cake OR 12 cupcakes OR a 8"x8" sheet cake',
-        is_available: true,
-        price_mod: 9.99
+        sizeID: 2,
+        sizeName: "small",
+        sizeDescription: 'SMALL: a 6" double layer cake OR 12 cupcakes OR a 8"x8" sheet cake',
+        isAvailable: true,
+        priceMod: 9.99
       },
       {
-        size_id: 3,
-        size_name: "medium",
-        size_description: 'MEDIUM: a 9" double layer cake OR 18 cupcakes OR a 9"x14" sheet cake',
-        is_available: true,
-        price_mod: 15.99
+        sizeID: 3,
+        sizeName: "medium",
+        sizeDescription: 'MEDIUM: a 9" double layer cake OR 18 cupcakes OR a 9"x14" sheet cake',
+        isAvailable: true,
+        priceMod: 15.99
       },
       {
-        size_id: 4,
-        size_name: "large",
-        size_description: 'LARGE: a 12" double layer cake OR 24 cupcakes OR a 20"x24" sheet cake',
-        is_available: true,
-        price_mod: 19.99
+        sizeID: 4,
+        sizeName: "large",
+        sizeDescription: 'LARGE: a 12" double layer cake OR 24 cupcakes OR a 20"x24" sheet cake',
+        isAvailable: true,
+        priceMod: 19.99
       }
     ],
     availableFlavorsBE:[
       {
-        flavor_id: 1,
-        flavor_name: 'pick a cake flavor!',
-        is_available: true,
-        price_mod: 0.00
+        flavorID: 1,
+        flavorName: 'pick a cake flavor!',
+        isAvailable: true,
+        priceMod: 0.00
       },
       {
-        flavor_id: 2,
-        flavor_name: "vanilla",
-        is_available: true,
-        price_mod: 0.00
+        flavorID: 2,
+        flavorName: "vanilla",
+        isAvailable: true,
+        priceMod: 0.00
       },
       {
-        flavor_id: 3,
-        flavor_name: "chocolate",
-        is_available: true,
-        price_mod: 0.00
+        flavorID: 3,
+        flavorName: "chocolate",
+        isAvailable: true,
+        priceMod: 0.00
       },
       {
-        flavor_id: 4,
-        flavor_name: "confetti",
-        is_available: true,
-        price_mod: 2.00
+        flavorID: 4,
+        flavorName: "confetti",
+        isAvailable: true,
+        priceMod: 2.00
       },
       {
-        flavor_id: 5,
-        flavor_name: "carrot",
-        is_available: true,
-        price_mod: 3.00
+        flavorID: 5,
+        flavorName: "carrot",
+        isAvailable: true,
+        priceMod: 3.00
       }
 
     ],
     availableFrostingsBE:[
       {
-        frosting_id: 1,
-        frosting_name: "no frosting - have a naked cake!",
-        is_available: true,
-        price_mod: 0.00
+        frostingID: 1,
+        frostingName: "no frosting - have a naked cake!",
+        isAvailable: true,
+        priceMod: 0.00
       },
       {
-        frosting_id: 2,
-        frosting_name: "vanilla",
-        is_available: true,
-        price_mod: 0.00
+        frostingID: 2,
+        frostingName: "vanilla",
+        isAvailable: true,
+        priceMod: 0.00
       },
       {
-        frosting_id: 3,
-        frosting_name: "chocolate",
-        is_available: true,
-        price_mod: 0.00
+        frostingID: 3,
+        frostingName: "chocolate",
+        isAvailable: true,
+        priceMod: 0.00
       },
       {
-        frosting_id: 4,
-        frosting_name: "cream cheese",
-        is_available: true,
-        price_mod: 3.00
+        frostingID: 4,
+        frostingName: "cream cheese",
+        isAvailable: true,
+        priceMod: 3.00
       }
     ],
     availableFillingsBE:[
       {
-        filling_id: 1,
-        filling_name: "no filling",
-        is_available: true,
-        price_mod: 0.00
+        fillingID: 1,
+        fillingName: "no filling",
+        isAvailable: true,
+        priceMod: 0.00
       },
       {
-        filling_id: 2,
-        filling_name: "strawberry jam",
-        is_available: true,
-        price_mod: 1.00
+        fillingID: 2,
+        fillingName: "strawberry jam",
+        isAvailable: true,
+        priceMod: 1.00
       },
       {
-        filling_id: 3,
-        filling_name: "blackberry jam",
-        is_available: true,
-        price_mod: 1.00
+        fillingID: 3,
+        fillingName: "blackberry jam",
+        isAvailable: true,
+        priceMod: 1.00
       }
     ],
     availableExtrasBE:[
       {
-        extra_id: 1,
-        extra_name: 'superhero decorations',
-        is_available: true,
-        price_mod: 3.00
+        extraID: 1,
+        extraName: 'superhero decorations',
+        isAvailable: true,
+        priceMod: 3.00
       },
       {
-        extra_id: 2,
-        extra_name: 'plastic bunny',
-        is_available: true,
-        price_mod: 1.00
+        extraID: 2,
+        extraName: 'plastic bunny',
+        isAvailable: true,
+        priceMod: 1.00
       },
       {
-        extra_id: 3,
-        extra_name: 'birthday candles',
-        is_available: true,
-        price_mod: 2.00
+        extraID: 3,
+        extraName: 'birthday candles',
+        isAvailable: true,
+        priceMod: 2.00
       }
     ],
     messagePrice:{
@@ -188,54 +188,54 @@ export default new Vuex.Store({
     },
     standardCakeConfigsBE: [
       {
-        cake_config_id: 1,
-        cake_config_name: "Custom Cake",
-        cake_config_img_url: "https://www.pngkit.com/png/detail/918-9180589_wedding-cake-icon-png-conzelmann-b-228-ckerei.png",
-        cake_config_description: "Build your own cake!",
-        flavor_id: 1,
-        frosting_id: 1,
-        filling_id: 1
+        cakeConfigID: 1,
+        cakeConfigName: "Custom Cake",
+        cakeConfigUrl: "https://www.pngkit.com/png/detail/918-9180589_wedding-cake-icon-png-conzelmann-b-228-ckerei.png",
+        cakeConfigDescription: "Build your own cake!",
+        cakeConfigFlavorID: 1,
+        cakeConfigFrostingID: 1,
+        cakeConfigFillingID: 1
       },
       {
-        cake_config_id: 2,
-        cake_config_name: "Curls Confetti Birthday Cake",
-        cake_config_img_url: "https://preppykitchen.com/wp-content/uploads/2018/04/Funfetti-original-redone-blog-1.jpg",
-        cake_config_description: "Our fun-filled confetti cake with luscious vanilla frosting",
-        flavor_id: 4,
-        frosting_id: 2,
-        filling_id: 1
+        cakeConfigID: 2,
+        cakeConfigName: "Curls Confetti Birthday Cake",
+        cakeConfigUrl: "https://preppykitchen.com/wp-content/uploads/2018/04/Funfetti-original-redone-blog-1.jpg",
+        cakeConfigDescription: "Our fun-filled confetti cake with luscious vanilla frosting",
+        cakeConfigFlavorID: 4,
+        cakeConfigFrostingID: 2,
+        cakeConfigFillingID: 1
       },
       {
-        cake_config_id: 3,
-        cake_config_name: "Deadlift Devil's Food Cake",
-        cake_config_img_url: "https://www.girlversusdough.com/wp-content/uploads/2019/10/devils-food-cake-5.jpg",
-        cake_config_description: "Our award-winning deep devil's food cake with deep chocolate frosting. Go ahead, it's cheat day!",
-        flavor_id: 3,
-        frosting_id: 3,
-        filling_id: 1
+        cakeConfigID: 3,
+        cakeConfigName: "Deadlift Devil's Food Cake",
+        cakeConfigUrl: "https://www.girlversusdough.com/wp-content/uploads/2019/10/devils-food-cake-5.jpg",
+        cakeConfigDescription: "Our award-winning deep devil's food cake with deep chocolate frosting. Go ahead, it's cheat day!",
+        cakeConfigFlavorID: 3,
+        cakeConfigFrostingID: 3,
+        cakeConfigFillingID: 1
       },
       {
-        cake_config_id: 4,
-        cake_config_name: "Gym Bunny Carrot Cake",
-        cake_config_img_url: "https://grandbaby-cakes.com/wp-content/uploads/2020/03/Carrot-Cake-10.jpg",
-        cake_config_description: "Our moist carrot cake is jam-packed with healthy antoxidants and unbeatable flavor! It comes with our incredible cream cheese frosting.",
-        flavor_id: 5,
-        frosting_id: 4,
-        filling_id: 1
+        cakeConfigID: 4,
+        cakeConfigName: "Gym Bunny Carrot Cake",
+        cakeConfigUrl: "https://grandbaby-cakes.com/wp-content/uploads/2020/03/Carrot-Cake-10.jpg",
+        cakeConfigDescription: "Our moist carrot cake is jam-packed with healthy antoxidants and unbeatable flavor! It comes with our incredible cream cheese frosting.",
+        cakeConfigFlavorID: 5,
+        cakeConfigFrostingID: 4,
+        cakeConfigFillingID: 1
       }
 
     ],
 
   //we can actually remove this if we have the order component send a cakeItem object, but I have it here now for convenient reference
     cakeItemToOrder : {
-      cakeItemStyleId : null,
-      cakeItemSizeId : null,
-      cakeItemFlavorId : null,
+      cakeItemStyleID : null,
+      cakeItemSizeID : null,
+      cakeItemFlavorID : null,
       cakeItemFrostingID : null,
       cakeItemFillingID : null,
       cakeItemMessage : null,
       cakeItemPrice : null,
-      cakeItemConfigId : null
+      cakeItemConfigID : null
     },
     currentActiveOrder: {
       orderStatus : null,
@@ -291,14 +291,14 @@ export default new Vuex.Store({
       //mutate the data store by properties instead of sending a whole object
       state.cakeItemToOrder = 
         {
-          cakeItemStyleId : null,
-          cakeItemSizeId : null,
-          cakeItemFlavorId : null,
+          cakeItemStyleID : null,
+          cakeItemSizeID : null,
+          cakeItemFlavorID : null,
           cakeItemFrostingID : null,
           cakeItemFillingID : null,
           cakeItemMessage : null,
           cakeItemPrice : null,
-          cakeItemConfigId : null
+          cakeItemConfigID : null
         };
       },
       FINALIZE_ACTIVE_ORDER(state, order){
