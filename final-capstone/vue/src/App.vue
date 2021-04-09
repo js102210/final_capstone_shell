@@ -77,7 +77,7 @@ p {
   background-color: rgba(255, 152, 238, 0.39);
   border-radius: 5px;
   padding: 3px;
-  transition-duration: 0.4s;
+  transition-duration: 0.6s;
 }
 
 .cust-section {
