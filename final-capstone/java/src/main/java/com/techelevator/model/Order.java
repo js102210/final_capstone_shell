@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 public class    Order {
     private int orderID;
-    private String orderStatus;
+    private int orderStatusID;
     private BigDecimal orderPriceTotal;
     private String orderDatePlaced;
     private String orderPickupDate;
@@ -17,7 +17,7 @@ public class    Order {
     /**
      * Constructor for Order
      * @param orderID int
-     * @param orderStatus String
+     * @param orderStatusID int
      * @param orderPriceTotal BigDecimal
      * @param  orderDatePlaced LocalDate
      * @param orderPickupDate LocalDate
@@ -26,10 +26,10 @@ public class    Order {
      * @param customerName String
      * @param customerPhoneNumber String
      */
-    public Order(int orderID, String orderStatus, BigDecimal orderPriceTotal, String orderDatePlaced, String orderPickupDate,
+    public Order(int orderID, int orderStatusID, BigDecimal orderPriceTotal, String orderDatePlaced, String orderPickupDate,
                  String orderPickupTime, CakeItemDTO[] itemsInOrder, String customerName, String customerPhoneNumber){
         this.orderID = orderID;
-        this.orderStatus = orderStatus;
+        this.orderStatusID = orderStatusID;
         this.orderPriceTotal = orderPriceTotal;
         this.orderDatePlaced = orderDatePlaced;
         this.orderPickupDate = orderPickupDate;
@@ -52,12 +52,12 @@ public class    Order {
         this.orderID = orderID;
     }
 
-    public String getOrderStatus() {
-        return orderStatus;
+    public int getOrderStatus() {
+        return orderStatusID;
     }
 
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
+    public void setOrderStatus(int orderStatus) {
+        this.orderStatusID = orderStatusID;
     }
 
     public BigDecimal getOrderPriceTotal() {
