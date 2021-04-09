@@ -4,6 +4,9 @@ import com.techelevator.model.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.ParseException;
+
 @RestController
 public class OrderController {
     private OrderDAO orderDAO;
@@ -16,8 +19,8 @@ public class OrderController {
      */
     @RequestMapping( path= "/placeOrder", method = RequestMethod.POST)
     @ResponseStatus (value= HttpStatus.CREATED)
-    public void addOrder(@RequestBody Order order) {
-        orderDAO.placeOrder (order);
+    public Integer addOrder(@RequestBody Order order) throws ParseException {
+       return orderDAO.placeOrder (order);
     }
 
 }

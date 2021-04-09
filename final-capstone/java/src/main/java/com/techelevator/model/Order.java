@@ -1,15 +1,14 @@
 package com.techelevator.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 public class    Order {
     private int orderId;
     private String orderStatus;
     private BigDecimal orderPriceTotal;
-    private LocalDate orderDatePlaced;
-    private LocalDate orderPickupDate;
-    private LocalTime orderPickupTime;
+    private String orderDatePlaced;
+    private String orderPickupDate;
+    private String orderPickupTime;
     private CakeItemDTO[] itemsInOrder;
     private String customerName;
     private String customerPhoneNumber;
@@ -26,8 +25,8 @@ public class    Order {
      * @param customerName String
      * @param customerPhoneNumber String
      */
-    public Order(int orderId, String orderStatus, BigDecimal orderPriceTotal, LocalDate orderDatePlaced, LocalDate orderPickupDate,
-                 LocalTime orderPickupTime, CakeItemDTO[] itemsInOrder, String customerName, String customerPhoneNumber){
+    public Order(int orderId, String orderStatus, BigDecimal orderPriceTotal, String orderDatePlaced, String orderPickupDate,
+                 String orderPickupTime, CakeItemDTO[] itemsInOrder, String customerName, String customerPhoneNumber){
         this.orderId = orderId;
         this.orderStatus = orderStatus;
         this.orderPriceTotal = orderPriceTotal;
@@ -63,27 +62,27 @@ public class    Order {
         this.orderPriceTotal = orderPriceTotal;
     }
 
-    public LocalDate getOrderDatePlaced() {
+    public String getOrderDatePlaced() {
         return orderDatePlaced;
     }
 
-    public void setOrderDatePlaced(LocalDate orderDatePlaced) {
+    public void setOrderDatePlaced(String orderDatePlaced) {
     this.orderDatePlaced = orderDatePlaced;
     }
 
-    public LocalDate getOrderPickupDate() {
+    public String getOrderPickupDate() {
         return orderPickupDate;
     }
 
-    public void setOrderPickupDate(LocalDate orderPickupDate) {
+    public void setOrderPickupDate(String orderPickupDate) {
         this.orderPickupDate = orderPickupDate;
     }
 
-    public LocalTime getOrderPickupTime() {
+    public String getOrderPickupTime() {
         return orderPickupTime;
     }
 
-    public void setOrderPickupTime(LocalTime orderPickupTime) {
+    public void setOrderPickupTime(String orderPickupTime) {
         this.orderPickupTime = orderPickupTime;
     }
 
