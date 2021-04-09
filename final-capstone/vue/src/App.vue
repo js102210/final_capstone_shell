@@ -63,7 +63,7 @@ p {
   background-color: rgba(255, 153, 247, 0.616);
   width: 100%;
   height: 35px;
-  font-family: 'Quicksand';
+  font-family: 'Josefin Slab', serif;
 }
 
 #nav a {
