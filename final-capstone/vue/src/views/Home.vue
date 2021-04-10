@@ -4,8 +4,6 @@
       <p>Welcome to BeefCakes BakeShop.<br>
         You've come to the right place!</p></span>
     <img src="..\assets\beefcakes.png" />
-    
-  
   </div>
 </template>
 

@@ -12,7 +12,7 @@
       <router-link v-bind:to="{ name: 'login' }" v-if="!$store.state.token">Employee Login</router-link>
 
       <!-- Hide these links if Employee is logged in -->
-      <router-link v-bind:to="{ name: 'employee-products' }"  v-if="$store.state.token != ''" >Inventory</router-link>
+      <router-link v-bind:to="{ name: 'employee-products' }"  v-if="$store.state.token != ''" >Products</router-link>
       <span v-show="$store.state.token !=''">&nbsp;|&nbsp;</span>
       <router-link v-bind:to="{ name: 'employee-orders' }"  v-if="$store.state.token != ''" >Orders</router-link>
       <span v-show="$store.state.token !=''">&nbsp;|&nbsp;</span>

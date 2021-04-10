@@ -14,4 +14,5 @@ public interface OrderDAO {
    Integer placeOrder(Order order) throws ParseException;
     List <Order> getAllOrders();
 
+    void updateOrderStatus(Order order);
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="employee-page-display">
+  <div class="employee-products-display">
       <emp-create-cake></emp-create-cake>
       <emp-change-cake></emp-change-cake>
       <emp-create-options></emp-create-options>
@@ -13,7 +13,7 @@ import EmpChangeOptions from '../components/EmpChangeOptions.vue'
 import EmpCreateCake from '../components/EmpCreateCake.vue'
 import EmpCreateOptions from '../components/EmpCreateOptions.vue'
 export default {
-    name: 'employee-page-view',
+    name: 'employee-products',
   components: { 
       EmpCreateCake, 
       EmpChangeCake, 
@@ -24,8 +24,8 @@ export default {
 </script>
 
 <style>
-.employee-page-display {
-  margin: 0px;
+.employee-products-display {
+  margin-top: 45px;
 }
 
 </style>
