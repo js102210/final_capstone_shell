@@ -31,23 +31,5 @@ public class CakeConfigController {
     }
 
 
-
-//   @PostMapping("sizes")
-//   @ResponseStatus (value = HttpStatus.CREATED)
-//    public void add(@RequestBody CakeConfig cakeConfig) {
-//        cakeConfigDAO.addCakeConfig (cakeConfig);
-//   }
-    // delete CakeConfigs
-//    @DeleteMapping("/cakeConfigs/{id}")
-//    public void delete(@PathVariable int id){
-//        cakeConfigDAO.deleteCakeConfig (id);
-//    }
-
-
-    //put
-//    @PutMapping("/cakeConfigs/{id}")
-//    public void update(@PathVariable int id, @RequestBody CakeConfig cakeConfig) {
-//        cakeConfigDAO.updateCakeConfig (cakeConfig);
-//    }
 }
 
