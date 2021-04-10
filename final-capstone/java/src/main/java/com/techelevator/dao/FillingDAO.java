@@ -32,6 +32,8 @@ public interface FillingDAO {
      * @param ID int ID of the Filling to change availability for
      * @return boolean the availability status of the Filling after the change
      */
+    //note we're going to do this with a whole JSON object so this method probably doesn't make sense
+
     boolean flipAvailability(int ID);
 
     /**

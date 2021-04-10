@@ -32,6 +32,7 @@ public interface FrostingDAO {
      * @param ID int ID of the Frosting to change availability for
      * @return boolean the availability status of the Frosting after the change
      */
+    //note possibly change this
     boolean flipAvailability(int ID);
 
     /**

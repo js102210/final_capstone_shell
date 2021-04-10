@@ -31,6 +31,8 @@ public interface FlavorDAO {
      * @param ID int ID of the Flavor to change availability for
      * @return boolean the availability status of the Flavor after the change
      */
+
+    //note possibly change this
     boolean flipAvailability(int ID);
 
     /**

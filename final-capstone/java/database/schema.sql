@@ -309,7 +309,10 @@ SELECT cake_config.cake_config_id, cake_config.cake_config_name, cake_config.cak
                 INNER JOIN fillings ON fillings.filling_id = cake_config.filling_id
                 INNER JOIN frostings ON frostings.frosting_id = cake_config.frosting_id
                 INNER JOIN flavors ON flavors.flavor_id = cake_config.flavor_id; */
-SELECT *  FROM cake_config;         
+SELECT *  FROM cake_config;     
+SELECT * FROM fillings WHERE is_available = TRUE;   
+
+
                 
 
 
@@ -320,5 +323,7 @@ VALUES (1, 1, 1, 1, 1, 'aaah', 1, 0.5, 1);
 --inserting an order returning the id
 INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_time, customer_name, customer_phone_number)
 	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '13:00', 'Ernest Hemingway', '5138675309') RETURNING order_id;
+	
+
 	
 COMMIT TRANSACTION;
