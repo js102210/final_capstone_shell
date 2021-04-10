@@ -56,6 +56,10 @@ public List <Order> getAllOrders(){
         return allOrders;
     }
 
+    @Override
+    public void updateOrderStatus(Order order) {
+
+    }
 
 
     public Order mapRowToOrder (SqlRowSet result) {
