@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import EmployeeService from '../services/EmployeeService.js';
 export default {
   name: 'emp-create-cake',
   data(){
@@ -66,9 +67,44 @@ export default {
     }
   },
   methods: {
-    createNewCake() {
-      // call create cake mutation
+    createNewCakeConfig() {
+      this.$store.commit("SET_CAKE_CONFIG_JSON", this.newCake);
+      EmployeeService.createCakeConfig(this.$store.state.cakeConfigJSON)
+      .then(response => {
+        if(response.status ===201){
+          this.$store.commit("CLEAR_CAKE_CONFIG_JSON");
+          this.clearNewCake();
+        }
+      })
+      .catch(error => {
+        this.handleErrorResponse(error, "creating");
+      });
+
+    },
+    clearNewCake(){
+      this.newCake = {
+        cakeConfigName: "",
+        flavorID: 1,
+        frostingID: 1,
+        fillingID: 1,
+        cakeConfigURL: "",
+        cakeConfigDescription: ""
+    };
     }
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " + verb + " cake configuration. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " cake configuration. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " cake configuration. Request could not be created.";
+      }
+}
   }
 
 }
