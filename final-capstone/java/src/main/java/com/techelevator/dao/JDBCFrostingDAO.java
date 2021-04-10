@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Filling;
+
 import com.techelevator.model.Frosting;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -54,6 +54,14 @@ public class JDBCFrostingDAO implements FrostingDAO{
     @Override
     public String deleteFrosting(int ID) {
         return null;
+    }
+
+    @Override
+    public void update(Frosting frosting) {
+        String sqlToUpdateFrosting = "UPDATE frosting SET frosting_name = ?, is_available = ?, price_mod = ?" +
+                "WHERE frosting_id = ?;";
+        jdbcTemplate.update (sqlToUpdateFrosting, frosting.getFrostingName (), frosting.isAvailable (), frosting.getPriceMod (),
+                frosting.getFrostingID ());
     }
 
     public Frosting mapRowToFrosting(SqlRowSet result){

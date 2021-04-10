@@ -41,4 +41,6 @@ public interface FlavorDAO {
      * @return String confirmation that the Flavor was deleted (probably the name plus " was deleted."
      */
     String deleteFlavor(int ID);
+
+    void update(Flavor flavor);
 }

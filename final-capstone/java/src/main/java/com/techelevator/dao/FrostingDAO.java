@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Flavor;
+
 import com.techelevator.model.Frosting;
 
 import java.math.BigDecimal;
@@ -41,4 +41,6 @@ public interface FrostingDAO {
      * @return String confirmation that the Frosting was deleted (probably the name plus " was deleted."
      */
     String deleteFrosting(int ID);
+
+    void update(Frosting frosting);
 }

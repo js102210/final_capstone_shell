@@ -1,12 +1,11 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.FrostingDAO;
-import com.techelevator.model.Frosting;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
+import com.techelevator.model.Frosting;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 @CrossOrigin
@@ -28,4 +27,11 @@ public class FrostingController {
     public List<Frosting> getAvailableFrostingsFromDb(){
         return frostingDAO.getAvailableFrostings();
     }
+
+    @RequestMapping(path = "/frostings/{frosting_id}", method = RequestMethod.PUT)
+    public void update (@PathVariable int frostingID, String frostingName, boolean isAvailable, BigDecimal priceMod,
+                        @RequestBody Frosting frosting) {
+        frostingDAO.update(frosting);
+    }
+
 }

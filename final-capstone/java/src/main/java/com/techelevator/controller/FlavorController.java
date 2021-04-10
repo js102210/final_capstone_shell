@@ -1,12 +1,11 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.FlavorDAO;
-import com.techelevator.model.Flavor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
+import com.techelevator.model.Flavor;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 @CrossOrigin
@@ -27,5 +26,10 @@ public class FlavorController {
         return flavorDAO.getAvailableFlavors();
     }
 
+    @RequestMapping(path = "/flavors/{flavor_id}", method = RequestMethod.PUT)
+    public void update (@PathVariable int flavorID, String flavorName, boolean isAvailable, BigDecimal priceMod,
+                        @RequestBody Flavor flavor) {
+        flavorDAO.update(flavor);
+    }
 
 }
