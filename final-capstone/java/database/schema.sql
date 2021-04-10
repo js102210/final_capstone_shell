@@ -143,6 +143,7 @@ CREATE TABLE extras
         
         CONSTRAINT pk_extras PRIMARY KEY (extra_id)
         );        
+       
                   
  
  DROP SEQUENCE IF EXISTS seq_status_id;   
@@ -276,7 +277,9 @@ VALUES ('vanilla', true, 0.00),
 INSERT INTO extras (extra_name, is_available, price_mod)
 VALUES ('superhero decorations',true, 3.00),
         ('plastic bunny',true, 1.00),
-        ('birthday candles',true, 2.00);
+        ('birthday candles',true, 2.00),
+        ('icing moustache', true, 1.00),
+        ('personalized message', true, 2.00); 
 
 
 INSERT INTO statuses (status_name)
@@ -317,4 +320,5 @@ VALUES (1, 1, 1, 1, 1, 'aaah', 1, 0.5, 1);
 --inserting an order returning the id
 INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_time, customer_name, customer_phone_number)
 	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '13:00', 'Ernest Hemingway', '5138675309') RETURNING order_id;
+	
 COMMIT TRANSACTION;

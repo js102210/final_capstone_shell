@@ -44,8 +44,9 @@ public class JDBCOrderDAO  implements  OrderDAO{
 
     @Override
     public List <Order> getAllOrders(){
-        List<Order> result = new ArrayList <> ();
+
         String sqlGetAllOrders = "SELECT * FROM orders ORDER BY order_id;";
+        List<Order> result = new ArrayList <> ();
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet (sqlGetAllOrders);
 
         while(rowSet.next ()) {
