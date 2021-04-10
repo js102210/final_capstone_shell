@@ -2,10 +2,11 @@ package com.techelevator.dao;
 
 
 import com.techelevator.model.Size;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.List;
-
+@Component
 public class JDBCSizeDAO implements SizeDAO {
     @Override
     public List <Size> getAvailableSizes() {

@@ -2,10 +2,11 @@ package com.techelevator.dao;
 
 
 import com.techelevator.model.Style;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.List;
-
+@Component
 public class JDBCStyleDAO implements StyleDAO{
     @Override
     public List <Style> getAvailableStyles() {
