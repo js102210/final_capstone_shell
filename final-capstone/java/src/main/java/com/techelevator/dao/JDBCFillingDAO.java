@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Filling;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -52,6 +53,14 @@ public class JDBCFillingDAO implements FillingDAO{
     @Override
     public String deleteFilling(int ID) {
         return null;
+    }
+
+    @Override
+    public void update(Filling filling) {
+        String sqlToUpdateFilling = "UPDATE filling SET filling_name = ?, is_available = ?, price_mod = ?" +
+                "WHERE filling_id = ?;";
+        jdbcTemplate.update (sqlToUpdateFilling, filling.getFillingName (), filling.isAvailable (), filling.getPriceMod (),
+                filling.getFillingID ());
     }
 
     public Filling mapRowToFilling(SqlRowSet result){

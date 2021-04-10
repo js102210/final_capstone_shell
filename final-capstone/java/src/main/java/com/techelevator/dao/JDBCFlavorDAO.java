@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Filling;
+
 import com.techelevator.model.Flavor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -53,6 +53,14 @@ public class JDBCFlavorDAO implements FlavorDAO{
     @Override
     public String deleteFlavor(int ID) {
         return null;
+    }
+
+    @Override
+    public void update(Flavor flavor) {
+        String sqlToUpdateFlavor = "UPDATE flavor SET flavor_name = ?, is_available = ?, price_mod = ?" +
+                "WHERE flavor_id = ?;";
+        jdbcTemplate.update (sqlToUpdateFlavor, flavor.getFlavorName (), flavor.isAvailable (), flavor.getPriceMod (),
+                flavor.getFlavorID ());
     }
 
     public Flavor mapRowToFlavor(SqlRowSet result){

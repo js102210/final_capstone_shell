@@ -1,7 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Filling;
-import com.techelevator.model.Flavor;
+
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -42,4 +42,6 @@ public interface FillingDAO {
      * @return String confirmation that the Filling was deleted (probably the name plus " was deleted."
      */
     String deleteFilling(int ID);
+
+    void update(Filling filling);
 }

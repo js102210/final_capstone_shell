@@ -12,7 +12,7 @@ Vue.use(Vuex)
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
 
-if(currentToken != null) {
+if (currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
 }
 
@@ -22,29 +22,27 @@ export default new Vuex.Store({
     user: currentUser || {},
     standardCakeIdForOrder: null,
     cakeOrderJSON: {}, //renamed
-    selectedConfig: {
-      
-    },
+    selectedConfig: {},
 
     //these JSONS are for when we need to edit/update cake attributes - will be built
     // in appropriate employee component, then set via mutation, and the method with the API
     //call will use what's in the store, then use the CLEAR mutate to set these
     //back to empty objects.
-    cakeStyleJSON:{},
+    cakeStyleJSON: {},
     cakeSizeJSON: {},
-    cakeFlavorJSON:{},
-    cakeFrostingJSON:{},
-    cakeFillingJSON:{},
-    cakeConfigJSON:{},
-    cakeExtraJSON:{},
+    cakeFlavorJSON: {},
+    cakeFrostingJSON: {},
+    cakeFillingJSON: {},
+    cakeConfigJSON: {},
+    cakeExtraJSON: {},
 
     //this will be used to populate our order history so employees will be able to work with the orders
     //to view Pending orders, change their status, do edits, etc. Single pull to get *all* orders from the system,
     //then displaying the orders will be about *filtering* this array.
-    pastOrdersArrayBE:[],
-     //jake: why do we have both of these? I thought custom cakes were just a config
-     //dan: took out customOrderCakeObject, superfluous now that we've reconsidered
-     //and make a cake JSON standard.
+    pastOrdersArrayBE: [],
+    //jake: why do we have both of these? I thought custom cakes were just a config
+    //dan: took out customOrderCakeObject, superfluous now that we've reconsidered
+    //and make a cake JSON standard.
     availableCakeStylesBE: [
       {
         styleID: 1,
@@ -71,7 +69,7 @@ export default new Vuex.Store({
         priceMod: 0.00
       }
     ],
-    availableCakeSizesBE:[
+    availableCakeSizesBE: [
       {
         sizeID: 1,
         sizeName: null,
@@ -101,7 +99,7 @@ export default new Vuex.Store({
         priceMod: 19.99
       }
     ],
-    availableFlavorsBE:[
+    availableFlavorsBE: [
       {
         flavorID: 1,
         flavorName: 'pick a cake flavor!',
@@ -134,7 +132,7 @@ export default new Vuex.Store({
       }
 
     ],
-    availableFrostingsBE:[
+    availableFrostingsBE: [
       {
         frostingID: 1,
         frostingName: "no frosting - have a naked cake!",
@@ -160,7 +158,7 @@ export default new Vuex.Store({
         priceMod: 3.00
       }
     ],
-    availableFillingsBE:[
+    availableFillingsBE: [
       {
         fillingID: 1,
         fillingName: "no filling",
@@ -180,7 +178,7 @@ export default new Vuex.Store({
         priceMod: 1.00
       }
     ],
-    availableExtrasBE:[
+    availableExtrasBE: [
       {
         extraID: 1,
         extraName: 'superhero decorations',
@@ -200,7 +198,7 @@ export default new Vuex.Store({
         priceMod: 2.00
       }
     ],
-    messagePrice:{
+    messagePrice: {
       priceMod: 1.50
     },
     standardCakeConfigsBE: [
@@ -243,25 +241,25 @@ export default new Vuex.Store({
 
     ],
 
-  //we can actually remove this if we have the order component send a cakeItem object, but I have it here now for convenient reference
-    cakeItemToOrder : {
-      cakeItemStyleID : null,
-      cakeItemSizeID : null,
-      cakeItemFlavorID : null,
-      cakeItemFrostingID : null,
-      cakeItemFillingID : null,
-      cakeItemMessage : null,
-      cakeItemPrice : null,
-      cakeItemConfigID : null
+    //we can actually remove this if we have the order component send a cakeItem object, but I have it here now for convenient reference
+    cakeItemToOrder: {
+      cakeItemStyleID: null,
+      cakeItemSizeID: null,
+      cakeItemFlavorID: null,
+      cakeItemFrostingID: null,
+      cakeItemFillingID: null,
+      cakeItemMessage: null,
+      cakeItemPrice: null,
+      cakeItemConfigID: null
     },
     currentActiveOrder: {
-      orderStatusID : null,
+      orderStatusID: null,
       orderPriceTotal: null,
       orderPickupDate: null,
       orderPickupTime: null,
       itemsInOrder: [],
-      customerName : null,
-      customerPhoneNumber : null
+      customerName: null,
+      customerPhoneNumber: null
     }
   },
   mutations: {
@@ -272,7 +270,7 @@ export default new Vuex.Store({
     },
     SET_USER(state, user) {
       state.user = user;
-      localStorage.setItem('user',JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
@@ -281,62 +279,62 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    SET_SELECTED_CONFIG(state, cakeConfig){
+    SET_SELECTED_CONFIG(state, cakeConfig) {
       state.selectedConfig = cakeConfig;
     },
-    MAKE_CAKE_ITEM(state, cakeJSON){
+    MAKE_CAKE_ITEM(state, cakeJSON) {
       state.cakeItemToOrder = cakeJSON;
     },
-    SET_CAKE_ITEM_PRICE(state, price){
+    SET_CAKE_ITEM_PRICE(state, price) {
       state.cakeItemToOrder.cakeItemPrice = price;
     },
-    SET_ORDER_INFO(state, pickupInfo){
+    SET_ORDER_INFO(state, pickupInfo) {
       state.currentActiveOrder.orderPickupDate = pickupInfo.orderPickupDate;
       state.currentActiveOrder.orderPickupTime = pickupInfo.orderPickupTime;
       state.currentActiveOrder.customerName = pickupInfo.customerName;
       state.currentActiveOrder.customerPhoneNumber = pickupInfo.customerPhoneNumber;
     },
-    SET_CAKE_STYLE_JSON(state, styleJSON){
+    SET_CAKE_STYLE_JSON(state, styleJSON) {
       state.cakeStyleJSON = styleJSON;
     },
-    SET_CAKE_SIZE_JSON(state, sizeJSON){
+    SET_CAKE_SIZE_JSON(state, sizeJSON) {
       state.cakeSizeJSON = sizeJSON;
     },
-    SET_CAKE_FLAVOR_JSON(state, flavorJSON){
+    SET_CAKE_FLAVOR_JSON(state, flavorJSON) {
       state.cakeFlavorJSON = flavorJSON;
     },
-    SET_CAKE_FROSTING_JSON(state, frostingJSON){
+    SET_CAKE_FROSTING_JSON(state, frostingJSON) {
       state.cakeFrostingJSON = frostingJSON;
     },
-    SET_CAKE_FILLING_JSON(state, fillingJSON){
+    SET_CAKE_FILLING_JSON(state, fillingJSON) {
       state.cakeFillingJSON = fillingJSON;
     },
-    SET_CAKE_CONFIG_JSON(state, configJSON){
+    SET_CAKE_CONFIG_JSON(state, configJSON) {
       state.cakeConfigJSON = configJSON;
     },
-    SET_CAKE_EXTRA_JSON(state, extraJSON){
+    SET_CAKE_EXTRA_JSON(state, extraJSON) {
       state.cakeExtraJSON = extraJSON;
     },
-    CLEAR_CAKE_STYLE_JSON(){
+    CLEAR_CAKE_STYLE_JSON(state) {
       state.cakeStyleJSON = {};
     },
-    CLEAR_CAKE_SIZE_JSON(){
+    CLEAR_CAKE_SIZE_JSON(state) {
       state.cakeSizeJSON = {};
     },
-    CLEAR_CAKE_FLAVOR_JSON(){
+    CLEAR_CAKE_FLAVOR_JSON(state) {
       state.cakeFlavorJSON = {};
     },
-    CLEAR_CAKE_FILLING_JSON(){
+    CLEAR_CAKE_FILLING_JSON(state) {
       state.cakeFillingJSON = {};
     },
-    CLEAR_CAKE_CONFIG_JSON(){
+    CLEAR_CAKE_CONFIG_JSON(state) {
       state.cakeConfigJSON = {};
     },
-    CLEAR_CAKE_EXTRA_JSON(){
+    CLEAR_CAKE_EXTRA_JSON(state) {
       state.cakeExtraJSON = {};
     },
 
-    ADD_CAKEITEM_TO_ACTIVE_ORDER(state, cakeItem){
+    ADD_CAKEITEM_TO_ACTIVE_ORDER(state, cakeItem) {
       state.cakeItemToOrder = cakeItem;
       state.currentActiveOrder.itemsInOrder.push(cakeItem);
       //pls note that this line is *only* for the current sprint. will refactor for multiple cakes later when we have shopping cart page.
@@ -346,42 +344,42 @@ export default new Vuex.Store({
 
       //again, we can actually get rid of this whole thing if we decide to pass a cakeItem in, but it's here now for reference and in case we decide to
       //mutate the data store by properties instead of sending a whole object
-      state.cakeItemToOrder = 
-        {
-          cakeItemStyleID : null,
-          cakeItemSizeID : null,
-          cakeItemFlavorID : null,
-          cakeItemFrostingID : null,
-          cakeItemFillingID : null,
-          cakeItemMessage : null,
-          cakeItemPrice : null,
-          cakeItemConfigID : null
-        };
-      },
-      FINALIZE_ACTIVE_ORDER(state, order){
-        state.currentActiveOrder.orderStatusID = order.orderStatusID;
-        state.currentActiveOrder.orderPriceTotal = order.orderPriceTotal;
-        // state.currentActiveOrder.orderPlacedDateTime = order.orderPlacedDateTime;
-        state.currentActiveOrder.customerName = order.customerName;
-        state.currentActiveOrder.customerPhoneNumber = order.customerPhoneNumber;
+      state.cakeItemToOrder =
+      {
+        cakeItemStyleID: null,
+        cakeItemSizeID: null,
+        cakeItemFlavorID: null,
+        cakeItemFrostingID: null,
+        cakeItemFillingID: null,
+        cakeItemMessage: null,
+        cakeItemPrice: null,
+        cakeItemConfigID: null
+      };
+    },
+    FINALIZE_ACTIVE_ORDER(state, order) {
+      state.currentActiveOrder.orderStatusID = order.orderStatusID;
+      state.currentActiveOrder.orderPriceTotal = order.orderPriceTotal;
+      // state.currentActiveOrder.orderPlacedDateTime = order.orderPlacedDateTime;
+      state.currentActiveOrder.customerName = order.customerName;
+      state.currentActiveOrder.customerPhoneNumber = order.customerPhoneNumber;
 
-        //we can either push the active order in a POST request here or in the component, wherever we do it, we have to add code to set the current 
-        //active order back to its blank state
-      },
-      CLEAR_ACTIVE_ORDER(state){
-        state.currentActiveOrder = {
-          orderStatusID : null,
-          orderPriceTotal: null,
-          orderPickupDate: null,
-          orderPickupTime: null,
-          itemsInOrder: [],
-          customerName : null,
-          customerPhoneNumber : null
-        }
-      }
-
-      }
-
+      //we can either push the active order in a POST request here or in the component, wherever we do it, we have to add code to set the current 
+      //active order back to its blank state
+    },
+    CLEAR_ACTIVE_ORDER(state) {
+      state.currentActiveOrder = {
+        orderStatusID: null,
+        orderPriceTotal: null,
+        orderPickupDate: null,
+        orderPickupTime: null,
+        itemsInOrder: [],
+        customerName: null,
+        customerPhoneNumber: null
+      };
     }
-  
+
+  }
+
+}
+
 )
