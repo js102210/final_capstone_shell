@@ -27,7 +27,7 @@ public class OrderController {
     }
 
 //  @PreAuthorize ("employee")
-    @PutMapping("orders/{id}")
+    @PutMapping("/orders/{id}")
     public void updateOrderStatus (@PathVariable int orderID, @RequestBody Order order) {
         orderDAO.updateOrderStatus(order);
     }
