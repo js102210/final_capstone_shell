@@ -37,9 +37,9 @@ export default {
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
-    background: rgba(255, 255, 255, 0.452);
-    -webkit-backdrop-filter: blur(10px);
-	backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.349);
+    /* -webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(10px); */
 }
 
 .cake-pic {
