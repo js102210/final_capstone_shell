@@ -90,7 +90,7 @@ export default {
         cakeConfigURL: "",
         cakeConfigDescription: ""
     };
-    }
+    },
     handleErrorResponse(error, verb) {
       if (error.response) {
         this.errorMsg =
