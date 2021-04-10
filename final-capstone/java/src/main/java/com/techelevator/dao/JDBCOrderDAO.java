@@ -58,7 +58,8 @@ public List <Order> getAllOrders(){
 
     @Override
     public void updateOrderStatus(Order order) {
-
+        String sqlUpdateOrderStatus = "UPDATE orders SET status_id = ? WHERE order_id = ?;";
+        jdbcTemplate.update (sqlUpdateOrderStatus, order.getOrderStatusID(), order.getOrderID ());
     }
 
 

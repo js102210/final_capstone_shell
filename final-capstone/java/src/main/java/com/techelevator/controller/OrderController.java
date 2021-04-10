@@ -27,12 +27,12 @@ public class OrderController {
     }
 
 //  @PreAuthorize ("employee")
-    @PutMapping("orders/{id}")
-    public void updateOrderStatus (@PathVariable int orderID, @RequestBody Order order) {
+    @RequestMapping(value = "orders/{id}", method = RequestMethod.PUT)
+    public void updateOrderStatus (@PathVariable int id, @RequestBody Order order) {
         orderDAO.updateOrderStatus(order);
     }
 
-    @GetMapping("/orders")
+    @RequestMapping("/orders")
     public List <Order> getAllOrders() {
         return orderDAO.getAllOrders ();
     }
