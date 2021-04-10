@@ -25,6 +25,19 @@ export default new Vuex.Store({
     selectedConfig: {
       
     },
+
+    //these JSONS are for when we need to edit/update cake attributes - will be built
+    // in appropriate employee component, then set via mutation, and the method with the API
+    //call will use what's in the store, then use the CLEAR mutate to set these
+    //back to empty objects.
+    cakeStyleJSON:{},
+    cakeSizeJSON: {},
+    cakeFlavorJSON:{},
+    cakeFrostingJSON:{},
+    cakeFillingJSON:{},
+    cakeConfigJSON:{},
+    cakeExtraJSON:{},
+
     //this will be used to populate our order history so employees will be able to work with the orders
     //to view Pending orders, change their status, do edits, etc. Single pull to get *all* orders from the system,
     //then displaying the orders will be about *filtering* this array.
@@ -283,6 +296,46 @@ export default new Vuex.Store({
       state.currentActiveOrder.customerName = pickupInfo.customerName;
       state.currentActiveOrder.customerPhoneNumber = pickupInfo.customerPhoneNumber;
     },
+    SET_CAKE_STYLE_JSON(state, styleJSON){
+      state.cakeStyleJSON = styleJSON;
+    },
+    SET_CAKE_SIZE_JSON(state, sizeJSON){
+      state.cakeSizeJSON = sizeJSON;
+    },
+    SET_CAKE_FLAVOR_JSON(state, flavorJSON){
+      state.cakeFlavorJSON = flavorJSON;
+    },
+    SET_CAKE_FROSTING_JSON(state, frostingJSON){
+      state.cakeFrostingJSON = frostingJSON;
+    },
+    SET_CAKE_FILLING_JSON(state, fillingJSON){
+      state.cakeFillingJSON = fillingJSON;
+    },
+    SET_CAKE_CONFIG_JSON(state, configJSON){
+      state.cakeConfigJSON = configJSON;
+    },
+    SET_CAKE_EXTRA_JSON(state, extraJSON){
+      state.cakeExtraJSON = extraJSON;
+    },
+    CLEAR_CAKE_STYLE_JSON(){
+      state.cakeStyleJSON = {};
+    },
+    CLEAR_CAKE_SIZE_JSON(){
+      state.cakeSizeJSON = {};
+    },
+    CLEAR_CAKE_FLAVOR_JSON(){
+      state.cakeFlavorJSON = {};
+    },
+    CLEAR_CAKE_FILLING_JSON(){
+      state.cakeFillingJSON = {};
+    },
+    CLEAR_CAKE_CONFIG_JSON(){
+      state.cakeConfigJSON = {};
+    },
+    CLEAR_CAKE_EXTRA_JSON(){
+      state.cakeExtraJSON = {};
+    },
+
     ADD_CAKEITEM_TO_ACTIVE_ORDER(state, cakeItem){
       state.cakeItemToOrder = cakeItem;
       state.currentActiveOrder.itemsInOrder.push(cakeItem);
