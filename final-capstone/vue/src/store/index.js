@@ -25,6 +25,10 @@ export default new Vuex.Store({
     selectedConfig: {
       
     },
+    //this will be used to populate our order history so employees will be able to work with the orders
+    //to view Pending orders, change their status, do edits, etc. Single pull to get *all* orders from the system,
+    //then displaying the orders will be about *filtering* this array.
+    pastOrdersArrayBE:[],
      //jake: why do we have both of these? I thought custom cakes were just a config
      //dan: took out customOrderCakeObject, superfluous now that we've reconsidered
      //and make a cake JSON standard.

@@ -7,7 +7,9 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import AvailableCakeView from '../views/AvailableCakeView.vue'
 import OrderCakeView from '../views/OrderCakeView.vue'
-import EmployeePageView from '../views/EmployeePageView.vue'
+import EmployeeProductsWorkView from '../views/EmployeeProductsWorkView.vue'
+import EmployeeOrdersReviewView from '../views/EmployeeOrdersReviewView.vue'
+import EmployeeLandingPageView from '../views/EmployeeLandingPageView'
 
 Vue.use(Router)
 
@@ -74,12 +76,28 @@ const router = new Router({
     },
     {
       path: "/employee",
-      name: "employee",
-      component: EmployeePageView,
+      name: "employee-landing",
+      component: EmployeeLandingPageView,
       meta: {
         requiresAuth: true
       }
     },
+    {
+      path: "/employee/products",
+      name: "employee-products",
+      component: EmployeeProductsWorkView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/employee/orders",
+      name: "employee-orders",
+      component: EmployeeOrdersReviewView,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 })
 
