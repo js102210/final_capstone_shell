@@ -25,7 +25,7 @@ public class FrostingController {
 
     //get available Frostings
     @RequestMapping(path = "/frostings/available", method = RequestMethod.GET)
-    public List<Frosting> getAvailablFrostingsFromDb(){
+    public List<Frosting> getAvailableFrostingsFromDb(){
         return frostingDAO.getAvailableFrostings();
     }
 }
