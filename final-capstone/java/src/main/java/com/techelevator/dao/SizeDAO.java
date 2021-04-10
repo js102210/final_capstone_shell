@@ -29,11 +29,13 @@ public interface SizeDAO {
     int createSize(String sizeName, String sizeDescription, BigDecimal priceMod);
 
     /**
-     * changes the availability status of a Size
-     * @param ID int ID of the Size to change the availability
-     * @return boolean determining the availability status of the Size
+     * make updates to an existing Size
+     * @param size Size the size to change, with all updated properties
+     * @param sizeID int ID of the Size to change
+     * @return Size with all properties updated
      */
-    boolean flipAvailability(int ID);
+    Size updateSize(Size size, int sizeID);
+
 
     /**
      * removes a Size from the datastore
