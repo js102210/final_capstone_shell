@@ -14,5 +14,11 @@ public interface OrderDAO {
    Integer placeOrder(Order order) throws ParseException;
     List <Order> getAllOrders();
 
-    void updateOrderStatus(Order order);
+    /**
+     * change the attributes of an existing order in the database
+     * @param order  Order the order to change, with all properties updated
+     * @param orderID int the ID of the Order to change
+     * @return Order with the properties updated
+     */
+    Order updateOrder(Order order, int orderID) throws ParseException;
 }

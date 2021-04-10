@@ -310,7 +310,9 @@ SELECT cake_config.cake_config_id, cake_config.cake_config_name, cake_config.cak
                 INNER JOIN frostings ON frostings.frosting_id = cake_config.frosting_id
                 INNER JOIN flavors ON flavors.flavor_id = cake_config.flavor_id; */
 SELECT *  FROM cake_config;     
-SELECT * FROM fillings WHERE is_available = TRUE;   
+SELECT * FROM fillings WHERE is_available = TRUE;  
+SELECT * FROM flavors WHERE is_available = TRUE;
+SELECT * FROM frostings WHERE is_available = TRUE;  
 
 
                 

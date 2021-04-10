@@ -28,9 +28,9 @@ public class OrderController {
 
 //  @PreAuthorize ("employee")
     @RequestMapping(value = "orders/{id}", method = RequestMethod.PUT)
-    public void updateOrderStatus (@PathVariable int id, @RequestBody Order order) {
+    public void updateOrderStatus (@PathVariable int id, @RequestBody Order order) throws ParseException {
 
-        orderDAO.updateOrderStatus(order);
+        orderDAO.updateOrder(order, id);
     }
 
     @RequestMapping("/orders")

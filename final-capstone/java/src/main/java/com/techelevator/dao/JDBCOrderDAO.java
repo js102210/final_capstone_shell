@@ -58,11 +58,23 @@ public class JDBCOrderDAO  implements  OrderDAO {
     }
 
     @Override
-    public void updateOrderStatus(Order order) {
+    public Order updateOrder(Order order, int orderId) throws ParseException {
 
-        String sqlUpdateOrderStatus = "UPDATE orders SET status_id = ? WHERE order_id = ?;";
-        jdbcTemplate.update (sqlUpdateOrderStatus, order.getOrderStatusID(), order.getOrderID ());
+        Date pickupDate = dateFormat.parse (order.getOrderPickupDate ());
+        LocalTime pickupTime = LocalTime.parse (order.getOrderPickupTime (), timeFormat);
+        String sqlUpdateOrderStatus =
+                "UPDATE orders \n" +
+                "SET status_id = ?,\n" +
+                "total_price = ?,\n" +
+                "pickup_date = ?,\n" +
+                "pickup_time = ?,\n" +
+                "customer_name = ?,\n" +
+                "customer_phone_number = ?\n" +
+                "WHERE order_id = ?;";
+        jdbcTemplate.update (sqlUpdateOrderStatus, order.getOrderStatusID(), order.getOrderPriceTotal(),
+               pickupDate, pickupTime, order.getCustomerName(), order.getCustomerPhoneNumber(), order.getOrderID ());
 
+        return order;
 
     }
 
