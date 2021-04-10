@@ -11,7 +11,7 @@ public interface FrostingDAO {
      * gets all Frostings that are available
      * @return List<Frostings> containing all Frostings available
      */
-    List<Frosting> getAvailableFlavors();
+    List<Frosting> getAvailableFrostings();
 
     /**
      * gets all Frostings in database
