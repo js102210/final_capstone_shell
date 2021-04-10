@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 public class CakeConfigController {
 
-    private CakeConfigDAO cakeConfigDAO;
+    private final CakeConfigDAO cakeConfigDAO;
 
     public CakeConfigController(CakeConfigDAO cakeConfigDAO) {
         this.cakeConfigDAO = cakeConfigDAO;
