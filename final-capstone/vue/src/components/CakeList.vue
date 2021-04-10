@@ -7,7 +7,7 @@
       
   </div>
   <br>
-  <button class="order-button" v-on:click="moveToOrder">Order A Cake!</button>
+  <!-- <button class="order-button" v-on:click="moveToOrder">Order A Cake!</button> -->
   </div>
 </template>
 

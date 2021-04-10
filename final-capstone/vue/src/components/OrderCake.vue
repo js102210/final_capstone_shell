@@ -1,16 +1,22 @@
 <template>
   <div class="order-display">
     <div class="cakedisplay">
-      <h3>{{ selected.cakeItemConfigName }}</h3>
-      <img v-bind:src="selected.cakeItemConfigURL" /> <br />
-      <p>{{selected.cakeItemConfigDescription }}</p>
+      <!-- we do ternary statements here - if nothing's selected in drop-down, the cakedisplay defaults to the custom cake info -->
+      <h3>{{isSomethingSelected ? selected.cakeItemConfigName : this.$store.state.standardCakeConfigsBE[0].cakeConfigName }}</h3>
+      <img v-bind:src="[isSomethingSelected ? selected.cakeItemConfigURL : this.$store.state.standardCakeConfigsBE[0].cakeConfigUrl]" /> <br />
+      <p>{{isSomethingSelected ? selected.cakeItemConfigDescription : this.$store.state.standardCakeConfigsBE[0].cakeConfigDescription}}</p>
+    
     </div>
 
     <form class="order-form" @submit="orderThisCake">
       <p>Your Cake:</p>
       <label for="cake selection">Select your cake:</label>
       <!-- the v-model sets the select to whatever the standardCakeIdForOrder is. If null, it's blank.-->
-      <select name="cake selection" v-model="selected" v-on:change="selectCakeConfig" >
+      <select
+        name="cake selection"
+        v-model="selected"
+        v-on:change="selectCakeConfig"
+      >
         <!-- sets text for options to all cake names in standardCakeConfigs. value is the cake's cake_id-->
         <option
           v-for="cakeConfig in $store.state.standardCakeConfigsBE"
@@ -22,28 +28,28 @@
             cakeItemFillingID: cakeConfig.cakeConfigFillingID,
             cakeItemFlavorID: cakeConfig.cakeConfigFlavorID,
             cakeItemConfigURL: cakeConfig.cakeConfigUrl,
-            cakeItemConfigDescription: cakeConfig.cakeConfigDescription
+            cakeItemConfigDescription: cakeConfig.cakeConfigDescription,
           }"
         >
           {{ cakeConfig.cakeConfigName }}
-        </option>
-</select
+        </option></select
       ><br />
       <label for="cake size">Select your size:</label>
-      <select name="cake size" 
-      v-model="standardCakeOrderJSON.cakeItemSizeID">
+      <select name="cake size" v-model="standardCakeOrderJSON.cakeItemSizeID">
         <option
           v-for="size in $store.state.availableCakeSizesBE"
           v-bind:key="size.sizeID"
           v-bind:value="size.sizeID"
-          
         >
           {{ size.sizeDescription }}
         </option>
       </select>
       <br />
       <label for="standard cake style">Select your cake style:</label>
-      <select name="standard cake style" v-model="standardCakeOrderJSON.cakeItemStyleID">
+      <select
+        name="standard cake style"
+        v-model="standardCakeOrderJSON.cakeItemStyleID"
+      >
         <option
           v-for="style in $store.state.availableCakeStylesBE"
           v-bind:key="style.styleID"
@@ -53,19 +59,28 @@
         </option>
       </select>
       <br />
-      <section class="custom cake options" v-show="standardCakeOrderJSON.cakeItemConfigID === 1"> 
+      <section
+        class="custom cake options"
+        v-show="standardCakeOrderJSON.cakeItemConfigID === 1"
+      >
         <label for="custom cake flavor">Select your flavor:</label>
-        <select name="custom cake flavor" v-model="standardCakeOrderJSON.cakeItemFlavorID">
+        <select
+          name="custom cake flavor"
+          v-model="standardCakeOrderJSON.cakeItemFlavorID"
+        >
           <option
             v-for="flavor in $store.state.availableFlavorsBE"
             v-bind:key="flavor.flavorID"
             v-bind:value="flavor.flavorID"
           >
-            {{ flavor.flavorName}}
+            {{ flavor.flavorName }}
           </option></select
         ><br />
         <label for="custom cake frosting">Select your frosting:</label>
-        <select name="custom cake frosting" v-model="standardCakeOrderJSON.cakeItemFrostingID">
+        <select
+          name="custom cake frosting"
+          v-model="standardCakeOrderJSON.cakeItemFrostingID"
+        >
           <option
             v-for="frosting in $store.state.availableFrostingsBE"
             v-bind:key="frosting.frostingID"
@@ -75,7 +90,10 @@
           </option></select
         ><br />
         <label for="custom cake filling">Select your filling:</label>
-        <select name="custom cake filling" v-model="standardCakeOrderJSON.cakeItemFillingID">
+        <select
+          name="custom cake filling"
+          v-model="standardCakeOrderJSON.cakeItemFillingID"
+        >
           <option
             v-for="filling in $store.state.availableFillingsBE"
             v-bind:key="filling.fillingID"
@@ -84,30 +102,62 @@
             {{ filling.filling_name }}
           </option></select
         ><br />
-   </section> 
+      </section>
       <label for="optional message"
         >Put what message you want on your cake! (Optional: $1.50 extra)</label
       >
-      <input name="message" type="text" placeholder="Optional Message" v-model="standardCakeOrderJSON.cakeItemMessage"/><br />
-      <br>
-      <p class="price-display">Your item's current price is <span id="calculated-price" >$ {{itemPrice}} </span>!</p>
-      <br>
+      <input
+        name="message"
+        type="text"
+        placeholder="Optional Message"
+        v-model="standardCakeOrderJSON.cakeItemMessage"
+      /><br />
+      <br />
+      <p class="price-display">
+        Your item's current price is
+        <span id="calculated-price">$ {{ itemPrice }} </span>!
+      </p>
+      <br />
       <p>Your Info:</p>
 
       <label for="customerName">Please enter your name:</label>
-      <input name="customerName" type="text" placeholder="Your Name" v-model="pickupInfo.customerName" required/><br />
+      <input
+        name="customerName"
+        type="text"
+        placeholder="Your Name"
+        v-model="pickupInfo.customerName"
+        required
+      /><br />
       <label for="customerPhoneNumber">Please enter your phone number:</label>
-      <input name="customerPhoneNumber" type="tel" v-model="pickupInfo.customerPhoneNumber" required/><br />
-<!-- let's change this to separate date and time field inputs. see if we can limit time to bakery open hours-->
+      <input
+        name="customerPhoneNumber"
+        type="tel"
+        v-model="pickupInfo.customerPhoneNumber"
+        required
+      /><br />
+      <!-- let's change this to separate date and time field inputs. see if we can limit time to bakery open hours-->
       <label for="pickup time">When do you want to pick up your cake?</label>
-      <input name="pickup date" type="date" v-model="pickupInfo.orderPickupTime" required/> 
-      <input name="pickup time" type="time" v-model="pickupInfo.orderPickupDate" required/><br /><br />
+      <input
+        name="pickup date"
+        type="date"
+        v-model="pickupInfo.orderPickupTime"
+        required
+      />
+      <input
+        name="pickup time"
+        type="time"
+        v-model="pickupInfo.orderPickupDate"
+        required
+      /><br /><br />
       <section v-if="cakeValidated">
-      <input type="submit" value="Order Your Cake!">
+        <input type="submit" value="Order Your Cake!" />
       </section>
       <section v-else>
-        <h4>You must select a cake style, size, and flavor in order to place your order!</h4>
-        </section>
+        <h4>
+          You must select a cake style, size, and flavor in order to place your
+          order!
+        </h4>
+      </section>
     </form>
   </div>
 </template>
@@ -144,6 +194,17 @@ export default {
   //     //   CakeOrderDisplay
   //       },
   name: "order-cake",
+ 
+  
+  //  created(){
+  //   if(this.$store.state.selectedConfig && this.$store.state.selectedConfig.cakeConfigID > 0){
+  //   this.selected = this.$store.state.selectedConfig;
+  //   } else {
+  //     this.selected = this.$store.state.standardCakeConfigsBE[0];
+
+  //     }
+
+  //   },
   computed: {
     itemPrice(){
       let price = 0.00;
@@ -189,6 +250,13 @@ export default {
     },
     cakeValidated(){
       if (this.standardCakeOrderJSON.cakeItemSizeID != 1 && this.standardCakeOrderJSON.cakeItemFlavorID !=1 && this.standardCakeOrderJSON.cakeItemStyleID != 1){
+        return true;
+      } else{
+        return false;
+      }
+    },
+    isSomethingSelected(){
+      if(this.selected.cakeItemConfigID > 0){
         return true;
       } else{
         return false;
@@ -289,8 +357,8 @@ select {
   font-family: "Quicksand";
 }
 
-#calculated-price{
-  color:crimson;
+#calculated-price {
+  color: crimson;
   font-weight: bold;
   font-size: 2rem;
 }

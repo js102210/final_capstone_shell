@@ -22,7 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     standardCakeIdForOrder: null,
     cakeOrderJSON: {}, //renamed
-    selectedCake: {
+    selectedConfig: {
       
     },
      //jake: why do we have both of these? I thought custom cakes were just a config
@@ -264,8 +264,8 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    SET_SELECTED_CAKE(state, id){
-      state.selectedCake.id = id;
+    SET_SELECTED_CONFIG(state, cakeConfig){
+      state.selectedConfig = cakeConfig;
     },
     MAKE_CAKE_ITEM(state, cakeJSON){
       state.cakeItemToOrder = cakeJSON;

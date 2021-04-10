@@ -3,6 +3,8 @@
       <h3>{{cakeConfig.cakeConfigName}}</h3>
       <img class="cake-pic" v-bind:src=cakeConfig.cakeConfigUrl /> <br>
       <p>{{cakeConfig.cakeConfigDescription}}</p>
+
+      <button id="buy-this-cake" v-on:click="moveToOrderPage()">Buy a cake!</button>
   </div>
 </template>
 
@@ -13,9 +15,10 @@ export default {
         "cakeConfig"
     ],
     methods: {
-        moveToOrderPage(id){
-            this.$store.commit("SET_SELECTED_CAKE", id);
-            this.$router.push('/standardorder')
+        moveToOrderPage(){
+            //commented out this mutation - it's just not working and I can't figureit out tonight.
+            //this.$store.commit("SET_SELECTED_CONFIG", cakeConfig);
+            this.$router.push('/ordercake')
         }
     }
 
