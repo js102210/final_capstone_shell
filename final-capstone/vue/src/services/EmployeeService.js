@@ -68,7 +68,7 @@ updateFlavor(FlavorJSON){
 },
 
 updateFrosting(FrostingJSON){
-    return axios.post(`/frostings/${FrostingJson.frostingID}`, FrostingJSON);
+    return axios.post(`/frostings/${FrostingJSON.frostingID}`, FrostingJSON);
 },
 
 updateFilling(FillingJSON){
