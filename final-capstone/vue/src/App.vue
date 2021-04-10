@@ -4,14 +4,16 @@
       <div class="cust-section">
       <router-link v-bind:to="{ name: 'home' }" v-show="!$store.state.token">Home</router-link>
       <span v-show="!$store.state.token">&nbsp;|&nbsp;</span>
-      <router-link v-bind:to="{ name: 'cakes' }" v-show="!$store.state.token">Show me your Cakes!</router-link>
+      <router-link v-bind:to="{ name: 'cakes' }" v-show="!$store.state.token">See our Cakes</router-link>
+      <span v-show="!$store.state.token">&nbsp;|&nbsp;</span>
+      <router-link v-bind:to="{ name: 'order-cake' }" v-show="!$store.state.token">Order your Cake</router-link>
       </div>
       <div class="emp-section">
-      <router-link v-bind:to="{ name: 'login' }">Employee Login</router-link>
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> | Logout</router-link>
+      <router-link v-bind:to="{ name: 'login' }" v-if="!$store.state.token">Employee Login</router-link>
+      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       </div>
     </div>
-    <router-view />
+    <router-view class="content" />
   </div>
 </template>
 
@@ -54,8 +56,8 @@ p {
   font-weight: 600;
 }
 
-#app {
-  margin: 0;
+.content {
+  margin-top: 22px;
 }
 
 #nav {
@@ -71,6 +73,7 @@ p {
 
 #nav a {
   text-decoration: none;
+  transition-duration: 0.6s;
 }
 
 #nav a:hover {
