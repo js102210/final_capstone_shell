@@ -230,6 +230,7 @@ CREATE TABLE orders
  pickup_time TIME NOT NULL, 
  customer_name VARCHAR(50) NOT NULL,
  customer_phone_number VARCHAR(20) NOT NULL,
+ date_last_updated VARCHAR DEFAULT CURRENT_DATE,
 
  
   CONSTRAINT pk_orders PRIMARY KEY (order_id),
@@ -314,6 +315,16 @@ SELECT * FROM fillings WHERE is_available = TRUE;
 SELECT * FROM flavors WHERE is_available = TRUE;
 SELECT * FROM frostings WHERE is_available = TRUE;  
 
+--example query updating an Order row
+UPDATE orders 
+SET status_id = 2,
+total_price = 10.0,
+pickup_date = '2021-4-11',
+pickup_time = '13:01',
+customer_name = 'some guy',
+customer_phone_number = '7777777777',
+date_last_updated = CURRENT_DATE
+WHERE order_id = 2;
 
                 
 
