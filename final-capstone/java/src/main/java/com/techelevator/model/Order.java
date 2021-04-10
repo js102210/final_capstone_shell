@@ -40,8 +40,7 @@ public class    Order {
 
     }
 
-    public Order() {
-
+    public Order(int order_id, String status_id, String total_price, String date_placed, String pickup_date, String pickup_time, String customer_name, String customer_phone_number) {
     }
 
     public int getOrderID() {

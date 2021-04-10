@@ -42,24 +42,38 @@ public class JDBCOrderDAO  implements  OrderDAO{
         return newID;
     }
 
-    @Override
-    public List <Order> getAllOrders(){
+@Override
+public List <Order> getAllOrders(){
 
         String sqlGetAllOrders = "SELECT * FROM orders ORDER BY order_id;";
-        List<Order> result = new ArrayList <> ();
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet (sqlGetAllOrders);
+        List<Order> allOrders = new ArrayList <> ();
+        SqlRowSet result = jdbcTemplate.queryForRowSet (sqlGetAllOrders);
 
-        while(rowSet.next ()) {
-            Order order = new Order();
-            order.setOrderID (rowSet.getInt ("order_id"));
-            order.setOrderStatus (rowSet.getInt ("status_id"));
-            order.setOrderPriceTotal (rowSet.getBigDecimal ("total_price"));
-            order.setOrderDatePlaced (rowSet.getString ("date_placed"));
-            order.setOrderPickupDate (rowSet.getString ("pickup_date"));
-            order.setOrderPickupTime (rowSet.getString ("pickup_time"));
-            order.setCustomerName (rowSet.getString ("customer_name"));
-            order.setCustomerPhoneNumber (rowSet.getString ("customer_phone_number"));
+        while(result.next ()) {
+            Order order = mapRowToOrder(result);
+            allOrders.add(order);
         }
-        return result;
+        return allOrders;
     }
+
+
+
+    public Order mapRowToOrder (SqlRowSet result) {
+        return new Order (result.getInt ("order_id"),
+        result.getString ("status_id"), result.getString ("total_price"), result.getString ("date_placed"), result.getString ("pickup_date"),
+        result.getString ("pickup_time"), result.getString ("customer_name"),
+        result.getString ("customer_phone_number"));
+    }
+
 }
+
+//   just in case needed for later
+//              Order order = new Order();
+//                    order.setOrderID (rowSet.getInt ("order_id"));
+//                    order.setOrderStatus (rowSet.getInt ("status_id"));
+//                    order.setOrderPriceTotal (rowSet.getBigDecimal ("total_price"));
+//                    order.setOrderDatePlaced (rowSet.getString ("date_placed"));
+//                    order.setOrderPickupDate (rowSet.getString ("pickup_date"));
+//                    order.setOrderPickupTime (rowSet.getString ("pickup_time"));
+//                    order.setCustomerName (rowSet.getString ("customer_name"));
+//                    order.setCustomerPhoneNumber (rowSet.getString ("customer_phone_number"));
