@@ -41,7 +41,7 @@ export default new Vuex.Store({
       },
       {
         styleID: 2,
-        styleName: "layer cake",
+        styleName: "double layer cake",
         isAvailable: true,
         priceMod: 0.00
       },
@@ -69,21 +69,21 @@ export default new Vuex.Store({
       {
         sizeID: 2,
         sizeName: "small",
-        sizeDescription: 'SMALL: a 6" double layer cake OR 12 cupcakes OR a 8"x8" sheet cake',
+        sizeDescription: 'SMALL: 6" layer cake OR 12 cupcakes OR 8"x8" sheet cake',
         isAvailable: true,
         priceMod: 9.99
       },
       {
         sizeID: 3,
         sizeName: "medium",
-        sizeDescription: 'MEDIUM: a 9" double layer cake OR 18 cupcakes OR a 9"x14" sheet cake',
+        sizeDescription: 'MEDIUM: 9" layer cake OR 18 cupcakes OR 9"x14" sheet cake',
         isAvailable: true,
         priceMod: 15.99
       },
       {
         sizeID: 4,
         sizeName: "large",
-        sizeDescription: 'LARGE: a 12" double layer cake OR 24 cupcakes OR a 20"x24" sheet cake',
+        sizeDescription: 'LARGE: 12" layer cake OR 24 cupcakes OR 20"x24" sheet cake',
         isAvailable: true,
         priceMod: 19.99
       }

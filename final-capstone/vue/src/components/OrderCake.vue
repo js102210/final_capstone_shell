@@ -70,7 +70,7 @@
         <select name="custom cake filling" v-model="standardCakeOrderJSON.cakeItemFillingID">
           <option v-for="filling in $store.state.availableFillingsBE"
             v-bind:key="filling.fillingID" v-bind:value="filling.fillingID">
-          {{ filling.filling_name }}
+          {{ filling.fillingName }}
           </option></select
         ><br />
       </section>
@@ -91,11 +91,11 @@
        v-model="pickupInfo.customerPhoneNumber" required /><br />
 
       <!-- let's change this to separate date and time field inputs. see if we can limit time to bakery open hours-->
-      <label for="pickup time">When do you want to pick up your cake?</label>
+      <label for="pickup date and time">When do you want to pick up your cake?</label>
       <input name="pickup date" type="date"
-       v-model="pickupInfo.orderPickupTime" required />
+       v-model="pickupInfo.orderPickupDate" required />
 
-      <input name="pickup time" type="time" v-model="pickupInfo.orderPickupDate" required /><br />
+      <input name="pickup time" type="time" v-model="pickupInfo.orderPickupTime" required /><br />
       
       <p class="price-display">Your Order's Total is:
         <span id="calculated-price">$ {{ itemPrice }} </span>
@@ -107,6 +107,7 @@
       </section>
 
       <section v-else>
+        <!-- note: we need to make this so it's not too wide for mobile.-->
         <h4>You must select a cake style, size, and flavor in order to place your order!</h4>
       </section>
 
@@ -116,7 +117,7 @@
 
 <script>
 // import CakeOrderDisplay from './CakeOrderDisplay.vue';
-import BakeShopService from '../services/BakeShopService.js'
+import CustomerService from '../services/CustomerService.js'
 
 export default {
   data() {
@@ -231,10 +232,10 @@ export default {
     this.$store.commit("SET_CAKE_ITEM_PRICE",this.itemPrice);
     this.$store.commit("ADD_CAKEITEM_TO_ACTIVE_ORDER", this.$store.state.cakeItemToOrder);
     this.$store.commit("SET_ORDER_INFO", this.pickupInfo);
-    BakeShopService.sendOrderJSON(this.$store.state.currentActiveOrder)
+    CustomerService.sendOrderJSON(this.$store.state.currentActiveOrder)
     .then(response => {
       if(response.status === 201){
-        // this.$store.commit("CLEAR_ACTIVE_ORDER");
+        this.$store.commit("CLEAR_ACTIVE_ORDER");
         this.$router.push('/cakes')
       }
     })

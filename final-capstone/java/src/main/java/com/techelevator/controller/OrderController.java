@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 
+@CrossOrigin
 @RestController
 public class OrderController {
     private OrderDAO orderDAO;
@@ -18,7 +19,7 @@ public class OrderController {
      * @param order Order object
      */
     @RequestMapping( path= "/placeOrder", method = RequestMethod.POST)
-    @ResponseStatus (value= HttpStatus.CREATED)
+    @ResponseStatus (HttpStatus.CREATED)
     public Integer addOrder(@RequestBody Order order) throws ParseException {
        return orderDAO.placeOrder (order);
     }
