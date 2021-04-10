@@ -1,14 +1,12 @@
 <template>
-  <div>
   <div class="cakes-layout">
       <cake-card v-for="cakeConfig in $store.state.standardCakeConfigsBE"
       v-bind:key="cakeConfig.cakeConfigID"
       v-bind:cakeConfig="cakeConfig" />
-      
   </div>
-  <br>
-  <!-- <button class="order-button" v-on:click="moveToOrder">Order A Cake!</button> -->
-  </div>
+   <!-- <div> --><!-- <br>
+   <button class="order-button" v-on:click="moveToOrder">Order A Cake!</button> -->
+  <!-- </div> -->
 </template>
 
 <script>
