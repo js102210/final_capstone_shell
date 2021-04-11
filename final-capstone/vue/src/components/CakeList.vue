@@ -13,7 +13,7 @@
 
 <script>
 
-// import CustomerService from '../services/EmployeeService.js';
+import CustomerService from '../services/EmployeeService.js';
 import CakeCard from "./CakeCard.vue";
 export default {
   components: { CakeCard },
@@ -23,11 +23,11 @@ export default {
     },
   },
 
-  // created() {
-  //   CustomerService.getAvailableConfigs().then((response) => {
-  //     this.$store.commit("SET_AVAILABLE_CAKE_CONFIG_ARRAY", response.data);
-  //   });
-  // },
+  created() {
+    CustomerService.getAvailableConfigs().then((response) => {
+      this.$store.commit("SET_AVAILABLE_CAKE_CONFIG_ARRAY", response.data);
+    });
+  },
 
 }
 </script>
