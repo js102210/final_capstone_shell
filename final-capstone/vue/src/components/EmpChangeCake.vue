@@ -24,9 +24,8 @@
           <td>{{cake.cakeConfigDescription}}</td>
           <td>{{cake.isAvailable? "Available": "Unavailable"}}</td>
           <td>
-            <!-- v-on:click="flipStatus(cake.id)" >
-              {{ cakeConfig.status === "Available" ? "Unavailable" : "Available" }} -->
-            <button class="btnAvailableUnavailable" v-on:click="flipStatus(cake.cakeConfigID)"> Flip status</button>
+            <button class="btnAvailableUnavailable" v-on:click="flipStatus(cake.cakeConfigID)">
+              {{ cake.isAvailable ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
       </tbody>
