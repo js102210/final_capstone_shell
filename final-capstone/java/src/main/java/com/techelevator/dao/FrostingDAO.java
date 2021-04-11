@@ -1,7 +1,5 @@
 package com.techelevator.dao;
 
-
-import com.techelevator.model.Flavor;
 import com.techelevator.model.Frosting;
 
 import java.math.BigDecimal;
@@ -27,6 +25,7 @@ public interface FrostingDAO {
      * @return int ID of the newly created Frosting
      */
     int createFrosting(String frostingName, BigDecimal priceMod);
+    int createFrosting(Frosting newFrosting);
 
     /**
      * changes the availability status of a Frosting
@@ -46,4 +45,6 @@ public interface FrostingDAO {
     void update(Frosting frosting);
 
     void updateFrosting(Frosting frosting, int id);
+
+
 }

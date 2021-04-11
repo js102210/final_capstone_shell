@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.FrostingDAO;
 
 import com.techelevator.model.Frosting;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -34,5 +35,18 @@ public class FrostingController {
         frostingDAO.updateFrosting(frosting, id);
         return frosting;
     }
+
+    @RequestMapping(path = "/frostings", method = RequestMethod.POST)
+    public int createNewFrosting(@RequestBody Frosting newFrosting) {
+        return frostingDAO.createFrosting (newFrosting);
+    }
+
+    @RequestMapping(path = "frostings/flip/{id}", method = RequestMethod.PATCH)
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    public Boolean frostingFlipStatus(@PathVariable int id) {
+        return frostingDAO.flipAvailability (id);
+    }
+
+
 
 }

@@ -47,6 +47,11 @@ public class JDBCFrostingDAO implements FrostingDAO{
     }
 
     @Override
+    public int createFrosting(Frosting newFrosting) {
+        return 0;
+    }
+
+    @Override
     public boolean flipAvailability(int ID) {
         return false;
     }
