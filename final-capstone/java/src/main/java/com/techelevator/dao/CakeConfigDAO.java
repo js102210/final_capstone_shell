@@ -12,6 +12,12 @@ public interface CakeConfigDAO {
     List<CakeConfig> getAllConfigs();
 
     /**
+     * populate list with available configs in database, including custom.
+     * @return list<CakeConfig>>
+     * */
+    public List<CakeConfig> getAvailableConfigs();
+
+    /**
      * looks up an Config by name and instantiates object with that config's properties.
      * Note- for 'custom' config, method/query must be written to instead populate with provided input
      * @param configName name of CakeConfig

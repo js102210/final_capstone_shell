@@ -119,6 +119,7 @@
 // import CakeOrderDisplay from './CakeOrderDisplay.vue';
 import CustomerService from '../services/CustomerService.js'
 
+
 export default {
   data() {
     return {
@@ -146,13 +147,7 @@ export default {
   //     //   CakeOrderDisplay
   //       },
   name: "order-cake",
-  //  created(){
-  //   if(this.$store.state.selectedConfig && this.$store.state.selectedConfig.cakeConfigID > 0){
-  //   this.selected = this.$store.state.selectedConfig;
-  //   } else {
-  //     this.selected = this.$store.state.availableCakeConfigsBE[0];
-  //     }
-  //   },
+
   computed: {
     itemPrice(){
       let price = 0.00;

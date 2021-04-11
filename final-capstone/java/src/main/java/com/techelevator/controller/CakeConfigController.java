@@ -17,13 +17,19 @@ public class CakeConfigController {
         this.cakeConfigDAO = cakeConfigDAO;
     }
 
-    //get all configs
+    //get all configs - this needs to require authorization. employee only.
     @RequestMapping(path = "/configs", method = RequestMethod.GET)
     public List <CakeConfig> getAllConfigsFromDb() {
         return cakeConfigDAO.getAllConfigs ();
     }
 
+    //gets *available* configs for customers
+    @RequestMapping(path = "/configs/available", method = RequestMethod.GET)
+    public List <CakeConfig> getAvailableConfigsFromDb() {
+        return cakeConfigDAO.getAvailableConfigs ();
+    }
 
+    //this also requires authorization. employee only.
    @RequestMapping(path = "/configs", method = RequestMethod.POST)
    @ResponseStatus(value = HttpStatus.CREATED)
    public Integer add(@RequestBody CakeConfig cakeConfig) {

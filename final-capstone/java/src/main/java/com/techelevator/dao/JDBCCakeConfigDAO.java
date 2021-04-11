@@ -29,6 +29,19 @@ public JDBCCakeConfigDAO(JdbcTemplate jdbcTemplate){
     }
 
     @Override
+    public List<CakeConfig> getAvailableConfigs() {
+        String sqlForAllConfigs =
+                "SELECT *  FROM cake_config WHERE is_avail = true;";
+        List<CakeConfig> allConfigs = new ArrayList<>();
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlForAllConfigs);
+        while (result.next()){
+            CakeConfig config = mapRowToCakeConfig(result);
+            allConfigs.add(config);
+        }
+        return allConfigs;
+    }
+
+    @Override
     public CakeConfig getCakeConfig(String configName) {
         return null;
     }
