@@ -263,7 +263,8 @@ VALUES ('small', 'SMALL: a 6" double layer cake OR 12 cupcakes OR a 8"x8" sheet 
 INSERT INTO styles (style_name, is_available, price_mod)
 VALUES ('layer cake', true, 0.00),
 	('cupcakes', true, 0.00),
-	('sheet cake', true, 0.00);
+	('sheet cake', true, 0.00),
+	('cake pops', false, 3.00);
 
 INSERT INTO flavors (flavor_name, is_available, price_mod)
 VALUES ('vanilla', true, 0.00),
@@ -350,3 +351,5 @@ INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_tim
 
 	
 COMMIT TRANSACTION;
+
+
