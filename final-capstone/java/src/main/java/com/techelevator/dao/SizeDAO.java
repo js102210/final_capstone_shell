@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Flavor;
+
 import com.techelevator.model.Size;
 
 import java.math.BigDecimal;

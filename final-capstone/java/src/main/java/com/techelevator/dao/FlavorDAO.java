@@ -42,5 +42,7 @@ public interface FlavorDAO {
      */
     String deleteFlavor(int ID);
 
-    void update(Flavor flavor);
+    Flavor update(Flavor flavor);
+
+    Flavor updateFlavor(Flavor flavor, int id);
 }
