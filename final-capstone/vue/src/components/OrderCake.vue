@@ -198,7 +198,6 @@
 </template>
 
 <script>
-// import CakeOrderDisplay from './CakeOrderDisplay.vue';
 import CustomerService from "../services/CustomerService.js";
 
 export default {
@@ -223,9 +222,7 @@ export default {
       },
     };
   },
-  //   components: {
-  //     //   CakeOrderDisplay
-  //       },
+
   name: "order-cake",
   created() {
     CustomerService.getAvailableConfigs().then((response) => {
