@@ -47,6 +47,11 @@ public class JDBCExtraDAO implements ExtraDAO{
     }
 
     @Override
+    public int createExtra(Extra newExtra) {
+        return 0;
+    }
+
+    @Override
     public Extra updateExtra(Extra extra, int ID) {
         String sqlToUpdateExtra =
                 "UPDATE extras\n" +
@@ -60,6 +65,11 @@ public class JDBCExtraDAO implements ExtraDAO{
     }
     @Override
     public String deleteExtra(int ID) {
+        return null;
+    }
+
+    @Override
+    public Boolean flipAvailability(int id) {
         return null;
     }
 

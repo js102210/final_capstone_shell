@@ -27,7 +27,7 @@ public interface ExtraDAO {
      * @return int ID of the newly created Extra item
      */
     int createExtra(String extraName, BigDecimal priceMod);
-
+    int createExtra(Extra newExtra);
     /**
      * make updates to an existing Extra
      * @param extra Extra the Extra to change, with all updated properties
@@ -42,4 +42,7 @@ public interface ExtraDAO {
      * @return String confirmation that the Extra item was deleted (probably the name plus " was deleted."
      */
     String deleteExtra(int ID);
+
+
+    Boolean flipAvailability(int id);
 }
