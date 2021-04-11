@@ -56,35 +56,35 @@ createSize(SizeJSON){
 },
 
 createExtra(ExtraJSON){
-    return axios.post('extras', ExtraJSON);
+    return axios.put('extras', ExtraJSON);
 },
 
 updateCakeConfig(ConfigJSON){
-    return axios.post(`/configs/${ConfigJSON.configID}`, ConfigJSON);
+    return axios.put(`/configs/${ConfigJSON.configID}`, ConfigJSON);
 },
 
 updateFlavor(FlavorJSON){
-    return axios.post(`/flavors/${FlavorJSON.flavorID}`, FlavorJSON);
+    return axios.put(`/flavors/${FlavorJSON.flavorID}`, FlavorJSON);
 },
 
 updateFrosting(FrostingJSON){
-    return axios.post(`/frostings/${FrostingJSON.frostingID}`, FrostingJSON);
+    return axios.put(`/frostings/${FrostingJSON.frostingID}`, FrostingJSON);
 },
 
 updateFilling(FillingJSON){
-    return axios.post(`/fillings/${FillingJSON.fillingID}`, FillingJSON);
+    return axios.put(`/fillings/${FillingJSON.fillingID}`, FillingJSON);
 },
 
 updateStyle(StyleJSON){
-    return axios.post(`/styles/${StyleJSON.styleID}`, StyleJSON);
+    return axios.put(`/styles/${StyleJSON.styleID}`, StyleJSON);
 },
 
 updateSize(SizeJSON){
-    return axios.post(`/sizes/${SizeJSON.sizeID}`, SizeJSON);
+    return axios.put(`/sizes/${SizeJSON.sizeID}`, SizeJSON);
 },
 
 updateExtra(ExtraJSON){
-    return axios.post(`/extras/${ExtraJSON.extraID}`, ExtraJSON);
+    return axios.put(`/extras/${ExtraJSON.extraID}`, ExtraJSON);
 },
 
 updateOrder(orderJSON){
