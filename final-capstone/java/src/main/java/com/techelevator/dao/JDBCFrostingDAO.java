@@ -64,6 +64,11 @@ public class JDBCFrostingDAO implements FrostingDAO{
                 frosting.getFrostingID ());
     }
 
+    @Override
+    public void updateFrosting(Frosting frosting, int id) {
+
+    }
+
     public Frosting mapRowToFrosting(SqlRowSet result){
         Frosting frosting = new Frosting();
         frosting.setFrostingID(result.getInt("frosting_id"));
