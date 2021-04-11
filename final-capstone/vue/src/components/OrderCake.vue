@@ -267,7 +267,7 @@ export default {
             element.styleID === this.standardCakeOrderJSON.cakeItemStyleID
         );
         price += styleElement.priceMod;
-      }
+      } 
       if (this.standardCakeOrderJSON.cakeItemFlavorID) {
         let flavorElement = this.$store.state.availableFlavorsBE.find(
           (element) =>
