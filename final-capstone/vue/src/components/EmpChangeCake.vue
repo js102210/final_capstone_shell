@@ -7,40 +7,30 @@
         <tr>
           <th>&nbsp;</th>
           <th>Cake Name</th>
-          <th>Flavor</th>
           <th>Description</th>
           <th>Status</th>
           <th>Action</th>
         </tr>
       </thead>
-<!--       
+      
       <tbody>
-        <tr>
+        <tr v-for="cake in $store.state.availableCakeConfigsBE" v-bind:key="cake.cakeConfigID"
+            v-bind:class="{ unavailable: !cake.isAvailable}">
           <td>
-            <select id="statusFilter" v-model="filter.status">
-              <option value>Show All</option>
-              <option value="Active">Active</option>
-              <option value="Disabled">Disabled</option>
-            </select>
+            <!-- v-bind:id="user.id" v-bind:value="user.id" v-model="selectedUserIDs"  -->
+            <input type="checkbox" />
           </td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr v-for="user in filteredList" v-bind:key="user.id"
-          v-bind:class="{ disabled: user.status === 'Disabled' }">
+          <!-- {{ cake.name }} -->
+          <td>{{cake.cakeConfigName}}</td>
+          <td>{{cake.cakeConfigDescription}}</td>
+          <td>{{cake.isAvailable}}</td>
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" v-model="selectedUserIDs" />
-          </td>
-          <td>{{ user.firstName }}</td>
-          <td>{{ user.lastName }}</td>
-          <td>{{ user.username }}</td>
-          <td>{{ user.emailAddress }}</td>
-          <td>{{ user.status }}</td>
-          <td>
-            <button class="btnEnableDisable" v-on:click="flipStatus(user.id)" >
-              {{ user.status === "Active" ? "Disable" : "Enable" }}</button>
+            <!-- v-on:click="flipStatus(cake.id)" >
+              {{ cakeConfig.status === "Available" ? "Unavailable" : "Available" }} -->
+            <button class="btnAvailableUnavailable"> Flip status</button>
           </td> 
         </tr>
-      </tbody> -->
+      </tbody>
     </table>
 
   </div>
