@@ -55,7 +55,7 @@ public class JDBCExtraDAO implements ExtraDAO{
                 "price_mod = ?\n" +
                 "WHERE extra_id = ?;";
         jdbcTemplate.update(sqlToUpdateExtra, extra.getExtraName(), extra.isAvailable(),
-                extra.getPriceMod(), extra.getExtraID());
+                extra.getPriceMod(), ID);
         return extra;
     }
     @Override

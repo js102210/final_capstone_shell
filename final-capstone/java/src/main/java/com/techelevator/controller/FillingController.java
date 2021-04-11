@@ -28,9 +28,9 @@ public class FillingController {
         return fillingDAO.getAvailableFillings();
     }
 
-    @RequestMapping(path = "/fillings/{filling_id}", method = RequestMethod.PUT)
-    public void update (@PathVariable int fillingID, String fillingName, boolean isAvailable, BigDecimal priceMod,
-                        @RequestBody Filling filling) {
-        fillingDAO.update(filling);
+    @RequestMapping(path = "/fillings/{id}", method = RequestMethod.PUT)
+    public Filling update (@PathVariable int id, @RequestBody Filling filling) {
+        fillingDAO.updateFilling(filling, id);
+        return filling;
     }
 }

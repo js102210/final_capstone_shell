@@ -27,14 +27,7 @@ public interface FillingDAO {
      */
     int createFilling(String FillingName, BigDecimal priceMod);
 
-    /**
-     * changes the availability status of a Filling
-     * @param ID int ID of the Filling to change availability for
-     * @return boolean the availability status of the Filling after the change
-     */
-    //note we're going to do this with a whole JSON object so this method probably doesn't make sense
 
-    boolean flipAvailability(int ID);
 
     /**
      * removes a Filling from the datastore
@@ -43,5 +36,11 @@ public interface FillingDAO {
      */
     String deleteFilling(int ID);
 
-    void update(Filling filling);
+    /**
+     * make updates to an existing Filling
+     * @param filling filling the size to change, with all updated properties
+     * @param fillingID int ID of the Size to change
+     * @return filling with all properties updated
+     */
+    Filling updateFilling(Filling filling, int fillingID);
 }
