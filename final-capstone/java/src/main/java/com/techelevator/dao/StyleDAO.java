@@ -20,6 +20,8 @@ public interface StyleDAO {
      */
     List<Style> getAllStyles();
 
+    Style updateStyle(Style style, int styleID);
+
     /**
      * inserts a new Style into the datastore
      * @param styleName String name of the Style

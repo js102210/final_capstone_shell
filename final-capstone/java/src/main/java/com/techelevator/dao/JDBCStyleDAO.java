@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 
+
 import com.techelevator.model.Style;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -41,6 +42,17 @@ public class JDBCStyleDAO implements StyleDAO{
             }
             return allStyles;
         }
+        @Override
+        public Style updateStyle(Style style, int styleID) {
+        String sqlToUpdateStyle = "UPDATE styles\n" +
+                "SET style_name = ?,\n" +
+                "is_available = ?,\n" +
+                "price_mod = ?\n" +
+                "WHERE style_id = ?; ";
+        jdbcTemplate.update (sqlToUpdateStyle, style.getStyleName (), style.isAvailable (), style.getPriceMod (),
+                styleID);
+        return style;
+    }
 
         @Override
         public int createStyle(String styleName, BigDecimal priceMod) {
