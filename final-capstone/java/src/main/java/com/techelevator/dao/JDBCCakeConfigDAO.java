@@ -9,19 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JDBCCakeConfigDAO implements CakeConfigDAO{
-private final JdbcTemplate jdbcTemplate;
-public JDBCCakeConfigDAO(JdbcTemplate jdbcTemplate){
-    this.jdbcTemplate = jdbcTemplate;
-}
+public class JDBCCakeConfigDAO implements CakeConfigDAO {
+    private final JdbcTemplate jdbcTemplate;
 
-@Override
- public List<CakeConfig> getAllConfigs() {
+    public JDBCCakeConfigDAO(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    @Override
+    public List<CakeConfig> getAllConfigs() {
         String sqlForAllConfigs =
                 "SELECT *  FROM cake_config;";
         List<CakeConfig> allConfigs = new ArrayList<>();
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlForAllConfigs);
-        while (result.next()){
+        while (result.next()) {
             CakeConfig config = mapRowToCakeConfig(result);
             allConfigs.add(config);
         }
@@ -34,7 +35,7 @@ public JDBCCakeConfigDAO(JdbcTemplate jdbcTemplate){
                 "SELECT *  FROM cake_config WHERE is_available = true;";
         List<CakeConfig> allConfigs = new ArrayList<>();
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlForAllConfigs);
-        while (result.next()){
+        while (result.next()) {
             CakeConfig config = mapRowToCakeConfig(result);
             allConfigs.add(config);
         }
@@ -57,15 +58,16 @@ public JDBCCakeConfigDAO(JdbcTemplate jdbcTemplate){
     }
 
 
-    public CakeConfig mapRowToCakeConfig (SqlRowSet result){
-    CakeConfig config = new CakeConfig();
-    config.setCakeConfigID(result.getInt("cake_config_id"));
-    config.setCakeConfigName(result.getString("cake_config_name"));
-    config.setCakeConfigUrl(result.getString("cake_config_img_url"));
-    config.setCakeConfigDescription(result.getString("cake_config_description"));
-    config.setCakeConfigFillingID(result.getInt("filling_id"));
-    config.setCakeConfigFlavorID( result.getInt("flavor_id"));
-    config.setCakeConfigFrostingID(result.getInt("frosting_id"));
-     return config;
+    public CakeConfig mapRowToCakeConfig(SqlRowSet result) {
+        CakeConfig config = new CakeConfig();
+        config.setCakeConfigID(result.getInt("cake_config_id"));
+        config.setCakeConfigName(result.getString("cake_config_name"));
+        config.setCakeConfigUrl(result.getString("cake_config_img_url"));
+        config.setCakeConfigDescription(result.getString("cake_config_description"));
+        config.setCakeConfigFillingID(result.getInt("filling_id"));
+        config.setCakeConfigFlavorID(result.getInt("flavor_id"));
+        config.setCakeConfigFrostingID(result.getInt("frosting_id"));
+        return config;
 
+    }
 }

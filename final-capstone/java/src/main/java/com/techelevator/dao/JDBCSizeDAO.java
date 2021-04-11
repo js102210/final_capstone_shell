@@ -59,7 +59,7 @@ public class JDBCSizeDAO implements SizeDAO {
         size.setSizeID(result.getInt("size_id"));
         size.setSizeName(result.getString("size_name"));
         size.setSizeDescription(result.getString("size_description"));
-        size.setAvailable(result.getBoolean("is_available"));
+        size.setIsAvailable(result.getBoolean("is_available"));
         size.setPriceMod(result.getBigDecimal("price_mod"));
         return size;
     }

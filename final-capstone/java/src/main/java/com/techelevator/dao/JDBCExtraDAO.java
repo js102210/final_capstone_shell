@@ -67,7 +67,7 @@ public class JDBCExtraDAO implements ExtraDAO{
         Extra extra = new Extra();
         extra.setExtraID(result.getInt("extra_id"));
         extra.setExtraName(result.getString("extra_name"));
-        extra.setAvailable(result.getBoolean("is_available"));
+        extra.setIsAvailable(result.getBoolean("is_available"));
         extra.setPriceMod(result.getBigDecimal("price_mod"));
         return extra;
     }

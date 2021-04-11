@@ -67,7 +67,7 @@ public class JDBCFlavorDAO implements FlavorDAO{
         Flavor flavor = new Flavor();
         flavor.setFlavorID(result.getInt("flavor_id"));
         flavor.setFlavorName(result.getString("flavor_name"));
-        flavor.setAvailable(result.getBoolean("is_available"));
+        flavor.setIsAvailable(result.getBoolean("is_available"));
         flavor.setPriceMod(result.getBigDecimal("price_mod"));
         return flavor;
     }

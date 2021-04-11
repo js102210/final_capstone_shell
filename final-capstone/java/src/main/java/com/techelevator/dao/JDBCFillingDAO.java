@@ -67,7 +67,7 @@ public class JDBCFillingDAO implements FillingDAO{
         Filling filling = new Filling();
         filling.setFillingID(result.getInt("filling_id"));
         filling.setFillingName(result.getString("filling_name"));
-        filling.setAvailable(result.getBoolean("is_available"));
+        filling.setIsAvailable(result.getBoolean("is_available"));
         filling.setPriceMod(result.getBigDecimal("price_mod"));
         return filling;
     }

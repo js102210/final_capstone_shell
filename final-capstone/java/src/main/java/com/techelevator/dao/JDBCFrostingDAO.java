@@ -68,7 +68,7 @@ public class JDBCFrostingDAO implements FrostingDAO{
         Frosting frosting = new Frosting();
         frosting.setFrostingID(result.getInt("frosting_id"));
         frosting.setFrostingName(result.getString("frosting_name"));
-        frosting.setAvailable(result.getBoolean("is_available"));
+        frosting.setIsAvailable(result.getBoolean("is_available"));
         frosting.setPriceMod(result.getBigDecimal("price_mod"));
         return frosting;
     }
