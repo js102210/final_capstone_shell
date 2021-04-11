@@ -29,7 +29,7 @@ public class StyleController {
     }
 
     @RequestMapping(path = "/styles", method = RequestMethod.POST)
-    public int createNewStyle(Style newStyle){
+    public int createNewStyle(@RequestBody Style newStyle){
         return styleDAO.createStyle(newStyle);
     }
 
