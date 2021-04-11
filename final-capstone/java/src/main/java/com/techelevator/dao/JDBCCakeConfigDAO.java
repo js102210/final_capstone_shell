@@ -62,7 +62,7 @@ public class JDBCCakeConfigDAO implements CakeConfigDAO {
     public boolean flipConfigStatus(int id){
         String sqlFlipStatusStatement = "UPDATE cake_config SET is_available = NOT is_available WHERE cake_config_id = ? RETURNING is_available ;" ;
 
-        boolean result = jdbcTemplate.queryForObject(sqlFlipStatusStatement, Boolean.class, id);
+        Boolean result = jdbcTemplate.queryForObject(sqlFlipStatusStatement, Boolean.class, id);
 
         return result;
     }

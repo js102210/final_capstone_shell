@@ -217,7 +217,8 @@ export default new Vuex.Store({
         cakeConfigDescription: "Build your own cake!",
         cakeConfigFlavorID: 1,
         cakeConfigFrostingID: 1,
-        cakeConfigFillingID: 1
+        cakeConfigFillingID: 1,
+        isAvailable: true
       },
       {
         cakeConfigID: 2,
@@ -226,7 +227,8 @@ export default new Vuex.Store({
         cakeConfigDescription: "Our fun-filled confetti cake with luscious vanilla frosting",
         cakeConfigFlavorID: 4,
         cakeConfigFrostingID: 2,
-        cakeConfigFillingID: 1
+        cakeConfigFillingID: 1,
+        isAvailable: true
       },
       {
         cakeConfigID: 3,
@@ -235,7 +237,8 @@ export default new Vuex.Store({
         cakeConfigDescription: "Our award-winning deep devil's food cake with deep chocolate frosting. Go ahead, it's cheat day!",
         cakeConfigFlavorID: 3,
         cakeConfigFrostingID: 3,
-        cakeConfigFillingID: 1
+        cakeConfigFillingID: 1,
+        isAvailable: true
       },
       {
         cakeConfigID: 4,
@@ -244,7 +247,8 @@ export default new Vuex.Store({
         cakeConfigDescription: "Our moist carrot cake is jam-packed with healthy antoxidants and unbeatable flavor! It comes with our incredible cream cheese frosting.",
         cakeConfigFlavorID: 5,
         cakeConfigFrostingID: 4,
-        cakeConfigFillingID: 1
+        cakeConfigFillingID: 1,
+        isAvailable: true
       }
 
     ],
