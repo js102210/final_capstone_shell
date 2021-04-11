@@ -69,7 +69,7 @@ CREATE TABLE sizes
         
         CONSTRAINT pk_sizes PRIMARY KEY (size_id)
         ); 
-          INSERT INTO sizes (size_name, size_description) VALUES ('No size', 'Pick a cake size!');
+        INSERT INTO sizes (size_name, size_description) VALUES ('No size', 'Pick a cake size!');
 
 DROP SEQUENCE IF EXISTS seq_flavor_id; 
 CREATE SEQUENCE seq_flavor_id
@@ -175,6 +175,7 @@ CREATE TABLE cake_config
         flavor_id int NOT NULL,
         frosting_id int NOT NULL,
         filling_id int NOT NULL,
+        is_available boolean DEFAULT TRUE NOT NULL,
         
         
         CONSTRAINT pk_cake_config PRIMARY KEY (cake_config_id),
@@ -183,7 +184,7 @@ CREATE TABLE cake_config
         CONSTRAINT fk_cake_config_filling FOREIGN KEY (filling_id) REFERENCES fillings (filling_id)
         );          
  INSERT INTO cake_config (cake_config_name, cake_config_img_url, cake_config_description, flavor_id, frosting_id, filling_id) 
-        VALUES ('CUSTOM', '', 'DESCRIPTION', 1, 1, 1);
+        VALUES ('Custom Cake', 'https://www.pngkit.com/png/detail/918-9180589_wedding-cake-icon-png-conzelmann-b-228-ckerei.png', 'Build your own cake!', 1, 1, 1);
         --bc of our INSERT statements IDs for NULL values are 1    
         
 
@@ -329,9 +330,10 @@ date_last_updated = CURRENT_DATE
 WHERE order_id = 2;
 
 UPDATE extras
-SET extra_name = 'real bunny',
+SET extra_name = 'reau  bunny',
 is_available = true,
-price_mod = 1.0;
+price_mod = 1.0
+WHERE extra_id = 2;
 
                 
 
