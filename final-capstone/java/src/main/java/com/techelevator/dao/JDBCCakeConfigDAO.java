@@ -12,6 +12,7 @@ import java.util.List;
 public class JDBCCakeConfigDAO implements CakeConfigDAO {
     private final JdbcTemplate jdbcTemplate;
 
+
     public JDBCCakeConfigDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -70,4 +71,8 @@ public class JDBCCakeConfigDAO implements CakeConfigDAO {
         return config;
 
     }
+
 }
+
+
+

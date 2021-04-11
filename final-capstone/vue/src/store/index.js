@@ -346,6 +346,37 @@ export default new Vuex.Store({
     SET_ALL_CAKE_CONFIG_ARRAY(state, cakeConfigJSONArray){
       state.allCakeConfigsBE = cakeConfigJSONArray;
     },
+    SET_ALL_SIZES_ARRAY(state, sizeJSONArray){
+      state.availableCakeSizesBE = sizeJSONArray;
+    },
+    SET_AVAILABLE_SIZES_ARRAY(state, sizeJSONArray){
+      state.allCakeSizesBE = sizeJSONArray;
+    },
+    SET_AVAILABLE_STYLES_ARRAY(state, styleJSONArray){
+      state.availableCakeStylesBE = styleJSONArray;
+    },
+    SET_ALL_STYLES_ARRAY(state, styleJSONArray){
+      state.allCakeStylesBE = styleJSONArray;
+    },
+    SET_ALL_FLAVORS_ARRAY(state, flavorJSONArray){
+      state.allFlavorsBE = flavorJSONArray;
+    },
+    SET_AVAILABLE_FLAVORS_ARRAY(state, flavorJSONArray){
+      state.availableFlavorsBE = flavorJSONArray;
+    },
+    SET_ALL_FROSTINGS_ARRAY(state, frostingJSONArray){
+      state.allFrostingsBE = frostingJSONArray;
+    },
+    SET_AVAILABLE_FROSTINGS_ARRAY(state, frostingJSONArray){
+      state.availableFrostingsBE = frostingJSONArray;
+    },
+    SET_AVAILABLE_FILLINGS_ARRAY(state, fillingJSONArray){
+      state.availableFillingsBE = fillingJSONArray;
+    },
+    SET_ALL_FILLINGS_ARRAY(state, fillingJSONArray){
+      state.allFillingsBE = fillingJSONArray;
+    },
+    
 
     ADD_CAKEITEM_TO_ACTIVE_ORDER(state, cakeItem) {
       state.cakeItemToOrder = cakeItem;
