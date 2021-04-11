@@ -78,7 +78,7 @@
         </option></select
       ><br />
 
-      <!-- Custom Cake section hidden when Custom not selected -->
+      <!-- Custom Cake section hidden when standard config not selected -->
       <section
         class="custom cake options"
         v-show="showCustomOptions"
@@ -127,7 +127,9 @@
       </section>
       <!-- End of Custom Cake section -->
 
+<!-- right now price in lable is hard coded - need to get that from store data which needs to come from back end -->
       <label for="optional message"
+    
         >Custom Message (Optional: $1.50 extra)</label
       >
       <input
@@ -296,6 +298,7 @@ export default {
 
       return price.toFixed(2);
     },
+    //JS date math sucks, please do this because I couldn't get to work to make a min
     dateMinimum() {
       let today = new Date();
       let tomorrow = new Date(today.getDate());
@@ -329,6 +332,7 @@ export default {
     }
   },
   methods: {
+    //this method didn't work - was trying to autoselect the cake config that was clicked on from the available cake view / cakelist
     getSelectedStandardCake() {
       let cakeID = this.$store.state.standardCakeIdOrder;
       let cakeIndex = this.$store.state.placeholderCakes.find(

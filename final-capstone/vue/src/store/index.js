@@ -204,6 +204,7 @@ export default new Vuex.Store({
         priceMod: 2.00
       }
     ],
+    //placeholder for price for message - this is currently a magic number so we'll want a way to get this price live from the DB
     messagePrice: {
       priceMod: 1.50
     },
@@ -286,6 +287,7 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
+    //unsure what we are using this for currently
     SET_SELECTED_CONFIG(state, cakeConfig) {
       state.selectedConfig = cakeConfig;
     },
