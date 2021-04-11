@@ -1,9 +1,10 @@
 <template>
   <div class="create-cake-display">
     <p>Create New Standard Cake:</p>
+    <p>Required Fields (*) must be completed</p>
     <form class="create-cake" @submit="createNewCakeConfig">
       <label for="cakeName">Cake Name: *</label>
-      <input type="text" name="cakeName" v-model="newCake.cakeConfigName" />
+      <input type="text" name="cakeName" v-model="newCake.cakeConfigName" /><br />
 
       <label for="flavor">Flavor: *</label>
       <select name="flavor" v-model="newCake.cakeConfigFlavorID">
@@ -14,7 +15,7 @@
         >
           {{ flavor.flavorName }}
         </option>
-      </select>
+      </select><br />
 
       <label for="frosting">Frosting:</label>
       <select name="frosting" v-model="newCake.cakeConfigFrostingID">
@@ -25,7 +26,7 @@
         >
           {{ frosting.frostingName }}
         </option>
-      </select>
+      </select><br />
 
       <label for="filling">Filling:</label>
       <select name="filling" v-model="newCake.cakeConfigFillingID">
@@ -36,23 +37,23 @@
         >
           {{ filling.fillingName }}
         </option>
-      </select>
+      </select><br />
 
       <label for="imageURL">Image URL: *</label>
-      <input type="url" name="imageURL" v-model="newCake.cakeConfigUrl" />
+      <input type="url" name="imageURL" v-model="newCake.cakeConfigUrl" /><br />
 
       <label for="description">Description: *</label>
       <input
         type="text"
         name="description"
         v-model="newCake.cakeConfigDescription"
-      />
+      /><br />
 
       <!-- disable submit button if any field is blank -->
       <button type="submit" :disabled="!createCakeFormValidated">
         Create New Cake
       </button>
-      <p>Required Fields (*) must be completed</p>
+      
     </form>
   </div>
 </template>
