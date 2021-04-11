@@ -13,7 +13,7 @@
 
 <script>
 
-import CustomerService from '../services/EmployeeService.js';
+import CustomerService from '../services/CustomerService.js';
 import CakeCard from "./CakeCard.vue";
 export default {
   components: { CakeCard },
