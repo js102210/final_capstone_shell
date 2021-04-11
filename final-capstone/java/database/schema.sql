@@ -269,7 +269,8 @@ INSERT INTO flavors (flavor_name, is_available, price_mod)
 VALUES ('vanilla', true, 0.00),
 	('chocolate', true, 0.00),
 	('confetti', true, 2.00),
-	('carrot', true, 3.00);
+	('carrot', true, 3.00),
+	('strawberry', false, 2.00);
 
 INSERT INTO frostings (frosting_name, is_available, price_mod)
 VALUES ('vanilla', true, 0.00),

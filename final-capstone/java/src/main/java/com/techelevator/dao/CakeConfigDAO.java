@@ -32,4 +32,12 @@ public interface CakeConfigDAO {
      */
     Integer addCakeConfig(CakeConfig configToAdd);
 
+    /**
+     * flips the availability status of a cake config. If it was true, it becomes false, and vice versa. Returns the
+     * new value if is_available in the cake config table.
+     * @param id - the id of the cake confit
+     * @return boolean - the updated boolean of the cake config for is_available
+     * */
+    boolean flipConfigStatus(int id);
+
 }

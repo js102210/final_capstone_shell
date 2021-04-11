@@ -36,6 +36,12 @@ public class CakeConfigController {
    return  cakeConfigDAO.addCakeConfig(cakeConfig);
     }
 
+    @RequestMapping(path = "/configs/flip/{id}", method = RequestMethod.PATCH)
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    public Boolean configFlipStatus(@PathVariable int id){
+        return cakeConfigDAO.flipConfigStatus(id);
+    }
+
 
 }
 
