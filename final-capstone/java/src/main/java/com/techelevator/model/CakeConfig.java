@@ -9,6 +9,8 @@ public class CakeConfig {
     private int cakeConfigFrostingID;
     private int cakeConfigFlavorID;
 
+    private boolean isAvailable;
+
     /**
      * Constructor for an existing CakeConfig
      * @param cakeConfigID int
@@ -31,6 +33,7 @@ public class CakeConfig {
 
     }
 
+
     /**
      * Constructor for adding instantiating a new Cake Config in memory to add it to the datastore, where it will be assigned an id
      * @param cakeConfigName String
@@ -52,6 +55,16 @@ public class CakeConfig {
     public CakeConfig(){
 
     };
+
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
 
 
     public int getCakeConfigID() {

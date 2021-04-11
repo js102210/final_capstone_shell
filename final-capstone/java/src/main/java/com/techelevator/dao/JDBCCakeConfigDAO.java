@@ -31,7 +31,7 @@ public JDBCCakeConfigDAO(JdbcTemplate jdbcTemplate){
     @Override
     public List<CakeConfig> getAvailableConfigs() {
         String sqlForAllConfigs =
-                "SELECT *  FROM cake_config WHERE is_avail = true;";
+                "SELECT *  FROM cake_config WHERE is_available = true;";
         List<CakeConfig> allConfigs = new ArrayList<>();
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlForAllConfigs);
         while (result.next()){
@@ -58,10 +58,14 @@ public JDBCCakeConfigDAO(JdbcTemplate jdbcTemplate){
 
 
     public CakeConfig mapRowToCakeConfig (SqlRowSet result){
-     return new CakeConfig(result.getInt("cake_config_id"),
-     result.getString("cake_config_name"), result.getString("cake_config_img_url"),
-     result.getString("cake_config_description"), result.getInt("filling_id"),
-     result.getInt("flavor_id"), result.getInt("frosting_id"));
-    }
+    CakeConfig config = new CakeConfig();
+    config.setCakeConfigID(result.getInt("cake_config_id"));
+    config.setCakeConfigName(result.getString("cake_config_name"));
+    config.setCakeConfigUrl(result.getString("cake_config_img_url"));
+    config.setCakeConfigDescription(result.getString("cake_config_description"));
+    config.setCakeConfigFillingID(result.getInt("filling_id"));
+    config.setCakeConfigFlavorID( result.getInt("flavor_id"));
+    config.setCakeConfigFrostingID(result.getInt("frosting_id"));
+     return config;
 
 }
