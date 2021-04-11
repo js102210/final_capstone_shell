@@ -29,11 +29,12 @@ public interface ExtraDAO {
     int createExtra(String extraName, BigDecimal priceMod);
 
     /**
-     * changes the availability status of an Extra item
-     * @param ID int ID of the Extra item & to change availability
-     * @return boolean for the availability status of the Extra after its changed
+     * make updates to an existing Extra
+     * @param extra Extra the Extra to change, with all updated properties
+     * @param ID int ID of the Extra to change
+     * @return Extra with all properties updated
      */
-    boolean flipAvailability(int ID);
+     Extra updateExtra(Extra extra, int ID);
 
     /**
      * removes an Extra from the datastore
