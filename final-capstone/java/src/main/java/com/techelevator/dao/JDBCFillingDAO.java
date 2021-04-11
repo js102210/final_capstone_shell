@@ -45,6 +45,11 @@ public class JDBCFillingDAO implements FillingDAO{
         return 0;
     }
 
+    @Override
+    public int createFilling(Filling newFilling) {
+        return 0;
+    }
+
 
     @Override
     public String deleteFilling(int ID) {
@@ -61,6 +66,11 @@ public class JDBCFillingDAO implements FillingDAO{
         jdbcTemplate.update (sqlToUpdateFilling, filling.getFillingName (), filling.isAvailable (), filling.getPriceMod (),
                 fillingID);
         return filling;
+    }
+
+    @Override
+    public Boolean flipAvailability(int id) {
+        return null;
     }
 
     public Filling mapRowToFilling(SqlRowSet result){

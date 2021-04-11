@@ -26,7 +26,7 @@ public interface FillingDAO {
      * @return int ID of the newly created Filling
      */
     int createFilling(String FillingName, BigDecimal priceMod);
-
+    int createFilling(Filling newFilling);
 
 
     /**
@@ -43,4 +43,7 @@ public interface FillingDAO {
      * @return filling with all properties updated
      */
     Filling updateFilling(Filling filling, int fillingID);
+
+
+    Boolean flipAvailability(int id);
 }
