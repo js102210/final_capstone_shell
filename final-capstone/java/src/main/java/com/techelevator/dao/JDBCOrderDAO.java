@@ -106,7 +106,7 @@ public class JDBCOrderDAO  implements  OrderDAO {
 //                    order.setCustomerPhoneNumber (rowSet.getString ("customer_phone_number"));
 
 
-//              Order order = new Order();
+//                    Order order = new Order();
 //                    order.setOrderID (rowSet.getInt ("order_id"));
 //                    order.setOrderStatus (rowSet.getInt ("status_id"));
 //                    order.setOrderPriceTotal (rowSet.getBigDecimal ("total_price"));

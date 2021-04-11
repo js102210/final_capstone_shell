@@ -42,5 +42,7 @@ public interface FrostingDAO {
      */
     String deleteFrosting(int ID);
 
-    void update(Frosting frosting);
+    
+
+    void updateFrosting(Frosting frosting, int id);
 }

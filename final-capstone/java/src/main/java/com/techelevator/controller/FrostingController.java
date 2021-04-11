@@ -28,10 +28,11 @@ public class FrostingController {
         return frostingDAO.getAvailableFrostings();
     }
 
-    @RequestMapping(path = "/frostings/{frosting_id}", method = RequestMethod.PUT)
-    public void update (@PathVariable int frostingID, String frostingName, boolean isAvailable, BigDecimal priceMod,
+    @RequestMapping(path = "/frostings/{id}", method = RequestMethod.PUT)
+    public Frosting update (@PathVariable int id,
                         @RequestBody Frosting frosting) {
-        frostingDAO.update(frosting);
+        frostingDAO.updateFrosting(frosting, id);
+        return frosting;
     }
 
 }

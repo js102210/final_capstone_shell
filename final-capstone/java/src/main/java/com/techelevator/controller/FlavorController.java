@@ -26,10 +26,10 @@ public class FlavorController {
         return flavorDAO.getAvailableFlavors();
     }
 
-    @RequestMapping(path = "/flavors/{flavor_id}", method = RequestMethod.PUT)
-    public void update (@PathVariable int flavorID, String flavorName, boolean isAvailable, BigDecimal priceMod,
-                        @RequestBody Flavor flavor) {
-        flavorDAO.update(flavor);
+    @RequestMapping(path = "/flavors/{id}", method = RequestMethod.PUT)
+    public Flavor update (@PathVariable int id, @RequestBody Flavor flavor) {
+        flavorDAO.updateFlavor(flavor, id);
+        return flavor;
     }
 
 }
