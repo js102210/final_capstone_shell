@@ -5,10 +5,8 @@ import com.techelevator.dao.StyleDAO;
 
 
 import com.techelevator.model.Style;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +26,16 @@ public class StyleController {
     @RequestMapping(path = "/styles/available", method = RequestMethod.GET)
     public List<Style> getAvailableStylesFromDb() {
         return styleDAO.getAvailableStyles ();
+    }
+
+    @RequestMapping(path = "/styles", method = RequestMethod.POST)
+    public int createNewStyle(Style newStyle){
+        return styleDAO.createStyle(newStyle);
+    }
+
+    @RequestMapping(path = "/styles/flip/{id}", method = RequestMethod.PATCH)
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    public Boolean styleFlipStatus(@PathVariable int id){
+        return styleDAO.flipAvailability(id);
     }
 }
