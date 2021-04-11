@@ -3,12 +3,14 @@ package com.techelevator.dao;
 import com.techelevator.model.Extra;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JDBCExtraDAO implements ExtraDAO{
     private final JdbcTemplate jdbcTemplate;
     public JDBCExtraDAO(JdbcTemplate jdbcTemplate){
