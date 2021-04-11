@@ -360,6 +360,12 @@ export default {
       CustomerService.sendOrderJSON(this.$store.state.currentActiveOrder)
         .then((response) => {
           if (response.status === 201) {
+           const selectedName = this.$store.state.availableCakeConfigsBE.find((config) => {
+              if (config.cakeConfigID == this.standardCakeOrderJSON.cakeItemConfigID){
+                return config.cakeConfigName;
+              }
+            })
+            confirm(selectedName.cakeConfigName + ' ordered! See you on ' +  this.pickupInfo.orderPickupDate)
             this.$store.commit("CLEAR_ACTIVE_ORDER");
             this.$router.push("/cakes");
           }
