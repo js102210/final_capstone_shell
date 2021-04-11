@@ -27,8 +27,7 @@ public class FlavorController {
     }
 
     @RequestMapping(path = "/flavors/{flavor_id}", method = RequestMethod.PUT)
-    public void update (@PathVariable int flavorID, String flavorName, boolean isAvailable, BigDecimal priceMod,
-                        @RequestBody Flavor flavor) {
+    public void update (@PathVariable int flavor_id, @RequestBody Flavor flavor) {
         flavorDAO.update(flavor);
     }
 
