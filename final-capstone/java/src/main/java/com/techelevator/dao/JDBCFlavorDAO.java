@@ -13,6 +13,8 @@ import java.util.List;
 @Component
 public class JDBCFlavorDAO implements FlavorDAO{
     private final JdbcTemplate jdbcTemplate;
+
+
     public JDBCFlavorDAO(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -56,12 +58,20 @@ public class JDBCFlavorDAO implements FlavorDAO{
     }
 
     @Override
-    public void update(Flavor flavor) {
-        String sqlToUpdateFlavor = "UPDATE flavor SET flavor_name = ?, is_available = ?, price_mod = ?" +
+    public Flavor update(Flavor flavor) {
+        return null;
+    }
+
+    @Override
+    public Flavor updateFlavor(Flavor flavor, int flavorID) {
+        String sqlToUpdateFlavor = "UPDATE flavors SET flavor_name = ?, is_available = ?, price_mod = ?" +
                 "WHERE flavor_id = ?;";
         jdbcTemplate.update (sqlToUpdateFlavor, flavor.getFlavorName (), flavor.isAvailable (), flavor.getPriceMod (),
-                flavor.getFlavorID ());
+                flavorID);
+        return flavor;
     }
+
+
 
     public Flavor mapRowToFlavor(SqlRowSet result){
         Flavor flavor = new Flavor();
