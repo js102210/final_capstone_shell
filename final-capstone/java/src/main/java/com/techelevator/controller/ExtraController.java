@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ExtraDAO;
 import com.techelevator.model.Extra;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,12 +16,12 @@ public class ExtraController {
     }
 
     @RequestMapping(path = "/extras", method = RequestMethod.GET)
-    List<Extra> getAllExtras(){
+    public List<Extra> getAllExtras(){
         return extraDAO.getAllExtras();
     }
 
     @RequestMapping(path = "/extras/available", method = RequestMethod.GET)
-    List<Extra> getAvailableExtras(){
+    public List<Extra> getAvailableExtras(){
         return extraDAO.getAvailableExtras();
     }
 
@@ -30,4 +31,13 @@ public class ExtraController {
         return extra;
     }
 
+    @RequestMapping(path = "/extras", method = RequestMethod.POST)
+    public int createNewExtra (Extra newExtra) {
+        return extraDAO.createExtra (newExtra);
+    }
+    @RequestMapping(path = "/extras/flip/{id}", method = RequestMethod.PATCH)
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    public Boolean extraFlipStatus(@PathVariable int id) {
+        return extraDAO.flipAvailability(id);
+    }
 }
