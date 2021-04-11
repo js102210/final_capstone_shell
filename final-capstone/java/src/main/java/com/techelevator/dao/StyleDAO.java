@@ -24,11 +24,10 @@ public interface StyleDAO {
 
     /**
      * inserts a new Style into the datastore
-     * @param styleName String name of the Style
-     * @param priceMod BigDecimal how much for the Style
+     * @param newStyle the new style as a Style object
      * @return int ID of the new Style
      */
-    int createStyle(String styleName, BigDecimal priceMod);
+    int createStyle(Style newStyle);
 
     /**
      * changes the availability status of a Style

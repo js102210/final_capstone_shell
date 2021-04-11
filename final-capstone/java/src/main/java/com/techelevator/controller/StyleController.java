@@ -28,6 +28,11 @@ public class StyleController {
         return styleDAO.getAvailableStyles ();
     }
 
+    @RequestMapping(path = "/styles", method = RequestMethod.POST)
+    public int createNewStyle(Style newStyle){
+        return styleDAO.createStyle(newStyle);
+    }
+
     @RequestMapping(path = "/styles/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean styleFlipStatus(@PathVariable int id){
