@@ -314,6 +314,8 @@ SELECT *  FROM cake_config;
 SELECT * FROM fillings WHERE is_available = TRUE;  
 SELECT * FROM flavors WHERE is_available = TRUE;
 SELECT * FROM frostings WHERE is_available = TRUE;  
+SELECT * FROM sizes WHERE is_available = TRUE;
+SELECT * FROM extras WHERE is_available = TRUE;
 
 --example query updating an Order row
 UPDATE orders 
@@ -325,6 +327,11 @@ customer_name = 'some guy',
 customer_phone_number = '7777777777',
 date_last_updated = CURRENT_DATE
 WHERE order_id = 2;
+
+UPDATE extras
+SET extra_name = 'real bunny',
+is_available = true,
+price_mod = 1.0;
 
                 
 

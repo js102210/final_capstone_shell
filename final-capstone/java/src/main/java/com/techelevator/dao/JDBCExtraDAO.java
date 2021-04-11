@@ -48,7 +48,15 @@ public class JDBCExtraDAO implements ExtraDAO{
 
     @Override
     public Extra updateExtra(Extra extra, int ID) {
-        return null;
+        String sqlToUpdateExtra =
+                "UPDATE extras\n" +
+                "SET extra_name = ?,\n" +
+                "is_available = ?,\n" +
+                "price_mod = ?\n" +
+                "WHERE extra_id = ?;";
+        jdbcTemplate.update(sqlToUpdateExtra, extra.getExtraName(), extra.isAvailable(),
+                extra.getPriceMod(), extra.getExtraID());
+        return extra;
     }
     @Override
     public String deleteExtra(int ID) {

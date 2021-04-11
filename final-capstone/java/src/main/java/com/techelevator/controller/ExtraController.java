@@ -2,10 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ExtraDAO;
 import com.techelevator.model.Extra;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +22,12 @@ public class ExtraController {
     @RequestMapping(path = "/extras/available", method = RequestMethod.GET)
     List<Extra> getAvailableExtras(){
         return extraDAO.getAvailableExtras();
+    }
+
+    @RequestMapping(path = "extras/{id}", method = RequestMethod.PUT)
+    public Extra updateExtra(@PathVariable int id, @RequestBody Extra extra){
+        extraDAO.updateExtra(extra, id);
+        return extra;
     }
 
 }

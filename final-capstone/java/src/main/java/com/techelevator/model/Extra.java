@@ -9,6 +9,7 @@ public class Extra {
     private boolean isAvailable;
     private BigDecimal priceMod;
 
+
     public int getExtraID() {
         return extraID;
     }
@@ -32,6 +33,7 @@ public class Extra {
     public void setAvailable(boolean available) {
         isAvailable = available;
     }
+
 
     public BigDecimal getPriceMod() {
         return priceMod;
