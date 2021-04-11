@@ -17,17 +17,16 @@
         <tr v-for="cake in $store.state.availableCakeConfigsBE" v-bind:key="cake.cakeConfigID"
             v-bind:class="{ unavailable: !cake.isAvailable}">
           <td>
-            <!-- v-bind:id="user.id" v-bind:value="user.id" v-model="selectedUserIDs"  -->
-            <input type="checkbox" />
+            <input type="radio" name="flip status" v-bind:id="cake.cakeConfigID"
+              v-bind:value="cake.cakeConfigID" v-model="selectedCakeID" />
           </td>
-          <!-- {{ cake.name }} -->
           <td>{{cake.cakeConfigName}}</td>
           <td>{{cake.cakeConfigDescription}}</td>
-          <td>{{cake.isAvailable}}</td>
+          <td>{{cake.isAvailable? "Available": "Unavailable"}}</td>
           <td>
             <!-- v-on:click="flipStatus(cake.id)" >
               {{ cakeConfig.status === "Available" ? "Unavailable" : "Available" }} -->
-            <button class="btnAvailableUnavailable"> Flip status</button>
+            <button class="btnAvailableUnavailable" v-on:click="flipStatus(cake.cakeConfigID)"> Flip status</button>
           </td> 
         </tr>
       </tbody>
@@ -38,7 +37,17 @@
 
 <script>
 export default {
+  name: "emp-change-cake",
+  data() {
+    return {
+      selectedCakeID: {}
+    }
+  },
+  methods: {
+    flipStatus(id) {
 
+    }
+  }
 }
 </script>
 
