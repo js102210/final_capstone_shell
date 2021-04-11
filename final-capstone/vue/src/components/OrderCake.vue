@@ -3,9 +3,9 @@
 
     <div class="cakedisplay">
       <!-- we do ternary statements here - if nothing's selected in drop-down, the cakedisplay defaults to the custom cake info -->
-      <h3>{{isSomethingSelected ? selected.cakeItemConfigName : this.$store.state.standardCakeConfigsBE[0].cakeConfigName }}</h3>
-      <img v-bind:src="[isSomethingSelected ? selected.cakeItemConfigURL : this.$store.state.standardCakeConfigsBE[0].cakeConfigUrl]" /><br />
-      <p>{{isSomethingSelected ? selected.cakeItemConfigDescription : this.$store.state.standardCakeConfigsBE[0].cakeConfigDescription}}</p>
+      <h3>{{isSomethingSelected ? selected.cakeItemConfigName : this.$store.state.availableCakeConfigsBE[0].cakeConfigName }}</h3>
+      <img v-bind:src="[isSomethingSelected ? selected.cakeItemConfigURL : this.$store.state.availableCakeConfigsBE[0].cakeConfigUrl]" /><br />
+      <p>{{isSomethingSelected ? selected.cakeItemConfigDescription : this.$store.state.availableCakeConfigsBE[0].cakeConfigDescription}}</p>
     </div>
 
     <form class="order-form" @submit="orderThisCake">
@@ -15,7 +15,7 @@
       <!-- the v-model sets the select to whatever the standardCakeIdForOrder is. If null, it's blank.-->
       <select name="cake selection" v-model="selected" v-on:change="selectCakeConfig">
         <!-- sets text for options to all cake names in standardCakeConfigs. value is the cake's cake_id-->
-        <option v-for="cakeConfig in $store.state.standardCakeConfigsBE"
+        <option v-for="cakeConfig in $store.state.availableCakeConfigsBE"
          v-bind:key="cakeConfig.cakeConfigID"
           v-bind:value="{
             cakeItemConfigName: cakeConfig.cakeConfigName,
@@ -150,7 +150,7 @@ export default {
   //   if(this.$store.state.selectedConfig && this.$store.state.selectedConfig.cakeConfigID > 0){
   //   this.selected = this.$store.state.selectedConfig;
   //   } else {
-  //     this.selected = this.$store.state.standardCakeConfigsBE[0];
+  //     this.selected = this.$store.state.availableCakeConfigsBE[0];
   //     }
   //   },
   computed: {

@@ -43,6 +43,7 @@ export default new Vuex.Store({
     //jake: why do we have both of these? I thought custom cakes were just a config
     //dan: took out customOrderCakeObject, superfluous now that we've reconsidered
     //and make a cake JSON standard.
+    allCakeStylesBE:[],
     availableCakeStylesBE: [
       {
         styleID: 1,
@@ -69,6 +70,7 @@ export default new Vuex.Store({
         priceMod: 0.00
       }
     ],
+    allCakeSizesBE: [],
     availableCakeSizesBE: [
       {
         sizeID: 1,
@@ -99,6 +101,7 @@ export default new Vuex.Store({
         priceMod: 19.99
       }
     ],
+    allFlavorsBE:[],
     availableFlavorsBE: [
       {
         flavorID: 1,
@@ -132,6 +135,7 @@ export default new Vuex.Store({
       }
 
     ],
+    allFrostingsBE: [],
     availableFrostingsBE: [
       {
         frostingID: 1,
@@ -158,6 +162,7 @@ export default new Vuex.Store({
         priceMod: 3.00
       }
     ],
+    allFillingsBE: [],
     availableFillingsBE: [
       {
         fillingID: 1,
@@ -178,6 +183,7 @@ export default new Vuex.Store({
         priceMod: 1.00
       }
     ],
+    allExtrasBE: [],
     availableExtrasBE: [
       {
         extraID: 1,
@@ -201,7 +207,8 @@ export default new Vuex.Store({
     messagePrice: {
       priceMod: 1.50
     },
-    standardCakeConfigsBE: [
+    allCakeConfigsBE:[],
+    availableCakeConfigsBE: [
       {
         cakeConfigID: 1,
         cakeConfigName: "Custom Cake",
@@ -332,6 +339,12 @@ export default new Vuex.Store({
     },
     CLEAR_CAKE_EXTRA_JSON(state) {
       state.cakeExtraJSON = {};
+    },
+    SET_AVAILABLE_CAKE_CONFIG_ARRAY(state, cakeConfigJSONArray){
+      state.availableCakeConfigsBE = cakeConfigJSONArray;
+    },
+    SET_ALL_CAKE_CONFIG_ARRAY(state, cakeConfigJSONArray){
+      state.allCakeConfigsBE = cakeConfigJSONArray;
     },
 
     ADD_CAKEITEM_TO_ACTIVE_ORDER(state, cakeItem) {

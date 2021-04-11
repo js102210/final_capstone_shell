@@ -1,6 +1,6 @@
 <template>
   <div class="cakes-layout">
-      <cake-card v-for="cakeConfig in $store.state.standardCakeConfigsBE"
+      <cake-card v-for="cakeConfig in $store.state.availableCakeConfigsBE"
       v-bind:key="cakeConfig.cakeConfigID"
       v-bind:cakeConfig="cakeConfig" />
   </div>
