@@ -18,32 +18,45 @@ public class FlavorController {
         this.flavorDAO = flavorDAO;
     }
 
-    //need auth
+    /**
+     * Returns all flavors regardless of availability. Employee only.
+     * @return - returns list of all flavors as flavor JSONs.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/flavors", method = RequestMethod.GET)
     public List <Flavor> getAllFlavorsFromDb() {
         return flavorDAO.getAllFlavors ();
     }
 
+    /**
+     * Returns all available flavors for customer side of site.
+     * @return - returns list of all available flavors as flavor JSONs.
+     */
     @RequestMapping(path = "/flavors/available", method = RequestMethod.GET)
     public List <Flavor> getAvailableFlavorsFromDb() {
         return flavorDAO.getAvailableFlavors ();
     }
 
 
-
-
-    //need auth
+    /**
+     * Updates an existing flavor with new information from the complete flavor JSON passed from front end.
+     * employee only.
+     * @param flavor_id - the id of the flavor to update.
+     * @param flavor - the JSON for the flavor to update with all of the new information.
+     * @return - returns updated flavor.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/flavors/{flavor_id}", method = RequestMethod.PUT)
-    public void update(@PathVariable int flavor_id, @RequestBody Flavor flavor) {
-        flavorDAO.update (flavor);
+    public Flavor update(@PathVariable int flavor_id, @RequestBody Flavor flavor) {
+        return flavorDAO.updateFlavor(flavor, flavor_id);
     }
 
 
-
-
-    //need auth
+    /**
+     * Create a new flavor from the flavor JSON passed from front end. Employee only.
+     * @param newFlavor - the flavor JSON for the new flavor.
+     * @return - returns the new flavor's id.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/flavors", method = RequestMethod.POST)
     public int createNewFlavor(@RequestBody Flavor newFlavor) {
@@ -51,9 +64,11 @@ public class FlavorController {
     }
 
 
-
-
-    //need auth
+    /**
+     * flips the availability status for a flavor. Employee only.
+     * @param id - id of the flavor to be flipped.
+     * @return - returns the new availability status for the flavor.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "flavors/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)

@@ -27,5 +27,20 @@ export default {
 .employee-products-display {
   margin-top: 45px;
 }
+.change-options-display {
+  margin-top: 30px;
+  border:2px solid black;
+  border-radius: 10px;
+}
+
+.change-cake-display {
+  margin-top: 30px;
+  border:2px solid black;
+  border-radius: 10px;
+}
+
+.unavailable {
+  color: red;
+}
 
 </style>

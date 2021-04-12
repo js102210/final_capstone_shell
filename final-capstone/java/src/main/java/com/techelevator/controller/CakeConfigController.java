@@ -27,7 +27,6 @@ public class CakeConfigController {
      * @return - returns the list of ALL cake configs regardless of availability.
      */
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "/configs", method = RequestMethod.GET)
     public List <CakeConfig> getAllConfigsFromDb() {
         return cakeConfigDAO.getAllConfigs ();
@@ -42,8 +41,6 @@ public class CakeConfigController {
         return cakeConfigDAO.getAvailableConfigs ();
     }
 
-
-    //this also requires authorization. employee only.
 
 
     /**

@@ -113,29 +113,68 @@ export default {
   createNewFlavor(){
     EmployeeService.createFlavor(this.newFlavor).then((response) => {
       if(response.status == 200){
-        alert(this.newFlavor.flavorName + ' has been added! May it give you the strength to destroy your enemies!');
+        alert(this.newFlavor.flavorName + ' flavor has been added! May it give you the strength to destroy your enemies!');
         EmployeeService.getAllFlavors().then((response) => {
         this.$store.commit("SET_ALL_FLAVORS_ARRAY", response.data);
-    });
-
+    })
       }
     })
 
   },
    createNewFrosting(){
+         EmployeeService.createFrosting(this.newFrosting).then((response) => {
+      if(response.status == 200){
+        alert(this.newFrosting.frostingName + ' frosting has been added! May it give you the strength to destroy your enemies!');
+        EmployeeService.getAllFrostings().then((response) => {
+        this.$store.commit("SET_ALL_FROSTINGS_ARRAY", response.data);
+    })
+      }
+    })
 
   },
    createNewFilling(){
+         EmployeeService.createFilling(this.newFilling).then((response) => {
+      if(response.status == 200){
+        alert(this.newFilling.fillingName + ' filling has been added! May it give you the strength to destroy your enemies!');
+        EmployeeService.getAllFillings().then((response) => {
+        this.$store.commit("SET_ALL_FILLINGS_ARRAY", response.data);
+    })
+      }
+    })
 
   },
    createNewExtra(){
+         EmployeeService.createExtra(this.newExtra).then((response) => {
+      if(response.status == 200){
+        alert(this.newExtra.extraName + '  has been added as an Extra! May it give you the strength to destroy your enemies!');
+        EmployeeService.getAllExtras().then((response) => {
+        this.$store.commit("SET_ALL_EXTRAS_ARRAY", response.data);
+    })
+      }
+    })
 
   },
    createNewStyle(){
+         EmployeeService.createStyle(this.newStyle).then((response) => {
+      if(response.status == 200){
+        alert(this.newStyle.styleName + ' style has been added! May it give you the strength to destroy your enemies!');
+        EmployeeService.getAllStyles().then((response) => {
+        this.$store.commit("SET_ALL_STYLES_ARRAY", response.data);
+    })
+      }
+    })
 
   },
    createNewSize(){
 
+    EmployeeService.createSize(this.newFlavor).then((response) => {
+      if(response.status == 200){
+        alert(this.newSize.sizeName + ' size has been added! May it give you the strength to destroy your enemies!');
+        EmployeeService.getAllSizes().then((response) => {
+        this.$store.commit("SET_ALL_SIZES_ARRAY", response.data);
+    })
+      }
+    })
   },
   }
 }

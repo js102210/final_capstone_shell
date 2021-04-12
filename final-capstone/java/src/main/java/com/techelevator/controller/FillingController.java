@@ -18,21 +18,32 @@ public class FillingController {
         this.fillingDAO = fillingDAO;
     }
 
-    //get all fillings - need auth
+    /**
+     * gets all fillings. Employee only.
+     * @return - returns a list of all fillings regardless of availability status.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/fillings", method = RequestMethod.GET)
     public List <Filling> getAllFillingsFromDb() {
         return fillingDAO.getAllFillings ();
     }
 
-    //get available fillings
+    /**
+     * gets a list of available fillings. Used on customer side of site.
+     * @return - returns a list of available fillings.
+     */
     @RequestMapping(path = "/fillings/available", method = RequestMethod.GET)
     public List <Filling> getAvailableFillingsFromDb() {
         return fillingDAO.getAvailableFillings ();
     }
 
 
-    //need auth
+    /**
+     * updates a filling's information. Employee only.
+     * @param id - the id of the filling to update.
+     * @param filling - the filling JSON returned from the front end.
+     * @return - returns the updated Filling's info.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/fillings/{id}", method = RequestMethod.PUT)
     public Filling update(@PathVariable int id, @RequestBody Filling filling) {
@@ -41,7 +52,11 @@ public class FillingController {
     }
 
 
-    //need auth
+    /**
+     * Creates a new filling. Employee only.
+     * @param newFilling - the new filling JSON returned from the front end.
+     * @return - returns the new Filling's id.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/fillings", method = RequestMethod.POST)
     public int createNewFilling(@RequestBody Filling newFilling) {
@@ -49,7 +64,11 @@ public class FillingController {
     }
 
 
-    //need auth
+    /**
+     * Flips the availability of the indicated filling. Employee only.
+     * @param id - the id of the filling to flip.
+     * @return - returns the new availability status of the filling from its is_available field on DB.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/fillings/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
