@@ -57,7 +57,6 @@ public class ExtraController {
      * @return - returns the id of the newly minted Extra.
      */
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "/extras", method = RequestMethod.POST)
     public int createNewExtra(Extra newExtra) {
         return extraDAO.createExtra (newExtra);
@@ -70,7 +69,6 @@ public class ExtraController {
      * @return - returns the new boolean for is_available for the extra.
      */
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "/extras/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean extraFlipStatus(@PathVariable int id) {

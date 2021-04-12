@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 public class FlavorController {
     private final FlavorDAO flavorDAO;
-
     public FlavorController(FlavorDAO flavorDAO) {
         this.flavorDAO = flavorDAO;
     }

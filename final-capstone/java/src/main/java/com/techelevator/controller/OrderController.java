@@ -31,18 +31,15 @@ public class OrderController {
     }
 
 
-    @PreAuthorize ("hasRole('employee')")
-
-
-
+    @PreAuthorize ("isAuthenticated()")
     @RequestMapping(path = "orders/{id}", method = RequestMethod.PUT)
-
     public Order updateOrderStatus(@PathVariable int id, @RequestBody Order order) throws ParseException {
         orderDAO.updateOrder (order, id);
         return order;
     }
 
-    //need auth
+
+    @PreAuthorize ("isAuthenticated()")
     @RequestMapping(path = "/orders", method = RequestMethod.GET)
     public List <Order> getAllOrders() {
         return orderDAO.getAllOrders ();

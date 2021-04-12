@@ -48,7 +48,9 @@ public class JDBCFrostingDAO implements FrostingDAO {
 
     @Override
     public int createFrosting(Frosting newFrosting) {
-        return 0;
+        String sqlToAddNewFrosting = "INSERT INTO frostings (frosting_name, price_mod) VALUES (?, ?) RETURNING size_id ;";
+        Integer newID = jdbcTemplate.queryForObject (sqlToAddNewFrosting, Integer.class, newFrosting.getFrostingName (), newFrosting.getPriceMod ());
+        return newID;
     }
 
     @Override
