@@ -16,8 +16,6 @@ export default {
     ],
     methods: {
         moveToOrderPage(){
-            //commented out this mutation - it's just not working and I can't figureit out tonight.
-            //this.$store.commit("SET_SELECTED_CONFIG", cakeConfig);
             this.$router.push('/ordercake')
         }
     }

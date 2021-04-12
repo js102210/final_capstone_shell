@@ -45,6 +45,12 @@ export default {
   border-radius: 10px;
 }
 
+.create-cake-display {
+  margin-top: 30px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
 .unavailable {
   color: red;
 }
