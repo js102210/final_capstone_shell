@@ -353,10 +353,10 @@ export default new Vuex.Store({
       state.allCakeConfigsBE = cakeConfigJSONArray;
     },
     SET_ALL_SIZES_ARRAY(state, sizeJSONArray){
-      state.availableCakeSizesBE = sizeJSONArray;
+      state.allCakeSizesBE = sizeJSONArray;
     },
     SET_AVAILABLE_SIZES_ARRAY(state, sizeJSONArray){
-      state.allCakeSizesBE = sizeJSONArray;
+      state.availableCakeSizesBE = sizeJSONArray;
     },
     SET_AVAILABLE_STYLES_ARRAY(state, styleJSONArray){
       state.availableCakeStylesBE = styleJSONArray;

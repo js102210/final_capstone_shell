@@ -6,7 +6,7 @@
       <thead>
         <tr>
           <th>&nbsp;</th>
-          <th>Cake Name</th>
+          <th>Name</th>
           <th>Description</th>
           <th>Status</th>
           <th>Action</th>
@@ -31,6 +31,34 @@
       </tbody>
     </table>
 
+      <table id="sizes">
+      <thead>
+        <tr>
+          <th>Sizes</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr v-for="size in $store.state.allCakeSizesBE" v-bind:key="size.sizeID"
+            v-bind:class="{ unavailable: !size.isAvailable}" >
+          <td>
+            <input type="radio" name="flip status" v-bind:id="size.sizeID"
+              v-bind:value="size.sizeID" v-model="selectedSizeID" />
+          </td>
+          <td>{{size.sizeName}}</td>
+          <td>{{size.sizeDescription}}</td>
+          <td>{{size.isAvailable? "Available": "Unavailable"}}</td>
+          <td>
+            <button class="btnAvailableUnavailable" v-on:click="flipStatus(size.sizeID)">
+              {{ size.isAvailable ? "Make Unavailable" : "Make Available" }} </button>
+          </td> 
+        </tr>
+      </tbody>
+    </table>
 
 </div>
   
@@ -44,7 +72,8 @@ export default {
 
   data() {
     return {
-      selectedCakeID: {}
+      selectedCakeID: {},
+      selectedSizeID: {}
     }
   },
 
