@@ -10,10 +10,19 @@
 <script>
 export default {
     name: "order-card",
-    statusName : '',
+   
     props: [
         "order"
     ],
+    data(){
+        return {
+             statusName : ''
+        }
+    },
+    created(){
+        const status = this.$store.state.allStatusesBE.find((status) => status.statusID == this.order.orderStatusID);
+        this.statusName = status.statusName;
+    }
 
 }
 </script>
