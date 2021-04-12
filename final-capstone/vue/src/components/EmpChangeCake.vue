@@ -24,7 +24,7 @@
           <td>{{cake.cakeConfigDescription}}</td>
           <td>{{cake.isAvailable? "Available": "Unavailable"}}</td>
           <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatus(cake.cakeConfigID)">
+            <button class="btnAvailableUnavailable" v-on:click="flipStatus(selectedCakeID)">
               {{ cake.isAvailable ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import EmployeeService from '../services/EmployeeService'
 export default {
   name: "emp-change-cake",
   data() {
@@ -43,8 +44,12 @@ export default {
     }
   },
   methods: {
-    flipStatus() {
-
+    flipStatus(configID) {
+      EmployeeService.flipConfigStatus(configID).then((response) => {
+        if (response.status == 202){
+          this.$store.commit("SET_CAKE_CONFIG_IS_AVAILABLE", configID, response.data)
+        }
+      })
     }
   }
 }

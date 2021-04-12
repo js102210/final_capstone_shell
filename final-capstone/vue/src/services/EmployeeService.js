@@ -88,7 +88,11 @@ updateExtra(ExtraJSON){
 },
 
 updateOrder(orderJSON){
-    return axios.put(`orders/${orderJSON.orderID}`, orderJSON);
+    return axios.put(`/orders/${orderJSON.orderID}`, orderJSON);
+},
+
+flipConfigStatus(id){
+    return axios.patch(`/configs/flip/${id}`)
 }
 
 }
