@@ -18,7 +18,8 @@ public class FillingController {
         this.fillingDAO = fillingDAO;
     }
 
-    //get all fillings
+    //get all fillings - need auth
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/fillings", method = RequestMethod.GET)
     public List <Filling> getAllFillingsFromDb() {
         return fillingDAO.getAllFillings ();
@@ -30,20 +31,35 @@ public class FillingController {
         return fillingDAO.getAvailableFillings ();
     }
 
+<<<<<<< HEAD
     @PreAuthorize("hasRole('employee')")
+=======
+    //need auth
+    @PreAuthorize("isAuthenticated()")
+>>>>>>> 07ba7f07768140b39a5acc50df6d8a085c23fe60
     @RequestMapping(path = "/fillings/{id}", method = RequestMethod.PUT)
     public Filling update(@PathVariable int id, @RequestBody Filling filling) {
         fillingDAO.updateFilling (filling, id);
         return filling;
     }
 
+<<<<<<< HEAD
     @PreAuthorize ("hasRole('employee')")
+=======
+    //need auth
+    @PreAuthorize("isAuthenticated()")
+>>>>>>> 07ba7f07768140b39a5acc50df6d8a085c23fe60
     @RequestMapping(path = "/fillings", method = RequestMethod.POST)
     public int createNewFilling(@RequestBody Filling newFilling) {
         return fillingDAO.createFilling (newFilling);
     }
 
+<<<<<<< HEAD
     @PreAuthorize ("hasRole('employee')")
+=======
+    //need auth
+    @PreAuthorize("isAuthenticated()")
+>>>>>>> 07ba7f07768140b39a5acc50df6d8a085c23fe60
     @RequestMapping(path = "/fillings/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean fillingFlipStatus(@PathVariable int id) {

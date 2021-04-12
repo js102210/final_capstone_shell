@@ -349,7 +349,7 @@ INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_tim
 	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '13:00', 'Ernest Hemingway', '5138675309') RETURNING order_id;
 	
 UPDATE cake_config SET is_available = NOT is_available WHERE cake_config_id = 1 RETURNING is_available ;
-e
+
 	
 COMMIT TRANSACTION;
 

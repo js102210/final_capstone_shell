@@ -30,14 +30,20 @@ public class OrderController {
         return orderDAO.placeOrder (order);
     }
 
+<<<<<<< HEAD
     @PreAuthorize ("hasRole('employee')")
     @RequestMapping(value = "orders/{id}", method = RequestMethod.PUT)
+=======
+    //  @PreAuthorize ("employee")
+    @RequestMapping(path = "orders/{id}", method = RequestMethod.PUT)
+>>>>>>> 07ba7f07768140b39a5acc50df6d8a085c23fe60
     public Order updateOrderStatus(@PathVariable int id, @RequestBody Order order) throws ParseException {
         orderDAO.updateOrder (order, id);
         return order;
     }
 
-    @RequestMapping("/orders")
+    //need auth
+    @RequestMapping(path = "/orders", method = RequestMethod.GET)
     public List <Order> getAllOrders() {
         return orderDAO.getAllOrders ();
     }

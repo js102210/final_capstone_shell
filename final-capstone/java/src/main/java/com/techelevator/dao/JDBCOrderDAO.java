@@ -81,11 +81,17 @@ public class JDBCOrderDAO implements OrderDAO {
 
 
     public Order mapRowToOrder(SqlRowSet result) {
-        return new Order (result.getInt ("order_id"),
-                result.getString ("status_id"), result.getString ("total_price"), result.getString ("date_placed"), result.getString ("pickup_date"),
-                result.getString ("pickup_time"), result.getString ("customer_name"),
-                result.getString ("customer_phone_number")
-        );
+       Order order = new Order ();
+       order.setOrderID(result.getInt("order_id"));
+       order.setOrderStatusID(result.getInt("status_id"));
+       order.setOrderPriceTotal(result.getBigDecimal("total_price"));
+       order.setOrderDatePlaced(result.getString("date_placed"));
+       order.setOrderPickupDate(result.getString("pickup_date"));
+       order.setOrderPickupTime(result.getString("pickup_time"));
+       order.setCustomerName(result.getString("customer_name"));
+       order.setCustomerPhoneNumber(result.getString("customer_phone_number"));
+       return order;
+
     }
 }
 
