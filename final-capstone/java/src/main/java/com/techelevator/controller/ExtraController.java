@@ -36,9 +36,7 @@ public class ExtraController {
         return extraDAO.getAvailableExtras ();
     }
 
-<<<<<<< HEAD
-    @PreAuthorize("hasRole('employee')")
-=======
+
     /**
      * updates an existing Extra. employee only.
      * @param id - id of the extra to be updated.
@@ -46,38 +44,34 @@ public class ExtraController {
      * @return - returns the Extra
      */
     @PreAuthorize("isAuthenticated()")
->>>>>>> 07ba7f07768140b39a5acc50df6d8a085c23fe60
+
     @RequestMapping(path = "extras/{id}", method = RequestMethod.PUT)
     public Extra updateExtra(@PathVariable int id, @RequestBody Extra extra) {
         extraDAO.updateExtra (extra, id);
         return extra;
     }
 
-<<<<<<< HEAD
-    @PreAuthorize ("hasRole('employee')")
-=======
+
     /**
      * Creates a new extra. Employee only.
      * @param newExtra - the JSON for the new Extra passed from front end.
      * @return - returns the id of the newly minted Extra.
      */
     @PreAuthorize("isAuthenticated()")
->>>>>>> 07ba7f07768140b39a5acc50df6d8a085c23fe60
+
     @RequestMapping(path = "/extras", method = RequestMethod.POST)
     public int createNewExtra(Extra newExtra) {
         return extraDAO.createExtra (newExtra);
     }
 
-<<<<<<< HEAD
-    @PreAuthorize ("hasRole('employee')")
-=======
+
     /**
      * Flips the availability boolean for the indicated extra. Employee only.
      * @param id - the id of the extra to flip status.
      * @return - returns the new boolean for is_available for the extra.
      */
     @PreAuthorize("isAuthenticated()")
->>>>>>> 07ba7f07768140b39a5acc50df6d8a085c23fe60
+
     @RequestMapping(path = "/extras/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean extraFlipStatus(@PathVariable int id) {

@@ -31,34 +31,34 @@ public class FlavorController {
         return flavorDAO.getAvailableFlavors ();
     }
 
-<<<<<<< HEAD
-    @PreAuthorize ("hasRole('employee')")
-=======
+
+
+
     //need auth
     @PreAuthorize("isAuthenticated()")
->>>>>>> 07ba7f07768140b39a5acc50df6d8a085c23fe60
+
     @RequestMapping(path = "/flavors/{flavor_id}", method = RequestMethod.PUT)
     public void update(@PathVariable int flavor_id, @RequestBody Flavor flavor) {
         flavorDAO.update (flavor);
     }
 
-<<<<<<< HEAD
-    @PreAuthorize ("hasRole('employee')")
-=======
+
+
+
     //need auth
     @PreAuthorize("isAuthenticated()")
->>>>>>> 07ba7f07768140b39a5acc50df6d8a085c23fe60
+
     @RequestMapping(path = "/flavors", method = RequestMethod.POST)
     public int createNewFlavor(@RequestBody Flavor newFlavor) {
         return flavorDAO.createFlavor (newFlavor);
     }
 
-<<<<<<< HEAD
-    @PreAuthorize("hasRole('employee')")
-=======
+
+
+
     //need auth
     @PreAuthorize("isAuthenticated()")
->>>>>>> 07ba7f07768140b39a5acc50df6d8a085c23fe60
+
     @RequestMapping(path = "flavors/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean flavorFlipStatus(@PathVariable int id) {

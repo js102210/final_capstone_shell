@@ -30,21 +30,21 @@ public class StyleController {
         return styleDAO.getAvailableStyles ();
     }
 
-<<<<<<< HEAD
+
     @PreAuthorize ("hasRole('employee')")
-=======
+
     //need auth
->>>>>>> 07ba7f07768140b39a5acc50df6d8a085c23fe60
+
     @RequestMapping(path = "/styles", method = RequestMethod.POST)
     public int createNewStyle(@RequestBody Style newStyle) {
         return styleDAO.createStyle (newStyle);
     }
 
-<<<<<<< HEAD
+
     @PreAuthorize("hasRole('employee')")
-=======
+
     //need auth
->>>>>>> 07ba7f07768140b39a5acc50df6d8a085c23fe60
+
     @RequestMapping(path = "/styles/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean styleFlipStatus(@PathVariable int id) {
