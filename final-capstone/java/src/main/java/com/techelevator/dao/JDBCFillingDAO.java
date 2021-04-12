@@ -49,7 +49,9 @@ public class JDBCFillingDAO implements FillingDAO {
 
     @Override
     public int createFilling(Filling newFilling) {
-        return 0;
+        String sqlToAddNewFilling = "INSERT INTO fillings (filling_name, price_mod) VALUES (?, ?) RETURNING filling_id ;";
+        Integer newID = jdbcTemplate.queryForObject (sqlToAddNewFilling, Integer.class, newFilling.getFillingName (), newFilling.getPriceMod ());
+        return newID;
     }
 
 

@@ -49,7 +49,9 @@ public class JDBCFlavorDAO implements FlavorDAO {
 
     @Override
     public int createFlavor(Flavor newFlavor) {
-        return 0;
+        String sqlToAddNewFlavor = "INSERT INTO flavors (flavor_name, price_mod) VALUES (?, ?) RETURNING flavor_id ;";
+        Integer newID = jdbcTemplate.queryForObject (sqlToAddNewFlavor, Integer.class, newFlavor.getFlavorName (), newFlavor.getPriceMod ());
+        return newID;
     }
 
     @Override

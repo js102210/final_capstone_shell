@@ -61,7 +61,6 @@ public class JDBCStyleDAO implements StyleDAO {
         String sqlToAddNewStyle = "INSERT INTO styles (style_name, price_mod) VALUES (?, ?) RETURNING style_id ;";
         Integer newID = jdbcTemplate.queryForObject (sqlToAddNewStyle, Integer.class, newStyle.getStyleName (), newStyle.getPriceMod ());
         return newID;
-
     }
 
     @Override

@@ -49,7 +49,9 @@ public class JDBCExtraDAO implements ExtraDAO {
 
     @Override
     public int createExtra(Extra newExtra) {
-        return 0;
+        String sqlToAddNewExtra = "INSERT INTO extras (extra_name, price_mod) VALUES (?, ?) RETURNING extra_id ;";
+        Integer newID = jdbcTemplate.queryForObject (sqlToAddNewExtra, Integer.class, newExtra.getExtraName (), newExtra.getPriceMod ());
+        return newID;
     }
 
     @Override
