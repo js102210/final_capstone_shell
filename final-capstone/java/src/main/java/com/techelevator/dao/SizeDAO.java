@@ -27,6 +27,7 @@ public interface SizeDAO {
      * @return int ID of the new Size
      */
     int createSize(String sizeName, String sizeDescription, BigDecimal priceMod);
+    int createSize(Size newSize);
 
     /**
      * make updates to an existing Size
@@ -43,5 +44,8 @@ public interface SizeDAO {
      * @return String confirmation that the Size was deleted (probably the name plus " was deleted."
      */
     String deleteSize(int ID);
+
+    Boolean flipAvailability(int id);
+
 
 }

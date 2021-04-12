@@ -25,7 +25,7 @@ public interface FlavorDAO {
      * @return int ID of the newly created Flavor
      */
     int createFlavor(String flavorName, BigDecimal priceMod);
-
+    int createFlavor(Flavor newFlavor);
     /**
      * changes the availability status of a Flavor
      * @param ID int ID of the Flavor to change availability for
@@ -45,4 +45,6 @@ public interface FlavorDAO {
     Flavor update(Flavor flavor);
 
     Flavor updateFlavor(Flavor flavor, int id);
+
+
 }

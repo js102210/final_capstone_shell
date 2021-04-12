@@ -48,6 +48,11 @@ public class JDBCFlavorDAO implements FlavorDAO{
     }
 
     @Override
+    public int createFlavor(Flavor newFlavor) {
+        return 0;
+    }
+
+    @Override
     public boolean flipAvailability(int ID) {
         return false;
     }

@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.FillingDAO;
 import com.techelevator.model.Filling;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -33,4 +34,14 @@ public class FillingController {
         fillingDAO.updateFilling(filling, id);
         return filling;
     }
+    @RequestMapping(path = "/fillings", method = RequestMethod.POST)
+    public int createNewFilling(@RequestBody Filling newFilling) {
+        return fillingDAO.createFilling (newFilling);
+    }
+    @RequestMapping(path = "/fillings/flip/{id}", method = RequestMethod.PATCH)
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    public Boolean fillingFlipStatus(@PathVariable int id) {
+        return fillingDAO.flipAvailability(id);
+    }
+
 }

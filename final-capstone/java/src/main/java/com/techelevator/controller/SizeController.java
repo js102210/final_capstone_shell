@@ -3,10 +3,8 @@ package com.techelevator.controller;
 import com.techelevator.dao.SizeDAO;
 
 import com.techelevator.model.Size;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,4 +28,12 @@ public class SizeController {
         return sizeDAO.getAvailableSizes ();
     }
 
+    @RequestMapping(path = "/sizes", method = RequestMethod.POST)
+    public int createNewSize(@RequestBody Size newSize) {
+        return sizeDAO.createSize (newSize);
+    }
+
+    @RequestMapping(path = "/sizes/flip/{id}", method = RequestMethod.PATCH)
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    public Boolean styleFlipStatus(@PathVariable int id) {return sizeDAO.flipAvailability(id);}
 }
