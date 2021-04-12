@@ -66,10 +66,7 @@ public class JDBCFlavorDAO implements FlavorDAO {
         return null;
     }
 
-    @Override
-    public Flavor update(Flavor flavor) {
-        return null;
-    }
+
 
     @Override
     public Flavor updateFlavor(Flavor flavor, int flavorID) {
