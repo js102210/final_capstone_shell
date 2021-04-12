@@ -16,15 +16,12 @@
       <tbody>
         <tr v-for="cake in $store.state.allCakeConfigsBE" v-bind:key="cake.cakeConfigID"
             v-bind:class="{ unavailable: !cake.available}" >
-          <td>
-            <input type="radio" name="flip status" v-bind:id="cake.cakeConfigID"
-              v-bind:value="cake.cakeConfigID" v-model="selectedCakeID" />
-          </td>
+
           <td>{{cake.cakeConfigName}}</td>
           <td>{{cake.cakeConfigDescription}}</td>
           <td>{{cake.available? "Available": "Unavailable"}}</td>
           <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatus(selectedCakeID)">
+            <button class="btnAvailableUnavailable" v-on:click="flipStatus(cake.cakeConfigID)">
               {{ cake.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
