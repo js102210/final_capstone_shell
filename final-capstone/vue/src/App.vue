@@ -31,7 +31,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Diplomata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lancelot&display=swap');
 
+/* 'Roboto Slab', serif;  'Antic Slab', serif;  'Abril Fatface', cursive; 'Josefin Slab', serif;
+   'Parisienne', cursive; 'Lancelot', cursive; */
 
 html {
   background: repeating-linear-gradient(90deg, #e9feff, #e9feff 50px, #ffb8ea 50px, #ffb8ea 100px);

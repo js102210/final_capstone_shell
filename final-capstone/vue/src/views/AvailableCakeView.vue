@@ -24,7 +24,7 @@ export default {
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
-    background: rgba(255, 255, 255, 0.349);
+    background: rgba(255, 255, 255, 0.473);
     /* -webkit-backdrop-filter: blur(20px);
 	backdrop-filter: blur(10px); */
 }
@@ -32,6 +32,8 @@ export default {
 .cake-pic {
     width: 100%;
     height: 30%;
+     border: 1px solid rgba(0, 0, 0, 0.39);
+    border-radius: 10px;
 }
 
 .cake-container p {
