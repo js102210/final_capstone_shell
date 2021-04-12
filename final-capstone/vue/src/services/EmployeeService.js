@@ -93,6 +93,24 @@ updateOrder(orderJSON){
 
 flipConfigStatus(id){
     return axios.patch(`/configs/flip/${id}`)
+},
+flipSizeStatus(id){
+    return axios.patch(`/sizes/flip/${id}`)
+},
+flipStyleStatus(id){
+    return axios.patch(`/styles/flip/${id}`)
+},
+flipFlavorStatus(id){
+    return axios.patch(`/flavors/flip/${id}`)
+},
+flipFrostingStatus(id){
+    return axios.patch(`/frostings/flip/${id}`)
+},
+flipFillingStatus(id){
+    return axios.patch(`/fillings/flip/${id}`)
+},
+flipExtraStatus(id){
+    return axios.patch(`/extras/flip/${id}`)
 }
 
 }

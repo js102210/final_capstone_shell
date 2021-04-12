@@ -14,16 +14,16 @@
       
       <tbody>
         <tr v-for="flavor in $store.state.allFlavorsBE" v-bind:key="flavor.flavorID"
-            v-bind:class="{ unavailable: !flavor.isAvailable}" >
+            v-bind:class="{ unavailable: !flavor.available}" >
           <td>
             <input type="radio" name="flip status" v-bind:id="flavor.flavorID"
               v-bind:value="flavor.flavorID" v-model="selectedFlavorID" />
           </td>
           <td>{{flavor.flavorName}}</td>
-          <td>{{flavor.isAvailable? "Available": "Unavailable"}}</td>
+          <td>{{flavor.available? "Available": "Unavailable"}}</td>
           <td>
             <button class="btnAvailableUnavailable" v-on:click="flipStatus(flavor.flavorID)">
-              {{ flavor.isAvailable ? "Make Unavailable" : "Make Available" }} </button>
+              {{ flavor.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
       </tbody>
@@ -41,16 +41,16 @@
       
       <tbody>
         <tr v-for="frosting in $store.state.allFrostingsBE" v-bind:key="frosting.frostingID"
-            v-bind:class="{ unavailable: !frosting.isAvailable}" >
+            v-bind:class="{ unavailable: !frosting.available}" >
           <td>
             <input type="radio" name="flip status" v-bind:id="frosting.frostingID"
               v-bind:value="frosting.frostingID" v-model="selectedFrostingID" />
           </td>
           <td>{{frosting.frostingName}}</td>
-          <td>{{frosting.isAvailable? "Available": "Unavailable"}}</td>
+          <td>{{frosting.available? "Available": "Unavailable"}}</td>
           <td>
             <button class="btnAvailableUnavailable" v-on:click="flipStatus(frosting.frostingID)">
-              {{ frosting.isAvailable ? "Make Unavailable" : "Make Available" }} </button>
+              {{ frosting.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
       </tbody>
@@ -68,16 +68,16 @@
       
       <tbody>
         <tr v-for="filling in $store.state.allFillingsBE" v-bind:key="filling.fillingID"
-            v-bind:class="{ unavailable: !filling.isAvailable}" >
+            v-bind:class="{ unavailable: !filling.available}" >
           <td>
             <input type="radio" name="flip status" v-bind:id="filling.fillingID"
               v-bind:value="filling.fillingID" v-model="selectedFillingID" />
           </td>
           <td>{{filling.fillingName}}</td>
-          <td>{{filling.isAvailable? "Available": "Unavailable"}}</td>
+          <td>{{filling.available? "Available": "Unavailable"}}</td>
           <td>
             <button class="btnAvailableUnavailable" v-on:click="flipStatus(filling.fillingID)">
-              {{ filling.isAvailable ? "Make Unavailable" : "Make Available" }} </button>
+              {{ filling.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
       </tbody>
@@ -95,16 +95,16 @@
       
       <tbody>
         <tr v-for="extra in $store.state.allExtrasBE" v-bind:key="extra.extraID"
-            v-bind:class="{ unavailable: !extra.isAvailable}" >
+            v-bind:class="{ unavailable: !extra.available}" >
           <td>
             <input type="radio" name="flip status" v-bind:id="extra.extraID"
               v-bind:value="extra.extraID" v-model="selectedExtraID" />
           </td>
           <td>{{extra.extraName}}</td>
-          <td>{{extra.isAvailable? "Available": "Unavailable"}}</td>
+          <td>{{extra.available? "Available": "Unavailable"}}</td>
           <td>
             <button class="btnAvailableUnavailable" v-on:click="flipStatus(extra.extraID)">
-              {{ extra.isAvailable ? "Make Unavailable" : "Make Available" }} </button>
+              {{ extra.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
       </tbody>
@@ -122,16 +122,16 @@
       
       <tbody>
         <tr v-for="style in $store.state.allCakeStylesBE" v-bind:key="style.styleID"
-            v-bind:class="{ unavailable: !style.isAvailable}" >
+            v-bind:class="{ unavailable: !style.available}" >
           <td>
             <input type="radio" name="flip status" v-bind:id="style.styleID"
               v-bind:value="style.styleID" v-model="selectedStyleID" />
           </td>
           <td>{{style.styleName}}</td>
-          <td>{{style.isAvailable? "Available": "Unavailable"}}</td>
+          <td>{{style.available? "Available": "Unavailable"}}</td>
           <td>
             <button class="btnAvailableUnavailable" v-on:click="flipStatus(style.styleID)">
-              {{ style.isAvailable ? "Make Unavailable" : "Make Available" }} </button>
+              {{ style.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
       </tbody>
@@ -150,17 +150,17 @@
       
       <tbody>
         <tr v-for="size in $store.state.allCakeSizesBE" v-bind:key="size.sizeID"
-            v-bind:class="{ unavailable: !size.isAvailable}" >
+            v-bind:class="{ unavailable: !size.available}" >
           <td>
             <input type="radio" name="flip status" v-bind:id="size.sizeID"
               v-bind:value="size.sizeID" v-model="selectedSizeID" />
           </td>
           <td>{{size.sizeName}}</td>
           <td>{{size.sizeDescription}}</td>
-          <td>{{size.isAvailable? "Available": "Unavailable"}}</td>
+          <td>{{size.available? "Available": "Unavailable"}}</td>
           <td>
             <button class="btnAvailableUnavailable" v-on:click="flipStatus(size.sizeID)">
-              {{ size.isAvailable ? "Make Unavailable" : "Make Available" }} </button>
+              {{ size.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
       </tbody>
@@ -180,37 +180,65 @@ export default {
     return {
       selectedSizeID: {},
       selectedFlavorID: {},
-      selectedStylesID: {},
+      selectedStyleID: {},
       selectedFrostingID: {},
       selectedFillingID: {},
       selectedExtraID: {}
     }
   },
+  methods: {
 
-  created() {
+    prepareSizesArray(){
     EmployeeService.getAllSizes().then((response) => {
       this.$store.commit("SET_ALL_SIZES_ARRAY", response.data);
     });
-
-    EmployeeService.getAllStyles().then((response) => {
+    },
+    prepareStylesArray(){
+      EmployeeService.getAllStyles().then((response) => {
       this.$store.commit("SET_ALL_STYLES_ARRAY", response.data);
     });
-
+    },
+    prepareFlavorsArray(){
     EmployeeService.getAllFlavors().then((response) => {
       this.$store.commit("SET_ALL_FLAVORS_ARRAY", response.data);
     });
-
+    },
+    prepareFrostingsArray(){
     EmployeeService.getAllFrostings().then((response) => {
       this.$store.commit("SET_ALL_FROSTINGS_ARRAY", response.data);
     });
-
-    EmployeeService.getAllFillings().then((response) => {
+    },
+    prepareFillingsArray(){
+          EmployeeService.getAllFillings().then((response) => {
       this.$store.commit("SET_ALL_FILLINGS_ARRAY", response.data);
     });
-
-     EmployeeService.getAllExtras().then((response) => {
+    },
+    prepareExtrasArray(){
+           EmployeeService.getAllExtras().then((response) => {
       this.$store.commit("SET_ALL_EXTRAS_ARRAY", response.data);
     });
+    },
+    flipStatusSize(sizeID){
+      EmployeeService.flipSizeStatus(sizeID).then((response) => {
+        if (response.status == 202){
+          return;
+        }
+      })
+    },
+
+    prepareThePreparations() {
+      this.prepareSizesArray();
+      this.prepareStylesArray();
+      this.prepareFlavorsArray();
+      this.prepareFrostingsArray();
+      this.prepareFillingsArray();
+      this.prepareExtrasArray();
+    }
+
+  },
+
+  created() {
+  this.prepareThePreparations();
   },  
 
 }
