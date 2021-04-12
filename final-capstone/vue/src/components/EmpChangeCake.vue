@@ -15,17 +15,17 @@
       
       <tbody>
         <tr v-for="cake in $store.state.allCakeConfigsBE" v-bind:key="cake.cakeConfigID"
-            v-bind:class="{ unavailable: !cake.isAvailable}" >
+            v-bind:class="{ unavailable: !cake.available}" >
           <td>
             <input type="radio" name="flip status" v-bind:id="cake.cakeConfigID"
               v-bind:value="cake.cakeConfigID" v-model="selectedCakeID" />
           </td>
           <td>{{cake.cakeConfigName}}</td>
           <td>{{cake.cakeConfigDescription}}</td>
-          <td>{{cake.isAvailable? "Available": "Unavailable"}}</td>
+          <td>{{cake.available? "Available": "Unavailable"}}</td>
           <td>
             <button class="btnAvailableUnavailable" v-on:click="flipStatus(selectedCakeID)">
-              {{ cake.isAvailable ? "Make Unavailable" : "Make Available" }} </button>
+              {{ cake.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
       </tbody>
@@ -45,18 +45,23 @@ export default {
     }
   },
   methods: {
+
+    prepareArray(){
+  EmployeeService.getAllConfigs().then((response) => {
+      this.$store.commit("SET_ALL_CAKE_CONFIG_ARRAY", response.data);
+    });
+    },
     flipStatus(configID) {
-      EmployeeService.flipConfigStatus(configID).then((response) => {
-        if (response.status == 202){
-          this.$store.commit("SET_CAKE_CONFIG_IS_AVAILABLE", configID, response.data)
-        }
+    EmployeeService.flipConfigStatus(configID).then((response) => {
+    if (response.status == 202){
+    this.$store.commit("SET_CAKE_CONFIG_IS_AVAILABLE", configID, response.data)
+    }
+       this.prepareArray();
       })
     }
   },
    created() {
-    EmployeeService.getAllConfigs().then((response) => {
-      this.$store.commit("SET_ALL_CAKE_CONFIG_ARRAY", response.data);
-    });
+   this.prepareArray();
   },
 }
 </script>

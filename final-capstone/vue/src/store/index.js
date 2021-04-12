@@ -383,7 +383,7 @@ export default new Vuex.Store({
       state.allFillingsBE = fillingJSONArray;
     },
     SET_CAKE_CONFIG_IS_AVAILABLE(state, id, boolean){
-      const configToSet = state.availableCakeConfigsBE.find(config => config.cakeConfigID == id)
+      const configToSet = state.allCakeConfigsBE.find(config => config.cakeConfigID == id)
       configToSet.isAvailable = boolean;
     },
     
