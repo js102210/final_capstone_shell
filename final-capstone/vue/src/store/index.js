@@ -252,6 +252,26 @@ export default new Vuex.Store({
       }
 
     ],
+    //we need a DAO on the back end and endpoints to populate this
+    //remove the dummy data once we have it
+
+    allStatusesBE: [
+      {statusID : 1,
+       statusName : "pending"
+      },
+      {
+        statusID : 2,
+        statusName : "ready"
+      },
+      {
+        statusID : 3,
+        statusName : "cancelled"
+      },
+      {
+        statusID : 4,
+        statusName : "complete"
+      }
+    ],
 
     //we can actually remove this if we have the order component send a cakeItem object, but I have it here now for convenient reference
     cakeItemToOrder: {
@@ -348,6 +368,9 @@ export default new Vuex.Store({
     },
     SET_ALL_ORDERS_ARRAY(state, orderJSONArray){
       state.pastOrdersArrayBE = orderJSONArray;
+    },
+    SET_ALL_STATUSES_ARRAY(state, statusJSONArray){
+      state.allStatusesBE = statusJSONArray;
     },
     SET_AVAILABLE_CAKE_CONFIG_ARRAY(state, cakeConfigJSONArray){
       state.availableCakeConfigsBE = cakeConfigJSONArray;
