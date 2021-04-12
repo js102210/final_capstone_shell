@@ -34,7 +34,6 @@ public class FillingController {
 
     //need auth
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "/fillings/{id}", method = RequestMethod.PUT)
     public Filling update(@PathVariable int id, @RequestBody Filling filling) {
         fillingDAO.updateFilling (filling, id);
@@ -44,7 +43,6 @@ public class FillingController {
 
     //need auth
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "/fillings", method = RequestMethod.POST)
     public int createNewFilling(@RequestBody Filling newFilling) {
         return fillingDAO.createFilling (newFilling);
@@ -53,7 +51,6 @@ public class FillingController {
 
     //need auth
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "/fillings/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean fillingFlipStatus(@PathVariable int id) {

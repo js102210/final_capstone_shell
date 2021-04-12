@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 public class FlavorController {
     private final FlavorDAO flavorDAO;
-
     public FlavorController(FlavorDAO flavorDAO) {
         this.flavorDAO = flavorDAO;
     }
@@ -36,7 +35,6 @@ public class FlavorController {
 
     //need auth
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "/flavors/{flavor_id}", method = RequestMethod.PUT)
     public void update(@PathVariable int flavor_id, @RequestBody Flavor flavor) {
         flavorDAO.update (flavor);
@@ -47,7 +45,6 @@ public class FlavorController {
 
     //need auth
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "/flavors", method = RequestMethod.POST)
     public int createNewFlavor(@RequestBody Flavor newFlavor) {
         return flavorDAO.createFlavor (newFlavor);
@@ -58,7 +55,6 @@ public class FlavorController {
 
     //need auth
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "flavors/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean flavorFlipStatus(@PathVariable int id) {

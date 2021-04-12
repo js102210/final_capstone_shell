@@ -52,7 +52,6 @@ public class CakeConfigController {
      * @return - returns the id of the new cake config.
      */
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "/configs", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
     public Integer add(@RequestBody CakeConfig cakeConfig) {
@@ -66,7 +65,6 @@ public class CakeConfigController {
      * @return - returns the new flipped boolean value of isAvailable.
      */
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "/configs/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean configFlipStatus(@PathVariable int id) {

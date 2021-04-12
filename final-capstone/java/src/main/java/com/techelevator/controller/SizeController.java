@@ -18,7 +18,7 @@ public class SizeController {
         this.sizeDAO = sizeDAO;
     }
 
-    //need auth
+    @PreAuthorize ("isAuthenticated()")
     @RequestMapping(path = "/sizes", method = RequestMethod.GET)
     public List <Size> getAllSizesFromDb() {
         return sizeDAO.getAllSizes ();
@@ -31,20 +31,14 @@ public class SizeController {
     }
 
 
-    @PreAuthorize ("hasRole('employee')")
-
-    //need auth
-
+    @PreAuthorize ("isAuthenticated()")
     @RequestMapping(path = "/sizes", method = RequestMethod.POST)
     public int createNewSize(@RequestBody Size newSize) {
         return sizeDAO.createSize (newSize);
     }
 
 
-    @PreAuthorize("hasRole('employee')")
-
-    //need auth
-
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/sizes/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean styleFlipStatus(@PathVariable int id) {
