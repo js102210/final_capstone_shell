@@ -63,8 +63,9 @@ public class JDBCFrostingDAO implements FrostingDAO {
     }
 
     @Override
-    public String deleteFrosting(int ID) {
-        return null;
+    public void deleteFrosting(int id) {
+        String sqlToDeleteFrosting = "DELETE FROM frostings WHERE frosting_id=?;";
+        jdbcTemplate.update(sqlToDeleteFrosting, id);
     }
 
     @Override

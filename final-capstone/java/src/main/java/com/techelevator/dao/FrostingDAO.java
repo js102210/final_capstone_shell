@@ -37,10 +37,9 @@ public interface FrostingDAO {
 
     /**
      * removes a Frosting from the datastore
-     * @param ID int ID of the Frosting to delete
-     * @return String confirmation that the Frosting was deleted (probably the name plus " was deleted."
+     * @param id int ID of the Frosting to delete
      */
-    String deleteFrosting(int ID);
+    void deleteFrosting(int id);
 
     /**
      * make updates to an existing Frosting

@@ -40,8 +40,7 @@ public interface StyleDAO {
 
     /**
      * removes a Style from the datastore
-     * @param ID int ID of the Style to delete
-     * @return String confirmation that the Style was deleted (probably the name plus " was deleted."
+     * @param id int ID of the Style to delete
      */
-    String deleteStyle(int ID);
+    void deleteStyle(int id);
 }

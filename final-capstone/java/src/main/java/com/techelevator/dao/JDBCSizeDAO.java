@@ -51,7 +51,7 @@ public class JDBCSizeDAO implements SizeDAO {
         String sqlToAddNewSize = "INSERT INTO sizes (size_name, size_description, price_mod) VALUES (?, ?, ?) RETURNING size_id ;";
         Integer newID = jdbcTemplate.queryForObject (sqlToAddNewSize, Integer.class, newSize.getSizeName (), newSize.getSizeDescription (), newSize.getPriceMod ());
         return newID;
-        }
+    }
 
     @Override
     public Size updateSize(Size size, int sizeID) {
@@ -66,9 +66,11 @@ public class JDBCSizeDAO implements SizeDAO {
         );
         return size;
     }
+
     @Override
-    public String deleteSize(int ID) {
-        return null;
+    public void deleteSize(int id) {
+        String sqlToDeleteSize = "DELETE FROM sizes WHERE size_id=?;";
+        jdbcTemplate.update (sqlToDeleteSize, id);
     }
 
     @Override

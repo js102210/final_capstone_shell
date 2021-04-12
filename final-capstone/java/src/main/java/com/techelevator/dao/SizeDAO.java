@@ -38,10 +38,9 @@ public interface SizeDAO {
 
     /**
      * removes a Size from the datastore
-     * @param ID int ID of the Size to delete
-     * @return String confirmation that the Size was deleted (probably the name plus " was deleted."
+     * @param id int ID of the Size to delete
      */
-    String deleteSize(int ID);
+    void deleteSize(int id);
 
     /**
      * changes the availability status of a Size

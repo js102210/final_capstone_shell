@@ -5,12 +5,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class    JDBCStyleDAO implements StyleDAO {
+public class JDBCStyleDAO implements StyleDAO {
 
 
     private final JdbcTemplate jdbcTemplate;
@@ -60,7 +59,6 @@ public class    JDBCStyleDAO implements StyleDAO {
     @Override
     public int createStyle(Style newStyle) {
         String sqlToAddNewStyle = "INSERT INTO styles (style_name, price_mod) VALUES (?, ?) RETURNING style_id ;";
-
         Integer newID = jdbcTemplate.queryForObject (sqlToAddNewStyle, Integer.class, newStyle.getStyleName (), newStyle.getPriceMod ());
         return newID;
 
@@ -69,15 +67,14 @@ public class    JDBCStyleDAO implements StyleDAO {
     @Override
     public boolean flipAvailability(int id) {
         String sqlFlipStatusStatement = "UPDATE styles SET is_available = NOT is_available WHERE style_id = ? RETURNING is_available ;";
-
         Boolean result = jdbcTemplate.queryForObject (sqlFlipStatusStatement, Boolean.class, id);
-
         return result;
     }
 
     @Override
-    public String deleteStyle(int ID) {
-        return null;
+    public void deleteStyle(int id) {
+        String sqlToDeleteStyle = "DELETE FROM styles WHERE style_id=?;";
+        jdbcTemplate.update (sqlToDeleteStyle, id);
     }
 
 
