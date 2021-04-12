@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import CustomerService from "../services/CustomerService.js";
+import EmployeeService from "../services/EmployeeService.js";
 
 export default {
   name: "emp-change-options",
@@ -49,27 +49,24 @@ export default {
   },
 
   created() {
-    CustomerService.getAvailableConfigs().then((response) => {
-      this.$store.commit("SET_AVAILABLE_CAKE_CONFIG_ARRAY", response.data);
-    });
-    CustomerService.getAvailableSizes().then((response) => {
-      this.$store.commit("SET_AVAILABLE_SIZES_ARRAY", response.data);
+    EmployeeService.getAllSizes().then((response) => {
+      this.$store.commit("SET_ALL_SIZES_ARRAY", response.data);
     });
 
-    CustomerService.getAvailableStyles().then((response) => {
-      this.$store.commit("SET_AVAILABLE_STYLES_ARRAY", response.data);
+    EmployeeService.getAllStyles().then((response) => {
+      this.$store.commit("SET_ALL_STYLES_ARRAY", response.data);
     });
 
-    CustomerService.getAvailableFlavors().then((response) => {
-      this.$store.commit("SET_AVAILABLE_FLAVORS_ARRAY", response.data);
+    EmployeeService.getAllFlavors().then((response) => {
+      this.$store.commit("SET_ALL_FLAVORS_ARRAY", response.data);
     });
 
-    CustomerService.getAvailableFrostings().then((response) => {
-      this.$store.commit("SET_AVAILABLE_FROSTINGS_ARRAY", response.data);
+    EmployeeService.getAllFrostings().then((response) => {
+      this.$store.commit("SET_ALL_FROSTINGS_ARRAY", response.data);
     });
 
-    CustomerService.getAvailableFillings().then((response) => {
-      this.$store.commit("SET_AVAILABLE_FILLINGS_ARRAY", response.data);
+    EmployeeService.getAllFillings().then((response) => {
+      this.$store.commit("SET_ALL_FILLINGS_ARRAY", response.data);
     });
   },  
 
