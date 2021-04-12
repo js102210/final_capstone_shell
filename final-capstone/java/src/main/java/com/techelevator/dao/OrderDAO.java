@@ -14,7 +14,7 @@ public interface OrderDAO {
    Integer placeOrder(Order order) throws ParseException;
 
     /**
-     * gets all Orders
+     * gets all Orders, including their associated cake item DTOs
      * @return List<Order> for all submitted Orders
      */
    List <Order> getAllOrders();
