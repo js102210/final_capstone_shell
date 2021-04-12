@@ -68,6 +68,10 @@ export default {
     EmployeeService.getAllFillings().then((response) => {
       this.$store.commit("SET_ALL_FILLINGS_ARRAY", response.data);
     });
+
+     EmployeeService.getAllExtras().then((response) => {
+      this.$store.commit("SET_ALL_EXTRAS_ARRAY", response.data);
+    });
   },  
 
 }
