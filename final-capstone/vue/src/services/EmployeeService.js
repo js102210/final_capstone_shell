@@ -20,7 +20,7 @@ getAllFillings(){
 },
 
 getAllStyles(){
-    return axios.get('/fillings');
+    return axios.get('/styles');
 },
 
 getAllSizes(){
