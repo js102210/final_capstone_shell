@@ -27,7 +27,6 @@ public class CakeConfigController {
      * @return - returns the list of ALL cake configs regardless of availability.
      */
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "/configs", method = RequestMethod.GET)
     public List <CakeConfig> getAllConfigsFromDb() {
         return cakeConfigDAO.getAllConfigs ();
@@ -43,8 +42,6 @@ public class CakeConfigController {
     }
 
 
-    //this also requires authorization. employee only.
-
 
     /**
      * Creates a new cake config. Employee only.
@@ -52,7 +49,6 @@ public class CakeConfigController {
      * @return - returns the id of the new cake config.
      */
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "/configs", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
     public Integer add(@RequestBody CakeConfig cakeConfig) {
@@ -66,7 +62,6 @@ public class CakeConfigController {
      * @return - returns the new flipped boolean value of isAvailable.
      */
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "/configs/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean configFlipStatus(@PathVariable int id) {

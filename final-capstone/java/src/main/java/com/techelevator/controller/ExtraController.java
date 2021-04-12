@@ -44,7 +44,6 @@ public class ExtraController {
      * @return - returns the Extra
      */
     @PreAuthorize("isAuthenticated()")
-
     @RequestMapping(path = "extras/{id}", method = RequestMethod.PUT)
     public Extra updateExtra(@PathVariable int id, @RequestBody Extra extra) {
         extraDAO.updateExtra (extra, id);
