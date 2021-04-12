@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -32,6 +33,7 @@ public class JDBCCakeItemDAO implements CakeItemDAO {
         );
     }
 
+    @Override
     public CakeItemDTO mapRowToCakeItemDTO(SqlRowSet result){
         CakeItemDTO theCakeItemDTO = new CakeItemDTO();
         theCakeItemDTO.setCakeItemID(result.getInt("cake_item_id"));
@@ -45,4 +47,18 @@ public class JDBCCakeItemDAO implements CakeItemDAO {
         theCakeItemDTO.setCakeItemOrderID(result.getInt("order_id"));
         return theCakeItemDTO;
     }
+
+    @Override
+    public List<CakeItemDTO> getCakeItemDTOsForOrder(int orderID){
+        String sqlCakeItemDTOQuery = "SELECT * FROM cake_items WHERE order_id = ? ;";
+        List<CakeItemDTO> orderCakeItems = new ArrayList<>();
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlCakeItemDTOQuery, orderID);
+        while(result.next()){
+            CakeItemDTO theCakeItemDTO = mapRowToCakeItemDTO(result);
+            orderCakeItems.add(theCakeItemDTO);
+        }
+        return orderCakeItems;
+    }
+
 }
+
