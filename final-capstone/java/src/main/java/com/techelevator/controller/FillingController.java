@@ -65,7 +65,9 @@ public class FillingController {
 
 
     /**
-     * Flips the availability of the indicated filling. Employee only.
+     * Flips the availability of the indicated filling. Employee only. If the filling flips to unavailable, will also
+     * make any configs that use the filling flip to unavailable. Nothing happens with associated configs
+     * if the filling flips to available.
      * @param id - the id of the filling to flip.
      * @return - returns the new availability status of the filling from its is_available field on DB.
      */

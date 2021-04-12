@@ -28,7 +28,9 @@ public interface FrostingDAO {
     int createFrosting(Frosting newFrosting);
 
     /**
-     * changes the availability status of a Frosting
+     * changes the availability status of a Frosting. If the frosting flips to unavailable and is used by
+     * any cake configs, those configs also flip to unavailable. There is no effect on cake configs if
+     * the frosting flips to available.
      * @param ID int ID of the Frosting to change availability for
      * @return boolean the availability status of the Frosting after the change
      */

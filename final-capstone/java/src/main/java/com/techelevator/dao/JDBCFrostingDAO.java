@@ -12,8 +12,10 @@ import java.util.List;
 @Component
 public class JDBCFrostingDAO implements FrostingDAO {
     private final JdbcTemplate jdbcTemplate;
+    private final CakeConfigDAO cakeConfigDAO;
 
-    public JDBCFrostingDAO(JdbcTemplate jdbcTemplate) {
+    public JDBCFrostingDAO(JdbcTemplate jdbcTemplate, CakeConfigDAO cakeConfigDAO) {
+        this.cakeConfigDAO = cakeConfigDAO;
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -56,10 +58,18 @@ public class JDBCFrostingDAO implements FrostingDAO {
     @Override
     public boolean flipAvailability(int id) {
         String sqlFlipStatusStatement = "UPDATE frostings SET is_available = NOT is_available WHERE frosting_id = ? RETURNING is_available ;";
-
         Boolean result = jdbcTemplate.queryForObject (sqlFlipStatusStatement, Boolean.class, id);
-
-        return result;
+        if(result == false){
+            String sqlFindConfigsToMakeUnavail = "SELECT cake_config_id FROM cake_config WHERE frosting_id = ? AND is_available = TRUE ;";
+            SqlRowSet cakeConfigIds = jdbcTemplate.queryForRowSet(sqlFindConfigsToMakeUnavail, id);
+            while(cakeConfigIds.next()){
+                int theConfigId = cakeConfigDAO.getCakeIdFromQuery(cakeConfigIds);
+                cakeConfigDAO.flipConfigStatus(theConfigId);
+            }
+            return result;
+        } else {
+            return result;
+        }
     }
 
     @Override

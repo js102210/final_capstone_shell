@@ -13,8 +13,10 @@ import java.util.List;
 @Component
 public class JDBCFillingDAO implements FillingDAO {
     private final JdbcTemplate jdbcTemplate;
+    private final CakeConfigDAO cakeConfigDAO;
 
-    public JDBCFillingDAO(JdbcTemplate jdbcTemplate) {
+    public JDBCFillingDAO(JdbcTemplate jdbcTemplate, CakeConfigDAO cakeConfigDAO) {
+        this.cakeConfigDAO = cakeConfigDAO;
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -76,10 +78,18 @@ public class JDBCFillingDAO implements FillingDAO {
     @Override
     public boolean flipAvailability(int id) {
         String sqlFlipStatusStatement = "UPDATE fillings SET is_available = NOT is_available WHERE filling_id = ? RETURNING is_available ;";
-
         Boolean result = jdbcTemplate.queryForObject (sqlFlipStatusStatement, Boolean.class, id);
-
-        return result;
+        if(result == false){
+            String sqlFindConfigsToMakeUnavail = "SELECT cake_config_id FROM cake_config WHERE filling_id = ? AND is_available = TRUE ;";
+            SqlRowSet cakeConfigIds = jdbcTemplate.queryForRowSet(sqlFindConfigsToMakeUnavail, id);
+            while(cakeConfigIds.next()){
+                int theConfigId = cakeConfigDAO.getCakeIdFromQuery(cakeConfigIds);
+                cakeConfigDAO.flipConfigStatus(theConfigId);
+            }
+            return result;
+        } else {
+            return result;
+        }
     }
 
     public Filling mapRowToFilling(SqlRowSet result) {
