@@ -21,7 +21,7 @@ export default {
 }
 
 .banner {
-  background: rgba(255, 255, 255, 0.349);
+  background: rgba(255, 255, 255, 0.521);
   /* -webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px); */
   display: flex;
@@ -31,13 +31,15 @@ export default {
   line-height: 20px;
   margin-top: 19px;
   padding: 4npm run servepx;
-  border-radius: 10px;
+  border-radius: 45px;
+  border: 6px dotted rgba(252, 73, 103, 0.233);
+  padding: 9px;
 }
 
 .home img {
   width: 40%;
-  border: 1px solid black;
-  border-radius: 10px;
+  border: 11px double rgba(209, 4, 4, 0.212);
+  border-radius: 250px;
   opacity: 100%;
 }
 

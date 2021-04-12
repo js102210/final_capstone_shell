@@ -57,7 +57,7 @@ h1 {
 }
 
 h3 {
-  font-family: 'Sacramento';
+  font-family: 'Parisienne', cursive;
   font-weight: 500;
   font-size: 2rem;
 }
@@ -70,7 +70,7 @@ p {
 }
 
 .content {
-  margin-top: 22px;
+  margin-top: 24px;
 }
 
 #nav {
