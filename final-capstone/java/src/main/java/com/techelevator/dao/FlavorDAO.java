@@ -48,7 +48,6 @@ public interface FlavorDAO {
      * @param flavor of the Flavor to change
      * @return Flavor with all properties updated
      */
-    Flavor update(Flavor flavor);
     Flavor updateFlavor(Flavor flavor, int id);
 
 
