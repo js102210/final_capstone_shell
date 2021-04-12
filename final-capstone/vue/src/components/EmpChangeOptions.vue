@@ -22,7 +22,7 @@
           <td>{{flavor.flavorName}}</td>
           <td>{{flavor.available? "Available": "Unavailable"}}</td>
           <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatus(flavor.flavorID)">
+            <button class="btnAvailableUnavailable" v-on:click="flipStatusFlavor(selectedFlavorID)">
               {{ flavor.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
@@ -49,7 +49,7 @@
           <td>{{frosting.frostingName}}</td>
           <td>{{frosting.available? "Available": "Unavailable"}}</td>
           <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatus(frosting.frostingID)">
+            <button class="btnAvailableUnavailable" v-on:click="flipStatusFrosting(selectedFrostingID)">
               {{ frosting.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
@@ -76,7 +76,7 @@
           <td>{{filling.fillingName}}</td>
           <td>{{filling.available? "Available": "Unavailable"}}</td>
           <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatus(filling.fillingID)">
+            <button class="btnAvailableUnavailable" v-on:click="flipStatusFilling(selectedFillingID)">
               {{ filling.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
@@ -103,7 +103,7 @@
           <td>{{extra.extraName}}</td>
           <td>{{extra.available? "Available": "Unavailable"}}</td>
           <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatus(extra.extraID)">
+            <button class="btnAvailableUnavailable" v-on:click="flipStatusExtra(selectedExtraID)">
               {{ extra.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
@@ -130,7 +130,7 @@
           <td>{{style.styleName}}</td>
           <td>{{style.available? "Available": "Unavailable"}}</td>
           <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatus(style.styleID)">
+            <button class="btnAvailableUnavailable" v-on:click="flipStatusStyle(selectedStyleID)">
               {{ style.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
@@ -159,7 +159,7 @@
           <td>{{size.sizeDescription}}</td>
           <td>{{size.available? "Available": "Unavailable"}}</td>
           <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatus(size.sizeID)">
+            <button class="btnAvailableUnavailable" v-on:click="flipStatusSize(selectedSizeID)">
               {{ size.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
@@ -218,11 +218,52 @@ export default {
       this.$store.commit("SET_ALL_EXTRAS_ARRAY", response.data);
     });
     },
-    flipStatusSize(sizeID){
-      EmployeeService.flipSizeStatus(sizeID).then((response) => {
+    flipStatusSize(id){
+      EmployeeService.flipSizeStatus(id).then((response) => {
         if (response.status == 202){
-          return;
+          this.$store.commit("SET_SIZE_IS_AVAILABLE", id, response.data);
         }
+        this.prepareSizesArray();
+      })
+    },
+     flipStatusStyle(id){
+      EmployeeService.flipStyleStatus(id).then((response) => {
+        if (response.status == 202){
+          this.$store.commit("SET_STYLE_IS_AVAILABLE", id, response.data);
+        }
+        this.prepareStylesArray();
+      })
+    },
+     flipStatusFlavor(id){
+      EmployeeService.flipFlavorStatus(id).then((response) => {
+        if (response.status == 202){
+          this.$store.commit("SET_FLAVOR_IS_AVAILABLE", id, response.data);
+        }
+        this.prepareFlavorsArray();
+      })
+    },
+    flipStatusFrosting(id){
+      EmployeeService.flipFrostingStatus(id).then((response) => {
+        if (response.status == 202){
+          this.$store.commit("SET_FROSTING_IS_AVAILABLE", id, response.data);
+        }
+        this.prepareFrostingsArray();
+      })
+    },
+    flipStatusFilling(id){
+      EmployeeService.flipFillingStatus(id).then((response) => {
+        if (response.status == 202){
+          this.$store.commit("SET_FILLING_IS_AVAILABLE", id, response.data);
+        }
+        this.prepareFillingsArray();
+      })
+    },
+    flipStatusExtra(id){
+      EmployeeService.flipExtraStatus(id).then((response) => {
+        if (response.status == 202){
+          this.$store.commit("SET_EXTRA_IS_AVAILABLE", id, response.data);
+        }
+        this.prepareExtrasArray();
       })
     },
 
