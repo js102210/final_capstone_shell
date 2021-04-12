@@ -63,6 +63,7 @@
 </template>
 
 <script>
+import EmployeeService from '../services/EmployeeService';
 export default {
   data() {
     return {
@@ -110,6 +111,15 @@ export default {
   },
   methods: {
   createNewFlavor(){
+    EmployeeService.createFlavor(this.newFlavor).then((response) => {
+      if(response.status == 200){
+        alert(this.newFlavor.flavorName + ' has been added! May it give you the strength to destroy your enemies!');
+        EmployeeService.getAllFlavors().then((response) => {
+        this.$store.commit("SET_ALL_FLAVORS_ARRAY", response.data);
+    });
+
+      }
+    })
 
   },
    createNewFrosting(){
