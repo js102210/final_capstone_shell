@@ -11,31 +11,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JDBCFillingDAO implements FillingDAO{
+public class JDBCFillingDAO implements FillingDAO {
     private final JdbcTemplate jdbcTemplate;
-    public JDBCFillingDAO(JdbcTemplate jdbcTemplate){
+
+    public JDBCFillingDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
     @Override
-    public List<Filling> getAvailableFillings() {
+    public List <Filling> getAvailableFillings() {
         String sqlToGetAvailableFillings = "SELECT * FROM fillings WHERE is_available = TRUE;";
-        List<Filling> availableFillings = new ArrayList<>();
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlToGetAvailableFillings);
-        while (result.next()){
-            Filling filling = mapRowToFilling(result);
-            availableFillings.add(filling);
+        List <Filling> availableFillings = new ArrayList <> ();
+        SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAvailableFillings);
+        while (result.next ()) {
+            Filling filling = mapRowToFilling (result);
+            availableFillings.add (filling);
         }
         return availableFillings;
     }
 
     @Override
-    public List<Filling> getAllFillings() {
+    public List <Filling> getAllFillings() {
         String sqlToGetAllFillings = "SELECT * FROM fillings;";
-        List<Filling> allFillings = new ArrayList<>();
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlToGetAllFillings);
-        while (result.next()){
-            Filling filling = mapRowToFilling(result);
-            allFillings.add(filling);
+        List <Filling> allFillings = new ArrayList <> ();
+        SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllFillings);
+        while (result.next ()) {
+            Filling filling = mapRowToFilling (result);
+            allFillings.add (filling);
         }
         return allFillings;
     }
@@ -64,7 +66,8 @@ public class JDBCFillingDAO implements FillingDAO{
                 "price_mod = ?\n" +
                 "WHERE filling_id = ?; ";
         jdbcTemplate.update (sqlToUpdateFilling, filling.getFillingName (), filling.isAvailable (), filling.getPriceMod (),
-                fillingID);
+                fillingID
+        );
         return filling;
     }
 
@@ -73,12 +76,12 @@ public class JDBCFillingDAO implements FillingDAO{
         return null;
     }
 
-    public Filling mapRowToFilling(SqlRowSet result){
-        Filling filling = new Filling();
-        filling.setFillingID(result.getInt("filling_id"));
-        filling.setFillingName(result.getString("filling_name"));
-        filling.setIsAvailable(result.getBoolean("is_available"));
-        filling.setPriceMod(result.getBigDecimal("price_mod"));
+    public Filling mapRowToFilling(SqlRowSet result) {
+        Filling filling = new Filling ();
+        filling.setFillingID (result.getInt ("filling_id"));
+        filling.setFillingName (result.getString ("filling_name"));
+        filling.setIsAvailable (result.getBoolean ("is_available"));
+        filling.setPriceMod (result.getBigDecimal ("price_mod"));
         return filling;
     }
 }

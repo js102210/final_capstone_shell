@@ -8,6 +8,7 @@ public class Size {
     private String sizeDescription;
     private boolean isAvailable;
     private BigDecimal priceMod;
+
     public int getSizeID() {
         return sizeID;
     }

@@ -8,8 +8,6 @@ public class Style {
     private boolean isAvailable;
     private BigDecimal priceMod;
 
-
-
     public int getStyleID() {
         return styleID;
     }

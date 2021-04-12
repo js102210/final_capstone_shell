@@ -11,32 +11,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JDBCExtraDAO implements ExtraDAO{
+public class JDBCExtraDAO implements ExtraDAO {
     private final JdbcTemplate jdbcTemplate;
-    public JDBCExtraDAO(JdbcTemplate jdbcTemplate){
+
+    public JDBCExtraDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
     public List <Extra> getAvailableExtras() {
         String sqlToGetAvailableExtras = "SELECT * FROM extras WHERE is_available = TRUE;";
-        List<Extra> availableExtras = new ArrayList<>();
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlToGetAvailableExtras);
-        while (result.next()){
-            Extra extra = mapRowToExtra(result);
-            availableExtras.add(extra);
+        List <Extra> availableExtras = new ArrayList <> ();
+        SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAvailableExtras);
+        while (result.next ()) {
+            Extra extra = mapRowToExtra (result);
+            availableExtras.add (extra);
         }
         return availableExtras;
     }
 
     @Override
-    public List<Extra> getAllExtras() {
+    public List <Extra> getAllExtras() {
         String sqlToGetAllExtras = "SELECT * FROM extras;";
-        List<Extra> allExtras = new ArrayList<>();
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlToGetAllExtras);
-        while (result.next()){
-            Extra extra = mapRowToExtra(result);
-            allExtras.add(extra);
+        List <Extra> allExtras = new ArrayList <> ();
+        SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllExtras);
+        while (result.next ()) {
+            Extra extra = mapRowToExtra (result);
+            allExtras.add (extra);
         }
         return allExtras;
     }
@@ -55,14 +56,16 @@ public class JDBCExtraDAO implements ExtraDAO{
     public Extra updateExtra(Extra extra, int ID) {
         String sqlToUpdateExtra =
                 "UPDATE extras\n" +
-                "SET extra_name = ?,\n" +
-                "is_available = ?,\n" +
-                "price_mod = ?\n" +
-                "WHERE extra_id = ?;";
-        jdbcTemplate.update(sqlToUpdateExtra, extra.getExtraName(), extra.isAvailable(),
-                extra.getPriceMod(), ID);
+                        "SET extra_name = ?,\n" +
+                        "is_available = ?,\n" +
+                        "price_mod = ?\n" +
+                        "WHERE extra_id = ?;";
+        jdbcTemplate.update (sqlToUpdateExtra, extra.getExtraName (), extra.isAvailable (),
+                extra.getPriceMod (), ID
+        );
         return extra;
     }
+
     @Override
     public String deleteExtra(int ID) {
         return null;
@@ -73,12 +76,12 @@ public class JDBCExtraDAO implements ExtraDAO{
         return null;
     }
 
-    public Extra mapRowToExtra (SqlRowSet result){
-        Extra extra = new Extra();
-        extra.setExtraID(result.getInt("extra_id"));
-        extra.setExtraName(result.getString("extra_name"));
-        extra.setIsAvailable(result.getBoolean("is_available"));
-        extra.setPriceMod(result.getBigDecimal("price_mod"));
+    public Extra mapRowToExtra(SqlRowSet result) {
+        Extra extra = new Extra ();
+        extra.setExtraID (result.getInt ("extra_id"));
+        extra.setExtraName (result.getString ("extra_name"));
+        extra.setIsAvailable (result.getBoolean ("is_available"));
+        extra.setPriceMod (result.getBigDecimal ("price_mod"));
         return extra;
     }
 }

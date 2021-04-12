@@ -7,6 +7,7 @@ public class Frosting {
     private String frostingName;
     private boolean isAvailable;
     private BigDecimal priceMod;
+
     public int getFrostingID() {
         return frostingID;
     }
@@ -38,7 +39,6 @@ public class Frosting {
     public void setPriceMod(BigDecimal priceMod) {
         this.priceMod = priceMod;
     }
-
 
 
 }

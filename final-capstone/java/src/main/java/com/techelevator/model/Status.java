@@ -3,6 +3,7 @@ package com.techelevator.model;
 public class Status {
     private int StatusID;
     private String statusName;
+
     public int getStatusID() {
         return StatusID;
     }

@@ -30,16 +30,16 @@ public class CakeConfigController {
     }
 
     //this also requires authorization. employee only.
-   @RequestMapping(path = "/configs", method = RequestMethod.POST)
-   @ResponseStatus(value = HttpStatus.CREATED)
-   public Integer add(@RequestBody CakeConfig cakeConfig) {
-   return  cakeConfigDAO.addCakeConfig(cakeConfig);
+    @RequestMapping(path = "/configs", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public Integer add(@RequestBody CakeConfig cakeConfig) {
+        return cakeConfigDAO.addCakeConfig (cakeConfig);
     }
 
     @RequestMapping(path = "/configs/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
-    public Boolean configFlipStatus(@PathVariable int id){
-        return cakeConfigDAO.flipConfigStatus(id);
+    public Boolean configFlipStatus(@PathVariable int id) {
+        return cakeConfigDAO.flipConfigStatus (id);
     }
 
 

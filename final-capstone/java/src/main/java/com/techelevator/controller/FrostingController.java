@@ -13,26 +13,27 @@ import java.util.List;
 @RestController
 public class FrostingController {
     private final FrostingDAO frostingDAO;
-    public FrostingController(FrostingDAO frostingDAO){
+
+    public FrostingController(FrostingDAO frostingDAO) {
         this.frostingDAO = frostingDAO;
     }
 
     //get all Frostings
     @RequestMapping(path = "/frostings", method = RequestMethod.GET)
-    public List<Frosting> getAllFrostingsFromDb(){
-        return frostingDAO.getAllFrostings();
+    public List <Frosting> getAllFrostingsFromDb() {
+        return frostingDAO.getAllFrostings ();
     }
 
     //get available Frostings
     @RequestMapping(path = "/frostings/available", method = RequestMethod.GET)
-    public List<Frosting> getAvailableFrostingsFromDb(){
-        return frostingDAO.getAvailableFrostings();
+    public List <Frosting> getAvailableFrostingsFromDb() {
+        return frostingDAO.getAvailableFrostings ();
     }
 
     @RequestMapping(path = "/frostings/{id}", method = RequestMethod.PUT)
-    public Frosting update (@PathVariable int id,
-                        @RequestBody Frosting frosting) {
-        frostingDAO.updateFrosting(frosting, id);
+    public Frosting update(@PathVariable int id,
+                           @RequestBody Frosting frosting) {
+        frostingDAO.updateFrosting (frosting, id);
         return frosting;
     }
 
@@ -46,7 +47,6 @@ public class FrostingController {
     public Boolean frostingFlipStatus(@PathVariable int id) {
         return frostingDAO.flipAvailability (id);
     }
-
 
 
 }

@@ -1,6 +1,5 @@
 package com.techelevator.dao;
 
-
 import com.techelevator.model.Frosting;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -11,32 +10,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JDBCFrostingDAO implements FrostingDAO{
+public class JDBCFrostingDAO implements FrostingDAO {
     private final JdbcTemplate jdbcTemplate;
-    public JDBCFrostingDAO (JdbcTemplate jdbcTemplate){
+
+    public JDBCFrostingDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
-    public List<Frosting> getAvailableFrostings() {
+    public List <Frosting> getAvailableFrostings() {
         String sqlToGetAvailableFrostings = "SELECT * FROM frostings WHERE is_available = TRUE;";
-        List<Frosting> availableFrostings = new ArrayList<>();
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlToGetAvailableFrostings);
-        while (result.next()){
-            Frosting frosting = mapRowToFrosting(result);
-            availableFrostings.add(frosting);
+        List <Frosting> availableFrostings = new ArrayList <> ();
+        SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAvailableFrostings);
+        while (result.next ()) {
+            Frosting frosting = mapRowToFrosting (result);
+            availableFrostings.add (frosting);
         }
         return availableFrostings;
     }
 
     @Override
-    public List<Frosting> getAllFrostings() {
+    public List <Frosting> getAllFrostings() {
         String sqlToGetAllFrostings = "SELECT * FROM frostings;";
-        List<Frosting> allFrostings = new ArrayList<>();
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlToGetAllFrostings);
-        while (result.next()){
-            Frosting frosting = mapRowToFrosting(result);
-            allFrostings.add(frosting);
+        List <Frosting> allFrostings = new ArrayList <> ();
+        SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllFrostings);
+        while (result.next ()) {
+            Frosting frosting = mapRowToFrosting (result);
+            allFrostings.add (frosting);
         }
         return allFrostings;
     }
@@ -66,7 +66,8 @@ public class JDBCFrostingDAO implements FrostingDAO{
         String sqlToUpdateFrosting = "UPDATE frosting SET frosting_name = ?, is_available = ?, price_mod = ?" +
                 "WHERE frosting_id = ?;";
         jdbcTemplate.update (sqlToUpdateFrosting, frosting.getFrostingName (), frosting.isAvailable (), frosting.getPriceMod (),
-                frosting.getFrostingID ());
+                frosting.getFrostingID ()
+        );
     }
 
     @Override
@@ -74,12 +75,12 @@ public class JDBCFrostingDAO implements FrostingDAO{
 
     }
 
-    public Frosting mapRowToFrosting(SqlRowSet result){
-        Frosting frosting = new Frosting();
-        frosting.setFrostingID(result.getInt("frosting_id"));
-        frosting.setFrostingName(result.getString("frosting_name"));
-        frosting.setIsAvailable(result.getBoolean("is_available"));
-        frosting.setPriceMod(result.getBigDecimal("price_mod"));
+    public Frosting mapRowToFrosting(SqlRowSet result) {
+        Frosting frosting = new Frosting ();
+        frosting.setFrostingID (result.getInt ("frosting_id"));
+        frosting.setFrostingName (result.getString ("frosting_name"));
+        frosting.setIsAvailable (result.getBoolean ("is_available"));
+        frosting.setPriceMod (result.getBigDecimal ("price_mod"));
         return frosting;
     }
 }

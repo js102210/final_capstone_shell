@@ -16,9 +16,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 @Component
-public class JDBCOrderDAO  implements  OrderDAO {
+public class JDBCOrderDAO implements OrderDAO {
     private JdbcTemplate jdbcTemplate;
     private CakeItemDAO cakeItemDAO;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
@@ -63,7 +62,7 @@ public class JDBCOrderDAO  implements  OrderDAO {
         Date pickupDate = dateFormat.parse (order.getOrderPickupDate ());
         LocalTime pickupTime = LocalTime.parse (order.getOrderPickupTime (), timeFormat);
         String sqlUpdateOrderStatus =
-                        "UPDATE orders \n" +
+                "UPDATE orders \n" +
                         "SET status_id = ?,\n" +
                         "total_price = ?,\n" +
                         "pickup_date = ?,\n" +
@@ -72,8 +71,9 @@ public class JDBCOrderDAO  implements  OrderDAO {
                         "customer_phone_number = ?,\n" +
                         "date_last_updated = CURRENT_DATE\n" +
                         "WHERE order_id = ?;";
-        jdbcTemplate.update (sqlUpdateOrderStatus, order.getOrderStatusID(), order.getOrderPriceTotal(),
-               pickupDate, pickupTime, order.getCustomerName(), order.getCustomerPhoneNumber(), order.getOrderID ());
+        jdbcTemplate.update (sqlUpdateOrderStatus, order.getOrderStatusID (), order.getOrderPriceTotal (),
+                pickupDate, pickupTime, order.getCustomerName (), order.getCustomerPhoneNumber (), order.getOrderID ()
+        );
 
         return order;
 

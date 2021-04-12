@@ -7,6 +7,7 @@ public class Flavor {
     private String flavorName;
     private boolean isAvailable;
     private BigDecimal priceMod;
+
     public int getFlavorID() {
         return flavorID;
     }

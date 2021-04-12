@@ -1,4 +1,5 @@
 package com.techelevator.controller;
+
 import com.techelevator.dao.OrderDAO;
 import com.techelevator.model.Order;
 import org.springframework.http.HttpStatus;
@@ -13,23 +14,26 @@ import java.util.List;
 @RestController
 public class OrderController {
     private OrderDAO orderDAO;
+
     public OrderController(OrderDAO orderDAO) {
         this.orderDAO = orderDAO;
     }
+
     /**
      * place an order and all of its cake items into the database
+     *
      * @param order Order object
      */
-    @RequestMapping( path= "/placeOrder", method = RequestMethod.POST)
-    @ResponseStatus (HttpStatus.CREATED)
+    @RequestMapping(path = "/placeOrder", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     public Integer addOrder(@RequestBody Order order) throws ParseException {
-       return orderDAO.placeOrder (order);
+        return orderDAO.placeOrder (order);
     }
 
-//  @PreAuthorize ("employee")
+    //  @PreAuthorize ("employee")
     @RequestMapping(value = "orders/{id}", method = RequestMethod.PUT)
-    public Order updateOrderStatus (@PathVariable int id, @RequestBody Order order) throws ParseException {
-        orderDAO.updateOrder(order, id);
+    public Order updateOrderStatus(@PathVariable int id, @RequestBody Order order) throws ParseException {
+        orderDAO.updateOrder (order, id);
         return order;
     }
 
@@ -37,7 +41,6 @@ public class OrderController {
     public List <Order> getAllOrders() {
         return orderDAO.getAllOrders ();
     }
-
 
 
 }

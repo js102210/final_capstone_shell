@@ -7,6 +7,7 @@ public class Filling {
     private String fillingName;
     private boolean isAvailable;
     private BigDecimal priceMod;
+
     public int getFillingID() {
         return fillingID;
     }

@@ -36,30 +36,30 @@ public class AuthenticationController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginDTO loginDto) {
+    public ResponseEntity <LoginResponse> login(@Valid @RequestBody LoginDTO loginDto) {
 
         UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
+                new UsernamePasswordAuthenticationToken (loginDto.getUsername (), loginDto.getPassword ());
 
-        Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = tokenProvider.createToken(authentication, false);
-        
-        User user = userDAO.findByUsername(loginDto.getUsername());
+        Authentication authentication = authenticationManagerBuilder.getObject ().authenticate (authenticationToken);
+        SecurityContextHolder.getContext ().setAuthentication (authentication);
+        String jwt = tokenProvider.createToken (authentication, false);
 
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
-        return new ResponseEntity<>(new LoginResponse(jwt, user), httpHeaders, HttpStatus.OK);
+        User user = userDAO.findByUsername (loginDto.getUsername ());
+
+        HttpHeaders httpHeaders = new HttpHeaders ();
+        httpHeaders.add (JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
+        return new ResponseEntity <> (new LoginResponse (jwt, user), httpHeaders, HttpStatus.OK);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void register(@Valid @RequestBody RegisterUserDTO newUser) {
         try {
-            User user = userDAO.findByUsername(newUser.getUsername());
-            throw new UserAlreadyExistsException();
+            User user = userDAO.findByUsername (newUser.getUsername ());
+            throw new UserAlreadyExistsException ();
         } catch (UsernameNotFoundException e) {
-            userDAO.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole());
+            userDAO.create (newUser.getUsername (), newUser.getPassword (), newUser.getRole ());
         }
     }
 
@@ -86,13 +86,13 @@ public class AuthenticationController {
         }
 
         @JsonProperty("user")
-		public User getUser() {
-			return user;
-		}
+        public User getUser() {
+            return user;
+        }
 
-		public void setUser(User user) {
-			this.user = user;
-		}
+        public void setUser(User user) {
+            this.user = user;
+        }
     }
 }
 
