@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.FillingDAO;
 import com.techelevator.model.Filling;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -17,7 +18,8 @@ public class FillingController {
         this.fillingDAO = fillingDAO;
     }
 
-    //get all fillings
+    //get all fillings - need auth
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/fillings", method = RequestMethod.GET)
     public List <Filling> getAllFillingsFromDb() {
         return fillingDAO.getAllFillings ();
@@ -29,17 +31,23 @@ public class FillingController {
         return fillingDAO.getAvailableFillings ();
     }
 
+    //need auth
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/fillings/{id}", method = RequestMethod.PUT)
     public Filling update(@PathVariable int id, @RequestBody Filling filling) {
         fillingDAO.updateFilling (filling, id);
         return filling;
     }
 
+    //need auth
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/fillings", method = RequestMethod.POST)
     public int createNewFilling(@RequestBody Filling newFilling) {
         return fillingDAO.createFilling (newFilling);
     }
 
+    //need auth
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/fillings/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean fillingFlipStatus(@PathVariable int id) {

@@ -18,6 +18,7 @@ public class StyleController {
         this.styleDAO = styleDAO;
     }
 
+    //need auth
     @RequestMapping(path = "/styles", method = RequestMethod.GET)
     public List <Style> getAllStylesFromDb() {
         return styleDAO.getAllStyles ();
@@ -28,11 +29,13 @@ public class StyleController {
         return styleDAO.getAvailableStyles ();
     }
 
+    //need auth
     @RequestMapping(path = "/styles", method = RequestMethod.POST)
     public int createNewStyle(@RequestBody Style newStyle) {
         return styleDAO.createStyle (newStyle);
     }
 
+    //need auth
     @RequestMapping(path = "/styles/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean styleFlipStatus(@PathVariable int id) {

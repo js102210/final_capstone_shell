@@ -17,6 +17,7 @@ public class SizeController {
         this.sizeDAO = sizeDAO;
     }
 
+    //need auth
     @RequestMapping(path = "/sizes", method = RequestMethod.GET)
     public List <Size> getAllSizesFromDb() {
         return sizeDAO.getAllSizes ();
@@ -28,11 +29,13 @@ public class SizeController {
         return sizeDAO.getAvailableSizes ();
     }
 
+    //need auth
     @RequestMapping(path = "/sizes", method = RequestMethod.POST)
     public int createNewSize(@RequestBody Size newSize) {
         return sizeDAO.createSize (newSize);
     }
 
+    //need auth
     @RequestMapping(path = "/sizes/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean styleFlipStatus(@PathVariable int id) {

@@ -37,6 +37,7 @@ public class OrderController {
         return order;
     }
 
+    //need auth
     @RequestMapping(path = "/orders", method = RequestMethod.GET)
     public List <Order> getAllOrders() {
         return orderDAO.getAllOrders ();
