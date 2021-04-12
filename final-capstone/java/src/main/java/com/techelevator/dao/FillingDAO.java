@@ -28,7 +28,6 @@ public interface FillingDAO {
     int createFilling(String FillingName, BigDecimal priceMod);
     int createFilling(Filling newFilling);
 
-
     /**
      * removes a Filling from the datastore
      * @param ID int ID of the Filling to delete
@@ -44,6 +43,11 @@ public interface FillingDAO {
      */
     Filling updateFilling(Filling filling, int fillingID);
 
-
-    Boolean flipAvailability(int id);
+    /**
+     * flips the availability status of a filling. If true then it becomes false, and vice versa. Returns the
+     * new value if is_available in the "fillings" table.
+     * @param id - the id of the extra item
+     * @return boolean - the updated boolean of the filling for is_available
+     */
+    boolean flipAvailability(int id);
 }

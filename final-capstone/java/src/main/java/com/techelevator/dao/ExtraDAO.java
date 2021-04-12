@@ -22,25 +22,32 @@ public interface ExtraDAO {
      * inserts a new Extra item in the datastore
      * @param extraName String name of the Extra
      * @param priceMod BigDecimal price of the Extra item
+     * @param
      * @return int ID of the newly created Extra item
      */
     int createExtra(String extraName, BigDecimal priceMod);
     int createExtra(Extra newExtra);
+
     /**
      * make updates to an existing Extra
      * @param extra Extra the Extra to change, with all updated properties
-     * @param ID int ID of the Extra to change
+     * @param extraID int ID of the Extra to change
      * @return Extra with all properties updated
      */
-     Extra updateExtra(Extra extra, int ID);
+     Extra updateExtra(Extra extra, int extraID);
 
     /**
      * removes an Extra from the datastore
      * @param ID int ID of the Extra to delete
-     * @return String confirmation that the Extra item was deleted (probably the name plus " was deleted."
+     * @return String confirmation that the Extra item was deleted (probably the name plus " was deleted.")
      */
     String deleteExtra(int ID);
 
-
-    Boolean flipAvailability(int id);
+    /**
+     * flips the availability status of an extra. If true then it becomes false, and vice versa. Returns the
+     * new value if is_available in the "extras" table.
+     * @param id - the id of the extra item
+     * @return boolean - the updated boolean of the extra for is_available
+     */
+    boolean flipAvailability(int id);
 }

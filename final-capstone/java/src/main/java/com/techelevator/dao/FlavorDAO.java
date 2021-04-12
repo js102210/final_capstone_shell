@@ -26,13 +26,13 @@ public interface FlavorDAO {
      */
     int createFlavor(String flavorName, BigDecimal priceMod);
     int createFlavor(Flavor newFlavor);
-    /**
-     * changes the availability status of a Flavor
-     * @param ID int ID of the Flavor to change availability for
-     * @return boolean the availability status of the Flavor after the change
-     */
 
-    //note possibly change this
+     /**
+     * flips the availability status of a flavor. If true then it becomes false, and vice versa. Returns the
+     * new value if is_available in the "flavors" table.
+     * @param ID - the id of the flavor item
+     * @return boolean - the updated boolean of the flavor for is_available
+     */
     boolean flipAvailability(int ID);
 
     /**
@@ -42,8 +42,13 @@ public interface FlavorDAO {
      */
     String deleteFlavor(int ID);
 
+    /**
+     * make updates to an existing Flavor
+     * @param flavor the Flavor to change, with all updated properties
+     * @param flavor of the Flavor to change
+     * @return Flavor with all properties updated
+     */
     Flavor update(Flavor flavor);
-
     Flavor updateFlavor(Flavor flavor, int id);
 
 

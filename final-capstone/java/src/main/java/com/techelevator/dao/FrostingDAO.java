@@ -42,8 +42,13 @@ public interface FrostingDAO {
      */
     String deleteFrosting(int ID);
 
+    /**
+     * make updates to an existing Frosting
+     * @param frosting the frosting to change, with all updated properties
+     * @param frosting of the frosting to change
+     * @return Frosting with all properties updated
+     */
     void update(Frosting frosting);
-
     void updateFrosting(Frosting frosting, int id);
 
 

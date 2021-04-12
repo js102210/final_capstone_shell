@@ -1,10 +1,6 @@
 package com.techelevator.dao;
 
-
-
 import com.techelevator.model.Style;
-
-import java.math.BigDecimal;
 import java.util.List;
 
 public interface StyleDAO {
@@ -20,6 +16,12 @@ public interface StyleDAO {
      */
     List<Style> getAllStyles();
 
+    /**
+     * make updates to an existing Style
+     * @param style the Style to change, with all updated properties
+     * @param styleID int ID of the Style to change
+     * @return Style with all properties updated
+     */
     Style updateStyle(Style style, int styleID);
 
     /**
