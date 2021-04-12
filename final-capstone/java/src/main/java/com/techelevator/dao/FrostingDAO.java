@@ -20,11 +20,9 @@ public interface FrostingDAO {
 
     /**
      * inserts a new Frosting in the datastore
-     * @param frostingName String name of the Frosting
-     * @param priceMod BigDecimal how much the Frosting
+     * @param newFrosting the Frosting object for the new frosting passed to us from front end.
      * @return int ID of the newly created Frosting
      */
-    int createFrosting(String frostingName, BigDecimal priceMod);
     int createFrosting(Frosting newFrosting);
 
     /**

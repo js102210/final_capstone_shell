@@ -44,11 +44,6 @@ public class JDBCFrostingDAO implements FrostingDAO {
     }
 
     @Override
-    public int createFrosting(String frostingName, BigDecimal priceMod) {
-        return 0;
-    }
-
-    @Override
     public int createFrosting(Frosting newFrosting) {
         String sqlToAddNewFrosting = "INSERT INTO frostings (frosting_name, price_mod) VALUES (?, ?) RETURNING frosting_id ;";
         Integer newID = jdbcTemplate.queryForObject (sqlToAddNewFrosting, Integer.class, newFrosting.getFrostingName (), newFrosting.getPriceMod ());
@@ -80,9 +75,9 @@ public class JDBCFrostingDAO implements FrostingDAO {
 
     @Override
     public void update(Frosting frosting) {
-        String sqlToUpdateFrosting = "UPDATE frosting SET frosting_name = ?, is_available = ?, price_mod = ?" +
+        String sqlToUpdateFrosting = "UPDATE frosting SET frosting_name = ?,  price_mod = ?" +
                 "WHERE frosting_id = ?;";
-        jdbcTemplate.update (sqlToUpdateFrosting, frosting.getFrostingName (), frosting.isAvailable (), frosting.getPriceMod (),
+        jdbcTemplate.update (sqlToUpdateFrosting, frosting.getFrostingName (), frosting.getPriceMod (),
                 frosting.getFrostingID ()
         );
     }

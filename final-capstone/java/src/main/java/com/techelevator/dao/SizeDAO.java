@@ -43,7 +43,7 @@ public interface SizeDAO {
     void deleteSize(int id);
 
     /**
-     * changes the availability status of a Size
+     * changes the availability status of a Size.
      * @param id int ID of the Size changing availability
      * @return boolean for the availability status of the Size after the change
      */
