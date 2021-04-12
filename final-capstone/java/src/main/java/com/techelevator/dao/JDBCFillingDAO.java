@@ -73,7 +73,11 @@ public class JDBCFillingDAO implements FillingDAO {
 
     @Override
     public boolean flipAvailability(int id) {
-        return false;
+        String sqlFlipStatusStatement = "UPDATE fillings SET is_available = NOT is_available WHERE filling_id = ? RETURNING is_available ;";
+
+        Boolean result = jdbcTemplate.queryForObject (sqlFlipStatusStatement, Boolean.class, id);
+
+        return result;
     }
 
     public Filling mapRowToFilling(SqlRowSet result) {

@@ -53,8 +53,12 @@ public class JDBCFlavorDAO implements FlavorDAO {
     }
 
     @Override
-    public boolean flipAvailability(int ID) {
-        return false;
+    public boolean flipAvailability(int id) {
+        String sqlFlipStatusStatement = "UPDATE flavors SET is_available = NOT is_available WHERE flavor_id = ? RETURNING is_available ;";
+
+        Boolean result = jdbcTemplate.queryForObject (sqlFlipStatusStatement, Boolean.class, id);
+
+        return result;
     }
 
     @Override

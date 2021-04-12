@@ -73,7 +73,11 @@ public class JDBCExtraDAO implements ExtraDAO {
 
     @Override
     public boolean flipAvailability(int id) {
-        return false;
+        String sqlFlipStatusStatement = "UPDATE extras SET is_available = NOT is_available WHERE extra_id = ? RETURNING is_available ;";
+
+        Boolean result = jdbcTemplate.queryForObject (sqlFlipStatusStatement, Boolean.class, id);
+
+        return result;
     }
 
     public Extra mapRowToExtra(SqlRowSet result) {

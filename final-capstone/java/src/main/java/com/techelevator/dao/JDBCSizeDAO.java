@@ -63,7 +63,11 @@ public class JDBCSizeDAO implements SizeDAO {
 
     @Override
     public boolean flipAvailability(int id) {
-        return false;
+        String sqlFlipStatusStatement = "UPDATE sizes SET is_available = NOT is_available WHERE size_id = ? RETURNING is_available ;";
+
+        Boolean result = jdbcTemplate.queryForObject (sqlFlipStatusStatement, Boolean.class, id);
+
+        return result;
     }
 
     public Size mapRowToSize(SqlRowSet result) {
