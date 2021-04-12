@@ -27,29 +27,64 @@ export default {
 .employee-products-display {
   margin-top: 45px;
 }
-.change-options-display {
+
+.create-cake-display {
   margin-top: 30px;
-  border:2px solid black;
+  border: 1px solid black;
   border-radius: 10px;
+  background: rgba(255, 255, 255, 0.452);
+  padding: 10px;
+  font-family: 'Quicksand';
+  font-weight: 600;
 }
+
+.create-cake-display input, select {
+    margin: 6px;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid rgb(24, 24, 24);
+  }
 
 .change-cake-display {
   margin-top: 30px;
-  border:2px solid black;
+  border:1px solid black;
   border-radius: 10px;
+  background: rgba(255, 255, 255, 0.607);
+  padding: 10px;
+  font-family: 'Quicksand';
+  font-weight: 500;
 }
 
 .create-options-display {
   margin-top: 30px;
-  border:2px solid black;
+  border:1px solid black;
   border-radius: 10px;
+  background: rgba(255, 255, 255, 0.452);
+  padding: 10px;
+  font-family: 'Quicksand';
+  font-weight: 600;
 }
 
-.create-cake-display {
+.create-options-display input, select {
+    margin: 6px;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid rgb(24, 24, 24);
+  }
+
+.change-options-display {
   margin-top: 30px;
-  border: 2px solid black;
+  border:1px solid black;
   border-radius: 10px;
+  background: rgba(255, 255, 255, 0.607);
+  padding: 10px;
+  font-family: 'Quicksand';
+  font-weight: 500;
 }
+
+/* .change-options-display tr {
+  margin-top: 10px;
+} */
 
 .unavailable {
   color: red;
