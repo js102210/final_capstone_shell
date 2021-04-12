@@ -13,7 +13,13 @@ public class CakeItemDTO {
     private int cakeItemFlavorID;
 
     private int cakeItemConfigID;
+    private int cakeItemOrderID;
     private BigDecimal cakeItemPrice;
+
+    /**
+     * blank constructor for CakeItemDTO.
+     */
+    public CakeItemDTO(){};
 
     /**
      * constructor for cake item
@@ -25,9 +31,10 @@ public class CakeItemDTO {
      * @param cakeItemFilling String
      * @param cakeItemFrosting String
      * @param cakeItemFlavor String
+     * @param cakeItemOrderID int
      */
     public CakeItemDTO(int itemStyle, int itemSize, String itemMessage, BigDecimal itemPrice,
-                       int cakeItemFilling, int cakeItemFrosting, int cakeItemFlavor){
+                       int cakeItemFilling, int cakeItemFrosting, int cakeItemFlavor, int cakeItemOrderID){
 
         this.cakeItemSizeID = itemSize;
         this.cakeItemStyleID = itemStyle;
@@ -36,6 +43,7 @@ public class CakeItemDTO {
         this.cakeItemFillingID = cakeItemFilling;
         this.cakeItemFrostingID = cakeItemFrosting;
         this.cakeItemFlavorID = cakeItemFlavor;
+        this.cakeItemOrderID = cakeItemOrderID;
     }
 
     public int getCakeItemID() {
@@ -112,4 +120,11 @@ public class CakeItemDTO {
         this.cakeItemConfigID = cakeItemConfigID;
     }
 
+    public int getCakeItemOrderID(){
+        return cakeItemOrderID;
+    }
+
+    public void setCakeItemOrderID(int cakeItemOrderID){
+        this.cakeItemOrderID = cakeItemOrderID;
+    }
 }
