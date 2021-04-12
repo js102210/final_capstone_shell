@@ -72,8 +72,8 @@ public class JDBCFillingDAO implements FillingDAO {
     }
 
     @Override
-    public Boolean flipAvailability(int id) {
-        return null;
+    public boolean flipAvailability(int id) {
+        return false;
     }
 
     public Filling mapRowToFilling(SqlRowSet result) {

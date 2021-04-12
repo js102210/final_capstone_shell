@@ -72,8 +72,8 @@ public class JDBCExtraDAO implements ExtraDAO {
     }
 
     @Override
-    public Boolean flipAvailability(int id) {
-        return null;
+    public boolean flipAvailability(int id) {
+        return false;
     }
 
     public Extra mapRowToExtra(SqlRowSet result) {

@@ -62,8 +62,8 @@ public class JDBCSizeDAO implements SizeDAO {
     }
 
     @Override
-    public Boolean flipAvailability(int id) {
-        return null;
+    public boolean flipAvailability(int id) {
+        return false;
     }
 
     public Size mapRowToSize(SqlRowSet result) {
