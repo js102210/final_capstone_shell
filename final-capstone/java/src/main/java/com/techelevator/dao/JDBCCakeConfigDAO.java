@@ -77,6 +77,7 @@ public class JDBCCakeConfigDAO implements CakeConfigDAO {
         config.setCakeConfigFillingID (result.getInt ("filling_id"));
         config.setCakeConfigFlavorID (result.getInt ("flavor_id"));
         config.setCakeConfigFrostingID (result.getInt ("frosting_id"));
+        config.setIsAvailable(result.getBoolean("is_available"));
         return config;
 
     }
