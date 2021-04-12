@@ -36,7 +36,7 @@ public class StyleController {
     //need auth
 
     @RequestMapping(path = "/styles", method = RequestMethod.POST)
-    public int createNewStyle(@RequestBody Style newStyle) {
+    public int createNewStyle(@RequestBody  Style newStyle) {
         return styleDAO.createStyle (newStyle);
     }
 
