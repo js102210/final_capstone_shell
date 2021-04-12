@@ -45,12 +45,22 @@ public class JDBCSizeDAO implements SizeDAO {
     }
 
     @Override
+    public int createSize(Size newSize) {
+        return 0;
+    }
+
+    @Override
     public Size updateSize(Size size, int sizeID) {
         return null;
     }
 
     @Override
     public String deleteSize(int ID) {
+        return null;
+    }
+
+    @Override
+    public Boolean flipAvailability(int id) {
         return null;
     }
 
