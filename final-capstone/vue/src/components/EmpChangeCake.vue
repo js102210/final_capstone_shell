@@ -14,7 +14,7 @@
       </thead>
       
       <tbody>
-        <tr v-for="cake in $store.state.availableCakeConfigsBE" v-bind:key="cake.cakeConfigID"
+        <tr v-for="cake in $store.state.allCakeConfigsBE" v-bind:key="cake.cakeConfigID"
             v-bind:class="{ unavailable: !cake.isAvailable}" >
           <td>
             <input type="radio" name="flip status" v-bind:id="cake.cakeConfigID"
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import CustomerService from '../services/CustomerService.js';
+import EmployeeService from '../services/EmployeeService.js';
 
 export default {
   name: "emp-change-cake",
@@ -46,12 +46,12 @@ export default {
   },
   methods: {
     flipStatus() {
-
+// do we need to pass in cakeConfigID?  Brain not working ... help
     }
   },
    created() {
-    CustomerService.getAvailableConfigs().then((response) => {
-      this.$store.commit("SET_AVAILABLE_CAKE_CONFIG_ARRAY", response.data);
+    EmployeeService.getAllConfigs().then((response) => {
+      this.$store.commit("SET_ALL_CAKE_CONFIG_ARRAY", response.data);
     });
   },
 }
