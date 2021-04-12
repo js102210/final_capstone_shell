@@ -119,6 +119,7 @@ export default {
         .then((response) => {
           if (response.status === 201) {
             this.$store.commit("CLEAR_CAKE_CONFIG_JSON");
+            alert(this.newCake.cakeConfigName + ' can now be ordered. I hope you are ready for that.')
             this.clearNewCake();
           }
         })
