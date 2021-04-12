@@ -353,10 +353,10 @@ export default new Vuex.Store({
       state.allCakeConfigsBE = cakeConfigJSONArray;
     },
     SET_ALL_SIZES_ARRAY(state, sizeJSONArray){
-      state.availableCakeSizesBE = sizeJSONArray;
+      state.allCakeSizesBE = sizeJSONArray;
     },
     SET_AVAILABLE_SIZES_ARRAY(state, sizeJSONArray){
-      state.allCakeSizesBE = sizeJSONArray;
+      state.availableCakeSizesBE = sizeJSONArray;
     },
     SET_AVAILABLE_STYLES_ARRAY(state, styleJSONArray){
       state.availableCakeStylesBE = styleJSONArray;
@@ -382,12 +382,18 @@ export default new Vuex.Store({
     SET_ALL_FILLINGS_ARRAY(state, fillingJSONArray){
       state.allFillingsBE = fillingJSONArray;
     },
+    SET_AVAILABLE_EXTRAS_ARRAY(state, fillingJSONArray){
+      state.availableExtrasBE = fillingJSONArray;
+    },
+    SET_ALL_EXTRAS_ARRAY(state, fillingJSONArray){
+      state.allExtrasBE = fillingJSONArray;
+    },
+
     SET_CAKE_CONFIG_IS_AVAILABLE(state, id, boolean){
-      const configToSet = state.availableCakeConfigsBE.find(config => config.cakeConfigID == id)
+      const configToSet = state.allCakeConfigsBE.find(config => config.cakeConfigID == id)
       configToSet.isAvailable = boolean;
     },
     
-
     ADD_CAKEITEM_TO_ACTIVE_ORDER(state, cakeItem) {
       state.cakeItemToOrder = cakeItem;
       state.currentActiveOrder.itemsInOrder.push(cakeItem);

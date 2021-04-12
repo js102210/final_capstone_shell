@@ -6,7 +6,7 @@
       <thead>
         <tr>
           <th>&nbsp;</th>
-          <th>Cake Name</th>
+          <th>Name</th>
           <th>Description</th>
           <th>Status</th>
           <th>Action</th>
@@ -31,45 +31,75 @@
       </tbody>
     </table>
 
+      <table id="sizes">
+      <thead>
+        <tr>
+          <th>Sizes</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr v-for="size in $store.state.allCakeSizesBE" v-bind:key="size.sizeID"
+            v-bind:class="{ unavailable: !size.isAvailable}" >
+          <td>
+            <input type="radio" name="flip status" v-bind:id="size.sizeID"
+              v-bind:value="size.sizeID" v-model="selectedSizeID" />
+          </td>
+          <td>{{size.sizeName}}</td>
+          <td>{{size.sizeDescription}}</td>
+          <td>{{size.isAvailable? "Available": "Unavailable"}}</td>
+          <td>
+            <button class="btnAvailableUnavailable" v-on:click="flipStatus(size.sizeID)">
+              {{ size.isAvailable ? "Make Unavailable" : "Make Available" }} </button>
+          </td> 
+        </tr>
+      </tbody>
+    </table>
 
 </div>
   
 </template>
 
 <script>
-import CustomerService from "../services/CustomerService.js";
+import EmployeeService from "../services/EmployeeService.js";
 
 export default {
   name: "emp-change-options",
 
   data() {
     return {
-
+      selectedCakeID: {},
+      selectedSizeID: {}
     }
   },
 
   created() {
-    CustomerService.getAvailableConfigs().then((response) => {
-      this.$store.commit("SET_AVAILABLE_CAKE_CONFIG_ARRAY", response.data);
-    });
-    CustomerService.getAvailableSizes().then((response) => {
-      this.$store.commit("SET_AVAILABLE_SIZES_ARRAY", response.data);
+    EmployeeService.getAllSizes().then((response) => {
+      this.$store.commit("SET_ALL_SIZES_ARRAY", response.data);
     });
 
-    CustomerService.getAvailableStyles().then((response) => {
-      this.$store.commit("SET_AVAILABLE_STYLES_ARRAY", response.data);
+    EmployeeService.getAllStyles().then((response) => {
+      this.$store.commit("SET_ALL_STYLES_ARRAY", response.data);
     });
 
-    CustomerService.getAvailableFlavors().then((response) => {
-      this.$store.commit("SET_AVAILABLE_FLAVORS_ARRAY", response.data);
+    EmployeeService.getAllFlavors().then((response) => {
+      this.$store.commit("SET_ALL_FLAVORS_ARRAY", response.data);
     });
 
-    CustomerService.getAvailableFrostings().then((response) => {
-      this.$store.commit("SET_AVAILABLE_FROSTINGS_ARRAY", response.data);
+    EmployeeService.getAllFrostings().then((response) => {
+      this.$store.commit("SET_ALL_FROSTINGS_ARRAY", response.data);
     });
 
-    CustomerService.getAvailableFillings().then((response) => {
-      this.$store.commit("SET_AVAILABLE_FILLINGS_ARRAY", response.data);
+    EmployeeService.getAllFillings().then((response) => {
+      this.$store.commit("SET_ALL_FILLINGS_ARRAY", response.data);
+    });
+
+     EmployeeService.getAllExtras().then((response) => {
+      this.$store.commit("SET_ALL_EXTRAS_ARRAY", response.data);
     });
   },  
 

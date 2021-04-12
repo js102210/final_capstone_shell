@@ -9,7 +9,7 @@ public class CakeConfig {
     private int cakeConfigFrostingID;
     private int cakeConfigFlavorID;
 
-    private boolean isAvailable;
+    private boolean available;
 
     /**
      * Constructor for an existing CakeConfig
@@ -58,11 +58,11 @@ public class CakeConfig {
 
 
     public boolean isAvailable() {
-        return isAvailable;
+        return available;
     }
 
     public void setIsAvailable(boolean available) {
-        isAvailable = available;
+        this.available = available;
     }
 
 
