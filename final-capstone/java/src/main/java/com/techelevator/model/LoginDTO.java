@@ -8,11 +8,11 @@ public class LoginDTO {
    private String username;
    private String password;
 
-   public LoginDTO(String credentials) {
-      String[] parts = credentials.split(",");
-      username = parts[0];
-      password = parts[1];
-   }
+//   public LoginDTO(String credentials) {
+//      String[] parts = credentials.split(",");
+//      username = parts[0];
+//      password = parts[1];
+//   }
 
    public String getUsername() {
       return username;
