@@ -393,6 +393,30 @@ export default new Vuex.Store({
       const configToSet = state.allCakeConfigsBE.find(config => config.cakeConfigID == id)
       configToSet.isAvailable = boolean;
     },
+    SET_SIZE_IS_AVAILABLE(state, id, boolean){
+      const sizeToSet = state.allCakeSizesBE.find(size => size.sizeID == id);
+      sizeToSet.isAvailable = boolean;
+    },
+    SET_STYLE_IS_AVAILABLE(state, id, boolean){
+      const styleToSet = state.allCakeStylesBE.find(style => style.styleID == id);
+      styleToSet.isAvailable = boolean;
+    },
+    SET_EXTRA_IS_AVAILABLE(state, id, boolean){
+      const extraToSet = state.allExtrasBE.find(extra => extra.extraID == id);
+      extraToSet.isAvailable = boolean;
+    },
+    SET_FILLING_IS_AVAILABLE(state, id, boolean){
+      const fillingToSet = state.allFillingsBE.find(filling => filling.fillingID == id);
+      fillingToSet.isAvailable = boolean;
+    },
+    SET_FROSTING_IS_AVAILABLE(state, id, boolean){
+      const frostingToSet = state.allFrostingsBE.find(frosting => frosting.frostingID == id);
+      frostingToSet.isAvailable = boolean;
+    },
+    SET_FLAVOR_IS_AVAILABLE(state, id, boolean){
+      const flavorToSet = state.allFlavorsBE.find(flavor => flavor.flavorID == id);
+      flavorToSet.isAvailable = boolean;
+    },
     
     ADD_CAKEITEM_TO_ACTIVE_ORDER(state, cakeItem) {
       state.cakeItemToOrder = cakeItem;
