@@ -31,6 +31,8 @@ public class OrderController {
     }
 
 
+    // this needs to be rewritten - we are doing orders/status/{statusId} to update order status using the
+    // PATCH method.
     @PreAuthorize ("isAuthenticated()")
     @RequestMapping(path = "orders/{id}", method = RequestMethod.PUT)
     public Order updateOrderStatus(@PathVariable int id, @RequestBody Order order) throws ParseException {
@@ -38,12 +40,18 @@ public class OrderController {
         return order;
     }
 
-
+    /**
+     * returns all orders. Employee only.
+     * @return - gives a list of all order JSONs.
+     */
     @PreAuthorize ("isAuthenticated()")
     @RequestMapping(path = "/orders", method = RequestMethod.GET)
     public List <Order> getAllOrders() {
         return orderDAO.getAllOrders ();
     }
 
+    //implement an API for orders/status/{id} to grab orders by status with a GET
+
+    //implment an API for orders/{orderID}/cakes to grab a list of CakeItemDAOs for the cakes in a given order
 
 }

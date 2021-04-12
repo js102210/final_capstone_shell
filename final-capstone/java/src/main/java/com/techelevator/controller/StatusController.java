@@ -20,6 +20,10 @@ public class StatusController {
         this.statusDAO = statusDAO;
     }
 
+    /**
+     * brings back a list of status JSONs. Employee only.
+     * @return - returns the list of status JSONs.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/statuses", method = RequestMethod.GET)
     public List<Status> getStatuses(){

@@ -19,20 +19,32 @@ public class FrostingController {
         this.frostingDAO = frostingDAO;
     }
 
-    //get all Frostings - need auth
+    /**
+     * returns a list of all frostings. Employee only.
+     * @return - returns a list of all frosting JSONs.
+     */
     @PreAuthorize ("isAuthenticated()")
     @RequestMapping(path = "/frostings", method = RequestMethod.GET)
     public List <Frosting> getAllFrostingsFromDb() {
         return frostingDAO.getAllFrostings ();
     }
 
-    //get available Frostings
+    /**
+     * returns a list of all available frostings. For the customer side of the site.
+     * @return - returns a list of available frosting JSONS.
+     */
     @RequestMapping(path = "/frostings/available", method = RequestMethod.GET)
     public List <Frosting> getAvailableFrostingsFromDb() {
         return frostingDAO.getAvailableFrostings ();
     }
 
 
+    /**
+     * updates a given Frosting. Employee only.
+     * @param id - the id of the frosting to update
+     * @param frosting - the frostings JSON with the new information, passed from the front end.
+     * @return - returns the new frosting info.
+     */
     @PreAuthorize ("isAuthenticated()")
     @RequestMapping(path = "/frostings/{id}", method = RequestMethod.PUT)
     public Frosting update(@PathVariable int id,
@@ -41,14 +53,24 @@ public class FrostingController {
         return frosting;
     }
 
-
+    /**
+     * creates a new frosting. Employee only.
+     * @param newFrosting - a frosting JSON with the info for the new frosting.
+     * @return - returns the id of the new frosting.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/frostings", method = RequestMethod.POST)
     public int createNewFrosting(@RequestBody Frosting newFrosting) {
         return frostingDAO.createFrosting (newFrosting);
     }
 
-
+    /**
+     * flips the availability of a frosting. Employee only. If the frosting flips to being unavailable,
+     * flips any associated available cake configs to unavailable. No effect on configs if a frosting flips to
+     * available.
+     * @param id - id of the frosting to flip the availability of.
+     * @return - returns the new isAvailable of the frosting.
+     */
     @PreAuthorize ("isAuthenticated()")
     @RequestMapping(path = "frostings/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
