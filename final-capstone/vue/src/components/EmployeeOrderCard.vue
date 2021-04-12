@@ -17,5 +17,8 @@ export default {
 </script>
 
 <style>
+.order-container > * {
+  font: 1em sans-serif;
+}
 
 </style>

@@ -346,6 +346,9 @@ export default new Vuex.Store({
     CLEAR_CAKE_EXTRA_JSON(state) {
       state.cakeExtraJSON = {};
     },
+    SET_ALL_ORDERS_ARRAY(state, orderJSONArray){
+      state.pastOrdersArrayBE = orderJSONArray;
+    },
     SET_AVAILABLE_CAKE_CONFIG_ARRAY(state, cakeConfigJSONArray){
       state.availableCakeConfigsBE = cakeConfigJSONArray;
     },
