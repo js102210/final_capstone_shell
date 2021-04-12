@@ -181,9 +181,5 @@ export default {
 </script>
 
 <style>
-.create-options-display {
-  margin-top: 30px;
-  border:2px solid black;
-  border-radius: 10px;
-}
+
 </style>
