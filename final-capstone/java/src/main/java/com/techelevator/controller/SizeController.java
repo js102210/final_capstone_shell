@@ -4,6 +4,7 @@ import com.techelevator.dao.SizeDAO;
 
 import com.techelevator.model.Size;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,11 +29,13 @@ public class SizeController {
         return sizeDAO.getAvailableSizes ();
     }
 
+    @PreAuthorize ("hasRole('employee')")
     @RequestMapping(path = "/sizes", method = RequestMethod.POST)
     public int createNewSize(@RequestBody Size newSize) {
         return sizeDAO.createSize (newSize);
     }
 
+    @PreAuthorize("hasRole('employee')")
     @RequestMapping(path = "/sizes/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean styleFlipStatus(@PathVariable int id) {

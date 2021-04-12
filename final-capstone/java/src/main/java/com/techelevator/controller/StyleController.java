@@ -5,6 +5,7 @@ import com.techelevator.dao.StyleDAO;
 
 import com.techelevator.model.Style;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,11 +29,13 @@ public class StyleController {
         return styleDAO.getAvailableStyles ();
     }
 
+    @PreAuthorize ("hasRole('employee')")
     @RequestMapping(path = "/styles", method = RequestMethod.POST)
     public int createNewStyle(@RequestBody Style newStyle) {
         return styleDAO.createStyle (newStyle);
     }
 
+    @PreAuthorize("hasRole('employee')")
     @RequestMapping(path = "/styles/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean styleFlipStatus(@PathVariable int id) {

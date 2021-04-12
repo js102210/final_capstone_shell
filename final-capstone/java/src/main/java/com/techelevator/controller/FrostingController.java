@@ -4,6 +4,7 @@ import com.techelevator.dao.FrostingDAO;
 
 import com.techelevator.model.Frosting;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -30,6 +31,7 @@ public class FrostingController {
         return frostingDAO.getAvailableFrostings ();
     }
 
+    @PreAuthorize ("hasRole('employee')")
     @RequestMapping(path = "/frostings/{id}", method = RequestMethod.PUT)
     public Frosting update(@PathVariable int id,
                            @RequestBody Frosting frosting) {
@@ -37,11 +39,13 @@ public class FrostingController {
         return frosting;
     }
 
+    @PreAuthorize("hasRole('employee')")
     @RequestMapping(path = "/frostings", method = RequestMethod.POST)
     public int createNewFrosting(@RequestBody Frosting newFrosting) {
         return frostingDAO.createFrosting (newFrosting);
     }
 
+    @PreAuthorize ("hasRole('employee')")
     @RequestMapping(path = "frostings/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean frostingFlipStatus(@PathVariable int id) {

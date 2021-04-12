@@ -30,7 +30,7 @@ public class OrderController {
         return orderDAO.placeOrder (order);
     }
 
-    //  @PreAuthorize ("employee")
+    @PreAuthorize ("hasRole('employee')")
     @RequestMapping(value = "orders/{id}", method = RequestMethod.PUT)
     public Order updateOrderStatus(@PathVariable int id, @RequestBody Order order) throws ParseException {
         orderDAO.updateOrder (order, id);

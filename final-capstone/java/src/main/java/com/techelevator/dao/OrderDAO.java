@@ -12,7 +12,12 @@ public interface OrderDAO {
      * @return Integer id of the new order
      */
    Integer placeOrder(Order order) throws ParseException;
-    List <Order> getAllOrders();
+
+    /**
+     * gets all Orders
+     * @return List<Order> for all submitted Orders
+     */
+   List <Order> getAllOrders();
 
     /**
      * change the attributes of an existing order in the database

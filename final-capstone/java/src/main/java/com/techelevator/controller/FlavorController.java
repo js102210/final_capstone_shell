@@ -4,6 +4,7 @@ import com.techelevator.dao.FlavorDAO;
 
 import com.techelevator.model.Flavor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -28,17 +29,19 @@ public class FlavorController {
         return flavorDAO.getAvailableFlavors ();
     }
 
-
+    @PreAuthorize ("hasRole('employee')")
     @RequestMapping(path = "/flavors/{flavor_id}", method = RequestMethod.PUT)
     public void update(@PathVariable int flavor_id, @RequestBody Flavor flavor) {
         flavorDAO.update (flavor);
     }
 
+    @PreAuthorize ("hasRole('employee')")
     @RequestMapping(path = "/flavors", method = RequestMethod.POST)
     public int createNewFlavor(@RequestBody Flavor newFlavor) {
         return flavorDAO.createFlavor (newFlavor);
     }
 
+    @PreAuthorize("hasRole('employee')")
     @RequestMapping(path = "flavors/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Boolean flavorFlipStatus(@PathVariable int id) {
