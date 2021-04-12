@@ -17,19 +17,31 @@ public class ExtraController {
         this.extraDAO = extraDAO;
     }
 
-    //need auth
+    /**
+     * Gets list of all extras regardless of availability. Employee only.
+     * @return - returns the list of all extras.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/extras", method = RequestMethod.GET)
     public List <Extra> getAllExtras() {
         return extraDAO.getAllExtras ();
     }
 
+    /**
+     * Gets list of available extras. Used for customer part of site.
+     * @return - returns the list of available extras.
+     */
     @RequestMapping(path = "/extras/available", method = RequestMethod.GET)
     public List <Extra> getAvailableExtras() {
         return extraDAO.getAvailableExtras ();
     }
 
-    //need auth
+    /**
+     * updates an existing Extra. employee only.
+     * @param id - id of the extra to be updated.
+     * @param extra - the JSON of the Extra's new information.
+     * @return - returns the Extra
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "extras/{id}", method = RequestMethod.PUT)
     public Extra updateExtra(@PathVariable int id, @RequestBody Extra extra) {
@@ -37,14 +49,22 @@ public class ExtraController {
         return extra;
     }
 
-    //need auth
+    /**
+     * Creates a new extra. Employee only.
+     * @param newExtra - the JSON for the new Extra passed from front end.
+     * @return - returns the id of the newly minted Extra.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/extras", method = RequestMethod.POST)
     public int createNewExtra(Extra newExtra) {
         return extraDAO.createExtra (newExtra);
     }
 
-    //need auth
+    /**
+     * Flips the availability boolean for the indicated extra. Employee only.
+     * @param id - the id of the extra to flip status.
+     * @return - returns the new boolean for is_available for the extra.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/extras/flip/{id}", method = RequestMethod.PATCH)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
