@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.CakeConfig;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import java.util.List;
 
@@ -41,5 +42,7 @@ public interface CakeConfigDAO {
      * @return boolean - the updated boolean of the cake config for is_available
      */
     boolean flipConfigStatus(int id);
+
+    int getCakeIdFromQuery(SqlRowSet result);
 
 }

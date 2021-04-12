@@ -82,6 +82,11 @@ public class JDBCCakeConfigDAO implements CakeConfigDAO {
 
     }
 
+    @Override
+    public int getCakeIdFromQuery(SqlRowSet result){
+        return result.getInt("cake_config_id");
+    }
+
 }
 
 
