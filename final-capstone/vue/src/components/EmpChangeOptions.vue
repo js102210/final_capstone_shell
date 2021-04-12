@@ -15,18 +15,15 @@
       <tbody>
         <tr v-for="flavor in $store.state.allFlavorsBE" v-bind:key="flavor.flavorID"
             v-bind:class="{ unavailable: !flavor.available}" >
-          <td>
-            <input type="radio" name="flip status" v-bind:id="flavor.flavorID"
-              v-bind:value="flavor.flavorID" v-model="selectedFlavorID" />
-          </td>
+
           <td>{{flavor.flavorName}}</td>
           <td>{{flavor.available? "Available": "Unavailable"}}</td>
-          <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatusFlavor(selectedFlavorID)">
+                  <button class="btnAvailableUnavailable" v-on:click="flipStatusFlavor(flavor.flavorID)">
               {{ flavor.available ? "Make Unavailable" : "Make Available" }} </button>
-          </td> 
         </tr>
+
       </tbody>
+
     </table>
 
       <table id="frostings">
@@ -42,14 +39,11 @@
       <tbody>
         <tr v-for="frosting in $store.state.allFrostingsBE" v-bind:key="frosting.frostingID"
             v-bind:class="{ unavailable: !frosting.available}" >
-          <td>
-            <input type="radio" name="flip status" v-bind:id="frosting.frostingID"
-              v-bind:value="frosting.frostingID" v-model="selectedFrostingID" />
-          </td>
+
           <td>{{frosting.frostingName}}</td>
           <td>{{frosting.available? "Available": "Unavailable"}}</td>
           <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatusFrosting(selectedFrostingID)">
+            <button class="btnAvailableUnavailable" v-on:click="flipStatusFrosting(frosting.frostingID)">
               {{ frosting.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
@@ -69,14 +63,11 @@
       <tbody>
         <tr v-for="filling in $store.state.allFillingsBE" v-bind:key="filling.fillingID"
             v-bind:class="{ unavailable: !filling.available}" >
-          <td>
-            <input type="radio" name="flip status" v-bind:id="filling.fillingID"
-              v-bind:value="filling.fillingID" v-model="selectedFillingID" />
-          </td>
+
           <td>{{filling.fillingName}}</td>
           <td>{{filling.available? "Available": "Unavailable"}}</td>
           <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatusFilling(selectedFillingID)">
+            <button class="btnAvailableUnavailable" v-on:click="flipStatusFilling(filling.fillingID)">
               {{ filling.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
@@ -96,14 +87,10 @@
       <tbody>
         <tr v-for="extra in $store.state.allExtrasBE" v-bind:key="extra.extraID"
             v-bind:class="{ unavailable: !extra.available}" >
-          <td>
-            <input type="radio" name="flip status" v-bind:id="extra.extraID"
-              v-bind:value="extra.extraID" v-model="selectedExtraID" />
-          </td>
           <td>{{extra.extraName}}</td>
           <td>{{extra.available? "Available": "Unavailable"}}</td>
           <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatusExtra(selectedExtraID)">
+            <button class="btnAvailableUnavailable" v-on:click="flipStatusExtra(extra.extraID)">
               {{ extra.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
@@ -123,14 +110,10 @@
       <tbody>
         <tr v-for="style in $store.state.allCakeStylesBE" v-bind:key="style.styleID"
             v-bind:class="{ unavailable: !style.available}" >
-          <td>
-            <input type="radio" name="flip status" v-bind:id="style.styleID"
-              v-bind:value="style.styleID" v-model="selectedStyleID" />
-          </td>
           <td>{{style.styleName}}</td>
           <td>{{style.available? "Available": "Unavailable"}}</td>
           <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatusStyle(selectedStyleID)">
+            <button class="btnAvailableUnavailable" v-on:click="flipStatusStyle(style.styleID)">
               {{ style.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
@@ -151,15 +134,11 @@
       <tbody>
         <tr v-for="size in $store.state.allCakeSizesBE" v-bind:key="size.sizeID"
             v-bind:class="{ unavailable: !size.available}" >
-          <td>
-            <input type="radio" name="flip status" v-bind:id="size.sizeID"
-              v-bind:value="size.sizeID" v-model="selectedSizeID" />
-          </td>
           <td>{{size.sizeName}}</td>
           <td>{{size.sizeDescription}}</td>
           <td>{{size.available? "Available": "Unavailable"}}</td>
           <td>
-            <button class="btnAvailableUnavailable" v-on:click="flipStatusSize(selectedSizeID)">
+            <button class="btnAvailableUnavailable" v-on:click="flipStatusSize(size.sizeID)">
               {{ size.available ? "Make Unavailable" : "Make Available" }} </button>
           </td> 
         </tr>
