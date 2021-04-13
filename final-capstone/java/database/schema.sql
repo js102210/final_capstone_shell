@@ -283,7 +283,11 @@ VALUES ('superhero decorations',true, 3.00),
         ('plastic bunny',true, 1.00),
         ('birthday candles',true, 2.00),
         ('icing moustache', true, 1.00),
-        ('personalized message', true, 2.00); 
+        ('personalized message', true, 2.00), 
+        ('Beef Up! Protein Powder addition', true, 2.00),
+        ('Vegan Option', true, 2.00),
+        ('Gluten Free Option', true, 1.00),
+        ('Dairy Free Option', true, 1.00);
 
 
 INSERT INTO statuses (status_name)
