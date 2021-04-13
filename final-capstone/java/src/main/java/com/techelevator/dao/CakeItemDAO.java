@@ -14,6 +14,8 @@ public interface CakeItemDAO {
      */
     void addCakeItem(CakeItemDTO cakeItem, int orderID);
 
+    void updateCakeItem(CakeItemDTO cakeItemDTO, int orderID);
+
     /**
      * Maps a row from a SQL search of cake_items table into a CakeItemDTO object.
      * @param result - a SQLRowSet from a query

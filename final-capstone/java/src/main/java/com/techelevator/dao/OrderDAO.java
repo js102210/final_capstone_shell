@@ -20,13 +20,18 @@ public interface OrderDAO {
    List <Order> getAllOrders();
 
     /**
-     * change the attributes of an existing order in the database
-     * @param order  Order the order to change, with all properties updated
+     * change the attributes of an existing order in the database.
+     * also updates the cake items and entries on cake_item_extras table.
+     * @param order  the order to change, with all properties updated
      * @param orderID int the ID of the Order to change
      * @return Order with the properties updated
      */
     Order updateOrder(Order order, int orderID) throws ParseException;
 
-
+    /**
+     * list orders by given status.
+     * @param statusID the status_id of the status
+     * @return a list of orders.
+     */
     List<Order> getOrdersByStatus(int statusID);
 }

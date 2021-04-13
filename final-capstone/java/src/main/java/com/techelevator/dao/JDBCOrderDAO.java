@@ -35,11 +35,12 @@ public class JDBCOrderDAO implements OrderDAO {
                 "\tVALUES (1, ?, CURRENT_DATE, ?, ?, ?, ?) RETURNING order_id;";
         Date pickupDate = dateFormat.parse(order.getOrderPickupDate());
         LocalTime pickupTime = LocalTime.parse(order.getOrderPickupTime(), timeFormat);
-        Integer newID = jdbcTemplate.queryForObject(sqlToInsertOrder, Integer.class, order.getOrderPriceTotal(), pickupDate, pickupTime, order.getCustomerName(), order.getCustomerPhoneNumber());
+        Integer newOrderID = jdbcTemplate.queryForObject(sqlToInsertOrder, Integer.class, order.getOrderPriceTotal(), pickupDate, pickupTime, order.getCustomerName(), order.getCustomerPhoneNumber());
+        //puts each cake item in order into the database.
         for (CakeItemDTO cakeItem : order.getItemsInOrder()) {
-            cakeItemDAO.addCakeItem(cakeItem, newID);
+            cakeItemDAO.addCakeItem(cakeItem, newOrderID);
         }
-        return newID;
+        return newOrderID;
     }
 
     @Override
@@ -49,7 +50,7 @@ public class JDBCOrderDAO implements OrderDAO {
         String sqlGetAllOrders = "SELECT * FROM orders ORDER BY order_id;";
         List<Order> allOrders = new ArrayList<>();
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetAllOrders);
-
+        //map result rows to Orders
         while (result.next()) {
             Order order = mapRowToOrder(result);
             allOrders.add(order);
@@ -74,7 +75,7 @@ public class JDBCOrderDAO implements OrderDAO {
         String sqlGetAllOrders = "SELECT * FROM orders WHERE status_id = ? ORDER BY order_id ;";
         List<Order> allOrders = new ArrayList<>();
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetAllOrders, statusID);
-
+        //map result rows to Orders
         while (result.next()) {
             Order order = mapRowToOrder(result);
             allOrders.add(order);
@@ -96,8 +97,10 @@ public class JDBCOrderDAO implements OrderDAO {
     @Override
     public Order updateOrder(Order order, int orderId) throws ParseException {
 
+        //formats pickupDate and pickupTime correctly for Postgres
         Date pickupDate = dateFormat.parse(order.getOrderPickupDate());
         LocalTime pickupTime = LocalTime.parse(order.getOrderPickupTime(), timeFormat);
+        //update order on orders table.
         String sqlUpdateOrderStatus =
                 "UPDATE orders \n" +
                         "SET status_id = ?,\n" +
@@ -111,6 +114,10 @@ public class JDBCOrderDAO implements OrderDAO {
         jdbcTemplate.update(sqlUpdateOrderStatus, order.getOrderStatusID(), order.getOrderPriceTotal(),
                 pickupDate, pickupTime, order.getCustomerName(), order.getCustomerPhoneNumber(), order.getOrderID()
         );
+        //updates the individual CakeItems. the updateCakeItem method will also update the cake_items_extras table.
+        for(CakeItemDTO theCakeItem: order.getItemsInOrder()){
+            cakeItemDAO.updateCakeItem(theCakeItem, orderId);
+        }
 
         return order;
 

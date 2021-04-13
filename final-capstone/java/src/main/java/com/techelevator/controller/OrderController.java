@@ -35,14 +35,21 @@ public class OrderController {
     }
 
 
-    // this needs to be rewritten - we are doing orders/status/{statusId} to update order status using the
-    // PATCH method.
+    /**
+     * Updates an order on all its parameters, including the its CakeItemDTOs and their associated Extras.
+     * @param id the order ID of the order.
+     * @param order the complete Order JSON.
+     * @return returns the order itself.
+     * @throws ParseException
+     */
     @PreAuthorize ("isAuthenticated()")
     @RequestMapping(path = "orders/{id}", method = RequestMethod.PUT)
     public Order updateOrderStatus(@PathVariable int id, @RequestBody Order order) throws ParseException {
         orderDAO.updateOrder (order, id);
         return order;
     }
+
+    //need to do an update status API and associated method for an order.
 
     /**
      * returns all orders. Employee only.
