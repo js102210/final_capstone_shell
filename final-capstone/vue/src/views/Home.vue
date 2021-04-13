@@ -48,4 +48,8 @@ export default {
   font-weight: 400;
   margin-top: -3%;
 }
+
+.home p {
+  font-size: 1.5rem;
+}
 </style>

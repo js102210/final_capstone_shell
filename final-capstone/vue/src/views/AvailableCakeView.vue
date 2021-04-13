@@ -33,11 +33,11 @@ export default {
     width: 100%;
     height: 30%;
      border: 1px solid rgba(0, 0, 0, 0.39);
-    border-radius: 10px;
+    border-radius: 25px;
 }
 
 .cake-container p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-top: -25px;
     font-family: 'Lancelot', cursive;
 }
