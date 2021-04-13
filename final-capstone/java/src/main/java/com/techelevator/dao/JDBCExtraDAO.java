@@ -37,7 +37,7 @@ public class JDBCExtraDAO implements ExtraDAO {
         List <Extra> allExtras = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllExtras);
         while (result.next ()) {
-            Extra extra = mapRowToExtra (result);
+            Extra extra = mapRowToExtra(result);
             allExtras.add (extra);
         }
         return allExtras;
@@ -47,7 +47,7 @@ public class JDBCExtraDAO implements ExtraDAO {
     @Override
     public int createExtra(Extra newExtra) {
         String sqlToAddNewExtra = "INSERT INTO extras (extra_name, price_mod) VALUES (?, ?) RETURNING extra_id ;";
-        Integer newID = jdbcTemplate.queryForObject (sqlToAddNewExtra, Integer.class, newExtra.getExtraName (), newExtra.getPriceMod ());
+        Integer newID = jdbcTemplate.queryForObject (sqlToAddNewExtra, Integer.class, newExtra.getExtraName(), newExtra.getPriceMod());
         return newID;
     }
 
@@ -59,7 +59,7 @@ public class JDBCExtraDAO implements ExtraDAO {
                         "is_available = ?,\n" +
                         "price_mod = ?\n" +
                         "WHERE extra_id = ?;";
-        jdbcTemplate.update (sqlToUpdateExtra, extra.getExtraName (), extra.isAvailable (),
+        jdbcTemplate.update (sqlToUpdateExtra, extra.getExtraName(), extra.isAvailable(),
                 extra.getPriceMod (), ID
         );
         return extra;
