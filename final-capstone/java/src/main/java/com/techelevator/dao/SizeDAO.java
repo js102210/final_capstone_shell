@@ -19,13 +19,10 @@ public interface SizeDAO {
     List <Size> getAllSizes();
 
     /**
-     * inserts a new Size into the datastore
-     * @param sizeName        String name of the Size
-     * @param priceMod        BigDecimal price for the Size
-     * @param sizeDescription description of new Size
-     * @return int ID of the new Size
+     * Creates a new Size. Employee only.
+     * @param newSize - the size JSON for the new size
+     * @return - returns the ID of the new size.
      */
-    int createSize(String sizeName, String sizeDescription, BigDecimal priceMod);
     int createSize(Size newSize);
 
     /**

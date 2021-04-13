@@ -43,10 +43,6 @@ public class JDBCExtraDAO implements ExtraDAO {
         return allExtras;
     }
 
-    @Override
-    public int createExtra(String extraName, BigDecimal priceMod) {
-        return 0;
-    }
 
     @Override
     public int createExtra(Extra newExtra) {

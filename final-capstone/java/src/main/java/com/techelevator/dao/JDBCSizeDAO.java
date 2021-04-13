@@ -42,10 +42,6 @@ public class JDBCSizeDAO implements SizeDAO {
         return allSizes;
     }
 
-    @Override
-    public int createSize(String SizeName, String sizeDescription, BigDecimal priceMod) {
-        return 0;
-    }
 
     @Override
     public int createSize(Size newSize) {

@@ -58,7 +58,7 @@ public class ExtraController {
      */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/extras", method = RequestMethod.POST)
-    public int createNewExtra(Extra newExtra) {
+    public int createNewExtra(@RequestBody Extra newExtra) {
         return extraDAO.createExtra (newExtra);
     }
 

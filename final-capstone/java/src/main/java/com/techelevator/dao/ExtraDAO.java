@@ -19,13 +19,10 @@ public interface ExtraDAO {
     List<Extra> getAllExtras();
 
     /**
-     * inserts a new Extra item in the datastore
-     * @param extraName String name of the Extra
-     * @param priceMod BigDecimal price of the Extra item
-     * @param
-     * @return int ID of the newly created Extra item
+     * creates a new Extra in the database.
+     * @param newExtra - the extra object made from the JSON passed from the front end
+     * @return - returns the id of the new extra.
      */
-    int createExtra(String extraName, BigDecimal priceMod);
     int createExtra(Extra newExtra);
 
     /**
