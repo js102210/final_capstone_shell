@@ -28,4 +28,5 @@ public interface OrderDAO {
     Order updateOrder(Order order, int orderID) throws ParseException;
 
 
+    List<Order> getOrdersByStatus(int statusID);
 }

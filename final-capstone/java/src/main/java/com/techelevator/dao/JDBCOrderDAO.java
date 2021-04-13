@@ -68,6 +68,32 @@ public class JDBCOrderDAO implements OrderDAO {
     }
 
     @Override
+    public List<Order> getOrdersByStatus(int statusID) {
+
+        //gets the basic order objects, without the cakeItems
+        String sqlGetAllOrders = "SELECT * FROM orders ORDER BY order_id WHERE status_id = ?;";
+        List<Order> allOrders = new ArrayList<>();
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetAllOrders, statusID);
+
+        while (result.next()) {
+            Order order = mapRowToOrder(result);
+            allOrders.add(order);
+        }
+
+        //for each Order, grabs its CakeItemDTOs as a list, casts the list to an array, then sets it with SetItemsInOrder
+        for (Order order : allOrders) {
+            int orderID = order.getOrderID();
+            List<CakeItemDTO> orderCakeItems= cakeItemDAO.getCakeItemDTOsForOrder(orderID);
+            CakeItemDTO[] cakeItemArray = new CakeItemDTO[orderCakeItems.size()];
+            cakeItemArray = orderCakeItems.toArray(cakeItemArray);
+            order.setItemsInOrder(cakeItemArray);
+        }
+        return allOrders;
+
+    }
+
+
+    @Override
     public Order updateOrder(Order order, int orderId) throws ParseException {
 
         Date pickupDate = dateFormat.parse(order.getOrderPickupDate());

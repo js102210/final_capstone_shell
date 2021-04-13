@@ -54,14 +54,27 @@ public class OrderController {
         return orderDAO.getAllOrders ();
     }
 
-    //implement an API for orders/status/{id} to grab orders by status with a GET
 
-    //implement an API for orders/{orderID}/cakes to grab a list of CakeItemDAOs for the cakes in a given order
-
+    /**
+     * gets the cakes for a particular Order.
+     * @param orderID - the id of the order. Path Variable.
+     * @return - returns a list of the order's cakeItemDTOs.
+     */
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/orders/{orderID}/cakes", method = RequestMethod.GET)
     public List<CakeItemDTO> getOrdersCakes(@PathVariable int orderID){
         return cakeItemDAO.getCakeItemDTOsForOrder(orderID);
+    }
+
+    /**
+     * Returns a list of Orders with the indicated status.
+     * @param statusID = the statusID passed from the front end.
+     * @return = returns a list of Orders with the indicated status.
+     */
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/orders/status/{statusID}", method = RequestMethod.GET)
+    public List<Order> getOrdersByStatus(@PathVariable int statusID) {
+        return orderDAO.getOrdersByStatus(statusID);
     }
 
 }
