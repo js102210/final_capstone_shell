@@ -394,11 +394,11 @@ export default new Vuex.Store({
     SET_ALL_FILLINGS_ARRAY(state, fillingJSONArray){
       state.allFillingsBE = fillingJSONArray;
     },
-    SET_AVAILABLE_EXTRAS_ARRAY(state, fillingJSONArray){
-      state.availableExtrasBE = fillingJSONArray;
+    SET_AVAILABLE_EXTRAS_ARRAY(state, extraJSONArray){
+      state.availableExtrasBE = extraJSONArray;
     },
-    SET_ALL_EXTRAS_ARRAY(state, fillingJSONArray){
-      state.allExtrasBE = fillingJSONArray;
+    SET_ALL_EXTRAS_ARRAY(state, extraJSONArray){
+      state.allExtrasBE = extraJSONArray;
     },
 
     SET_CAKE_CONFIG_IS_AVAILABLE(state, id, boolean){
