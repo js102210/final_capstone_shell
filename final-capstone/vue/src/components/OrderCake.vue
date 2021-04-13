@@ -139,6 +139,26 @@
         v-model="standardCakeOrderJSON.cakeItemMessage"
       /><br />
 
+<!-- <div id='example'>
+  <div v-for="(item, index) in names" :key="index">
+  <input type="checkbox" :id="item.name" v-model="item.checked">
+  <label :for="item.name">{{ item.name }} {{ item.checked }}</label>
+  </div>
+</div> -->
+      <div name="extras" class="select extras">
+      <p>Add Extras - pick as many as you'd like!</p>
+      <div name="extra-checkbox" 
+      v-for="extra in $store.state.availableExtrasBE"
+      v-bind:key="extra.extraID">
+      <input
+      type="checkbox"
+      :name="extra.extraName"
+      :id="extra.extraID"
+      :value="extra">
+      <label
+        :for="extra.extraName">{{extra.extraName}}</label>
+        </div>
+        </div>
       <!-- <p>Order Pick-Up Information:</p> -->
 
       <label for="customerName">Please enter your name:</label>
@@ -211,6 +231,7 @@ export default {
         cakeItemFrostingID: 1,
         cakeItemFillingID: 1,
         cakeItemMessage: '',
+        cakeItemExtras: [],
         cakeItemPrice: 0.0,
         cakeItemConfigID: null,
       },
@@ -246,6 +267,10 @@ export default {
 
     CustomerService.getAvailableFillings().then((response) => {
       this.$store.commit("SET_AVAILABLE_FILLINGS_ARRAY", response.data);
+    });
+
+    CustomerService.getAvailableExtras().then((response) => {
+      this.$store.commit("SET_AVAILABLE_EXTRAS_ARRAY", response.data);
     });
   },
 
@@ -339,6 +364,9 @@ export default {
         cakeIndex
       ];
     },
+    selectExtra(){
+      //hmm, trying to make it so checking a box adds the Extra JSON to this.standardCakePrderJSON.cakeItemExtras
+    },
     selectCakeConfig() {
       this.standardCakeOrderJSON.cakeItemConfigID = this.selected.cakeItemConfigID;
       this.standardCakeOrderJSON.cakeItemFlavorID = this.selected.cakeItemFlavorID;
@@ -353,6 +381,8 @@ export default {
         "ADD_CAKEITEM_TO_ACTIVE_ORDER",
         this.$store.state.cakeItemToOrder
       );
+
+      //everything below here will go into the order method in the Shopping Cart.
       this.$store.commit("SET_ORDER_INFO", this.pickupInfo);
       CustomerService.sendOrderJSON(this.$store.state.currentActiveOrder)
         .then((response) => {
