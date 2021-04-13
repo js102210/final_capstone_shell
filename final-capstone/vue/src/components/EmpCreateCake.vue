@@ -121,6 +121,7 @@ export default {
             this.$store.commit("CLEAR_CAKE_CONFIG_JSON");
             alert(this.newCake.cakeConfigName + ' can now be ordered. I hope you are ready for that.')
             this.clearNewCake();
+            location.reload(); //added to make sure that the cake config is added to store via create() lifecycle hook
           }
         })
         .catch((error) => {
