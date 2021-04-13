@@ -31,7 +31,19 @@ export default {
   padding: 17px;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.61);
+  font-family: 'Antic Slab', serif;
+  font-size: 1rem;
+  font-weight: 600;
 }
+
+.order-form input, select {
+    margin: 6px;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid rgb(24, 24, 24);
+    font-family: 'Antic Slab', serif;
+    font-weight: 600;
+  }
 
 .cakedisplay {
   display: flex;
@@ -48,12 +60,6 @@ export default {
   /* -webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px); */
 }
-
-.order-form input,
-select {
-  margin: 6px;
-}
-
 .cakedisplay img {
   width: 60%;
   height: 120px;
