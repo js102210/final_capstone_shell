@@ -131,7 +131,7 @@ p {
   }
 
   #app {
-    margin-top: 40px;
+    margin-top: 55px;
   }
 }
 </style>
