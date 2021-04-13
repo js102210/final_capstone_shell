@@ -79,6 +79,7 @@ export default {
     font-size: 1.2rem;
     /* margin-top: -25px; */
     font-family: 'Lancelot', cursive;
+    color: rgba(85, 0, 28, 0.753);
 }
 
 

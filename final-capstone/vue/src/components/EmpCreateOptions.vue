@@ -33,10 +33,10 @@
     <form @submit="createNewExtra">
       <label for="Extra">Extra: *</label>
       <input type="text" name="Extra" v-model="newExtra.extraName" />
-       <label for="Extra price mod">Price Modifier: $</label>
+       <label for="Extra price mod">Price Modifier: * $</label>
       <input type="number" name="Extra Price mod" step="0.01" placeholder="0.00"
         v-model="newExtra.priceMod" min="0"/>
-      <button type="submit" :disabled="!newExtra.extraName">Create New Extra</button>
+      <button type="submit" :disabled="!createExtraFormValidated">Create New Extra</button>
     </form><br />
 
      <form @submit="createNewStyle">
@@ -53,7 +53,7 @@
       <input type="text" name="Size" v-model="newSize.sizeName" />
        <label for="Size description">Description: *</label>
       <input type="text" name="Size description" v-model="newSize.sizeDescription" />
-       <label for="Size price mod">Price Modifier: $</label>
+       <label for="Size price mod">Price Modifier: * $</label>
       <input type="number" name="Size Price mod" step="0.01" placeholder="0.00"
         v-model="newSize.priceMod" min="0"/>
       <button type="submit" :disabled="!createSizeFormValidated">Create New Size</button>
@@ -102,7 +102,15 @@ export default {
   },
   computed:{
     createSizeFormValidated() {
-       if (this.newSize.sizeName != "" && this.newSize.sizeDescription !=""){
+       if (this.newSize.sizeName != "" && this.newSize.sizeDescription !=""
+        && this.newSize.priceMod !=0.0){
+        return true;
+      } else {
+        return false;
+    }
+    },
+    createExtraFormValidated() {
+       if (this.newExtra.extraName != "" && this.newExtra.priceMod !=0.0){
         return true;
       } else {
         return false;
