@@ -6,7 +6,10 @@
             at {{this.$store.state.selectedOrder.orderPickupTime}}
       </h2>
       <h2>Items ordered:  <br></h2>
-
+        <div v-for="item in this.$store.state.selectedOrder.itemsInOrder"
+        v-bind:key="item.cakeItemID">
+            <h3>{{item.cakeItemConfigID}}</h3>
+        </div>
   </div>
 </template>
 
