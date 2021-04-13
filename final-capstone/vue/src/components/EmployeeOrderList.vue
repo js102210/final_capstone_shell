@@ -18,16 +18,11 @@ export default {
       EmployeeService.getAllOrders().then((response) => {
         this.$store.commit("SET_ALL_ORDERS_ARRAY", response.data);
       })
-    },
-    prepareStatusArray(){
-      EmployeeService.getAllStatuses().then((response) => {
-        this.$store.commit("SET_ALL_STATUSES_ARRAY", response.data);
-      })
     }
   },
   created(){
     this.prepareOrdersArray();
-    this.prepareStatusArray();
+
   }
 };
 </script>
