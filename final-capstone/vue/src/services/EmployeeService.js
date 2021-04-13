@@ -29,6 +29,9 @@ getAllStyles(){
 getAllSizes(){
     return axios.get('/sizes');
 },
+getAllStatuses(){
+    return axios.get('/statuses');
+},
 
 getAllExtras(){
     return axios.get('/extras');

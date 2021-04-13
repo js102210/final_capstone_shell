@@ -256,21 +256,7 @@ export default new Vuex.Store({
     //remove the dummy data once we have it
 
     allStatusesBE: [
-      {statusID : 1,
-       statusName : "pending"
-      },
-      {
-        statusID : 2,
-        statusName : "ready"
-      },
-      {
-        statusID : 3,
-        statusName : "cancelled"
-      },
-      {
-        statusID : 4,
-        statusName : "complete"
-      }
+
     ],
 
     //we can actually remove this if we have the order component send a cakeItem object, but I have it here now for convenient reference
