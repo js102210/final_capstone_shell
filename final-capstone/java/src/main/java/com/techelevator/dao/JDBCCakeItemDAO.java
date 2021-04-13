@@ -30,6 +30,12 @@ public class JDBCCakeItemDAO implements CakeItemDAO {
                 cakeItem.getCakeItemFrostingID (), cakeItem.getCakeItemFillingID (), cakeItem.getCakeItemMessage (), cakeItem.getCakeItemConfigID (),
                 cakeItem.getCakeItemPrice (), orderID
         );
+        //implement adding the array of Extras into the table
+        for (Extra theExtra: cakeItem.getCakeItemExtras()){
+            String sqlAddExtraToCakeItem = "INSERT INTO cake_item_extras (cake_item_id, extra_id) " +
+                    "VALUES (?, ?) ;";
+            jdbcTemplate.update(sqlAddExtraToCakeItem, cakeItem.getCakeItemID(), theExtra.getExtraID());
+        }
     }
 
     @Override
