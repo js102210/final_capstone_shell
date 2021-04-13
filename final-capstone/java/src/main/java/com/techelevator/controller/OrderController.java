@@ -1,6 +1,8 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.CakeItemDAO;
 import com.techelevator.dao.OrderDAO;
+import com.techelevator.model.CakeItemDTO;
 import com.techelevator.model.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,8 +16,10 @@ import java.util.List;
 @RestController
 public class OrderController {
     private OrderDAO orderDAO;
+    private CakeItemDAO cakeItemDAO;
 
-    public OrderController(OrderDAO orderDAO) {
+    public OrderController(OrderDAO orderDAO, CakeItemDAO cakeItemDAO) {
+        this.cakeItemDAO = cakeItemDAO;
         this.orderDAO = orderDAO;
     }
 
@@ -52,6 +56,12 @@ public class OrderController {
 
     //implement an API for orders/status/{id} to grab orders by status with a GET
 
-    //implment an API for orders/{orderID}/cakes to grab a list of CakeItemDAOs for the cakes in a given order
+    //implement an API for orders/{orderID}/cakes to grab a list of CakeItemDAOs for the cakes in a given order
+
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/orders/{orderID}/cakes", method = RequestMethod.GET)
+    public List<CakeItemDTO> getOrdersCakes(@PathVariable int orderID){
+        return cakeItemDAO.getCakeItemDTOsForOrder(orderID);
+    }
 
 }

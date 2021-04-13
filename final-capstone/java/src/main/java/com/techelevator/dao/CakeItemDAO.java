@@ -6,13 +6,6 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import java.util.List;
 
 public interface CakeItemDAO {
-    /**
-     * Returns a list of the cake items in a given order
-     * @param orderId int
-     * id for the order
-     * @return List<CakeItem>
-     */
-    List<CakeItemDTO> getCakeItemsForOrder(int orderId);
 
     /**
      * write a cake item from an order to the database

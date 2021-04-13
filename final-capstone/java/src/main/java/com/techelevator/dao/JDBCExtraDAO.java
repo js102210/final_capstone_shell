@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+
 import com.techelevator.model.Extra;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -80,6 +81,22 @@ public class JDBCExtraDAO implements ExtraDAO {
         Boolean result = jdbcTemplate.queryForObject (sqlFlipStatusStatement, Boolean.class, id);
 
         return result;
+    }
+
+    @Override
+    public Extra[] getExtrasForCake(int cakeItemID){
+        List<Extra> extraList = new ArrayList<>();
+        String sqlExtraLookupStatement = "SELECT extras.extra_id, extra_name, is_available, price_mod FROM extras JOIN cake_item_extras " +
+                "ON extras.extra_id = cake_item_extras.extra_id WHERE cake_item_extras.cake_item_id = ? ";
+
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlExtraLookupStatement, cakeItemID);
+        while(result.next()){
+            Extra theExtra = mapRowToExtra(result);
+            extraList.add(theExtra);
+        }
+        Extra[] cakeItemExtrasArray = new Extra[extraList.size()];
+        cakeItemExtrasArray = extraList.toArray(cakeItemExtrasArray);
+        return cakeItemExtrasArray;
     }
 
     public Extra mapRowToExtra(SqlRowSet result) {

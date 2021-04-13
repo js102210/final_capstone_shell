@@ -11,7 +11,7 @@ public class CakeItemDTO {
     private int cakeItemFillingID;
     private int cakeItemFrostingID;
     private int cakeItemFlavorID;
-
+    private Extra[] cakeItemExtras;
     private int cakeItemConfigID;
     private int cakeItemOrderID;
     private BigDecimal cakeItemPrice;
@@ -111,6 +111,9 @@ public class CakeItemDTO {
         this.cakeItemFlavorID = cakeItemFlavorID;
     }
 
+    public void setCakeItemExtras(Extra[] cakeItemExtras){ this.cakeItemExtras = cakeItemExtras; }
+
+    public Extra[] getCakeItemExtras() { return cakeItemExtras; }
 
     public int getCakeItemConfigID() {
         return cakeItemConfigID;

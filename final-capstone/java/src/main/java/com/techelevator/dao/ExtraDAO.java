@@ -50,4 +50,11 @@ public interface ExtraDAO {
      * @return boolean - the updated boolean of the extra for is_available
      */
     boolean flipAvailability(int id);
+
+    /**
+     * returns an Array of the Extras associated with a given Cake Item.
+     * @param cakeItemID - the ID of the Cake Item.
+     * @return - returns the Array of the Extras for the given Cake Item.
+     */
+    Extra[] getExtrasForCake(int cakeItemID);
 }

@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.CakeItemDTO;
+import com.techelevator.model.Extra;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -11,15 +12,13 @@ import java.util.List;
 @Component
 public class JDBCCakeItemDAO implements CakeItemDAO {
     private JdbcTemplate jdbcTemplate;
+    private ExtraDAO extraDAO;
 
-    public JDBCCakeItemDAO(JdbcTemplate jdbcTemplate) {
+    public JDBCCakeItemDAO(JdbcTemplate jdbcTemplate, ExtraDAO extraDAO) {
+        this.extraDAO = extraDAO;
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    @Override
-    public List <CakeItemDTO> getCakeItemsForOrder(int orderId) {
-        return null;
-    }
 
     @Override
     public void addCakeItem(CakeItemDTO cakeItem, int orderID) {
@@ -56,6 +55,11 @@ public class JDBCCakeItemDAO implements CakeItemDAO {
         while(result.next()){
             CakeItemDTO theCakeItemDTO = mapRowToCakeItemDTO(result);
             orderCakeItems.add(theCakeItemDTO);
+        }
+        //grab extras for cakeItems using ExtraDAO method.
+        for(CakeItemDTO theCake: orderCakeItems){
+            int theCakeID = theCake.getCakeItemID();
+            theCake.setCakeItemExtras(extraDAO.getExtrasForCake(theCakeID));
         }
         return orderCakeItems;
     }
