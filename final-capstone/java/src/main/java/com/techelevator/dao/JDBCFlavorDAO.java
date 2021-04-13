@@ -22,36 +22,33 @@ public class JDBCFlavorDAO implements FlavorDAO {
     @Override
     public List <Flavor> getAvailableFlavors() {
         String sqlToGetAvailableFlavors = "SELECT * FROM flavors WHERE is_available = TRUE ORDER BY flavor_id ;";
-        List <Flavor> availableFlavors = new ArrayList <> ();
+        List <Flavor> availableFlavors = new ArrayList<>();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAvailableFlavors);
-        while (result.next ()) {
-            Flavor flavor = mapRowToFlavor (result);
-            availableFlavors.add (flavor);
+        while (result.next()) {
+            Flavor flavor = mapRowToFlavor(result);
+            availableFlavors.add(flavor);
         }
         return availableFlavors;
     }
 
     @Override
-    public List <Flavor> getAllFlavors() {
+    public List <Flavor> getAllFlavors(){
         String sqlToGetAllFlavors = "SELECT * FROM flavors ORDER BY flavor_id;";
         List <Flavor> allFlavors = new ArrayList <> ();
-        SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllFlavors);
-        while (result.next ()) {
-            Flavor flavor = mapRowToFlavor (result);
-            allFlavors.add (flavor);
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlToGetAllFlavors);
+        while (result.next()) {
+            Flavor flavor = mapRowToFlavor(result);
+            allFlavors.add(flavor);
         }
         return allFlavors;
     }
 
-    @Override
-    public int createFlavor(String flavorName, BigDecimal priceMod) {
-        return 0;
-    }
+
 
     @Override
     public int createFlavor(Flavor newFlavor) {
         String sqlToAddNewFlavor = "INSERT INTO flavors (flavor_name, price_mod) VALUES (?, ?) RETURNING flavor_id ;";
-        Integer newID = jdbcTemplate.queryForObject (sqlToAddNewFlavor, Integer.class, newFlavor.getFlavorName (), newFlavor.getPriceMod ());
+        Integer newID = jdbcTemplate.queryForObject (sqlToAddNewFlavor, Integer.class, newFlavor.getFlavorName(), newFlavor.getPriceMod());
         return newID;
     }
 
@@ -85,19 +82,18 @@ public class JDBCFlavorDAO implements FlavorDAO {
     public Flavor updateFlavor(Flavor flavor, int flavorID) {
         String sqlToUpdateFlavor = "UPDATE flavors SET flavor_name = ?, is_available = ?, price_mod = ?" +
                 "WHERE flavor_id = ?;";
-        jdbcTemplate.update (sqlToUpdateFlavor, flavor.getFlavorName (), flavor.isAvailable (), flavor.getPriceMod (),
-                flavorID
-        );
+        jdbcTemplate.update (sqlToUpdateFlavor, flavor.getFlavorName(), flavor.isAvailable(), flavor.getPriceMod(),
+                flavorID);
         return flavor;
     }
 
 
     public Flavor mapRowToFlavor(SqlRowSet result) {
-        Flavor flavor = new Flavor ();
-        flavor.setFlavorID (result.getInt ("flavor_id"));
-        flavor.setFlavorName (result.getString ("flavor_name"));
-        flavor.setIsAvailable (result.getBoolean ("is_available"));
-        flavor.setPriceMod (result.getBigDecimal ("price_mod"));
+        Flavor flavor = new Flavor();
+        flavor.setFlavorID (result.getInt("flavor_id"));
+        flavor.setFlavorName (result.getString("flavor_name"));
+        flavor.setIsAvailable (result.getBoolean("is_available"));
+        flavor.setPriceMod (result.getBigDecimal("price_mod"));
         return flavor;
     }
 

@@ -24,7 +24,7 @@ public class JDBCExtraDAO implements ExtraDAO {
         String sqlToGetAvailableExtras = "SELECT * FROM extras WHERE is_available = TRUE ORDER BY extra_id;";
         List <Extra> availableExtras = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAvailableExtras);
-        while (result.next ()) {
+        while (result.next()) {
             Extra extra = mapRowToExtra (result);
             availableExtras.add (extra);
         }
@@ -36,7 +36,7 @@ public class JDBCExtraDAO implements ExtraDAO {
         String sqlToGetAllExtras = "SELECT * FROM extras ORDER BY extra_id;";
         List <Extra> allExtras = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllExtras);
-        while (result.next ()) {
+        while (result.next()) {
             Extra extra = mapRowToExtra(result);
             allExtras.add (extra);
         }
@@ -60,7 +60,7 @@ public class JDBCExtraDAO implements ExtraDAO {
                         "price_mod = ?\n" +
                         "WHERE extra_id = ?;";
         jdbcTemplate.update (sqlToUpdateExtra, extra.getExtraName(), extra.isAvailable(),
-                extra.getPriceMod (), ID
+                extra.getPriceMod(), ID
         );
         return extra;
     }
@@ -98,7 +98,7 @@ public class JDBCExtraDAO implements ExtraDAO {
     }
 
     public Extra mapRowToExtra(SqlRowSet result) {
-        Extra extra = new Extra ();
+        Extra extra = new Extra();
         extra.setExtraID (result.getInt ("extra_id"));
         extra.setExtraName (result.getString ("extra_name"));
         extra.setIsAvailable (result.getBoolean ("is_available"));

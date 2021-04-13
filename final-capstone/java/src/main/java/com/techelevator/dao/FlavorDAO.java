@@ -19,12 +19,10 @@ public interface FlavorDAO {
     List<Flavor> getAllFlavors();
 
     /**
-     * inserts a new Flavor in the datastore
-     * @param flavorName String name of the Flavor
-     * @param priceMod BigDecimal how much the Flavor
-     * @return int ID of the newly created Flavor
+     * creates a new flavor from a flavor JSON
+     * @param newFlavor - the flavor JSON from front end
+     * @return - returns the id of the new flavor
      */
-    int createFlavor(String flavorName, BigDecimal priceMod);
     int createFlavor(Flavor newFlavor);
 
      /**

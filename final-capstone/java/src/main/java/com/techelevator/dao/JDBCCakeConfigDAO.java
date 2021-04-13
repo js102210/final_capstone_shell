@@ -23,7 +23,7 @@ public class JDBCCakeConfigDAO implements CakeConfigDAO {
                 "SELECT *  FROM cake_config;";
         List <CakeConfig> allConfigs = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlForAllConfigs);
-        while (result.next ()) {
+        while (result.next()) {
             CakeConfig config = mapRowToCakeConfig (result);
             allConfigs.add (config);
         }
@@ -36,7 +36,7 @@ public class JDBCCakeConfigDAO implements CakeConfigDAO {
                 "SELECT *  FROM cake_config WHERE is_available = true;";
         List <CakeConfig> allConfigs = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlForAllConfigs);
-        while (result.next ()) {
+        while (result.next()) {
             CakeConfig config = mapRowToCakeConfig (result);
             allConfigs.add (config);
         }
@@ -49,8 +49,8 @@ public class JDBCCakeConfigDAO implements CakeConfigDAO {
         String sqlToAddNewCakeConfig = "INSERT INTO cake_config " +
                 "(cake_config_name, cake_config_img_url, cake_config_description, flavor_id, frosting_id, filling_id)\n" +
                 "\tVALUES(?, ?, ?, ?, ?, ?) RETURNING cake_config_id;";
-        Integer newID = jdbcTemplate.queryForObject (sqlToAddNewCakeConfig, Integer.class, configToAdd.getCakeConfigName (), configToAdd.getCakeConfigUrl (),
-                configToAdd.getCakeConfigDescription (), configToAdd.getCakeConfigFlavorID (), configToAdd.getCakeConfigFrostingID (), configToAdd.getCakeConfigFillingID ()
+        Integer newID = jdbcTemplate.queryForObject (sqlToAddNewCakeConfig, Integer.class, configToAdd.getCakeConfigName(), configToAdd.getCakeConfigUrl(),
+                configToAdd.getCakeConfigDescription(), configToAdd.getCakeConfigFlavorID(), configToAdd.getCakeConfigFrostingID(), configToAdd.getCakeConfigFillingID()
         );
         return newID;
     }

@@ -23,9 +23,9 @@ public class JDBCFillingDAO implements FillingDAO {
     @Override
     public List <Filling> getAvailableFillings() {
         String sqlToGetAvailableFillings = "SELECT * FROM fillings WHERE is_available = TRUE ORDER BY filling_id ;";
-        List <Filling> availableFillings = new ArrayList <> ();
+        List <Filling> availableFillings = new ArrayList<>();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAvailableFillings);
-        while (result.next ()) {
+        while (result.next()) {
             Filling filling = mapRowToFilling (result);
             availableFillings.add (filling);
         }
@@ -37,7 +37,7 @@ public class JDBCFillingDAO implements FillingDAO {
         String sqlToGetAllFillings = "SELECT * FROM fillings ORDER BY filling_id ;";
         List <Filling> allFillings = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllFillings);
-        while (result.next ()) {
+        while (result.next()) {
             Filling filling = mapRowToFilling (result);
             allFillings.add (filling);
         }
@@ -49,7 +49,7 @@ public class JDBCFillingDAO implements FillingDAO {
     @Override
     public int createFilling(Filling newFilling) {
         String sqlToAddNewFilling = "INSERT INTO fillings (filling_name, price_mod) VALUES (?, ?) RETURNING filling_id ;";
-        Integer newID = jdbcTemplate.queryForObject (sqlToAddNewFilling, Integer.class, newFilling.getFillingName (), newFilling.getPriceMod ());
+        Integer newID = jdbcTemplate.queryForObject (sqlToAddNewFilling, Integer.class, newFilling.getFillingName(), newFilling.getPriceMod());
         return newID;
     }
 
@@ -66,9 +66,8 @@ public class JDBCFillingDAO implements FillingDAO {
                 "is_available = ?,\n" +
                 "price_mod = ?\n" +
                 "WHERE filling_id = ?; ";
-        jdbcTemplate.update (sqlToUpdateFilling, filling.getFillingName (), filling.isAvailable (), filling.getPriceMod (),
-                fillingID
-        );
+        jdbcTemplate.update (sqlToUpdateFilling, filling.getFillingName(), filling.isAvailable(), filling.getPriceMod(),
+                fillingID);
         return filling;
     }
 
