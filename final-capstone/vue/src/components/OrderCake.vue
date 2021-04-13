@@ -188,10 +188,10 @@
 
       <section v-else>
         <!-- note: we need to make this so it's not too wide for mobile.-->
-        <h4>
+        <p>
           You must select a cake style, size, and flavor in order to place your
           order!
-        </h4>
+        </p>
       </section>
     </form>
   </div>
