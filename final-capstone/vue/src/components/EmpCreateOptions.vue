@@ -165,7 +165,7 @@ export default {
    createNewStyle(){
          EmployeeService.createStyle(this.newStyle).then((response) => {
       if(response.status == 200){
-        alert(this.newStyle.styleName + ' style has been added! May it give you the strength to destroy your enemies!');
+       alert(this.newStyle.styleName + ' style has been added! May it give you the strength to destroy your enemies!');
         EmployeeService.getAllStyles().then((response) => {
         this.$store.commit("SET_ALL_STYLES_ARRAY", response.data);
     })
