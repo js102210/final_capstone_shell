@@ -24,7 +24,7 @@ export default {
     methods: {
         goToSelectedOrder(){
         const idToNav = this.order.orderID;
-        const orderBody = this.$store.state.pastOrdersBE.find((order) => order.orderID == idToNav);
+        const orderBody = this.$store.state.pastOrdersArrayBE.find((order) => order.orderID == idToNav);
         this.$store.commit("SET_SELECTED_ORDER", orderBody);
         this.$router.push({name: 'order-details', params: {orderID: idToNav}} )
         }
