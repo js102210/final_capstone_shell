@@ -71,7 +71,7 @@ public class JDBCOrderDAO implements OrderDAO {
     public List<Order> getOrdersByStatus(int statusID) {
 
         //gets the basic order objects, without the cakeItems
-        String sqlGetAllOrders = "SELECT * FROM orders ORDER BY order_id WHERE status_id = ?;";
+        String sqlGetAllOrders = "SELECT * FROM orders WHERE status_id = ? ORDER BY order_id ;";
         List<Order> allOrders = new ArrayList<>();
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetAllOrders, statusID);
 
