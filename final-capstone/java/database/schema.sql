@@ -3,6 +3,7 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS cake_item_extras CASCADE;
 DROP TABLE IF EXISTS cake_items CASCADE; 
 DROP TABLE IF EXISTS cake_config CASCADE; 
+DROP TABLE IF EXISTS messages CASCADE;
 DROP TABLE IF EXISTS extras CASCADE;
 DROP TABLE IF EXISTS orders CASCADE;    
 DROP TABLE IF EXISTS statuses CASCADE;   
@@ -16,14 +17,12 @@ DROP TABLE IF EXISTS users CASCADE;
 
 
 DROP SEQUENCE IF EXISTS seq_user_id;
-
 CREATE SEQUENCE seq_user_id
   INCREMENT BY 1
   NO MAXVALUE
   NO MINVALUE
   CACHE 1;
   
-
 CREATE TABLE users (
 	user_id int DEFAULT nextval('seq_user_id'::regclass) NOT NULL,
 	username varchar(50) NOT NULL,
@@ -34,7 +33,6 @@ CREATE TABLE users (
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
-
 
 DROP SEQUENCE IF EXISTS seq_style_id;
 CREATE SEQUENCE seq_style_id
@@ -237,6 +235,22 @@ CREATE TABLE orders
   CONSTRAINT pk_orders PRIMARY KEY (order_id),
   CONSTRAINT fk_order_status FOREIGN KEY (status_id) REFERENCES statuses (status_id)
 );
+
+DROP SEQUENCE IF EXISTS seq_message_id; 
+CREATE SEQUENCE seq_message_id
+  INCREMENT BY 1
+  NO MAXVALUE
+  NO MINVALUE
+  CACHE 1;    
+CREATE TABLE messages
+        (message_id int DEFAULT nextval('seq_message_id'::regclass) NOT NULL,
+        message_type_name VARCHAR NOT NULL,
+        additional_instructions VARCHAR NOT NULL,
+        price_mod DECIMAL (19,2) NOT NULL DEFAULT 0.00,
+        
+        CONSTRAINT pk_messages PRIMARY KEY (message_id)
+        );   
+ 
  
 
      --note for testing datetime local insert: 2017-06-30T16:30
@@ -250,6 +264,11 @@ extra_id int NOT NULL,
 CONSTRAINT fk_rel_item_id FOREIGN KEY (cake_item_id) REFERENCES cake_items(cake_item_id),
 CONSTRAINT fk_rel_extra_id FOREIGN KEY (extra_id) REFERENCES extras(extra_id)
 );
+
+INSERT INTO messages (message_type_name, additional_instructions, price_mod)
+        VALUES ('Happy Birthday!',' ', 1.50),
+                ('Congratulations!',' ', 1.50),
+                ('It is A (Child)!',' ', 1.50);
 
 INSERT INTO fillings (filling_name, is_available, price_mod)
 VALUES ('strawberry jam', true, 1.00),
