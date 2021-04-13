@@ -4,7 +4,7 @@
     <h2>Order Number: {{order.orderID}}:  {{order.customerName}}</h2>
     <h3>Placed on: {{order.orderDatePlaced}} <br>
     To be picked up on: {{order.orderPickupDate}}  at: {{order.orderPickupTime}}</h3>
-    <h3>Items in order: {{order.itemsInOrder.size}}</h3>
+    <h3>Items in order: {{order.itemsInOrder.length}}</h3>
 
 </div>
 </template>
