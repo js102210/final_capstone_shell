@@ -154,7 +154,8 @@
       type="checkbox"
       :name="extra.extraName"
       :id="extra.extraID"
-      :value="extra">
+      :value="extra"
+      v-on:change="extraCheck">
       <label
         :for="extra.extraName">{{extra.extraName}}</label>
         </div>
@@ -366,6 +367,13 @@ export default {
     },
     selectExtra(){
       //hmm, trying to make it so checking a box adds the Extra JSON to this.standardCakePrderJSON.cakeItemExtras
+    },
+    extraCheck(event){
+      if(event.target.checked){
+        this.standardCakeOrderJSON.cakeItemExtras.push(event.target.extraID);
+      } else{
+        this.standardCakeOrderJSON.cakeItemExtras = this.standardCakeOrderJSON.cakeItemExtras.filter((element) => element.extraID != event.target.value.extraID);
+      }
     },
     selectCakeConfig() {
       this.standardCakeOrderJSON.cakeItemConfigID = this.selected.cakeItemConfigID;
