@@ -64,7 +64,9 @@ public class ExtraController {
 
 
     /**
-     * Flips the availability boolean for the indicated extra. Employee only.
+     * Flips the availability boolean for the indicated extra. Employee only. Please note
+     * that this isn't strictly RESTful design, but it uses much less system resources and is far easier to
+     * troubleshoot.
      * @param id - the id of the extra to flip status.
      * @return - returns the new boolean for is_available for the extra.
      */
