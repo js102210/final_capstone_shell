@@ -210,7 +210,7 @@ export default {
         cakeItemFlavorID: 1,
         cakeItemFrostingID: 1,
         cakeItemFillingID: 1,
-        cakeItemMessage: null,
+        cakeItemMessage: '',
         cakeItemPrice: 0.0,
         cakeItemConfigID: null,
       },

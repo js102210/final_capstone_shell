@@ -350,6 +350,10 @@ INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_tim
 	
 UPDATE cake_config SET is_available = NOT is_available WHERE cake_config_id = 1 RETURNING is_available ;
 
+INSERT INTO cake_item_extras (cake_item_id, extra_id)
+VALUES (1,3),
+        (1,5);
+
 	
 COMMIT TRANSACTION;
 

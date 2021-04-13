@@ -22,20 +22,23 @@ public class JDBCCakeItemDAO implements CakeItemDAO {
 
     @Override
     public void addCakeItem(CakeItemDTO cakeItem, int orderID) {
+        //adds the cake item to the cake_items table
         String sqlToAddCakeItem = "INSERT INTO cake_items (cake_style_id, cake_size_id, flavor_id, frosting_id, " +
                 "filling_id, message, config_id,\n" +
                 "item_price, order_id)\n" +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
-        jdbcTemplate.update (sqlToAddCakeItem, cakeItem.getCakeItemStyleID (), cakeItem.getCakeItemSizeID (), cakeItem.getCakeItemFlavorID (),
-                cakeItem.getCakeItemFrostingID (), cakeItem.getCakeItemFillingID (), cakeItem.getCakeItemMessage (), cakeItem.getCakeItemConfigID (),
-                cakeItem.getCakeItemPrice (), orderID
+        jdbcTemplate.update(sqlToAddCakeItem, cakeItem.getCakeItemStyleID(), cakeItem.getCakeItemSizeID(), cakeItem.getCakeItemFlavorID(),
+                cakeItem.getCakeItemFrostingID(), cakeItem.getCakeItemFillingID(), cakeItem.getCakeItemMessage(), cakeItem.getCakeItemConfigID(),
+                cakeItem.getCakeItemPrice(), orderID
         );
-        //adds the extras to the cake_item_extras table
-        for (Extra theExtra: cakeItem.getCakeItemExtras()){
-            String sqlAddExtraToCakeItem = "INSERT INTO cake_item_extras (cake_item_id, extra_id) " +
-                    "VALUES (?, ?) ;";
-            jdbcTemplate.update(sqlAddExtraToCakeItem, cakeItem.getCakeItemID(), theExtra.getExtraID());
-        }
+        //adds the extras to the cake_item_extras table if extras exist
+        if (cakeItem.getCakeItemExtras() != null && cakeItem.getCakeItemExtras().length > 0){
+            for (Extra theExtra : cakeItem.getCakeItemExtras()) {
+                String sqlAddExtraToCakeItem = "INSERT INTO cake_item_extras (cake_item_id, extra_id) " +
+                        "VALUES (?, ?) ;";
+                jdbcTemplate.update(sqlAddExtraToCakeItem, cakeItem.getCakeItemID(), theExtra.getExtraID());
+            }
+    }
     }
 
     @Override
@@ -66,11 +69,13 @@ public class JDBCCakeItemDAO implements CakeItemDAO {
         //going line by line.
         String deleteOutdatedExtras = "DELETE FROM cake_item_extras WHERE cake_item_id = ? ;";
         jdbcTemplate.update(deleteOutdatedExtras, cakeItemDTO.getCakeItemID());
-        //adds the updatedextras to the cake_item_extras table
-        for (Extra theExtra: cakeItemDTO.getCakeItemExtras()){
-            String sqlAddExtraToCakeItem = "INSERT INTO cake_item_extras (cake_item_id, extra_id) " +
-                    "VALUES (?, ?) ;";
-            jdbcTemplate.update(sqlAddExtraToCakeItem, cakeItemDTO.getCakeItemID(), theExtra.getExtraID());
+        //adds the updatedextras to the cake_item_extras table if the extras exist
+        if(cakeItemDTO.getCakeItemExtras() != null && cakeItemDTO.getCakeItemExtras().length > 0) {
+            for (Extra theExtra : cakeItemDTO.getCakeItemExtras()) {
+                String sqlAddExtraToCakeItem = "INSERT INTO cake_item_extras (cake_item_id, extra_id) " +
+                        "VALUES (?, ?) ;";
+                jdbcTemplate.update(sqlAddExtraToCakeItem, cakeItemDTO.getCakeItemID(), theExtra.getExtraID());
+            }
         }
     }
 
