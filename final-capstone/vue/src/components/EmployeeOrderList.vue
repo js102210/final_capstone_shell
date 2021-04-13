@@ -27,6 +27,9 @@ export default {
 };
 </script>
 
-<style>
-
+<style >
+div {
+border: 2px solid black;
+font: 1em sans-serif;
+}
 </style>

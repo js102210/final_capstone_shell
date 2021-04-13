@@ -10,7 +10,7 @@ import OrderCakeView from '../views/OrderCakeView.vue'
 import EmployeeProductsWorkView from '../views/EmployeeProductsWorkView.vue'
 import EmployeeOrdersReviewView from '../views/EmployeeOrdersReviewView.vue'
 import EmployeeLandingPageView from '../views/EmployeeLandingPageView'
-
+import OrderDetailsView from '../views/OrderDetailsView'
 Vue.use(Router)
 
 /**
@@ -94,6 +94,14 @@ const router = new Router({
       path: "/employee/orders",
       name: "employee-orders",
       component: EmployeeOrdersReviewView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/order-details/:orderID",
+      name: "order-details",
+      component: OrderDetailsView,
       meta: {
         requiresAuth: true
       }

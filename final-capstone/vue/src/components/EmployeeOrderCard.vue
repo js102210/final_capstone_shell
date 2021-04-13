@@ -5,7 +5,7 @@
     <h3>Placed on: {{order.orderDatePlaced}} <br>
     To be picked up on: {{order.orderPickupDate}}  at: {{order.orderPickupTime}}</h3>
     <h3>Items in order: {{order.itemsInOrder.length}}</h3>
-
+    <button >Go to items</button>
 </div>
 </template>
 
@@ -30,13 +30,11 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .order-container > * {
   font: 1em sans-serif;
   
 }
-div {
-border: 2px solid black;
-}
+
 
 </style>
