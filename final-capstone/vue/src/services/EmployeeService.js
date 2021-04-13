@@ -65,7 +65,7 @@ createSize(SizeJSON){
 },
 
 createExtra(ExtraJSON){
-    return axios.put('extras', ExtraJSON);
+    return axios.post('/extras', ExtraJSON);
 },
 
 updateCakeConfig(ConfigJSON){

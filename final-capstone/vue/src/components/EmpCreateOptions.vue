@@ -151,7 +151,7 @@ export default {
     })
 
   },
-   createNewExtra(){
+  createNewExtra(){
          EmployeeService.createExtra(this.newExtra).then((response) => {
       if(response.status == 200){
         alert(this.newExtra.extraName + '  has been added as an Extra! May it give you the strength to destroy your enemies!');
