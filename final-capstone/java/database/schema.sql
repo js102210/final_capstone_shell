@@ -279,15 +279,14 @@ VALUES ('vanilla', true, 0.00),
 	('cream cheese', true, 3.00);
 	
 INSERT INTO extras (extra_name, is_available, price_mod)
-VALUES ('superhero decorations',true, 3.00),
-        ('plastic bunny',true, 1.00),
-        ('birthday candles',true, 2.00),
-        ('icing moustache', true, 1.00),
-        ('personalized message', true, 2.00), 
-        ('Beef Up! Protein Powder addition', true, 2.00),
+VALUES ('Superhero decorations',true, 3.00),
+        ('Plastic bunny',true, 1.00),
+        ('Birthday candles',true, 2.00),
+        ('BeefCakes icing moustache', true, 1.00),
+        ('Beef Up! protein powder addition', true, 2.00),
         ('Vegan Option', true, 2.00),
-        ('Gluten Free Option', true, 1.00),
-        ('Dairy Free Option', true, 1.00);
+        ('Gluten-Free Option', true, 1.00),
+        ('Dairy-Free Option', true, 1.00);
 
 
 INSERT INTO statuses (status_name)
@@ -336,7 +335,7 @@ date_last_updated = CURRENT_DATE
 WHERE order_id = 2;
 
 UPDATE extras
-SET extra_name = 'reau  bunny',
+SET extra_name = '3"x5" Chocolate bunny figure',
 is_available = true,
 price_mod = 1.0
 WHERE extra_id = 2;
