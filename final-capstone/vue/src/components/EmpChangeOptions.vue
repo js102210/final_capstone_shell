@@ -202,9 +202,18 @@ export default {
       selectedFrostingID: {},
       selectedFillingID: {},
       selectedExtraID: {},
+      dependentConfigs: []
     };
   },
   methods: {
+    getDependentConfigsFlavor(id){
+      return this.$store.state.availableCakeConfigsBE.forEach(element => {
+        if (element.cakeConfigFlavorID == id){
+          this.dependentConfigs.push(element.cakeConfigName);
+        }
+      })
+
+    },
     prepareSizesArray() {
       EmployeeService.getAllSizes().then((response) => {
         this.$store.commit("SET_ALL_SIZES_ARRAY", response.data);
@@ -290,11 +299,18 @@ export default {
       }
     },
     flipStatusFlavor(id, availableBoolean) {
+      this.getDependentConfigsFlavor(id);
+      let configString = ''
+      this.dependentConfigs.forEach((configName) => configString += configName + '\n')
+      this.dependentConfigs = [];
       switch (availableBoolean) {
         case true:
+        
           if (
             confirm(
-              "Making this flavor unavailable forsakes the following cake types, making them unavailable. Can you live with that?: "
+              "Making this flavor unavailable forsakes the following cake types, making them unavailable.\n"  + configString
+              + "Can you live with that?: " 
+              
             )
           ) {
             EmployeeService.flipFlavorStatus(id).then((response) => {
@@ -430,6 +446,9 @@ export default {
 
   created() {
     this.prepareThePreparations();
+    EmployeeService.getAvailableConfigs().then((response) => {
+     this.$store.commit("SET_AVAILABLE_CAKE_CONFIG_ARRAY", response.data);
+    });
   },
 };
 </script>

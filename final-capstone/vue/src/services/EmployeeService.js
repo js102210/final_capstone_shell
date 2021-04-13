@@ -9,6 +9,9 @@ return axios.get('/orders');
 getAllConfigs(){
     return axios.get('/configs');
 },
+getAvailableConfigs(){
+    return axios.get('/configs/available');
+},
 
 getAllFlavors(){
     return axios.get('/flavors');
