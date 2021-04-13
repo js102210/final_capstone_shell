@@ -21,7 +21,7 @@ public class JDBCFlavorDAO implements FlavorDAO {
 
     @Override
     public List <Flavor> getAvailableFlavors() {
-        String sqlToGetAvailableFlavors = "SELECT * FROM flavors WHERE is_available = TRUE;";
+        String sqlToGetAvailableFlavors = "SELECT * FROM flavors WHERE is_available = TRUE ORDER BY flavor_id ;";
         List <Flavor> availableFlavors = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAvailableFlavors);
         while (result.next ()) {
@@ -33,7 +33,7 @@ public class JDBCFlavorDAO implements FlavorDAO {
 
     @Override
     public List <Flavor> getAllFlavors() {
-        String sqlToGetAllFlavors = "SELECT * FROM flavors;";
+        String sqlToGetAllFlavors = "SELECT * FROM flavors ORDER BY flavor_id;";
         List <Flavor> allFlavors = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllFlavors);
         while (result.next ()) {

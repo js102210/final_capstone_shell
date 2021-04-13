@@ -22,7 +22,7 @@ public class JDBCFillingDAO implements FillingDAO {
 
     @Override
     public List <Filling> getAvailableFillings() {
-        String sqlToGetAvailableFillings = "SELECT * FROM fillings WHERE is_available = TRUE;";
+        String sqlToGetAvailableFillings = "SELECT * FROM fillings WHERE is_available = TRUE ORDER BY filling_id ;";
         List <Filling> availableFillings = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAvailableFillings);
         while (result.next ()) {
@@ -34,7 +34,7 @@ public class JDBCFillingDAO implements FillingDAO {
 
     @Override
     public List <Filling> getAllFillings() {
-        String sqlToGetAllFillings = "SELECT * FROM fillings;";
+        String sqlToGetAllFillings = "SELECT * FROM fillings ORDER BY filling_id ;";
         List <Filling> allFillings = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllFillings);
         while (result.next ()) {

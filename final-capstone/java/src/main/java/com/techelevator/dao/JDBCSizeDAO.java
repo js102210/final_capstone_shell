@@ -20,7 +20,7 @@ public class JDBCSizeDAO implements SizeDAO {
 
     @Override
     public List <Size> getAvailableSizes() {
-        String sqlToGetAvailableSizes = "SELECT * FROM sizes WHERE is_available = TRUE;";
+        String sqlToGetAvailableSizes = "SELECT * FROM sizes WHERE is_available = TRUE ORDER BY size_id ;";
         List <Size> availableSizes = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAvailableSizes);
         while (result.next ()) {
@@ -32,7 +32,7 @@ public class JDBCSizeDAO implements SizeDAO {
 
     @Override
     public List <Size> getAllSizes() {
-        String sqlToGetAllSizes = "SELECT * FROM sizes;";
+        String sqlToGetAllSizes = "SELECT * FROM sizes ORDER BY size_id ;";
         List <Size> allSizes = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllSizes);
         while (result.next ()) {

@@ -96,7 +96,7 @@ public class JDBCCakeItemDAO implements CakeItemDAO {
 
     @Override
     public List<CakeItemDTO> getCakeItemDTOsForOrder(int orderID){
-        String sqlCakeItemDTOQuery = "SELECT * FROM cake_items WHERE order_id = ? ;";
+        String sqlCakeItemDTOQuery = "SELECT * FROM cake_items WHERE order_id = ? ORDER BY cake_item_id;";
         List<CakeItemDTO> orderCakeItems = new ArrayList<>();
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlCakeItemDTOQuery, orderID);
         while(result.next()){

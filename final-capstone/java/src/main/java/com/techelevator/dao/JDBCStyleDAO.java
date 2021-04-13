@@ -21,7 +21,7 @@ public class JDBCStyleDAO implements StyleDAO {
     @Override
     public List <Style> getAvailableStyles() {
 
-        String sqlToGetAvailableStyles = "SELECT * FROM styles WHERE is_available = TRUE;";
+        String sqlToGetAvailableStyles = "SELECT * FROM styles WHERE is_available = TRUE ORDER BY style_id ;";
         List <Style> availableStyles = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAvailableStyles);
         while (result.next ()) {
@@ -33,7 +33,7 @@ public class JDBCStyleDAO implements StyleDAO {
 
     @Override
     public List <Style> getAllStyles() {
-        String sqlToGetAllStyles = "SELECT * FROM styles ;";
+        String sqlToGetAllStyles = "SELECT * FROM styles ORDER BY style_id ;";
         List <Style> allStyles = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllStyles);
         while (result.next ()) {

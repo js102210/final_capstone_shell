@@ -15,7 +15,7 @@ public class JDBCStatusDAO implements StatusDAO{
 
     public List<Status> getStatuses(){
         List<Status> statusList = new ArrayList<>();
-        String sqlStatusGet = "SELECT * FROM statuses ;";
+        String sqlStatusGet = "SELECT * FROM statuses ORDER BY status_id;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlStatusGet);
         while(result.next()){
             Status theStatus = mapRowToStatus(result);

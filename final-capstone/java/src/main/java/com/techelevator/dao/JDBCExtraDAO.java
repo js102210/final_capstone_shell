@@ -21,7 +21,7 @@ public class JDBCExtraDAO implements ExtraDAO {
 
     @Override
     public List <Extra> getAvailableExtras() {
-        String sqlToGetAvailableExtras = "SELECT * FROM extras WHERE is_available = TRUE;";
+        String sqlToGetAvailableExtras = "SELECT * FROM extras WHERE is_available = TRUE ORDER BY extra_id;";
         List <Extra> availableExtras = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAvailableExtras);
         while (result.next ()) {
@@ -33,7 +33,7 @@ public class JDBCExtraDAO implements ExtraDAO {
 
     @Override
     public List <Extra> getAllExtras() {
-        String sqlToGetAllExtras = "SELECT * FROM extras;";
+        String sqlToGetAllExtras = "SELECT * FROM extras ORDER BY extra_id;";
         List <Extra> allExtras = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllExtras);
         while (result.next ()) {
@@ -87,7 +87,7 @@ public class JDBCExtraDAO implements ExtraDAO {
     public Extra[] getExtrasForCake(int cakeItemID){
         List<Extra> extraList = new ArrayList<>();
         String sqlExtraLookupStatement = "SELECT extras.extra_id, extra_name, is_available, price_mod FROM extras JOIN cake_item_extras " +
-                "ON extras.extra_id = cake_item_extras.extra_id WHERE cake_item_extras.cake_item_id = ? ";
+                "ON extras.extra_id = cake_item_extras.extra_id WHERE cake_item_extras.cake_item_id = ? ORDER BY cake_item_extras.extra_id";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlExtraLookupStatement, cakeItemID);
         //loop through results to populate the List of Extras.

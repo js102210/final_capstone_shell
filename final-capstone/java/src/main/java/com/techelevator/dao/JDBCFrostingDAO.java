@@ -21,7 +21,7 @@ public class JDBCFrostingDAO implements FrostingDAO {
 
     @Override
     public List <Frosting> getAvailableFrostings() {
-        String sqlToGetAvailableFrostings = "SELECT * FROM frostings WHERE is_available = TRUE;";
+        String sqlToGetAvailableFrostings = "SELECT * FROM frostings WHERE is_available = TRUE ORDER BY frosting_id ;";
         List <Frosting> availableFrostings = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAvailableFrostings);
         while (result.next ()) {
@@ -33,7 +33,7 @@ public class JDBCFrostingDAO implements FrostingDAO {
 
     @Override
     public List <Frosting> getAllFrostings() {
-        String sqlToGetAllFrostings = "SELECT * FROM frostings;";
+        String sqlToGetAllFrostings = "SELECT * FROM frostings ORDER BY frosting_id ;";
         List <Frosting> allFrostings = new ArrayList <> ();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllFrostings);
         while (result.next ()) {
