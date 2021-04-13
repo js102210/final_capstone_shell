@@ -245,9 +245,7 @@ CREATE SEQUENCE seq_message_id
 CREATE TABLE messages
         (message_id int DEFAULT nextval('seq_message_id'::regclass) NOT NULL,
         message_type_name VARCHAR NOT NULL,
-        additional_instructions VARCHAR NOT NULL,
-        price_mod DECIMAL (19,2) NOT NULL DEFAULT 0.00,
-        
+                
         CONSTRAINT pk_messages PRIMARY KEY (message_id)
         );   
  
@@ -265,10 +263,8 @@ CONSTRAINT fk_rel_item_id FOREIGN KEY (cake_item_id) REFERENCES cake_items(cake_
 CONSTRAINT fk_rel_extra_id FOREIGN KEY (extra_id) REFERENCES extras(extra_id)
 );
 
-INSERT INTO messages (message_type_name, additional_instructions, price_mod)
-        VALUES ('Happy Birthday!',' ', 1.50),
-                ('Congratulations!',' ', 1.50),
-                ('It is A (Child)!',' ', 1.50);
+INSERT INTO messages (message_type_name)
+        VALUES ('basic message');
 
 INSERT INTO fillings (filling_name, is_available, price_mod)
 VALUES ('strawberry jam', true, 1.00),
@@ -369,8 +365,10 @@ VALUES (1, 1, 1, 1, 1, 'aaah', 1, 0.5, 1);
 --inserting an order returning the id
 INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_time, customer_name, customer_phone_number)
 	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '13:00', 'Ernest Hemingway', '5138675309') RETURNING order_id;
+
 	
-UPDATE cake_config SET is_available = NOT is_available WHERE cake_config_id = 1 RETURNING is_available ;
+--UPDATE cake_config SET is_available = NOT is_available WHERE cake_config_id = 1 RETURNING is_available ;
+--sets custom cake to unavailable
 
 INSERT INTO cake_item_extras (cake_item_id, extra_id)
 VALUES (1,3),
