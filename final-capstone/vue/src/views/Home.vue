@@ -30,7 +30,6 @@ export default {
   align-items: center;
   line-height: 20px;
   margin-top: 19px;
-  padding: 4npm run servepx;
   border-radius: 45px;
   border: 6px dotted rgba(252, 73, 103, 0.233);
   padding: 9px;
@@ -51,5 +50,16 @@ export default {
 
 .home p {
   font-size: 1.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  .banner h1 {
+    font-size: 2.2rem;
+  }
+
+  .banner p {
+    font-size: 1.2rem;
+  }
+
 }
 </style>
