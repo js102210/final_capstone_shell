@@ -2,8 +2,10 @@
 <div class="order-container">
     <h2>{{statusName}}</h2>
     <h2>Order Number: {{order.orderID}}:  {{order.customerName}}</h2>
-    <h3>Placed on: {{order.orderDatePlaced}}  
+    <h3>Placed on: {{order.orderDatePlaced}} <br>
     To be picked up on: {{order.orderPickupDate}}  at: {{order.orderPickupTime}}</h3>
+    <h3>Items in order: {{order.itemsInOrder.size}}</h3>
+
 </div>
 </template>
 
@@ -20,6 +22,7 @@ export default {
         }
     },
     created(){
+        
         const status = this.$store.state.allStatusesBE.find((status) => status.statusID == this.order.orderStatusID);
         this.statusName = status.statusName;
     }
@@ -30,6 +33,10 @@ export default {
 <style>
 .order-container > * {
   font: 1em sans-serif;
+  
+}
+div {
+border: 2px solid black;
 }
 
 </style>
