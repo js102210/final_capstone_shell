@@ -123,6 +123,12 @@ public class JDBCOrderDAO implements OrderDAO {
 
     }
 
+    @Override
+    public void changeOrderStatus(int orderID, int statusID){
+        String sqlUpdateOrderStatusStatement = "UPDATE orders SET status_id = ? WHERE order_id = ? ;";
+        jdbcTemplate.update(sqlUpdateOrderStatusStatement, statusID, orderID);
+    }
+
 
 
     public Order mapRowToOrder(SqlRowSet result) {
