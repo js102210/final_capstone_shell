@@ -19,15 +19,6 @@ public interface CakeConfigDAO {
     public List <CakeConfig> getAvailableConfigs();
 
     /**
-     * looks up an Config by name and instantiates object with that config's properties.
-     * Note- for 'custom' config, method/query must be written to instead populate with provided input
-     *
-     * @param configName name of CakeConfig
-     * @return CakeConfig
-     */
-    CakeConfig getCakeConfig(String configName);
-
-    /**
      * add a new cakeConfig to the DB
      *
      * @param configToAdd
@@ -43,6 +34,11 @@ public interface CakeConfigDAO {
      */
     boolean flipConfigStatus(int id);
 
+    /**
+     * returns the cake id from a query
+     * @param result - the resulting cake object from a table query
+     * @return - the cake item's id
+     */
     int getCakeIdFromQuery(SqlRowSet result);
 
 }

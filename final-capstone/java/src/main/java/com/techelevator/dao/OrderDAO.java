@@ -34,4 +34,13 @@ public interface OrderDAO {
      * @return a list of orders.
      */
     List<Order> getOrdersByStatus(int statusID);
+
+    /**
+     * Changes an order's status. This is not strictly RESTful design but updating the entire order
+     * requires far more resources and touches up to three tables, whereas changing the status_id directly
+     * only touches one item on one table.
+     * @param orderID - the id for the order to be updated
+     * @param statusID - the new status id for the order.
+     */
+    void changeOrderStatus(int orderID, int statusID);
 }

@@ -43,10 +43,6 @@ public class JDBCCakeConfigDAO implements CakeConfigDAO {
         return allConfigs;
     }
 
-    @Override
-    public CakeConfig getCakeConfig(String configName) {
-        return null;
-    }
 
     @Override
     public Integer addCakeConfig(CakeConfig configToAdd) {
