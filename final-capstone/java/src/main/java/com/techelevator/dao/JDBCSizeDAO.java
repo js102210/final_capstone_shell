@@ -21,11 +21,11 @@ public class JDBCSizeDAO implements SizeDAO {
     @Override
     public List <Size> getAvailableSizes() {
         String sqlToGetAvailableSizes = "SELECT * FROM sizes WHERE is_available = TRUE ORDER BY size_id ;";
-        List <Size> availableSizes = new ArrayList <> ();
+        List <Size> availableSizes = new ArrayList<>();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAvailableSizes);
-        while (result.next ()) {
-            Size size = mapRowToSize (result);
-            availableSizes.add (size);
+        while (result.next()) {
+            Size size = mapRowToSize(result);
+            availableSizes.add(size);
         }
         return availableSizes;
     }
@@ -33,11 +33,11 @@ public class JDBCSizeDAO implements SizeDAO {
     @Override
     public List <Size> getAllSizes() {
         String sqlToGetAllSizes = "SELECT * FROM sizes ORDER BY size_id ;";
-        List <Size> allSizes = new ArrayList <> ();
+        List <Size> allSizes = new ArrayList<>();
         SqlRowSet result = jdbcTemplate.queryForRowSet (sqlToGetAllSizes);
-        while (result.next ()) {
-            Size size = mapRowToSize (result);
-            allSizes.add (size);
+        while (result.next()) {
+            Size size = mapRowToSize(result);
+            allSizes.add(size);
         }
         return allSizes;
     }
@@ -46,7 +46,8 @@ public class JDBCSizeDAO implements SizeDAO {
     @Override
     public int createSize(Size newSize) {
         String sqlToAddNewSize = "INSERT INTO sizes (size_name, size_description, price_mod) VALUES (?, ?, ?) RETURNING size_id ;";
-        Integer newID = jdbcTemplate.queryForObject (sqlToAddNewSize, Integer.class, newSize.getSizeName (), newSize.getSizeDescription (), newSize.getPriceMod ());
+        Integer newID = jdbcTemplate.queryForObject(sqlToAddNewSize, Integer.class, newSize.getSizeName(),
+                newSize.getSizeDescription(), newSize.getPriceMod());
         return newID;
     }
 
@@ -58,9 +59,8 @@ public class JDBCSizeDAO implements SizeDAO {
                 "is_available = ?,\n" +
                 "price_mod = ?\n" +
                 "WHERE size_id = ?; ";
-        jdbcTemplate.update (sqlToUpdateSize, size.getSizeName (), size.getSizeDescription (), size.isAvailable (), size.getPriceMod (),
-                sizeID
-        );
+        jdbcTemplate.update(sqlToUpdateSize, size.getSizeName(), size.getSizeDescription(), size.isAvailable(),
+                size.getPriceMod(), sizeID);
         return size;
     }
 
@@ -73,17 +73,17 @@ public class JDBCSizeDAO implements SizeDAO {
     @Override
     public boolean flipAvailability(int id) {
         String sqlFlipStatusStatement = "UPDATE sizes SET is_available = NOT is_available WHERE size_id = ? RETURNING is_available ;";
-        Boolean result = jdbcTemplate.queryForObject (sqlFlipStatusStatement, Boolean.class, id);
+        Boolean result = jdbcTemplate.queryForObject(sqlFlipStatusStatement, Boolean.class, id);
         return result;
     }
 
     public Size mapRowToSize(SqlRowSet result) {
-        Size size = new Size ();
-        size.setSizeID (result.getInt ("size_id"));
-        size.setSizeName (result.getString ("size_name"));
-        size.setSizeDescription (result.getString ("size_description"));
-        size.setIsAvailable (result.getBoolean ("is_available"));
-        size.setPriceMod (result.getBigDecimal ("price_mod"));
+        Size size = new Size();
+        size.setSizeID(result.getInt("size_id"));
+        size.setSizeName(result.getString("size_name"));
+        size.setSizeDescription(result.getString("size_description"));
+        size.setIsAvailable(result.getBoolean("is_available"));
+        size.setPriceMod(result.getBigDecimal("price_mod"));
         return size;
     }
 }

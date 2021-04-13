@@ -35,7 +35,8 @@ public class JDBCOrderDAO implements OrderDAO {
                 "\tVALUES (1, ?, CURRENT_DATE, ?, ?, ?, ?) RETURNING order_id;";
         Date pickupDate = dateFormat.parse(order.getOrderPickupDate());
         LocalTime pickupTime = LocalTime.parse(order.getOrderPickupTime(), timeFormat);
-        Integer newOrderID = jdbcTemplate.queryForObject(sqlToInsertOrder, Integer.class, order.getOrderPriceTotal(), pickupDate, pickupTime, order.getCustomerName(), order.getCustomerPhoneNumber());
+        Integer newOrderID = jdbcTemplate.queryForObject(sqlToInsertOrder, Integer.class, order.getOrderPriceTotal(),
+                pickupDate, pickupTime, order.getCustomerName(), order.getCustomerPhoneNumber());
         //puts each cake item in order into the database.
         for (CakeItemDTO cakeItem : order.getItemsInOrder()) {
             cakeItemDAO.addCakeItem(cakeItem, newOrderID);
@@ -60,8 +61,7 @@ public class JDBCOrderDAO implements OrderDAO {
         for (Order order : allOrders) {
             int orderID = order.getOrderID();
             List<CakeItemDTO> orderCakeItems= cakeItemDAO.getCakeItemDTOsForOrder(orderID);
-            CakeItemDTO[] cakeItemArray = new CakeItemDTO[orderCakeItems.size()];
-            cakeItemArray = orderCakeItems.toArray(cakeItemArray);
+            CakeItemDTO[] cakeItemArray = orderCakeItems.toArray(new CakeItemDTO[0]);
             order.setItemsInOrder(cakeItemArray);
         }
             return allOrders;
@@ -85,8 +85,7 @@ public class JDBCOrderDAO implements OrderDAO {
         for (Order order : allOrders) {
             int orderID = order.getOrderID();
             List<CakeItemDTO> orderCakeItems= cakeItemDAO.getCakeItemDTOsForOrder(orderID);
-            CakeItemDTO[] cakeItemArray = new CakeItemDTO[orderCakeItems.size()];
-            cakeItemArray = orderCakeItems.toArray(cakeItemArray);
+            CakeItemDTO[] cakeItemArray = orderCakeItems.toArray(new CakeItemDTO[0]);
             order.setItemsInOrder(cakeItemArray);
         }
         return allOrders;
