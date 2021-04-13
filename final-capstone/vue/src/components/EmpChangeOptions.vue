@@ -373,16 +373,17 @@ export default {
               configString + "Can you live with that?:"
             )
           ) {
-            EmployeeService.flipFrostingStatus(id).then((response) => {
-              if (response.status == 202) {
-                this.$store.commit(
-                  "SET_FROSTING_IS_AVAILABLE",
-                  id,
-                  response.data
-                );
-              }
-              this.prepareFrostingsArray();
-            });
+            EmployeeService.flipFrostingStatus(id)
+            // .then((response) => {
+            //   if (response.status == 202) {
+            //     this.$store.commit(
+            //       "SET_FROSTING_IS_AVAILABLE",
+            //       id,
+            //       response.data
+            //     );
+            //   }
+            //   this.prepareFrostingsArray();
+            // });
             location.reload();
           }
           break;
