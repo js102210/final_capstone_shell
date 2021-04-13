@@ -51,7 +51,8 @@ public class StyleController {
 
     /**
      * flips the availability of a given Style. Does not affect cake configs because
-     * configs are style agnostic.
+     * configs are style agnostic. Not strictly RESTful but this is a conscious decision for ease of maintenance
+     * and lessening demand on system resources.
      * @param id - the id of the Style to flip.
      * @return - returns the new isAvailable status of the style.
      */

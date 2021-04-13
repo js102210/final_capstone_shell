@@ -44,10 +44,7 @@ public class JDBCFillingDAO implements FillingDAO {
         return allFillings;
     }
 
-    @Override
-    public int createFilling(String FillingName, BigDecimal priceMod) {
-        return 0;
-    }
+
 
     @Override
     public int createFilling(Filling newFilling) {
@@ -56,7 +53,7 @@ public class JDBCFillingDAO implements FillingDAO {
         return newID;
     }
 
-
+    //not implemented - currently out of scope for our sprints.
     @Override
     public String deleteFilling(int ID) {
         return null;
@@ -79,6 +76,8 @@ public class JDBCFillingDAO implements FillingDAO {
     public boolean flipAvailability(int id) {
         String sqlFlipStatusStatement = "UPDATE fillings SET is_available = NOT is_available WHERE filling_id = ? RETURNING is_available ;";
         Boolean result = jdbcTemplate.queryForObject (sqlFlipStatusStatement, Boolean.class, id);
+        //flips availability for cake configs associated with this filling if the filling is now unavailable and the
+        //configs are currently available.
         if(result == false){
             String sqlFindConfigsToMakeUnavail = "SELECT cake_config_id FROM cake_config WHERE filling_id = ? AND is_available = TRUE ;";
             SqlRowSet cakeConfigIds = jdbcTemplate.queryForRowSet(sqlFindConfigsToMakeUnavail, id);

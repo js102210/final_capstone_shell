@@ -36,7 +36,7 @@ public interface FlavorDAO {
     boolean flipAvailability(int ID);
 
     /**
-     * removes a Flavor from the datastore
+     * removes a Flavor from the datastore. Not implemented due to current scope.
      * @param ID int ID of the Flavor to delete
      * @return String confirmation that the Flavor was deleted (probably the name plus " was deleted."
      */

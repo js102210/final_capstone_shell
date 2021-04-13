@@ -50,7 +50,8 @@ public class SizeController {
 
     /**
      * flips the availability of the given Size. Does not affect config availability, since all
-     * configs are size-agnostic.
+     * configs are size-agnostic. This is not RESTful design, but we are implementing it this way
+     * as a conscious decision for simplicity and using less system resources.
      * @param id - the id of the size to flip availability
      * @return - returns the new isAvailable value for the Size.
      */

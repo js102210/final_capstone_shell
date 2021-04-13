@@ -67,6 +67,8 @@ public class FlavorController {
     /**
      * flips the availability status for a flavor. Employee only. Will also flip associated configs to unavailable if the new
      * availability is false. Does not automatically flip associated configs to available if the flavor is now avail.
+     * This is not strictly RESTful design but we made the decision to do this for simplicity and using much less
+     * system resources.
      * @param id - id of the flavor to be flipped.
      * @return - returns the new availability status for the flavor.
      */

@@ -49,7 +49,6 @@ public class OrderController {
         return order;
     }
 
-    //need to do an update status API and associated method for an order.
 
     /**
      * returns all orders. Employee only.

@@ -20,16 +20,14 @@ public interface FillingDAO {
     List<Filling> getAllFillings();
 
     /**
-     * inserts a new Flavor in the datastore
-     * @param FillingName String name of the Filling
-     * @param priceMod BigDecimal how much the Filling
-     * @return int ID of the newly created Filling
+     * creates a new filling in the database from the filling JSON passed in by front end.
+     * @param newFilling - the filling object created from the filling JSON passed in by front end.
+     * @return - returns the id of the new filling.
      */
-    int createFilling(String FillingName, BigDecimal priceMod);
     int createFilling(Filling newFilling);
 
     /**
-     * removes a Filling from the datastore
+     * removes a Filling from the datastore. not implemented as it's out of scope.
      * @param ID int ID of the Filling to delete
      * @return String confirmation that the Filling was deleted (probably the name plus " was deleted."
      */

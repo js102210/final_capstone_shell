@@ -20,7 +20,8 @@ public interface OrderDAO {
    List <Order> getAllOrders();
 
     /**
-     * change the attributes of an existing order in the database.
+     * change the attributes of an existing order in the database. - API unimplemented
+     * because of scope.
      * also updates the cake items and entries on cake_item_extras table.
      * @param order  the order to change, with all properties updated
      * @param orderID int the ID of the Order to change

@@ -54,6 +54,8 @@ public class JDBCFrostingDAO implements FrostingDAO {
     public boolean flipAvailability(int id) {
         String sqlFlipStatusStatement = "UPDATE frostings SET is_available = NOT is_available WHERE frosting_id = ? RETURNING is_available ;";
         Boolean result = jdbcTemplate.queryForObject (sqlFlipStatusStatement, Boolean.class, id);
+        //flips availability for cake configs associated with this frosting if the frosting is now unavailable and the
+        //configs are currently available.
         if(result == false){
             String sqlFindConfigsToMakeUnavail = "SELECT cake_config_id FROM cake_config WHERE frosting_id = ? AND is_available = TRUE ;";
             SqlRowSet cakeConfigIds = jdbcTemplate.queryForRowSet(sqlFindConfigsToMakeUnavail, id);
@@ -74,18 +76,14 @@ public class JDBCFrostingDAO implements FrostingDAO {
     }
 
     @Override
-    public void update(Frosting frosting) {
+    public void updateFrosting(Frosting frosting, int id) {
         String sqlToUpdateFrosting = "UPDATE frosting SET frosting_name = ?,  price_mod = ?" +
                 "WHERE frosting_id = ?;";
-        jdbcTemplate.update (sqlToUpdateFrosting, frosting.getFrostingName (), frosting.getPriceMod (),
-                frosting.getFrostingID ()
-        );
+        jdbcTemplate.update (sqlToUpdateFrosting, frosting.getFrostingName(), frosting.getPriceMod(),
+                id );
     }
 
-    @Override
-    public void updateFrosting(Frosting frosting, int id) {
 
-    }
 
     public Frosting mapRowToFrosting(SqlRowSet result) {
         Frosting frosting = new Frosting ();

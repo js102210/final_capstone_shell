@@ -34,7 +34,7 @@ public interface SizeDAO {
     Size updateSize(Size size, int sizeID);
 
     /**
-     * removes a Size from the datastore
+     * removes a Size from the datastore. not fully implemented because of scope.
      * @param id int ID of the Size to delete
      */
     void deleteSize(int id);

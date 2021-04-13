@@ -67,7 +67,8 @@ public class FrostingController {
     /**
      * flips the availability of a frosting. Employee only. If the frosting flips to being unavailable,
      * flips any associated available cake configs to unavailable. No effect on configs if a frosting flips to
-     * available.
+     * available. Not strictly RESTful design, but we made the design call to do it this way for simplicity
+     * and consuming less server resources.
      * @param id - id of the frosting to flip the availability of.
      * @return - returns the new isAvailable of the frosting.
      */

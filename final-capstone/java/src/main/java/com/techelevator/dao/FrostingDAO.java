@@ -36,7 +36,7 @@ public interface FrostingDAO {
     boolean flipAvailability(int ID);
 
     /**
-     * removes a Frosting from the datastore
+     * removes a Frosting from the datastore = not fully implemented due to scope.
      * @param id int ID of the Frosting to delete
      */
     void deleteFrosting(int id);
@@ -44,10 +44,8 @@ public interface FrostingDAO {
     /**
      * make updates to an existing Frosting
      * @param frosting the frosting to change, with all updated properties
-     * @param frosting of the frosting to change
-     * @return Frosting with all properties updated
+     * @param id - the id of the frosting to update.
      */
-    void update(Frosting frosting);
     void updateFrosting(Frosting frosting, int id);
 
 
