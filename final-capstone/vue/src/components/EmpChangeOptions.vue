@@ -214,6 +214,21 @@ export default {
       })
 
     },
+    getDependentConfigsFrosting(id){
+      return this.$store.state.availableCakeConfigsBE.forEach(element =>{
+        if (element.cakeConfigFrostingID == id){
+          this.dependentConfigs.push(element.cakeConfigName);
+        }
+      })
+    },
+    getDependentConfigsFilling(id){
+      return this.$store.state.availableCakeConfigsBE.forEach(element => {
+        if (element.cakeConfigFillingID == id){
+          this.dependentConfigs.push(element.cakeConfigName);
+        }
+      })
+    },
+
     prepareSizesArray() {
       EmployeeService.getAllSizes().then((response) => {
         this.$store.commit("SET_ALL_SIZES_ARRAY", response.data);
@@ -308,7 +323,7 @@ export default {
         
           if (
             confirm(
-              "Making this flavor unavailable forsakes the following cake types, making them unavailable.\n"  + configString
+              "Making this flavor unavailable forsakes the following cake types, making them unavailable:\n"  + configString
               + "Can you live with that?: " 
               
             )
@@ -323,6 +338,7 @@ export default {
               }
               this.prepareFlavorsArray();
             });
+            location.reload();
           }
           break;
         case false:
@@ -338,11 +354,16 @@ export default {
       }
     },
     flipStatusFrosting(id, availableBoolean) {
+      this.getDependentConfigsFrosting(id);
+      let configString = ''
+      this.dependentConfigs.forEach((configName) => configString += configName + '\n')
+      this.dependentConfigs = [];
       switch (availableBoolean) {
         case true:
           if (
             confirm(
-              "Making this frosting unavailable forsakes the following cake types, making them unavailable. Can you live with that?:"
+              "Making this frosting unavailable forsakes the following cake types, making them unavailable: \n" + 
+              configString + "Can you live with that?:"
             )
           ) {
             EmployeeService.flipFrostingStatus(id).then((response) => {
@@ -355,6 +376,7 @@ export default {
               }
               this.prepareFrostingsArray();
             });
+            location.reload();
           }
           break;
         case false:
@@ -374,11 +396,16 @@ export default {
       }
     },
     flipStatusFilling(id, availableBoolean) {
+      this.getDependentConfigsFilling(id);
+      let configString = ''
+      this.dependentConfigs.forEach((configName)=> configString += configName + '\n')
+      this.dependentConfigs = [];
       switch (availableBoolean) {
         case true:
           if (
             confirm(
-              "Making this filling unavailable forsakes the following cake types, making them unavailable. Can you live with that?:"
+              "Making this filling unavailable forsakes the following cake types, making them unavailable:\n" + 
+              configString + "Can you live with that?:"
             )
           ) {
             EmployeeService.flipFillingStatus(id).then((response) => {
@@ -391,6 +418,7 @@ export default {
               }
               this.prepareFillingsArray();
             });
+            location.reload();
           }
           break;
         case false:
