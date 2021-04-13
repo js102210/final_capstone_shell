@@ -175,7 +175,7 @@ export default {
   },
    createNewSize(){
 
-    EmployeeService.createSize(this.newFlavor).then((response) => {
+    EmployeeService.createSize(this.newSize).then((response) => {
       if(response.status == 200){
         alert(this.newSize.sizeName + ' size has been added! May it give you the strength to destroy your enemies!');
         EmployeeService.getAllSizes().then((response) => {

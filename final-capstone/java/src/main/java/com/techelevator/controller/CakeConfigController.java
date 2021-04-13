@@ -57,7 +57,8 @@ public class CakeConfigController {
 
 
     /**
-     * flips a cake config's availability. Employee only.
+     * flips a cake config's availability. Employee only. Please note that this is not strictly RESTful design,
+     * but it takes far fewer system resources.
      * @param id - the id of the cake config to be flipped
      * @return - returns the new flipped boolean value of isAvailable.
      */

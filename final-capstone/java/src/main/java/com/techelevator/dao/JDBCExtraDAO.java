@@ -91,9 +91,9 @@ public class JDBCExtraDAO implements ExtraDAO {
             Extra theExtra = mapRowToExtra(result);
             extraList.add(theExtra);
         }
-        //ah yes, the Java List to Array two-step, because not having a one line way to do this makes sense.
-        Extra[] cakeItemExtrasArray = new Extra[extraList.size()];
-        cakeItemExtrasArray = extraList.toArray(cakeItemExtrasArray);
+        //convert the extraList into an array
+        Extra[] cakeItemExtrasArray = extraList.toArray(new Extra[0]);
+
         return cakeItemExtrasArray;
     }
 

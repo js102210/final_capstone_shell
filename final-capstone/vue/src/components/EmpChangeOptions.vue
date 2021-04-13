@@ -13,11 +13,13 @@
       </thead>
 
       <tbody>
+        
         <tr
           v-for="flavor in $store.state.allFlavorsBE"
           v-bind:key="flavor.flavorID"
           v-bind:class="{ unavailable: !flavor.available }"
         >
+          <td>&nbsp;</td>
           <td>{{ flavor.flavorName }}</td>
           <td>{{ flavor.available ? "Available" : "Unavailable" }}</td>
           <button
@@ -46,6 +48,7 @@
           v-bind:key="frosting.frostingID"
           v-bind:class="{ unavailable: !frosting.available }"
         >
+        <td>&nbsp;</td>
           <td>{{ frosting.frostingName }}</td>
           <td>{{ frosting.available ? "Available" : "Unavailable" }}</td>
           <td>
@@ -78,6 +81,7 @@
           v-bind:key="filling.fillingID"
           v-bind:class="{ unavailable: !filling.available }"
         >
+        <td>&nbsp;</td>
           <td>{{ filling.fillingName }}</td>
           <td>{{ filling.available ? "Available" : "Unavailable" }}</td>
           <td>
@@ -110,6 +114,7 @@
           v-bind:key="extra.extraID"
           v-bind:class="{ unavailable: !extra.available }"
         >
+        <td>&nbsp;</td>
           <td>{{ extra.extraName }}</td>
           <td>{{ extra.available ? "Available" : "Unavailable" }}</td>
           <td>
@@ -140,6 +145,7 @@
           v-bind:key="style.styleID"
           v-bind:class="{ unavailable: !style.available }"
         >
+        <td>&nbsp;</td>
           <td>{{ style.styleName }}</td>
           <td>{{ style.available ? "Available" : "Unavailable" }}</td>
           <td>
@@ -171,6 +177,7 @@
           v-bind:key="size.sizeID"
           v-bind:class="{ unavailable: !size.available }"
         >
+        <td>&nbsp;</td>
           <td>{{ size.sizeName }}</td>
           <td>{{ size.sizeDescription }}</td>
           <td>{{ size.available ? "Available" : "Unavailable" }}</td>
@@ -482,4 +489,19 @@ export default {
 </script>
 
 <style>
+table{
+  table-layout: fixed;
+}
+th {
+  text-align: left;
+  
+ 
+}
+td{
+  
+  padding: 10px;
+  vertical-align: text-top;
+  width: 200px;
+}
+
 </style>

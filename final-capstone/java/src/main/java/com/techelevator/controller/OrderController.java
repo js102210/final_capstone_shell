@@ -44,7 +44,7 @@ public class OrderController {
      */
     @PreAuthorize ("isAuthenticated()")
     @RequestMapping(path = "orders/{id}", method = RequestMethod.PUT)
-    public Order updateOrderStatus(@PathVariable int id, @RequestBody Order order) throws ParseException {
+    public Order updateOrder(@PathVariable int id, @RequestBody Order order) throws ParseException {
         orderDAO.updateOrder (order, id);
         return order;
     }
@@ -82,6 +82,20 @@ public class OrderController {
     @RequestMapping(path = "/orders/status/{statusID}", method = RequestMethod.GET)
     public List<Order> getOrdersByStatus(@PathVariable int statusID) {
         return orderDAO.getOrdersByStatus(statusID);
+    }
+
+    /**
+     * Updates the order status for the indicated order. This is not strictly RESTful design but updating the entire order
+     * as in updateOrder above is a much more intensive drain on system resources, touching up to three different tables.
+     * @param orderID - the ID of the order to have its status updated
+     * @param statusID - the new statusID for the order
+     * @return - returns the int of the new statusID for the order.
+     */
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/orders/{orderID}/status/{statusID}", method = RequestMethod.PATCH)
+    public int updateOrderStatus(@PathVariable int orderID, @PathVariable int statusID){
+        orderDAO.changeOrderStatus(orderID, statusID);
+        return statusID;
     }
 
 }
