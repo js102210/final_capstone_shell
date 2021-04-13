@@ -90,10 +90,12 @@ public class JDBCExtraDAO implements ExtraDAO {
                 "ON extras.extra_id = cake_item_extras.extra_id WHERE cake_item_extras.cake_item_id = ? ";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlExtraLookupStatement, cakeItemID);
+        //loop through results to populate the List of Extras.
         while(result.next()){
             Extra theExtra = mapRowToExtra(result);
             extraList.add(theExtra);
         }
+        //ah yes, the Java List to Array two-step, because not having a one line way to do this makes sense.
         Extra[] cakeItemExtrasArray = new Extra[extraList.size()];
         cakeItemExtrasArray = extraList.toArray(cakeItemExtrasArray);
         return cakeItemExtrasArray;

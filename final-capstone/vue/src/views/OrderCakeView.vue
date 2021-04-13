@@ -55,8 +55,10 @@ select {
 }
 
 .cakedisplay img {
-  width: 70%;
+  width: 60%;
   height: 120px;
+  border: 6px dotted rgba(245, 66, 170, 0.267);
+  border-radius: 150px;
 }
 
 .cakedisplay h3 {

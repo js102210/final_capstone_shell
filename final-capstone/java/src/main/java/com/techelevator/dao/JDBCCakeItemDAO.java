@@ -30,6 +30,48 @@ public class JDBCCakeItemDAO implements CakeItemDAO {
                 cakeItem.getCakeItemFrostingID (), cakeItem.getCakeItemFillingID (), cakeItem.getCakeItemMessage (), cakeItem.getCakeItemConfigID (),
                 cakeItem.getCakeItemPrice (), orderID
         );
+        //adds the extras to the cake_item_extras table
+        for (Extra theExtra: cakeItem.getCakeItemExtras()){
+            String sqlAddExtraToCakeItem = "INSERT INTO cake_item_extras (cake_item_id, extra_id) " +
+                    "VALUES (?, ?) ;";
+            jdbcTemplate.update(sqlAddExtraToCakeItem, cakeItem.getCakeItemID(), theExtra.getExtraID());
+        }
+    }
+
+    @Override
+    public void updateCakeItem(CakeItemDTO cakeItemDTO, int orderID){
+        String sqlUpdateCakeItem = "UPDATE cake_items SET " +
+                "cake_style_id = ? ," +
+                "cake_size_id = ? ," +
+                "flavor_id = ? ," +
+                "frosting_id = ? ," +
+                "filling_id = ? ," +
+                "message = ? ," +
+                "config_id = ? ," +
+                "item_price = ? ," +
+                "WHERE cake_item_id = ? AND order_id = ?";
+        jdbcTemplate.update(sqlUpdateCakeItem,
+                cakeItemDTO.getCakeItemStyleID(),
+                cakeItemDTO.getCakeItemSizeID(),
+                cakeItemDTO.getCakeItemFlavorID(),
+                cakeItemDTO.getCakeItemFrostingID(),
+                cakeItemDTO.getCakeItemFillingID(),
+                cakeItemDTO.getCakeItemMessage(),
+                cakeItemDTO.getCakeItemConfigID(),
+                cakeItemDTO.getCakeItemPrice(),
+                cakeItemDTO.getCakeItemID(),
+                orderID);
+
+        //delete old extras from the cake_item_extras table, we'll just recreate them fresh. Easier than
+        //going line by line.
+        String deleteOutdatedExtras = "DELETE FROM cake_item_extras WHERE cake_item_id = ? ;";
+        jdbcTemplate.update(deleteOutdatedExtras, cakeItemDTO.getCakeItemID());
+        //adds the updatedextras to the cake_item_extras table
+        for (Extra theExtra: cakeItemDTO.getCakeItemExtras()){
+            String sqlAddExtraToCakeItem = "INSERT INTO cake_item_extras (cake_item_id, extra_id) " +
+                    "VALUES (?, ?) ;";
+            jdbcTemplate.update(sqlAddExtraToCakeItem, cakeItemDTO.getCakeItemID(), theExtra.getExtraID());
+        }
     }
 
     @Override

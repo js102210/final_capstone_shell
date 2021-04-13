@@ -43,9 +43,11 @@ export default {
 }
 
 .cake-container h3{
-  margin-top: -5px;
+  margin-top: -25px;
   font-size: 29px;
 }
+
+
 
 @media screen and (max-width: 600px) {
   .cakes-layout {
