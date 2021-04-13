@@ -278,7 +278,8 @@ export default new Vuex.Store({
       itemsInOrder: [],
       customerName: null,
       customerPhoneNumber: null
-    }
+    },
+    selectedOrder: {}
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -300,6 +301,9 @@ export default new Vuex.Store({
     //unsure what we are using this for currently
     SET_SELECTED_CONFIG(state, cakeConfig) {
       state.selectedConfig = cakeConfig;
+    },
+    SET_SELECTED_ORDER(state, orderJSON){
+      state.selectedOrder = orderJSON;
     },
     MAKE_CAKE_ITEM(state, cakeJSON) {
       state.cakeItemToOrder = cakeJSON;

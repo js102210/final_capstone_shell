@@ -120,6 +120,9 @@ flipFillingStatus(id){
 },
 flipExtraStatus(id){
     return axios.patch(`/extras/flip/${id}`)
+},
+getItemsForOrder(id){
+    return axios.get(`/orders/${id}/cakes`,)
 }
 
 }

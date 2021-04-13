@@ -5,7 +5,7 @@
     <h3>Placed on: {{order.orderDatePlaced}} <br>
     To be picked up on: {{order.orderPickupDate}}  at: {{order.orderPickupTime}}</h3>
     <h3>Items in order: {{order.itemsInOrder.length}}</h3>
-    <button >Go to items</button>
+    <button v-on:click="goToSelectedOrder" >Go to items</button>
 </div>
 </template>
 
@@ -19,6 +19,14 @@ export default {
     data(){
         return {
              statusName : ''
+        }
+    },
+    methods: {
+        goToSelectedOrder(){
+        const idToNav = this.order.orderID;
+        const orderBody = this.$store.state.pastOrdersBE.find((order) => order.orderID == idToNav);
+        this.$store.commit("SET_SELECTED_ORDER", orderBody);
+        this.$router.push({name: 'order-details', params: {orderID: idToNav}} )
         }
     },
     created(){
