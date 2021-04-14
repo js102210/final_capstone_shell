@@ -15,6 +15,7 @@
         <option  v-for="status in $store.state.allStatusesBE"
           v-bind:key="status.statusID"
           v-bind:value="status.statusID">{{status.statusName}}</option>
+        <option v-bind:value="''">All Orders</option>
       </select>
     </td>
     <!-- <td><input type="text" id="customerNameFilter" v-model="filter.customerName"/></td> -->
