@@ -1,6 +1,14 @@
 <template>
-  <div>
-      Change order status: 
+  <div class="order-details-display">
+
+        <!-- <h2>{{statusToDisplay.statusName}}</h2> -->
+        <h2>{{this.$store.state.selectedOrder.customerName}}</h2>
+        <p>Ordered on {{this.$store.state.selectedOrder.orderDatePlaced}}</p>
+      <p>To be delivered on {{this.$store.state.selectedOrder.orderPickupDate}}
+            at {{this.$store.state.selectedOrder.orderPickupTime}}</p>
+      <p>Items ordered:</p>
+
+       <label for="status">Change order status:</label>
         <select name="status" v-model="statusToSend.statusID" 
         v-on:change="changeOrderStatus($store.state.selectedOrder.orderID, statusToSend.statusID)">
         <option
@@ -10,14 +18,8 @@
         >
          Mark Order {{status.statusName}}
         </option>
-</select> 
-        <h2>{{statusToDisplay.statusName}}</h2>
-      <h1>{{this.$store.state.selectedOrder.customerName}}</h1>
-      <h2>Ordered on {{this.$store.state.selectedOrder.orderDatePlaced}}</h2>
-      <h2>To be delivered on {{this.$store.state.selectedOrder.orderPickupDate}}
-            at {{this.$store.state.selectedOrder.orderPickupTime}}
-      </h2>
-      <h2>Items ordered:  <br></h2>
+        </select> 
+        
  <cake-item-details
  v-for="item in $store.state.selectedOrder.itemsInOrder"
  v-bind:key="item.cakeItemID"

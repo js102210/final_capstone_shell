@@ -1,19 +1,18 @@
 <template>
-<div>
-    <h2>Item Number {{cakeItemJSON.cakeItemID}}: {{config.cakeConfigName}}</h2>
-    <h3>Style: {{style.styleName}}   Size:  {{size.sizeName}}</h3>
-    <h3>Filling:  {{filling.fillingName}}   Frosting: {{frosting.frostingName}}    Flavor: {{flavor.flavorName}}</h3>
-    <h3>Extras: </h3>
-    <h2
+<div class="emp-order-cake-details">
+    <h2>Item {{cakeItemJSON.cakeItemID}}: {{config.cakeConfigName}}</h2>
+    <p>Style: {{style.styleName}}</p>
+    <p>Size: {{size.sizeName}}</p>
+    <p>Filling: {{filling.fillingName}}</p>
+    <p>Frosting: {{frosting.frostingName}}</p>
+    <p>Flavor: {{flavor.flavorName}}</p>
+    <p>Extras: </p>
+    <p
     v-for="extra in cakeItemJSON.cakeItemExtras"
     v-bind:key="extra.extraID">
-    {{extra.extraName}}</h2>
-    <h3>Custom Message: '{{cakeItemJSON.cakeItemMessage}}'   
-    Price: {{cakeItemJSON.cakeItemPrice.toLocaleString('en-US', {
-                                                        style: 'currency',
-                                                        currency: 'USD',
-                                                                            })}}</h3>
-
+    {{extra.extraName}}</p>
+    <p>Custom Message: '{{cakeItemJSON.cakeItemMessage}}'</p>
+    <p>Price: {{cakeItemJSON.cakeItemPrice.toLocaleString('en-US', { style: 'currency', currency: 'USD',}) }}</p>
 
 </div>
 </template>

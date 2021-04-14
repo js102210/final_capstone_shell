@@ -48,4 +48,16 @@ export default {
   font-weight: 600;
   font-size: 1rem;
 }
+
+.order-details-display {
+  margin-top: 40px;
+  font-family: 'Quicksand';
+  font-weight: 600;
+}
+
+.order-details-display p {
+  font-family: 'Quicksand';
+  font-size: 1rem;
+}
+
 </style>
