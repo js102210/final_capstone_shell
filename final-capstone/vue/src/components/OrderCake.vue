@@ -199,7 +199,7 @@
 
       <p class="price-display">
         Your Order's Total is:
-        <span id="calculated-price">$ {{ itemPrice }} </span>
+        <span class="calculated-price">$ {{ itemPrice }} </span>
       </p>
 
       <!-- Hide submit button if required fields are not completed -->

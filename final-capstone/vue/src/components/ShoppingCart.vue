@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="shopping-cart">
       <customer-ordered-cake-card 
       
@@ -6,6 +7,50 @@
       v-bind:key="orderedCake.cakeItemTempOrderID"
       v-bind:orderedCake="orderedCake"
       />
+      
+      </div>
+      <div class="order-price">
+         <p> Your order's price is: <span class="calculated-price">$ {{ orderPrice }} </span></p>
+          </div>
+      <form class="finalize order">
+           <label for="customerName">Please enter your name:</label>
+      <input
+        name="customerName"
+        type="text"
+        placeholder="Your Name"
+        v-model="pickupInfo.customerName"
+        required
+      /><br />
+
+      <label for="customerPhoneNumber">Please enter your phone number:</label>
+      <input
+        name="customerPhoneNumber"
+        type="tel"
+        v-model="pickupInfo.customerPhoneNumber"
+        required
+      /><br />
+
+      <!-- let's change this to separate date and time field inputs. see if we can limit time to bakery open hours-->
+      <label for="pickup date and time"
+        >When do you want to pick up your cake?</label
+      >
+      <input
+        name="pickup date"
+        type="date"
+        v-model="pickupInfo.orderPickupDate"
+        required
+      />
+
+      <input
+        name="pickup time"
+        type="time"
+        v-model="pickupInfo.orderPickupTime"
+        required
+        />
+
+        <input type="submit" value="Place Your Order!" />
+
+          </form>
       </div>
 </template>
 
@@ -13,6 +58,16 @@
 import CustomerOrderedCakeCard from './CustomerOrderedCakeCard.vue'
 import CustomerService from '../services/CustomerService.js'
 export default {
+    data(){
+        return {
+                  pickupInfo: {
+        orderPickupDate: null,
+        orderPickupTime: null,
+        customerName: null,
+        customerPhoneNumber: null,
+      }
+        }
+    },
   components: { CustomerOrderedCakeCard },
     created(){
     CustomerService.getAvailableConfigs().then((response) => {
@@ -41,6 +96,11 @@ export default {
     CustomerService.getAvailableExtras().then((response) => {
       this.$store.commit("SET_AVAILABLE_EXTRAS_ARRAY", response.data);
     });
+    }, 
+    computed:{
+        orderPrice(){
+            return 1.50;
+        }
     }
 
 }
