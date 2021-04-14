@@ -116,6 +116,12 @@ export default {
     },
   },
   methods: {
+    /**
+     * places the order by setting the order information and price to currentActiveOrder, then submits order to the backend.
+     * Requires customer confirmation that their order is finalized before proceeding.
+     * If order is completed successfully, alerts the customer on pickup date and time, runs the CLEAR_ACTIVE_ORDER mutation to
+     * clear the order information in the store, then pushes the user back to the home page.
+     */
     placeOrder() {
       if (confirm("Are you ready to place your final order? Placed orders can only be changed by calling the BeefCakes Bakeshop at 513-541-BEEF.")) {
         this.$store.commit("SET_ORDER_INFO", this.pickupInfo);
@@ -124,13 +130,14 @@ export default {
           .then((response) => {
             if (response.status === 201) {
               
-              confirm(
+              alert(
                 "Order placed! See you on " +
                   this.pickupInfo.orderPickupDate +
-                  "at " + this.pickupInfo.orderPickupTime
+                  " at " + this.pickupInfo.orderPickupTime
               );
               this.$store.commit("CLEAR_ACTIVE_ORDER");
-              this.$router.push("/cakes");
+              //unclear why, but this isn't pushing?
+              this.$router.push("/");
             }
           })
           .catch((error) => {
@@ -138,6 +145,9 @@ export default {
           });
       }
     },
+    /**
+     * our handy-dandy generic error response handler. Generates appropriate error message depending on context.
+     */
     handleErrorResponse(error, verb) {
       if (error.response) {
         this.errorMsg =
