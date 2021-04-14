@@ -1,14 +1,11 @@
 <template>
 <div class="order-container">
-    <h2>{{statusName}}</h2>
-    <h2>Order Number: {{order.orderID}}:  {{order.customerName}}</h2>
-    <h3>Placed on: {{order.orderDatePlaced}} <br>
-    To be picked up on: {{order.orderPickupDate}}  at: {{order.orderPickupTime}}</h3>
-    <h3>Items in order: {{order.itemsInOrder.length}}</h3> <h3>{{order.orderPriceTotal}}</h3>
-    <button v-on:click="goToSelectedOrder" >Go to items</button>
-          Change order status: 
-        <select name="status" v-model="statusToSend.statusID" 
-        v-on:change="changeOrderStatus(order.orderID, statusToSend.statusID)">
+
+    <h2>Order Number {{order.orderID}}:  {{order.customerName}}</h2>
+    <h2>Status: {{statusName}}</h2>
+    <label for="status">Change order status:</label> 
+    <select name="status" v-model="statusToSend.statusID" 
+      v-on:change="changeOrderStatus(order.orderID, statusToSend.statusID)">
         <option
           v-for="status in $store.state.allStatusesBE"
           v-bind:key="status.statusID"
@@ -17,8 +14,13 @@
         >
          Mark Order {{status.statusName}}
         </option>
-</select> 
-</div>
+    </select> <br />
+    <p>Placed on: {{order.orderDatePlaced}}</p>
+    <p>To be picked up on: {{order.orderPickupDate}}  at: {{order.orderPickupTime}}</p>
+    <p>Total: ${{order.orderPriceTotal}}</p>
+    <p>Items in order: {{order.itemsInOrder.length}}</p>
+    <button v-on:click="goToSelectedOrder" >Go to items</button>
+</div>  
 </template>
 
 <script>
@@ -63,10 +65,10 @@ export default {
 </script>
 
 <style >
-.order-container > * {
+/* .order-container > * {
   font: 1em sans-serif;
   
-}
+} */
 
 
 </style>

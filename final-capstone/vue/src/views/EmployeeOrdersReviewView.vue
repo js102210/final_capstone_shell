@@ -28,4 +28,14 @@ export default {
 .employee-order-display {
   margin-top: 45px;
 }
+
+.order-container {
+  margin-top: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.452);
+  padding: 10px;
+  font-family: 'Quicksand';
+  font-weight: 600;
+}
 </style>

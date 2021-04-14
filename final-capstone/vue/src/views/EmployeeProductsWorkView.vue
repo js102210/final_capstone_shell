@@ -36,6 +36,10 @@ export default {
   padding: 10px;
   font-family: 'Quicksand';
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .create-cake-display input, select {
@@ -53,6 +57,10 @@ export default {
   padding: 10px;
   font-family: 'Quicksand';
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .create-options-display {
@@ -63,6 +71,10 @@ export default {
   padding: 10px;
   font-family: 'Quicksand';
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .create-options-display input, select {
@@ -80,6 +92,10 @@ export default {
   padding: 10px;
   font-family: 'Quicksand';
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 /* .change-options-display tr {

@@ -7,14 +7,13 @@
           v-for="status in $store.state.allStatusesBE"
           v-bind:key="status.statusID"
           v-bind:value="status.statusID"
-        
         >
          Mark Order {{status.statusName}}
         </option>
 </select> 
         <h2>{{statusToDisplay.statusName}}</h2>
-      <h1>{{this.$store.state.selectedOrder.customerName}}</h1>
-      <h2>Ordered on {{this.$store.state.selectedOrder.orderDatePlaced}}</h2>
+      <h3>{{this.$store.state.selectedOrder.customerName}}</h3>
+      <p>Ordered on {{this.$store.state.selectedOrder.orderDatePlaced}}</p>
       <h2>To be delivered on {{this.$store.state.selectedOrder.orderPickupDate}}
             at {{this.$store.state.selectedOrder.orderPickupTime}}
       </h2>

@@ -1,11 +1,10 @@
 <template>
   <div class="change-options-display">
     <p>Edit Cake Options:</p>
-
+  <h2>Flavors:</h2>
     <table id="flavors">
       <thead>
         <tr>
-          <th>Flavors:</th>
           <th>Name</th>
           <th>Status</th>
           <th>Action</th>
@@ -19,7 +18,6 @@
           v-bind:key="flavor.flavorID"
           v-bind:class="{ unavailable: !flavor.available }"
         >
-          <td>&nbsp;</td>
           <td>{{ flavor.flavorName }}</td>
           <td>{{ flavor.available ? "Available" : "Unavailable" }}</td>
           <button
