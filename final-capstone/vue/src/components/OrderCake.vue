@@ -311,9 +311,10 @@ export default {
       }
 
       //implement pricing for Extras array
-      if(this.standardCakeOrderJSON.cakeItemExtras.length >0){
-        price += 0;
-      }
+      // if(this.standardCakeOrderJSON.cakeItemExtras.length >0){
+      //   this.$store.state.standardCakeOrderJSON.cakeItemMessage.forEach((element) =>
+      //   price += element.priceMod);
+      // }
 
       return price.toFixed(2);
     },
