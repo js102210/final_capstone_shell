@@ -1,11 +1,22 @@
 <template>
   <div class="ordered-cake-card">
-      <p>Cake name: {{getCakeName(orderedCake.cakeItemConfigID)}}</p>
+      <p>Cake Type: {{getCakeName(orderedCake.cakeItemConfigID)}}</p>
       <p>Flavor: {{getCakeFlavor(orderedCake.cakeItemFlavorID)}}</p>
       <p>Frosting: {{getCakeFrosting(orderedCake.cakeItemFrostingID)}}</p>
       <p>Filling: {{getCakeFilling(orderedCake.cakeItemFillingID)}} </p>
       <p>Size: {{getCakeSize(orderedCake.cakeItemSizeID)}}</p>
       <p>Style: {{getCakeStyle(orderedCake.cakeItemStyleID)}}</p>
+      <div class="ordered-cake-card-message" v-show="orderedCake.cakeItemMessage.length>0">
+        <p>Message: {{orderedCake.cakeItemMessage}}</p>
+      </div>
+      <div class="ordered-cake-card-extras" v-show="orderedCake.cakeItemExtras.length >0">
+      <p>Extras:</p>
+      <div v-for="extra in orderedCake.cakeItemExtras"
+            v-bind:key="extra.extraID"> 
+         <span class="ordered-cake-extras"><p>{{extra.extraName}}</p></span>
+      </div>
+      </div>
+      <br>
       <p>Price: {{orderedCake.cakeItemPrice}} </p>
       <br>
       <button class="remove cake from order" v-on:click="removeCakeFromOrder(orderedCake.cakeItemTempOrderID)">Remove this cake from order</button>

@@ -320,6 +320,7 @@ export default {
 
       return price.toFixed(2);
     },
+  
     //JS date math sucks, please do this because I couldn't get it to work to make a min
     dateMinimum() {
       let today = new Date();
