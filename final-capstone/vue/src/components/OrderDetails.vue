@@ -50,7 +50,10 @@ export default {
         changeOrderStatus(orderID, statusID){
            EmployeeService.updateOrderStatus(orderID, statusID).then((response) => {
                 if (response.status == 200){
-                    alert('')
+                    const status = this.$store.state.allStatusesBE.find((status)=>{
+                        return status.statusID == statusID
+                    })
+                    alert('The order is now ' + status.statusName)
                     this.$router.push({name: "employee-orders"})
                     location.reload();
                 }
