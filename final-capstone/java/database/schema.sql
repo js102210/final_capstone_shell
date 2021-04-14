@@ -318,6 +318,8 @@ INSERT INTO cake_config (cake_config_name, cake_config_img_url, cake_config_desc
 	),
 	('Deadlift Devil''s Food Cake', 'https://www.girlversusdough.com/wp-content/uploads/2019/10/devils-food-cake-5.jpg', 'Our award-winning deep devil''s food cake with deep chocolate frosting. Go ahead, it''s cheat day!', 3, 3, 1),
 	('Gym Bunny Carrot Cake', 'https://grandbaby-cakes.com/wp-content/uploads/2020/03/Carrot-Cake-10.jpg', 'Our moist carrot cake is jam-packed with healthy antoxidants and unbeatable flavor! It comes with our incredible cream cheese frosting.', 5, 4, 1);
+INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_time, customer_name, customer_phone_number)
+	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '12:00', 'Ernest Hemingway', '5138675309');
 
 /*
 --query that pulls string info for cake configs instead of just IDs
@@ -341,11 +343,17 @@ is_available = true,
 price_mod = 1.0
 WHERE extra_id = 2;
            
+INSERT INTO cake_items (cake_style_id, cake_size_id, flavor_id, frosting_id, filling_id, message, config_id,
+item_price, order_id)
+VALUES (1, 1, 1, 1, 1, 'aaah', 1, 0.5, 1);
+---inserting an order returning the id
 
---INSERT INTO cake_item_extras (cake_item_id, extra_id)
---VALUES (1,3), (1,5);
+INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_time, customer_name, customer_phone_number)
+	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '13:00', 'Ernest Hemingway', '5138675309') RETURNING order_id;
+
+INSERT INTO cake_item_extras (cake_item_id, extra_id)
+        VALUES (1,3), 
+        (1,5);
 
 	
 COMMIT TRANSACTION;
-
-
