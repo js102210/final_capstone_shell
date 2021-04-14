@@ -5,7 +5,6 @@
     <table id="standard-cakes">
       <thead>
         <tr>
-          <th>&nbsp;</th>
           <th>Cake Name</th>
           <th>Description</th>
           <th>Status</th>
@@ -16,7 +15,6 @@
       <tbody>
         <tr v-for="cake in $store.state.allCakeConfigsBE" v-bind:key="cake.cakeConfigID"
             v-bind:class="{ unavailable: !cake.available}" >
-          <td>&nbsp;</td>
           <td>{{cake.cakeConfigName}}</td>
           <td>{{cake.cakeConfigDescription}}</td>
           <td>{{cake.available? "Available": "Unavailable"}}</td>

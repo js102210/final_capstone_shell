@@ -26,14 +26,19 @@ export default {
 <style>
 .employee-products-display {
   margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .create-cake-display {
+  width: fit-content;
   margin-top: 30px;
   border: 1px solid black;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.452);
-  padding: 10px;
+  background: rgba(255, 255, 255, 0.521);
+  padding: 30px;
   font-family: 'Quicksand';
   font-weight: 600;
   display: flex;
@@ -50,11 +55,12 @@ export default {
   }
 
 .change-cake-display {
+  width: fit-content;
   margin-top: 30px;
   border:1px solid black;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.607);
-  padding: 10px;
+  padding: 30px;
   font-family: 'Quicksand';
   font-weight: 500;
   display: flex;
@@ -64,11 +70,12 @@ export default {
 }
 
 .create-options-display {
+  width: fit-content;
   margin-top: 30px;
   border:1px solid black;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.452);
-  padding: 10px;
+  background: rgba(255, 255, 255, 0.534);
+  padding: 30px;
   font-family: 'Quicksand';
   font-weight: 600;
   display: flex;
@@ -85,11 +92,12 @@ export default {
   }
 
 .change-options-display {
+  width: fit-content;
   margin-top: 30px;
   border:1px solid black;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.607);
-  padding: 10px;
+  padding: 30px;
   font-family: 'Quicksand';
   font-weight: 500;
   display: flex;
