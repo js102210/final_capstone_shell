@@ -139,13 +139,8 @@
         v-model="standardCakeOrderJSON.cakeItemMessage"
       /><br />
 
-<!-- <div id='example'>
-  <div v-for="(item, index) in names" :key="index">
-  <input type="checkbox" :id="item.name" v-model="item.checked">
-  <label :for="item.name">{{ item.name }} {{ item.checked }}</label>
-  </div>
-</div> -->
-      <div name="extras" class="select extras">
+
+       <div name="extras" class="select extras">
       <p>Add Extras - pick as many as you'd like!</p>
       <div name="extra-checkbox" 
       v-for="extra in $store.state.availableExtrasBE"
@@ -210,8 +205,8 @@
       <section v-else>
         <!-- note: we need to make this so it's not too wide for mobile.-->
         <p>
-          You must select a cake style, size, and flavor in order to place your
-          order!
+          You must select a cake style, size, and flavor in order to build your
+          cake!
         </p>
       </section>
     </form>
@@ -317,12 +312,12 @@ export default {
       }
       if (this.standardCakeOrderJSON.cakeItemMessage) {
         //need to create a table in database for the message price
-        price += this.$store.state.messagePrice.priceMod;
+        price += this.$store.state.messagePrice;
       }
 
       return price.toFixed(2);
     },
-    //JS date math sucks, please do this because I couldn't get to work to make a min
+    //JS date math sucks, please do this because I couldn't get it to work to make a min
     dateMinimum() {
       let today = new Date();
       let tomorrow = new Date(today.getDate());
