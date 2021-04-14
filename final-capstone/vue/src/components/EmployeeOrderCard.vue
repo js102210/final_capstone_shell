@@ -47,6 +47,7 @@ export default {
            EmployeeService.updateOrderStatus(orderID, statusID).then((response) => {
                 if (response.status == 200){
                     alert('')
+                    location.reload()
                 }
            } 
         

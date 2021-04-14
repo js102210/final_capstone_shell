@@ -12,7 +12,7 @@
          Mark Order {{status.statusName}}
         </option>
 </select> 
-        <h2>{{statusToDisplay.statusName}}</h2>
+        <h2>{{statusNameToDisplay}}</h2>
       <h1>{{this.$store.state.selectedOrder.customerName}}</h1>
       <h2>Ordered on {{this.$store.state.selectedOrder.orderDatePlaced}}</h2>
       <h2>To be delivered on {{this.$store.state.selectedOrder.orderPickupDate}}
@@ -43,7 +43,7 @@ export default {
     },
     created(){
     this.itemsInOrder = this.$store.state.selectedOrder.itemsInOrder;
-    this.getCurrentStatusName();
+
    
     },
     methods: {
@@ -51,21 +51,23 @@ export default {
            EmployeeService.updateOrderStatus(orderID, statusID).then((response) => {
                 if (response.status == 200){
                     alert('')
+                    this.$router.push({name: "employee-orders"})
+                    location.reload();
                 }
            },
            
            )  
     },
-    getCurrentStatus(){
-           
-            this.statusToDisplay = this.$store.state.allStatusesBE.find((status)=>{
-                status.statusID == this.$store.state.selectedOrder.orderStatusID
-            })
-           
-             
-     }
-},
 
+
+},
+     computed: {
+        statusNameToDisplay(){
+        const status = this.$store.state.allStatusesBE.find((status) => status.statusID == this.$store.state.selectedOrder.orderStatusID);
+        return status.statusName;
+
+        } 
+     }
     
 
 }
