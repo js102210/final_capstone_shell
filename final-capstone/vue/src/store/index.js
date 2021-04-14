@@ -23,6 +23,7 @@ export default new Vuex.Store({
     standardCakeIdForOrder: null,
     cakeOrderJSON: {}, //renamed
     selectedConfig: {},
+    cakeItemNumberForOrder: 0, //used to give each cake in order a unique ID.
 
     //these JSONS are for when we need to edit/update cake attributes - will be built
     // in appropriate employee component, then set via mutation, and the method with the API
@@ -452,7 +453,8 @@ export default new Vuex.Store({
     MAKE_CAKE_ITEM(state, cakeJSON) {
       state.cakeItemToOrder = cakeJSON;
       //creates an id for the cake item so that we can display it in the ShoppingCart properly
-      state.cakeItemToOrder.cakeItemTempOrderID = state.currentActiveOrder.itemsInOrder.length + 1;
+      state.cakeItemToOrder.cakeItemTempOrderID = state.cakeItemNumberForOrder + 1;
+      state.cakeItemNumberForOrder += 1;
     },
     SET_CAKE_ITEM_PRICE(state, price) {
       state.cakeItemToOrder.cakeItemPrice = price;
@@ -505,6 +507,7 @@ export default new Vuex.Store({
         customerName: null,
         customerPhoneNumber: null
       };
+      state.cakeItemNumberForOrder = 0;
     }
 
   }

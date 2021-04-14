@@ -7,6 +7,8 @@
       <p>Size: {{getCakeSize(orderedCake.cakeItemSizeID)}}</p>
       <p>Style: {{getCakeStyle(orderedCake.cakeItemStyleID)}}</p>
       <p>Price: {{orderedCake.cakeItemPrice}} </p>
+      <br>
+      <button class="remove cake from order" v-on:click="removeCakeFromOrder(orderedCake.cakeItemTempOrderID)">Remove this cake from order</button>
       </div>
 </template>
 
@@ -53,6 +55,13 @@ methods: {
             (element) => element.styleID === id
         );
         return styleElement.styleName;
+    },
+    removeCakeFromOrder(id){
+        if(confirm("Are you sure you want to delete this cake? If you changed your mind, you'd have to build a new cake in 'Order Your Cake'.")){
+        let cakeToDeleteIndex = this.$store.state.currentActiveOrder.itemsInOrder.findIndex( 
+            (element) => element.cakeItemTempOrderID === id);
+            this.$store.state.currentActiveOrder.itemsInOrder.splice(cakeToDeleteIndex, 1);
+        }
     }
 
 
