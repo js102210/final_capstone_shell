@@ -30,10 +30,11 @@
       </tbody>
     </table>
 
+    <h2>Frostings:</h2>
     <table id="frostings">
       <thead>
         <tr>
-          <th>Frostings:</th>
+          
           <th>Name</th>
           <th>Status</th>
           <th>Action</th>
@@ -46,7 +47,7 @@
           v-bind:key="frosting.frostingID"
           v-bind:class="{ unavailable: !frosting.available }"
         >
-        <td>&nbsp;</td>
+      
           <td>{{ frosting.frostingName }}</td>
           <td>{{ frosting.available ? "Available" : "Unavailable" }}</td>
           <td>
@@ -63,10 +64,11 @@
       </tbody>
     </table>
 
+    <h2>Fillings:</h2>
     <table id="fillings">
       <thead>
         <tr>
-          <th>Fillings:</th>
+          
           <th>Name</th>
           <th>Status</th>
           <th>Action</th>
@@ -79,7 +81,7 @@
           v-bind:key="filling.fillingID"
           v-bind:class="{ unavailable: !filling.available }"
         >
-        <td>&nbsp;</td>
+      
           <td>{{ filling.fillingName }}</td>
           <td>{{ filling.available ? "Available" : "Unavailable" }}</td>
           <td>
@@ -96,10 +98,11 @@
       </tbody>
     </table>
 
+      <h2>Extras:</h2>
     <table id="extras">
       <thead>
         <tr>
-          <th>Extras:</th>
+        
           <th>Name</th>
           <th>Status</th>
           <th>Action</th>
@@ -112,7 +115,7 @@
           v-bind:key="extra.extraID"
           v-bind:class="{ unavailable: !extra.available }"
         >
-        <td>&nbsp;</td>
+        
           <td>{{ extra.extraName }}</td>
           <td>{{ extra.available ? "Available" : "Unavailable" }}</td>
           <td>
@@ -127,10 +130,11 @@
       </tbody>
     </table>
 
-    <table id="flavors">
+     <h2>Styles:</h2>
+    <table id="styles">
       <thead>
         <tr>
-          <th>Styles:</th>
+         
           <th>Name</th>
           <th>Status</th>
           <th>Action</th>
@@ -143,7 +147,7 @@
           v-bind:key="style.styleID"
           v-bind:class="{ unavailable: !style.available }"
         >
-        <td>&nbsp;</td>
+        
           <td>{{ style.styleName }}</td>
           <td>{{ style.available ? "Available" : "Unavailable" }}</td>
           <td>
@@ -158,10 +162,11 @@
       </tbody>
     </table>
 
+     <h2>Sizes:</h2>
     <table id="sizes">
       <thead>
         <tr>
-          <th>Sizes:</th>
+         
           <th>Name</th>
           <th>Description</th>
           <th>Status</th>
@@ -175,7 +180,7 @@
           v-bind:key="size.sizeID"
           v-bind:class="{ unavailable: !size.available }"
         >
-        <td>&nbsp;</td>
+        
           <td>{{ size.sizeName }}</td>
           <td>{{ size.sizeDescription }}</td>
           <td>{{ size.available ? "Available" : "Unavailable" }}</td>
