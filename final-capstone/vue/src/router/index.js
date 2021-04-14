@@ -10,7 +10,8 @@ import OrderCakeView from '../views/OrderCakeView.vue'
 import EmployeeProductsWorkView from '../views/EmployeeProductsWorkView.vue'
 import EmployeeOrdersReviewView from '../views/EmployeeOrdersReviewView.vue'
 import EmployeeLandingPageView from '../views/EmployeeLandingPageView'
-import OrderDetailsView from '../views/OrderDetailsView'
+import OrderDetailsView from '../views/OrderDetailsView.vue'
+import ShoppingCartView from '../views/ShoppingCartView.vue'
 Vue.use(Router)
 
 /**
@@ -72,6 +73,14 @@ const router = new Router({
       component: OrderCakeView,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/shoppingcart",
+      name: "shopping-cart",
+      component: ShoppingCartView,
+      meta: {
+        requiresAuth:false
       }
     },
     {

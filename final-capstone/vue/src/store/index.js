@@ -266,16 +266,43 @@ export default new Vuex.Store({
       cakeItemFlavorID: null,
       cakeItemFrostingID: null,
       cakeItemFillingID: null,
-      cakeItemMessage: null,
+      cakeItemMessage: '',
+      cakeItemExtras: [],
       cakeItemPrice: null,
-      cakeItemConfigID: null
+      cakeItemConfigID: null,
+      cakeItemTempOrderID: null
     },
     currentActiveOrder: {
       orderStatusID: null,
       orderPriceTotal: null,
       orderPickupDate: null,
       orderPickupTime: null,
-      itemsInOrder: [],
+      itemsInOrder: [
+        //currently these two objects are in here to test order page
+        {
+        cakeItemStyleID: 2,
+        cakeItemSizeID: 2,
+        cakeItemFlavorID: 2,
+        cakeItemFrostingID: 2,
+        cakeItemFillingID: 2,
+        cakeItemMessage: '',
+        cakeItemExtras: [],
+        cakeItemPrice: 1.50,
+        cakeItemConfigID: 1,
+        cakeItemTempOrderID: 1
+      },
+      {
+        cakeItemStyleID: 3,
+        cakeItemSizeID: 3,
+        cakeItemFlavorID: 3,
+        cakeItemFrostingID: 3,
+        cakeItemFillingID: 3,
+        cakeItemMessage: 'a test',
+        cakeItemExtras: [],
+        cakeItemPrice: 6.50,
+        cakeItemConfigID: 1,
+        cakeItemTempOrderID: 2
+      }],
       customerName: null,
       customerPhoneNumber: null
     },
@@ -305,18 +332,7 @@ export default new Vuex.Store({
     SET_SELECTED_ORDER(state, orderJSON){
       state.selectedOrder = orderJSON;
     },
-    MAKE_CAKE_ITEM(state, cakeJSON) {
-      state.cakeItemToOrder = cakeJSON;
-    },
-    SET_CAKE_ITEM_PRICE(state, price) {
-      state.cakeItemToOrder.cakeItemPrice = price;
-    },
-    SET_ORDER_INFO(state, pickupInfo) {
-      state.currentActiveOrder.orderPickupDate = pickupInfo.orderPickupDate;
-      state.currentActiveOrder.orderPickupTime = pickupInfo.orderPickupTime;
-      state.currentActiveOrder.customerName = pickupInfo.customerName;
-      state.currentActiveOrder.customerPhoneNumber = pickupInfo.customerPhoneNumber;
-    },
+
     SET_CAKE_STYLE_JSON(state, styleJSON) {
       state.cakeStyleJSON = styleJSON;
     },
@@ -433,12 +449,25 @@ export default new Vuex.Store({
       const flavorToSet = state.allFlavorsBE.find(flavor => flavor.flavorID == id);
       flavorToSet.isAvailable = boolean;
     },
-    
+    MAKE_CAKE_ITEM(state, cakeJSON) {
+      state.cakeItemToOrder = cakeJSON;
+      //creates an id for the cake item so that we can display it in the ShoppingCart properly
+      state.cakeItemToOrder.cakeItemTempOrderID = state.currentActiveOrder.itemsInOrder.length + 1;
+    },
+    SET_CAKE_ITEM_PRICE(state, price) {
+      state.cakeItemToOrder.cakeItemPrice = price;
+    },
+    SET_ORDER_INFO(state, pickupInfo) {
+      state.currentActiveOrder.orderPickupDate = pickupInfo.orderPickupDate;
+      state.currentActiveOrder.orderPickupTime = pickupInfo.orderPickupTime;
+      state.currentActiveOrder.customerName = pickupInfo.customerName;
+      state.currentActiveOrder.customerPhoneNumber = pickupInfo.customerPhoneNumber;
+    },
     ADD_CAKEITEM_TO_ACTIVE_ORDER(state, cakeItem) {
       state.cakeItemToOrder = cakeItem;
       state.currentActiveOrder.itemsInOrder.push(cakeItem);
       //pls note that this line is *only* for the current sprint. will refactor for multiple cakes later when we have shopping cart page.
-      state.currentActiveOrder.orderPriceTotal = cakeItem.cakeItemPrice;
+      //state.currentActiveOrder.orderPriceTotal = cakeItem.cakeItemPrice;
       //this is too tightly coupled and will be changed when we do the Order page, but it's okay for now to be able to order a single cake.
       state.currentActiveOrder.orderStatusID = 1;
 

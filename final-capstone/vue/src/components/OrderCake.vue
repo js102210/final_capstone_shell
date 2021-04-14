@@ -215,6 +215,7 @@
         </p>
       </section>
     </form>
+    <!--ROUTER LINK GOES HERE TO GO TO SHOPPING CART. A CUTE BUTTON??? -->
   </div>
 </template>
 
@@ -355,19 +356,20 @@ export default {
     }
   },
   methods: {
-    //this method didn't work - was trying to autoselect the cake config that was clicked on from the available cake view / cakelist
-    getSelectedStandardCake() {
-      let cakeID = this.$store.state.standardCakeIdOrder;
-      let cakeIndex = this.$store.state.placeholderCakes.find(
-        (cake) => cake.cake_id === cakeID
-      );
-      this.$store.state.selectedCake = this.$store.state.placeholderCakes[
-        cakeIndex
-      ];
-    },
+    // //this method didn't work - was trying to autoselect the cake config that was clicked on from the available cake view / cakelist
+    // getSelectedStandardCake() {
+    //   let cakeID = this.$store.state.standardCakeIdOrder;
+    //   let cakeIndex = this.$store.state.placeholderCakes.find(
+    //     (cake) => cake.cake_id === cakeID
+    //   );
+    //   this.$store.state.selectedCake = this.$store.state.placeholderCakes[
+    //     cakeIndex
+    //   ];
+    // },
     selectExtra(){
       //hmm, trying to make it so checking a box adds the Extra JSON to this.standardCakePrderJSON.cakeItemExtras
     },
+    //more faffing about with the extra array.
     extraCheck(event){
       if(event.target.checked){
         this.standardCakeOrderJSON.cakeItemExtras.push(event.target.extraID);
@@ -389,25 +391,30 @@ export default {
         "ADD_CAKEITEM_TO_ACTIVE_ORDER",
         this.$store.state.cakeItemToOrder
       );
+      //need to create a store mutation that will add the extras to the created cake item in the store.
 
       //everything below here will go into the order method in the Shopping Cart.
-      this.$store.commit("SET_ORDER_INFO", this.pickupInfo);
-      CustomerService.sendOrderJSON(this.$store.state.currentActiveOrder)
-        .then((response) => {
-          if (response.status === 201) {
-           const selectedName = this.$store.state.availableCakeConfigsBE.find((config) => {
-              if (config.cakeConfigID == this.standardCakeOrderJSON.cakeItemConfigID){
-                return config.cakeConfigName;
-              }
-            })
-            confirm(selectedName.cakeConfigName + ' ordered! See you on ' +  this.pickupInfo.orderPickupDate)
-            this.$store.commit("CLEAR_ACTIVE_ORDER");
-            this.$router.push("/cakes");
-          }
-        })
-        .catch((error) => {
-          this.handleErrorResponse(error, "creating");
-        });
+
+      //commenting out the rest right now bc this is going to the shopping cart page and I want to test
+      //adding multiple cakes to the order.
+
+      // this.$store.commit("SET_ORDER_INFO", this.pickupInfo);
+      // CustomerService.sendOrderJSON(this.$store.state.currentActiveOrder)
+      //   .then((response) => {
+      //     if (response.status === 201) {
+      //      const selectedName = this.$store.state.availableCakeConfigsBE.find((config) => {
+      //         if (config.cakeConfigID == this.standardCakeOrderJSON.cakeItemConfigID){
+      //           return config.cakeConfigName;
+      //         }
+      //       })
+      //       confirm(selectedName.cakeConfigName + ' ordered! See you on ' +  this.pickupInfo.orderPickupDate)
+      //       this.$store.commit("CLEAR_ACTIVE_ORDER");
+      //       this.$router.push("/cakes");
+      //     }
+      //   })
+      //   .catch((error) => {
+      //     this.handleErrorResponse(error, "creating");
+      //   });
     },
     handleErrorResponse(error, verb) {
       if (error.response) {
