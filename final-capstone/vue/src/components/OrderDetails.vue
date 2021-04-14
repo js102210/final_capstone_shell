@@ -1,12 +1,12 @@
 <template>
   <div>
-        <select name="status" v-model="statusToSend.statusID" >
+        <select name="status" v-model="statusToSend.statusID" 
+        v-on:change="changeOrderStatus($store.state.selectedOrder.orderID, statusToSend.statusID)">
         <option
           v-for="status in $store.state.allStatusesBE"
           v-bind:key="status.statusID"
           v-bind:value="status.statusID"
-         
-          v-on:change="changeOrderStatus(this.$store.state.selectedOrder.orderID, statusToSend.statusID)"
+        
         >
          Mark Order {{status.statusName}}
         </option>
