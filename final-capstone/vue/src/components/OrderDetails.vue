@@ -1,5 +1,6 @@
 <template>
   <div>
+      Change order status: 
         <select name="status" v-model="statusToSend.statusID" 
         v-on:change="changeOrderStatus($store.state.selectedOrder.orderID, statusToSend.statusID)">
         <option
@@ -34,7 +35,8 @@ export default {
   components: { cakeItemDetails },
     data(){
         return{
-            statusToSend : {statusID: 0}
+            statusToSend : {statusID: 0,
+                            statusName: ''}
             
         }
     },
@@ -46,9 +48,9 @@ export default {
         changeOrderStatus(orderID, statusID){
            EmployeeService.updateOrderStatus(orderID, statusID).then((response) => {
                 if (response.status == 200){
-                    location.reload();
+                    alert('')
                 }
-           }
+           } 
         
            )  
     }
