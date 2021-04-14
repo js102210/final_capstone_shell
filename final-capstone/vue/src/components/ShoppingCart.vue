@@ -12,7 +12,7 @@
       <div class="order-price">
          <p> Your order's price is: <span class="calculated-price">$ {{ orderPrice }} </span></p>
           </div>
-      <form class="finalize order">
+      <form class="finalize order" @submit="placeOrder">
            <label for="customerName">Please enter your name:</label>
       <input
         name="customerName"
@@ -99,9 +99,32 @@ export default {
     }, 
     computed:{
         orderPrice(){
-            let price = 1.59;
+            let price = 0.00;
+            this.$store.state.currentActiveOrder.itemsInOrder.forEach(
+                (element) => price += element.cakeItemPrice
+            );
             return price.toFixed(2);
         }
+    },
+    methods:{
+        placeOrder(){
+
+        },
+        handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " order. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg = "Error " + verb + " order. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " order. Request could not be created.";
+      }
+    }
     }
 
 }
