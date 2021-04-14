@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div class="shopping-cart">
+    <br>
+    <br>
+  <div v-if="$store.state.currentActiveOrder.itemsInOrder.length < 1">
+    <p>Your shopping cart has no delicious BeefCake baked goods in it! Come back when you do.</p>
+    <router-link v-bind:to="{ name: 'order-cake' }" ><button>I want to make a cake!</button></router-link>
+  </div>
+    <div class="shopping-cart" v-else>
       <customer-ordered-cake-card
         v-for="orderedCake in $store.state.currentActiveOrder.itemsInOrder"
         v-bind:key="orderedCake.cakeItemTempOrderID"
@@ -14,7 +20,7 @@
       </p>
     </div>
     <div class="move-back-to-order">
-      <router-link v-bind:to="{ name: 'order-cake' }" v-show="!$store.state.token"><button>Add Another Cake To Order</button></router-link>
+      <router-link v-bind:to="{ name: 'order-cake' }" ><button>Add Another Cake To Order</button></router-link>
       </div>
     <form class="finalize order" @submit="placeOrder">
       <label for="customerName">Please enter your name:</label>
