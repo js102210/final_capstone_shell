@@ -27,6 +27,10 @@ export default {
 
 .employee-order-display {
   margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .order-container {
@@ -34,8 +38,14 @@ export default {
   border: 1px solid black;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.452);
-  padding: 10px;
+  padding: 30px;
   font-family: 'Quicksand';
   font-weight: 600;
+}
+
+.order-container p {
+  font-family: 'Quicksand';
+  font-weight: 600;
+  font-size: 1rem;
 }
 </style>
