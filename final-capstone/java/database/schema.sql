@@ -245,6 +245,7 @@ CREATE SEQUENCE seq_message_id
 CREATE TABLE messages
         (message_id int DEFAULT nextval('seq_message_id'::regclass) NOT NULL,
         message_type_name VARCHAR NOT NULL,
+        message_price_mod DECIMAL (19,2) NOT NULL,
                 
         CONSTRAINT pk_messages PRIMARY KEY (message_id)
         );   
@@ -263,8 +264,8 @@ CONSTRAINT fk_rel_item_id FOREIGN KEY (cake_item_id) REFERENCES cake_items(cake_
 CONSTRAINT fk_rel_extra_id FOREIGN KEY (extra_id) REFERENCES extras(extra_id)
 );
 
-INSERT INTO messages (message_type_name)
-        VALUES ('basic message');
+INSERT INTO messages (message_type_name, message_price_mod)
+        VALUES ('basic message', 1.50);
 
 INSERT INTO fillings (filling_name, is_available, price_mod)
 VALUES ('strawberry jam', true, 1.00),

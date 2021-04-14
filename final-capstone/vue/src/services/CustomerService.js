@@ -30,6 +30,10 @@ export default {
         return axios.get('/extras/available');
     },
 
+    getMessagePrice(){
+        return axios.get('/message/price');
+    },
+
     sendOrderJSON(orderJSON){
         return axios.post('/placeOrder', orderJSON);
     }

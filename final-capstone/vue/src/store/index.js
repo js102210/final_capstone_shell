@@ -206,9 +206,7 @@ export default new Vuex.Store({
       }
     ],
     //placeholder for price for message - this is currently a magic number so we'll want a way to get this price live from the DB
-    messagePrice: {
-      priceMod: 1.50
-    },
+    messagePrice: 1.50,
     allCakeConfigsBE:[],
     availableCakeConfigsBE: [
       {
@@ -332,6 +330,9 @@ export default new Vuex.Store({
     },
     SET_SELECTED_ORDER(state, orderJSON){
       state.selectedOrder = orderJSON;
+    },
+    SET_MESSAGE_PRICE(state, price){
+      state.messagePrice = price;
     },
 
     SET_CAKE_STYLE_JSON(state, styleJSON) {
@@ -463,18 +464,17 @@ export default new Vuex.Store({
       state.currentActiveOrder.orderPriceTotal = price;
     },
     SET_ORDER_INFO(state, pickupInfo) {
+      //our status table is such that Pending is always set to 1. This would need to be refactored
+      //if we had a business logic change that changed what our order statuses were.
+      state.currentActiveOrder.orderStatusID = 1;
       state.currentActiveOrder.orderPickupDate = pickupInfo.orderPickupDate;
       state.currentActiveOrder.orderPickupTime = pickupInfo.orderPickupTime;
       state.currentActiveOrder.customerName = pickupInfo.customerName;
       state.currentActiveOrder.customerPhoneNumber = pickupInfo.customerPhoneNumber;
     },
-    ADD_CAKEITEM_TO_ACTIVE_ORDER(state, cakeItem) {
+    ADD_CAKE_ITEM_TO_ACTIVE_ORDER(state, cakeItem) {
       state.cakeItemToOrder = cakeItem;
       state.currentActiveOrder.itemsInOrder.push(cakeItem);
-      //pls note that this line is *only* for the current sprint. will refactor for multiple cakes later when we have shopping cart page.
-      //state.currentActiveOrder.orderPriceTotal = cakeItem.cakeItemPrice;
-      //this is too tightly coupled and will be changed when we do the Order page, but it's okay for now to be able to order a single cake.
-      state.currentActiveOrder.orderStatusID = 1;
 
       //again, we can actually get rid of this whole thing if we decide to pass a cakeItem in, but it's here now for reference and in case we decide to
       //mutate the data store by properties instead of sending a whole object

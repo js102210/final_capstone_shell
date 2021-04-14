@@ -25,7 +25,7 @@
       </p>
     </div>
 
-    <form class="order-form" @submit="orderThisCake">
+    <form class="order-form" @submit="addCakeToCart">
       <!-- <p>Your Cake:</p> -->
 
       <label for="cake selection">Select your cake:</label>
@@ -383,15 +383,13 @@ export default {
       this.standardCakeOrderJSON.cakeItemFrostingID = this.selected.cakeItemFrostingID;
       this.standardCakeOrderJSON.cakeItemFillingID = this.selected.cakeItemFillingID;
     },
-    orderThisCake() {
+    addCakeToCart() {
       //jake's comment: let's make sure we understand when to clear the store versus not clear the store based on errors
       this.$store.commit("MAKE_CAKE_ITEM", this.standardCakeOrderJSON);
       this.$store.commit("SET_CAKE_ITEM_PRICE", this.itemPrice);
-      this.$store.commit(
-        "ADD_CAKEITEM_TO_ACTIVE_ORDER",
-        this.$store.state.cakeItemToOrder
-      );
-      //need to create a store mutation that will add the extras to the created cake item in the store.
+      this.$store.commit("ADD_CAKE_ITEM_TO_ACTIVE_ORDER", this.$store.state.cakeItemToOrder);
+      //need to create a store mutation that will add the extras to the created cake item in the store once
+      //extras are fully implemented.
 
       //everything below here will go into the order method in the Shopping Cart.
 
