@@ -2,7 +2,7 @@
 <div>
     <h2>{{cakeItemJSON.cakeItemID}}: {{config.cakeConfigName}}</h2>
     <h3>Style: {{style.styleName}}   Size:  {{size.sizeName}}</h3>
-    <h3>Filling:  {{filling.fillingName}}   Frosting: {{frostingName}}    Flavor: {{flavor.flavorName}}</h3>
+    <h3>Filling:  {{filling.fillingName}}   Frosting: {{frosting.frostingName}}    Flavor: {{flavor.flavorName}}</h3>
 
 
 </div>
@@ -45,6 +45,9 @@ export default {
 
    this.filling = this.$store.state.allFillingsBE.find(
    (filling) => filling.fillingID == this.cakeItemJSON.cakeItemFillingID)
+
+   this.frosting = this.$store.state.allFrostingsBE.find(
+       (frosting)=> frosting.frostingID == this.cakeItemJSON.cakeItemFrostingID);
     
     }
 
