@@ -5,6 +5,7 @@
       v-bind:key="order.orderID"
       v-bind:order="order"
     />
+    
   </div>
 </template>
 
@@ -40,6 +41,10 @@ export default {
     EmployeeService.getAllConfigs().then((response)=> {
       this.$store.commit("SET_ALL_CAKE_CONFIG_ARRAY", response.data)
     });
+    EmployeeService.getAllStatuses().then((response)=> {
+      this.$store.commit("SET_ALL_STATUSES_ARRAY", response.data)
+    })
+
 
   }
 };

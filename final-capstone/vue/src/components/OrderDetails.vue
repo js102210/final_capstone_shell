@@ -1,5 +1,14 @@
 <template>
   <div>
+        <select name="status" >
+        <option
+          v-for="status in $store.state.allStatusesBE"
+          v-bind:key="status.statusID"
+          v-bind:value="status.StatusID"
+        >
+         Mark Order {{status.statusName}}
+        </option>
+</select> 
       <h1>{{this.$store.state.selectedOrder.customerName}}</h1>
       <h2>Ordered on {{this.$store.state.selectedOrder.orderDatePlaced}}</h2>
       <h2>To be delivered on {{this.$store.state.selectedOrder.orderPickupDate}}
@@ -10,7 +19,7 @@
  v-for="item in $store.state.selectedOrder.itemsInOrder"
  v-bind:key="item.cakeItemID"
  v-bind:cakeItemJSON="item" />
-       
+
         
   </div>
 </template>
@@ -30,9 +39,6 @@ export default {
     this.itemsInOrder = this.$store.state.selectedOrder.itemsInOrder;
    
     },
-   /* components: {
-        cakeItemDetails
-    }*/
 
 }
 </script>
