@@ -143,13 +143,13 @@
        <div name="extras" class="select extras">
       <p>Add Extras - pick as many as you'd like!</p>
       <div name="extra-checkbox" 
-      v-for="extra in $store.state.availableExtrasBE"
+      v-for="(extra, index) in $store.state.availableExtrasBE"
       v-bind:key="extra.extraID">
       <input
       type="checkbox"
       :name="extra.extraName"
-      :id="extra.extraID"
-      :value="extra"
+      :id="index"
+      :value="extra.extraID"
       v-on:change="extraCheck">
       <label
         :for="extra.extraName">{{extra.extraName}}</label>
@@ -232,12 +232,7 @@ export default {
         cakeItemPrice: 0.0,
         cakeItemConfigID: null,
       },
-      pickupInfo: {
-        orderPickupDate: null,
-        orderPickupTime: null,
-        customerName: null,
-        customerPhoneNumber: null,
-      },
+
     };
   },
 
@@ -367,11 +362,11 @@ export default {
     //more faffing about with the extra array.
     extraCheck(event){
       if(event.target.checked){
-        this.standardCakeOrderJSON.cakeItemExtras.push(event.target.id);
+        this.standardCakeOrderJSON.cakeItemExtras.push(this.$store.state.availableExtrasBE[event.target.id]);
       } else{
-        this.standardCakeOrderJSON.cakeItemExtras = this.standardCakeOrderJSON.cakeItemExtras.filter((element) => element != event.target.id);
+        this.standardCakeOrderJSON.cakeItemExtras = this.standardCakeOrderJSON.cakeItemExtras.filter((element) => element.extraID != event.target.value);
       }
-      
+      console.log(this.standardCakeOrderJSON.cakeItemExtras);
     },
     selectCakeConfig() {
       this.standardCakeOrderJSON.cakeItemConfigID = this.selected.cakeItemConfigID;
