@@ -6,28 +6,33 @@
             at {{this.$store.state.selectedOrder.orderPickupTime}}
       </h2>
       <h2>Items ordered:  <br></h2>
-        <div v-for="item in this.$store.state.selectedOrder.itemsInOrder"
-        v-bind:key="item.cakeItemID">
-            <h3>{{item.cakeItemConfigID}}</h3>
-        </div>
+ <cake-item-details
+ v-for="item in $store.state.selectedOrder.itemsInOrder"
+ v-bind:key="item.cakeItemID"
+ v-bind:cakeItemJSON="item" />
+       
+        
   </div>
 </template>
 
 <script>
-
+import cakeItemDetails from './cakeItemDetails.vue';
+//import cakeItemDetails from '../components/cakeItemDetails.vue';
 export default {
+  components: { cakeItemDetails },
     data(){
         return{
-            itemsInOrder : {}
+
             
         }
     },
-    methods: {
-
-    },
     created(){
     this.itemsInOrder = this.$store.state.selectedOrder.itemsInOrder;
-    }
+   
+    },
+   /* components: {
+        cakeItemDetails
+    }*/
 
 }
 </script>
