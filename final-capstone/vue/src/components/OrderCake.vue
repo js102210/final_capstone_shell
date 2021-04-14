@@ -310,11 +310,13 @@ export default {
         price += this.$store.state.messagePrice;
       }
 
-      //implement pricing for Extras array
-      // if(this.standardCakeOrderJSON.cakeItemExtras.length >0){
-      //   this.$store.state.standardCakeOrderJSON.cakeItemMessage.forEach((element) =>
-      //   price += element.priceMod);
-      // }
+      //pricing for Extras - fires if there's something in the standardCakeOrderJSON's
+      //cakeItemExtras array, then pulls the priceMod out of each Extra in the array and
+      //adds to price.
+      if(this.standardCakeOrderJSON.cakeItemExtras.length >0){
+        this.standardCakeOrderJSON.cakeItemExtras.forEach((element) =>
+        price += element.priceMod);
+      }
 
       return price.toFixed(2);
     },
