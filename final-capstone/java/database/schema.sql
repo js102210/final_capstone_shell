@@ -125,7 +125,6 @@ INSERT INTO fillings (filling_name) VALUES ('no filling');
 --first value in table should be 'NULL' to account for custom made cakes so that IDs for custom are 'NULL'. IDs for all
 --'NULL values will be 1     
            
-           -- consider deleting table
  
 DROP SEQUENCE IF EXISTS seq_extra_id; 
 CREATE SEQUENCE seq_extra_id
@@ -251,8 +250,6 @@ CREATE TABLE messages
         );   
  
  
-
-     --note for testing datetime local insert: 2017-06-30T16:30
 ALTER TABLE cake_items ADD order_id int NOT NULL;
 ALTER TABLE cake_items ADD CONSTRAINT order_id FOREIGN KEY (order_id) REFERENCES orders(order_id);
 
@@ -314,8 +311,6 @@ INSERT INTO statuses (status_name)
 INSERT INTO statuses (status_name)
 	VALUES ('Complete');
 
-INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_time, customer_name, customer_phone_number)
-	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '12:00', 'Ernest Hemingway', '5138675309');
 
 INSERT INTO cake_config (cake_config_name, cake_config_img_url, cake_config_description, flavor_id, frosting_id, filling_id)
 	VALUES('Curls Confetti Birthday Cake', 'https://preppykitchen.com/wp-content/uploads/2018/04/Funfetti-original-redone-blog-1.jpg', 
@@ -339,41 +334,16 @@ SELECT * FROM frostings WHERE is_available = TRUE;
 SELECT * FROM sizes WHERE is_available = TRUE;
 SELECT * FROM extras WHERE is_available = TRUE;
 
---example query updating an Order row
-UPDATE orders 
-SET status_id = 2,
-total_price = 10.0,
-pickup_date = '2021-4-11',
-pickup_time = '13:01',
-customer_name = 'some guy',
-customer_phone_number = '7777777777',
-date_last_updated = CURRENT_DATE
-WHERE order_id = 2;
 
 UPDATE extras
 SET extra_name = '3"x5" Chocolate bunny figure',
 is_available = true,
 price_mod = 1.0
 WHERE extra_id = 2;
+           
 
-                
-
-
---query to insert a cake item from an order into the db
-INSERT INTO cake_items (cake_style_id, cake_size_id, flavor_id, frosting_id, filling_id, message, config_id,
-item_price, order_id)
-VALUES (1, 1, 1, 1, 1, 'aaah', 1, 0.5, 1);
---inserting an order returning the id
-INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_time, customer_name, customer_phone_number)
-	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '13:00', 'Ernest Hemingway', '5138675309') RETURNING order_id;
-
-	
---UPDATE cake_config SET is_available = NOT is_available WHERE cake_config_id = 1 RETURNING is_available ;
---sets custom cake to unavailable
-
-INSERT INTO cake_item_extras (cake_item_id, extra_id)
-VALUES (1,3),
-        (1,5);
+--INSERT INTO cake_item_extras (cake_item_id, extra_id)
+--VALUES (1,3), (1,5);
 
 	
 COMMIT TRANSACTION;
