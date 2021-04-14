@@ -276,32 +276,7 @@ export default new Vuex.Store({
       orderPriceTotal: null,
       orderPickupDate: null,
       orderPickupTime: null,
-      itemsInOrder: [
-        //currently these two objects are in here to test order page
-        {
-        cakeItemStyleID: 2,
-        cakeItemSizeID: 2,
-        cakeItemFlavorID: 2,
-        cakeItemFrostingID: 2,
-        cakeItemFillingID: 2,
-        cakeItemMessage: '',
-        cakeItemExtras: [],
-        cakeItemPrice: 1.50,
-        cakeItemConfigID: 1,
-        cakeItemTempOrderID: 1
-      },
-      {
-        cakeItemStyleID: 3,
-        cakeItemSizeID: 3,
-        cakeItemFlavorID: 3,
-        cakeItemFrostingID: 3,
-        cakeItemFillingID: 3,
-        cakeItemMessage: 'a test',
-        cakeItemExtras: [],
-        cakeItemPrice: 6.50,
-        cakeItemConfigID: 1,
-        cakeItemTempOrderID: 2
-      }],
+      itemsInOrder: [],
       customerName: null,
       customerPhoneNumber: null
     },

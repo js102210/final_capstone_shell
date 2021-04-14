@@ -25,7 +25,7 @@
       </p>
     </div>
 
-    <form class="order-form" @submit="addCakeToCart">
+    <form class="order-form" @submit.prevent="addCakeToCart">
       <!-- <p>Your Cake:</p> -->
 
       <label for="cake selection">Select your cake:</label>
@@ -157,7 +157,7 @@
         </div>
       <!-- <p>Order Pick-Up Information:</p> -->
 
-      <label for="customerName">Please enter your name:</label>
+      <!-- <label for="customerName">Please enter your name:</label>
       <input
         name="customerName"
         type="text"
@@ -172,10 +172,10 @@
         type="tel"
         v-model="pickupInfo.customerPhoneNumber"
         required
-      /><br />
+      /><br /> -->
 
       <!-- let's change this to separate date and time field inputs. see if we can limit time to bakery open hours-->
-      <label for="pickup date and time"
+      <!-- <label for="pickup date and time"
         >When do you want to pick up your cake?</label
       >
       <input
@@ -190,7 +190,7 @@
         type="time"
         v-model="pickupInfo.orderPickupTime"
         required
-      /><br />
+      /><br /> -->
 
       <p class="price-display">
         Your Order's Total is:
@@ -199,7 +199,7 @@
 
       <!-- Hide submit button if required fields are not completed -->
       <section v-if="cakeValidated">
-        <input type="submit" value="Order Your Cake!" />
+        <input type="submit" value="Add Cake To Cart!" />
       </section>
 
       <section v-else>
@@ -367,10 +367,11 @@ export default {
     //more faffing about with the extra array.
     extraCheck(event){
       if(event.target.checked){
-        this.standardCakeOrderJSON.cakeItemExtras.push(event.target.extraID);
+        this.standardCakeOrderJSON.cakeItemExtras.push(event.target.id);
       } else{
-        this.standardCakeOrderJSON.cakeItemExtras = this.standardCakeOrderJSON.cakeItemExtras.filter((element) => element.extraID != event.target.value.extraID);
+        this.standardCakeOrderJSON.cakeItemExtras = this.standardCakeOrderJSON.cakeItemExtras.filter((element) => element != event.target.id);
       }
+      
     },
     selectCakeConfig() {
       this.standardCakeOrderJSON.cakeItemConfigID = this.selected.cakeItemConfigID;
@@ -383,6 +384,8 @@ export default {
       this.$store.commit("MAKE_CAKE_ITEM", this.standardCakeOrderJSON);
       this.$store.commit("SET_CAKE_ITEM_PRICE", this.itemPrice);
       this.$store.commit("ADD_CAKE_ITEM_TO_ACTIVE_ORDER", this.$store.state.cakeItemToOrder);
+      //implement logic to blank out the form's contents.
+      this.$router.push("/shoppingcart");
       //need to create a store mutation that will add the extras to the created cake item in the store once
       //extras are fully implemented.
 

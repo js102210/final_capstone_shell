@@ -13,6 +13,9 @@
         <span class="calculated-price">$ {{ orderPrice }} </span>
       </p>
     </div>
+    <div class="move-back-to-order">
+      <router-link v-bind:to="{ name: 'order-cake' }" v-show="!$store.state.token"><button>Add Another Cake To Order</button></router-link>
+      </div>
     <form class="finalize order" @submit="placeOrder">
       <label for="customerName">Please enter your name:</label>
       <input
@@ -101,7 +104,7 @@ export default {
     orderPrice() {
       let price = 0.0;
       this.$store.state.currentActiveOrder.itemsInOrder.forEach(
-        (element) => (price += element.cakeItemPrice)
+        (element) => (price +=parseFloat(element.cakeItemPrice))
       );
       return price.toFixed(2);
     },
