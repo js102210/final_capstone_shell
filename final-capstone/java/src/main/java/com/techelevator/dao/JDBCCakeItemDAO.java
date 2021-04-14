@@ -26,9 +26,9 @@ public class JDBCCakeItemDAO implements CakeItemDAO {
         String sqlToAddCakeItem = "INSERT INTO cake_items (cake_style_id, cake_size_id, flavor_id, frosting_id, " +
                 "filling_id, message, config_id,\n" +
                 "item_price, order_id)\n" +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING cake_item_id ;";
         //need to rework this to bring back the newly inserted CakeItem's id, like we did in the orderJDBC methods
-        jdbcTemplate.update(sqlToAddCakeItem, cakeItem.getCakeItemStyleID(), cakeItem.getCakeItemSizeID(), cakeItem.getCakeItemFlavorID(),
+        int cakeItemID = jdbcTemplate.queryForObject(sqlToAddCakeItem, Integer.class, cakeItem.getCakeItemStyleID(), cakeItem.getCakeItemSizeID(), cakeItem.getCakeItemFlavorID(),
                 cakeItem.getCakeItemFrostingID(), cakeItem.getCakeItemFillingID(), cakeItem.getCakeItemMessage(), cakeItem.getCakeItemConfigID(),
                 cakeItem.getCakeItemPrice(), orderID
         );
@@ -37,7 +37,7 @@ public class JDBCCakeItemDAO implements CakeItemDAO {
             for (Extra theExtra : cakeItem.getCakeItemExtras()) {
                 String sqlAddExtraToCakeItem = "INSERT INTO cake_item_extras (cake_item_id, extra_id) " +
                         "VALUES (?, ?) ;";
-                jdbcTemplate.update(sqlAddExtraToCakeItem, cakeItem.getCakeItemID(), theExtra.getExtraID());
+                jdbcTemplate.update(sqlAddExtraToCakeItem, cakeItemID, theExtra.getExtraID());
             }
     }
     }
