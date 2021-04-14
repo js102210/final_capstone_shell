@@ -1,10 +1,12 @@
 <template>
   <div>
-        <select name="status" >
+        <select name="status" v-model="statusToSend.statusID" >
         <option
           v-for="status in $store.state.allStatusesBE"
           v-bind:key="status.statusID"
-          v-bind:value="status.StatusID"
+          v-bind:value="status.statusID"
+         
+          v-on:change="changeOrderStatus(this.$store.state.selectedOrder.orderID, statusToSend.statusID)"
         >
          Mark Order {{status.statusName}}
         </option>
@@ -25,13 +27,14 @@
 </template>
 
 <script>
+import EmployeeService from '../services/EmployeeService';
 import cakeItemDetails from './cakeItemDetails.vue';
-//import cakeItemDetails from '../components/cakeItemDetails.vue';
+
 export default {
   components: { cakeItemDetails },
     data(){
         return{
-
+            statusToSend : {statusID: 0}
             
         }
     },
@@ -39,7 +42,18 @@ export default {
     this.itemsInOrder = this.$store.state.selectedOrder.itemsInOrder;
    
     },
+    methods: {
+        changeOrderStatus(orderID, statusID){
+           EmployeeService.updateOrderStatus(orderID, statusID).then((response) => {
+                if (response.status == 200){
+                    location.reload();
+                }
+           }
+        
+           )  
+    }
 
+}
 }
 </script>
 

@@ -99,8 +99,8 @@ updateExtra(ExtraJSON){
 updateOrder(orderJSON){
     return axios.put(`/orders/${orderJSON.orderID}`, orderJSON);
 },
-updateOrderStatus(orderJSON, statusID){
-    return axios.patch(`/orders/${orderJSON.orderID}/status/${statusID}`)
+updateOrderStatus(orderID, statusID){
+    return axios.patch(`/orders/${orderID}/status/${statusID}`)
 },
 updateMessagePrice(price){
     return axios.patch(`/message/price/${price}`);
