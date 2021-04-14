@@ -24,7 +24,7 @@
  v-bind:key="item.cakeItemID"
  v-bind:cakeItemJSON="item" />
 
-        
+      <h3>Total Order Price: {{this.$store.state.selectedOrder.orderPriceTotal}}</h3>  
   </div>
 </template>
 
