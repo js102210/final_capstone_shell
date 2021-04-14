@@ -1,6 +1,6 @@
 <template>
   <div class="orders-list">
-    <table id="filterOptions">
+    <!-- <table id="filterOptions">
     <th>Orders Placed After: </th>
     <th>Orders to be picked up on: </th>
     <th>Orders to be picked up before: </th>
@@ -19,7 +19,7 @@
     </td>
     <td><input type="text" id="customerNameFilter" v-model="filter.customerName"/></td>
     </tbody>
-    </table>
+    </table> -->
 
 
     <employee-order-card
