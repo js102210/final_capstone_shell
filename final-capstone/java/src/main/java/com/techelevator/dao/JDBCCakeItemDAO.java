@@ -27,6 +27,7 @@ public class JDBCCakeItemDAO implements CakeItemDAO {
                 "filling_id, message, config_id,\n" +
                 "item_price, order_id)\n" +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        //need to rework this to bring back the newly inserted CakeItem's id, like we did in the orderJDBC methods
         jdbcTemplate.update(sqlToAddCakeItem, cakeItem.getCakeItemStyleID(), cakeItem.getCakeItemSizeID(), cakeItem.getCakeItemFlavorID(),
                 cakeItem.getCakeItemFrostingID(), cakeItem.getCakeItemFillingID(), cakeItem.getCakeItemMessage(), cakeItem.getCakeItemConfigID(),
                 cakeItem.getCakeItemPrice(), orderID
