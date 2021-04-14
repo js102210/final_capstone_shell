@@ -4,9 +4,11 @@
       <div class="cust-section">
       <router-link v-bind:to="{ name: 'home' }" v-show="!$store.state.token">Home</router-link>
       <span v-show="!$store.state.token">&nbsp;|&nbsp;</span>
-      <router-link v-bind:to="{ name: 'cakes' }" v-show="!$store.state.token">See our Cakes</router-link>
+      <router-link v-bind:to="{ name: 'cakes' }" v-show="!$store.state.token">Our BeefCakes</router-link>
       <span v-show="!$store.state.token">&nbsp;|&nbsp;</span>
-      <router-link v-bind:to="{ name: 'order-cake' }" v-show="!$store.state.token">Order your Cake</router-link>
+      <router-link v-bind:to="{ name: 'order-cake' }" v-show="!$store.state.token">Order</router-link>
+      <span v-show="!$store.state.token">&nbsp;|&nbsp;</span>
+      <router-link v-bind:to="{ name: 'shopping-cart' }" v-show="!$store.state.token"><img src=".\assets\shopping-cart.png"/></router-link>
       </div>
       <div class="emp-section">
       <router-link v-bind:to="{ name: 'login' }" v-if="!$store.state.token">Employee Login</router-link>
@@ -109,6 +111,13 @@ p {
   background-color: rgba(173, 243, 255, 0.87);
   border-radius: 5px;
   padding: 5px;
+}
+
+.cust-section img {
+  margin-bottom: -4px;
+  justify-content: center;
+  align-items: center;
+  opacity: 72%;
 }
 
 .emp-section {
