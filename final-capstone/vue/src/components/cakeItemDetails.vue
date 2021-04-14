@@ -1,7 +1,8 @@
 <template>
 <div>
-    <h2>{{cakeItemJSON.cakeItemID}}: {{cakeConfigName}}</h2>
-    <h3>Style: {{styleName}}   Size:  {{sizeName}}</h3>
+    <h2>{{cakeItemJSON.cakeItemID}}: {{config.cakeConfigName}}</h2>
+    <h3>Style: {{style.styleName}}   Size:  {{size.sizeName}}</h3>
+    <h3>Filling:  {{filling.fillingName}}   Frosting: {{frostingName}}    Flavor: {{flavor.flavorName}}</h3>
 
 
 </div>
@@ -17,13 +18,6 @@ export default {
             filling: {},
             frosting: {},
             flavor: {},
-            cakeConfigName: '',
-            styleName: '',
-            sizeName: '',
-            message: '',
-            fillingName: '',
-            frostingName: '',
-            flavorName: '',
             extras: []
         }
     },
@@ -31,20 +25,30 @@ export default {
         'cakeItemJSON'
     ],
     created(){
+    //I'm not actually sure why I have to go through the step of defining the object in data, populating it from the store, then 
+    //reading from it to set the 
     this.config = this.$store.state.allCakeConfigsBE.find(
     (config)=> config.cakeConfigID == this.cakeItemJSON.cakeItemConfigID)
-    this.cakeConfigName = this.config.cakeConfigName;  
+    
 
     this.style = this.$store.state.allCakeStylesBE.find(
     (style) => style.styleID == this.cakeItemJSON.cakeItemStyleID)
-    this.styleName = this.style.styleName;
+  
 
     this.size = this.$store.state.allCakeSizesBE.find(
     (size) => size.sizeID == this.cakeItemJSON.cakeItemSizeID)
-    this.sizeName = this.size.sizeName;
+   
+
+     this.flavor = this.$store.state.allFlavorsBE.find(
+     (flavor) => flavor.flavorID == this.cakeItemJSON.cakeItemFlavorID)
+   
+
+   this.filling = this.$store.state.allFillingsBE.find(
+   (filling) => filling.fillingID == this.cakeItemJSON.cakeItemFillingID)
+    
     }
 
-    
+   
 
     
 }

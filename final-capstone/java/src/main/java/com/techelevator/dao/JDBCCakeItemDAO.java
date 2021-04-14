@@ -87,6 +87,7 @@ public class JDBCCakeItemDAO implements CakeItemDAO {
         theCakeItemDTO.setCakeItemSizeID(result.getInt("cake_size_id"));
         theCakeItemDTO.setCakeItemFlavorID(result.getInt("flavor_id"));
         theCakeItemDTO.setCakeItemFrostingID(result.getInt("frosting_id"));
+        theCakeItemDTO.setCakeItemFillingID(result.getInt("filling_id"));
         theCakeItemDTO.setCakeItemMessage(result.getString("message"));
         theCakeItemDTO.setCakeItemConfigID(result.getInt("config_id"));
         theCakeItemDTO.setCakeItemPrice(result.getBigDecimal("item_price"));
