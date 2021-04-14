@@ -71,7 +71,7 @@ export default {
   margin-top: -3%;
 }
 
-#calculated-price {
+.calculated-price {
   color: rgb(182, 8, 43);
   font-weight: 700;
   font-size: 1.6rem;

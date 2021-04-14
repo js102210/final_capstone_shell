@@ -3,6 +3,9 @@
       <p>Cake name: {{getCakeName(orderedCake.cakeItemConfigID)}}</p>
       <p>Flavor: {{getCakeFlavor(orderedCake.cakeItemFlavorID)}}</p>
       <p>Frosting: {{getCakeFrosting(orderedCake.cakeItemFrostingID)}}</p>
+      <p>Filling: {{getCakeFilling(orderedCake.cakeItemFillingID)}} </p>
+      <p>Size: {{getCakeSize(orderedCake.cakeItemSizeID)}}</p>
+      <p>Style: {{getCakeStyle(orderedCake.cakeItemStyleID)}}</p>
       <p>Price: {{orderedCake.cakeItemPrice}} </p>
       </div>
 </template>
@@ -38,7 +41,20 @@ methods: {
             (element) => element.fillingID ===id
         );
         return fillingElement.fillingName;
+    },
+    getCakeSize(id){
+        let sizeElement = this.$store.state.availableCakeSizesBE.find(
+            (element) => element.sizeID === id
+        );
+        return sizeElement.sizeDescription;
+    },
+    getCakeStyle(id){
+        let styleElement = this.$store.state.availableCakeStylesBE.find(
+            (element) => element.styleID === id
+        );
+        return styleElement.styleName;
     }
+
 
 
 
