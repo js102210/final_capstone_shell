@@ -12,6 +12,7 @@
          Mark Order {{status.statusName}}
         </option>
 </select> 
+        <h2>{{statusToDisplay.statusName}}</h2>
       <h1>{{this.$store.state.selectedOrder.customerName}}</h1>
       <h2>Ordered on {{this.$store.state.selectedOrder.orderDatePlaced}}</h2>
       <h2>To be delivered on {{this.$store.state.selectedOrder.orderPickupDate}}
@@ -35,13 +36,14 @@ export default {
   components: { cakeItemDetails },
     data(){
         return{
-            statusToSend : {statusID: 0,
-                            statusName: ''}
+            statusToSend : {statusID: 0},
+            statusToDisplay: {}
             
         }
     },
     created(){
     this.itemsInOrder = this.$store.state.selectedOrder.itemsInOrder;
+    this.getCurrentStatusName();
    
     },
     methods: {
@@ -50,12 +52,22 @@ export default {
                 if (response.status == 200){
                     alert('')
                 }
-           } 
-        
+           },
+           
            )  
-    }
+    },
+    getCurrentStatus(){
+           
+            this.statusToDisplay = this.$store.state.allStatusesBE.find((status)=>{
+                status.statusID == this.$store.state.selectedOrder.orderStatusID
+            })
+           
+             
+     }
+},
 
-}
+    
+
 }
 </script>
 
