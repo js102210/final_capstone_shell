@@ -53,7 +53,7 @@ export default {
 }
 
 @media screen and (max-width: 600px) {
-  .banner h1 {
+  h1 {
     font-size: 2.2rem;
   }
 

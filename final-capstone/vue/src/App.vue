@@ -12,6 +12,8 @@
       <router-link v-bind:to="{ name: 'login' }" v-if="!$store.state.token">Employee Login</router-link>
 
       <!-- Hide these links if Employee is logged in -->
+      <router-link v-bind:to="{ name: 'employee-landing' }"  v-if="$store.state.token != ''" >Portal</router-link>
+      <span v-show="$store.state.token !=''">&nbsp;|&nbsp;</span> 
       <router-link v-bind:to="{ name: 'employee-products' }"  v-if="$store.state.token != ''" >Products</router-link>
       <span v-show="$store.state.token !=''">&nbsp;|&nbsp;</span>
       <router-link v-bind:to="{ name: 'employee-orders' }"  v-if="$store.state.token != ''" >Orders</router-link>
@@ -36,9 +38,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lancelot&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap'); */
 
 /* 'Roboto Slab', serif;  'Antic Slab', serif;  'Abril Fatface', cursive; 'Josefin Slab', serif;
-   'Parisienne', cursive; 'Lancelot', cursive; */
+   'Parisienne', cursive; 'Lancelot', cursive; 'Comic Neue',  */
 
 html {
   background: repeating-linear-gradient(90deg, #e9feff, #e9feff 50px, #ffb8ea 50px, #ffb8ea 100px);
