@@ -1,6 +1,6 @@
 <template>
   <div class="orders-list">
-    <!-- <table id="filterOptions">
+   <table id="filterOptions">
     <th>Orders Placed After: </th>
     <th>Orders to be picked up on: </th>
     <th>Orders to be picked up before: </th>
@@ -19,11 +19,11 @@
     </td>
     <td><input type="text" id="customerNameFilter" v-model="filter.customerName"/></td>
     </tbody>
-    </table> -->
+    </table>
 
 
     <employee-order-card
-      v-for="order in $store.state.pastOrdersArrayBE"
+      v-for="order in filteredList"
       v-bind:key="order.orderID"
       v-bind:order="order"
     />
@@ -83,16 +83,21 @@ export default {
   },
   computed: {
     filteredList(){
-      let filterPlacedAfter = this.filter.placedAfter;
-     /* let filterPickupOn = this.filter.pickupOn;
-      let filterPickupBefore = this.filter.pickupBefore;
       let filterOrderStatus = this.filter.orderStatus;
-      let filterCustomerName = this.filter.customerName; */
-
+      return this.$store.state.pastOrdersArrayBE.filter((order) => {
+        return  order.orderStatusID == filterOrderStatus || filterOrderStatus == '';
+      })
+  /* //   let filterPlacedAfter = this.filter.placedAfter;
+      let filterPickupOn = this.filter.pickupOn;
+     // let filterPickupBefore = this.filter.pickupBefore;
+     // 
+    //  let filterCustomerName = this.filter.customerName;
 
       return this.$store.state.pastOrdersArrayBE.filter((order) => {
-        return new Date(filterPlacedAfter).valueOf() < new Date(order.orderDatePlaced).valueOf();
-      })
+       return ( new Date(filterPlacedAfter).valueOf() < new Date(order.orderDatePlaced).valueOf() || filterPlacedAfter == '') &&
+        (new Date(filterPickupOn).valueOf() == new Date(order.orderPickupDate).valueOf()  || filterPickupOn == '')     //   &&
+      //  new Date(filterPickupBefore).valueOf() > new Date(order.orderPickupDate).valueOf()
+      }) */
     }
   }
 };
