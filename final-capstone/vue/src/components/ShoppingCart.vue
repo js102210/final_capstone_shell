@@ -99,7 +99,8 @@ export default {
     }, 
     computed:{
         orderPrice(){
-            return 1.50;
+            let price = 1.59;
+            return price.toFixed(2);
         }
     }
 
