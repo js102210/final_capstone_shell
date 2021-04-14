@@ -80,6 +80,20 @@ export default {
     })
 
 
+  },
+  computed: {
+    filteredList(){
+      let filterPlacedAfter = this.filter.placedAfter;
+     /* let filterPickupOn = this.filter.pickupOn;
+      let filterPickupBefore = this.filter.pickupBefore;
+      let filterOrderStatus = this.filter.orderStatus;
+      let filterCustomerName = this.filter.customerName; */
+
+
+      return this.$store.state.pastOrdersArrayBE.filter((order) => {
+        return new Date(filterPlacedAfter).valueOf() < new Date(order.orderDatePlaced).valueOf();
+      })
+    }
   }
 };
 </script>
