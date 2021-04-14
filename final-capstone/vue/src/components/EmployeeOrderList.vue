@@ -48,6 +48,6 @@ export default {
 <style >
 /* div {
 border: 2px solid black;
-font: 1em sans-serif;
+font: 1em 'Comic Neue',sans-serif;
 } */
 </style>
