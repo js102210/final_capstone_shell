@@ -34,8 +34,7 @@ export default {
     data(){
         return {
              statusName : '',
-             statusToSend : {statusID: 0,
-                            statusName: ''}
+             statusToSend : {statusID: 0}
         }
     },
     methods: {
@@ -48,7 +47,11 @@ export default {
                 changeOrderStatus(orderID, statusID){
            EmployeeService.updateOrderStatus(orderID, statusID).then((response) => {
                 if (response.status == 200){
-                    alert('')
+                   const status = this.$store.state.allStatusesBE.find((status)=> {
+                        return status.statusID == this.statusToSend.statusID
+                    })
+            
+                    alert('The order is now ' + status.statusName)
                     location.reload()
                 }
            } 
