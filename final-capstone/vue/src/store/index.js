@@ -20,10 +20,9 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    standardCakeIdForOrder: null,
-    cakeOrderJSON: {}, //renamed
-    selectedConfig: {},
-    cakeItemNumberForOrder: 0, //used to give each cake in order a unique ID.
+    
+    //used to give each cake in order a unique ID.
+    cakeItemNumberForOrder: 0, 
 
     //these JSONS are for when we need to edit/update cake attributes - will be built
     // in appropriate employee component, then set via mutation, and the method with the API
@@ -41,224 +40,37 @@ export default new Vuex.Store({
     //to view Pending orders, change their status, do edits, etc. Single pull to get *all* orders from the system,
     //then displaying the orders will be about *filtering* this array.
     pastOrdersArrayBE: [],
-    //jake: why do we have both of these? I thought custom cakes were just a config
-    //dan: took out customOrderCakeObject, superfluous now that we've reconsidered
-    //and make a cake JSON standard.
+
+    //these are arrays to hold the various components that make up our cakes. They are populated with API pulls during 
+    //created() lifecycle hooks.  The ones marked "all" are for the Employee
+    //side of the app. the ones marked "available" are for the customer side of the app, since we only want 
+    //customers to see available possibilities and we require login to see all possibilities.
     allCakeStylesBE:[],
-    availableCakeStylesBE: [
-      {
-        styleID: 1,
-        styleName: 'pick a cake style!',
-        isAvailable: true,
-        priceMod: 0.00
-      },
-      {
-        styleID: 2,
-        styleName: "double layer cake",
-        isAvailable: true,
-        priceMod: 0.00
-      },
-      {
-        styleID: 3,
-        styleName: "cupcakes",
-        isAvailable: true,
-        priceMod: 0.00
-      },
-      {
-        styleID: 4,
-        styleName: "sheet cake",
-        isAvailable: true,
-        priceMod: 0.00
-      }
-    ],
+    availableCakeStylesBE: [],
     allCakeSizesBE: [],
-    availableCakeSizesBE: [
-      {
-        sizeID: 1,
-        sizeName: null,
-        sizeDescription: 'pick a cake size!',
-        isAvailable: true,
-        priceMod: 0.00
-      },
-      {
-        sizeID: 2,
-        sizeName: "small",
-        sizeDescription: 'SMALL: 6" layer cake OR 12 cupcakes OR 8"x8" sheet cake',
-        isAvailable: true,
-        priceMod: 9.99
-      },
-      {
-        sizeID: 3,
-        sizeName: "medium",
-        sizeDescription: 'MEDIUM: 9" layer cake OR 18 cupcakes OR 9"x14" sheet cake',
-        isAvailable: true,
-        priceMod: 15.99
-      },
-      {
-        sizeID: 4,
-        sizeName: "large",
-        sizeDescription: 'LARGE: 12" layer cake OR 24 cupcakes OR 20"x24" sheet cake',
-        isAvailable: true,
-        priceMod: 19.99
-      }
-    ],
+    availableCakeSizesBE: [],
     allFlavorsBE:[],
-    availableFlavorsBE: [
-      {
-        flavorID: 1,
-        flavorName: 'pick a cake flavor!',
-        isAvailable: true,
-        priceMod: 0.00
-      },
-      {
-        flavorID: 2,
-        flavorName: "vanilla",
-        isAvailable: true,
-        priceMod: 0.00
-      },
-      {
-        flavorID: 3,
-        flavorName: "chocolate",
-        isAvailable: true,
-        priceMod: 0.00
-      },
-      {
-        flavorID: 4,
-        flavorName: "confetti",
-        isAvailable: true,
-        priceMod: 2.00
-      },
-      {
-        flavorID: 5,
-        flavorName: "carrot",
-        isAvailable: true,
-        priceMod: 3.00
-      }
-
-    ],
+    availableFlavorsBE: [],
     allFrostingsBE: [],
-    availableFrostingsBE: [
-      {
-        frostingID: 1,
-        frostingName: "no frosting - have a naked cake!",
-        isAvailable: true,
-        priceMod: 0.00
-      },
-      {
-        frostingID: 2,
-        frostingName: "vanilla",
-        isAvailable: true,
-        priceMod: 0.00
-      },
-      {
-        frostingID: 3,
-        frostingName: "chocolate",
-        isAvailable: true,
-        priceMod: 0.00
-      },
-      {
-        frostingID: 4,
-        frostingName: "cream cheese",
-        isAvailable: true,
-        priceMod: 3.00
-      }
-    ],
+    availableFrostingsBE: [],
     allFillingsBE: [],
-    availableFillingsBE: [
-      {
-        fillingID: 1,
-        fillingName: "no filling",
-        isAvailable: true,
-        priceMod: 0.00
-      },
-      {
-        fillingID: 2,
-        fillingName: "strawberry jam",
-        isAvailable: true,
-        priceMod: 1.00
-      },
-      {
-        fillingID: 3,
-        fillingName: "blackberry jam",
-        isAvailable: true,
-        priceMod: 1.00
-      }
-    ],
+    availableFillingsBE: [],
     allExtrasBE: [],
-    availableExtrasBE: [
-      {
-        extraID: 1,
-        extraName: 'superhero decorations',
-        isAvailable: true,
-        priceMod: 3.00
-      },
-      {
-        extraID: 2,
-        extraName: 'plastic bunny',
-        isAvailable: true,
-        priceMod: 1.00
-      },
-      {
-        extraID: 3,
-        extraName: 'birthday candles',
-        isAvailable: true,
-        priceMod: 2.00
-      }
-    ],
-    //placeholder for price for message - this is currently a magic number so we'll want a way to get this price live from the DB
-    messagePrice: 1.50,
+    availableExtrasBE: [],
+    
+    //holds available and all Cake Configs - available for customer side, all for employee side. Populated
+    //via API calls during created() lifecycle hooks.
     allCakeConfigsBE:[],
-    availableCakeConfigsBE: [
-      {
-        cakeConfigID: 1,
-        cakeConfigName: "Custom Cake",
-        cakeConfigUrl: "https://www.pngkit.com/png/detail/918-9180589_wedding-cake-icon-png-conzelmann-b-228-ckerei.png",
-        cakeConfigDescription: "Build your own cake!",
-        cakeConfigFlavorID: 1,
-        cakeConfigFrostingID: 1,
-        cakeConfigFillingID: 1,
-        isAvailable: true
-      },
-      {
-        cakeConfigID: 2,
-        cakeConfigName: "Curls Confetti Birthday Cake",
-        cakeConfigUrl: "https://preppykitchen.com/wp-content/uploads/2018/04/Funfetti-original-redone-blog-1.jpg",
-        cakeConfigDescription: "Our fun-filled confetti cake with luscious vanilla frosting",
-        cakeConfigFlavorID: 4,
-        cakeConfigFrostingID: 2,
-        cakeConfigFillingID: 1,
-        isAvailable: true
-      },
-      {
-        cakeConfigID: 3,
-        cakeConfigName: "Deadlift Devil's Food Cake",
-        cakeConfigUrl: "https://www.girlversusdough.com/wp-content/uploads/2019/10/devils-food-cake-5.jpg",
-        cakeConfigDescription: "Our award-winning deep devil's food cake with deep chocolate frosting. Go ahead, it's cheat day!",
-        cakeConfigFlavorID: 3,
-        cakeConfigFrostingID: 3,
-        cakeConfigFillingID: 1,
-        isAvailable: true
-      },
-      {
-        cakeConfigID: 4,
-        cakeConfigName: "Gym Bunny Carrot Cake",
-        cakeConfigUrl: "https://grandbaby-cakes.com/wp-content/uploads/2020/03/Carrot-Cake-10.jpg",
-        cakeConfigDescription: "Our moist carrot cake is jam-packed with healthy antoxidants and unbeatable flavor! It comes with our incredible cream cheese frosting.",
-        cakeConfigFlavorID: 5,
-        cakeConfigFrostingID: 4,
-        cakeConfigFillingID: 1,
-        isAvailable: true
-      }
+    availableCakeConfigsBE: [ ],
+    
+       //placeholder for price for message - this is currently a magic number. We have an API on the back end built 
+    //to eventually make it a live pull from database, but that was out of scope for our 3 sprints' MVP.
+    messagePrice: 1.50,
+    //status info is pulled here from the database via API call in created() lifecycle hook. For employees
+    //only.
+    allStatusesBE: [],
 
-    ],
-    //we need a DAO on the back end and endpoints to populate this
-    //remove the dummy data once we have it
-
-    allStatusesBE: [
-
-    ],
-
-    //we can actually remove this if we have the order component send a cakeItem object, but I have it here now for convenient reference
+    //builder object for cakeItem before added to order object. Touched onlyvia mutations.
     cakeItemToOrder: {
       cakeItemStyleID: null,
       cakeItemSizeID: null,
@@ -271,6 +83,7 @@ export default new Vuex.Store({
       cakeItemConfigID: null,
       cakeItemTempOrderID: null
     },
+    //builder object for current order before sent to backend to submit order. Touched only via mutations.
     currentActiveOrder: {
       orderStatusID: null,
       orderPriceTotal: null,
@@ -280,10 +93,17 @@ export default new Vuex.Store({
       customerName: null,
       customerPhoneNumber: null
     },
+    //used in OrderDetails component
     selectedOrder: {},
+    //used to run order filtering in EmployeeOrderList component
     filteredOrders: []
   },
   mutations: {
+    /**
+     * mutation that sets the current authorization token for security purposes.
+     * @param {* } state 
+     * @param {*} token 
+     */
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);
@@ -300,10 +120,7 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    //unsure what we are using this for currently
-    SET_SELECTED_CONFIG(state, cakeConfig) {
-      state.selectedConfig = cakeConfig;
-    },
+
     SET_SELECTED_ORDER(state, orderJSON){
       state.selectedOrder = orderJSON;
     },

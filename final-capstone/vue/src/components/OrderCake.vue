@@ -31,7 +31,7 @@
       <!-- <p>Your Cake:</p> -->
 
       <label for="cake selection">Select your cake:</label>
-      <!-- the v-model sets the select to whatever the standardCakeIdForOrder is. If null, it's blank.-->
+      <!-- the v-model sets the select to whatever the selected object is in the page's data. If null, it's blank.-->
       <select
         name="cake selection"
         v-model="selected"
