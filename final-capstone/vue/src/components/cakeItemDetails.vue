@@ -1,8 +1,18 @@
 <template>
 <div>
-    <h2>{{cakeItemJSON.cakeItemID}}: {{config.cakeConfigName}}</h2>
+    <h2>Item Number {{cakeItemJSON.cakeItemID}}: {{config.cakeConfigName}}</h2>
     <h3>Style: {{style.styleName}}   Size:  {{size.sizeName}}</h3>
     <h3>Filling:  {{filling.fillingName}}   Frosting: {{frosting.frostingName}}    Flavor: {{flavor.flavorName}}</h3>
+    <h3>Extras: </h3>
+    <h2
+    v-for="extra in cakeItemJSON.cakeItemExtras"
+    v-bind:key="extra.extraID">
+    {{extra.extraName}}</h2>
+    <h3>Custom Message: '{{cakeItemJSON.cakeItemMessage}}'   
+    Price: {{cakeItemJSON.cakeItemPrice.toLocaleString('en-US', {
+                                                        style: 'currency',
+                                                        currency: 'USD',
+                                                                            })}}</h3>
 
 
 </div>
@@ -18,7 +28,7 @@ export default {
             filling: {},
             frosting: {},
             flavor: {},
-            extras: []
+            extras: '| '
         }
     },
     props: [
@@ -48,7 +58,11 @@ export default {
 
    this.frosting = this.$store.state.allFrostingsBE.find(
        (frosting)=> frosting.frostingID == this.cakeItemJSON.cakeItemFrostingID);
+
     
+
+
+
     }
 
    
