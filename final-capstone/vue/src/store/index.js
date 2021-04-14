@@ -280,7 +280,8 @@ export default new Vuex.Store({
       customerName: null,
       customerPhoneNumber: null
     },
-    selectedOrder: {}
+    selectedOrder: {},
+    filteredOrders: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {

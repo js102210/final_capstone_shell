@@ -1,5 +1,27 @@
 <template>
   <div class="orders-list">
+    <table id="filterOptions">
+    <th>Orders Placed After: </th>
+    <th>Orders to be picked up on: </th>
+    <th>Orders to be picked up before: </th>
+    <th>Orders with status: </th>
+    <th>Orders placed by: </th>
+    <tbody>
+    <td><input type="date" id="placedAfterFilter" v-model="filter.placedAfter"/></td>
+    <td><input type="date" id="pickUpOnFilter" v-model="filter.pickUpOn"/></td>
+    <td><input type="date" id="pickUpBeforeFilter" v-model="filter.pickUpBefore"/></td>
+    <td>
+      <select name="statusFilter" id="statusFilter" v-model="filter.orderStatus">
+        <option  v-for="status in $store.state.allStatusesBE"
+          v-bind:key="status.statusID"
+          v-bind:value="status.statusID">{{status.statusName}}</option>
+      </select>
+    </td>
+    <td><input type="text" id="customerNameFilter" v-model="filter.customerName"/></td>
+    </tbody>
+    </table>
+
+
     <employee-order-card
       v-for="order in $store.state.pastOrdersArrayBE"
       v-bind:key="order.orderID"
@@ -13,6 +35,18 @@
 import EmployeeService from '../services/EmployeeService';
 import EmployeeOrderCard from './EmployeeOrderCard.vue';
 export default {
+  data() {
+    return {
+      filter: {
+        placedAfter: '',
+        pickupOn: '',
+        pickupBefore: '',
+        orderStatus: '',
+        customerName: ''
+       
+      }
+    }
+  },
   components: { EmployeeOrderCard },
   methods: {
     prepareOrdersArray(){
