@@ -1,15 +1,15 @@
 <template>
   <div class="orders-list">
    <table id="filterOptions">
-    <!-- <th>Orders Placed After: </th>
+     <th>Orders Placed After: </th>
     <th>Orders to be picked up on: </th>
-    <th>Orders to be picked up before: </th> -->
+    <th>Orders to be picked up before: </th> 
     <th>Orders with status: </th>
-    <!-- <th>Orders placed by: </th> -->
+   <th>Orders placed by: </th> 
     <tbody>
-    <!-- <td><input type="date" id="placedAfterFilter" v-model="filter.placedAfter"/></td>
-    <td><input type="date" id="pickUpOnFilter" v-model="filter.pickUpOn"/></td>
-    <td><input type="date" id="pickUpBeforeFilter" v-model="filter.pickUpBefore"/></td> -->
+     <td><input type="date" id="placedAfterFilter" v-model="filter.placedAfter"/></td>
+    <td><input type="date" id="pickUpOnFilter" v-model="filter.pickupOn"/></td>
+    <td><input type="date" id="pickUpBeforeFilter" v-model="filter.pickupBefore"/></td> 
     <td>
       <select name="statusFilter" id="statusFilter" v-model="filter.orderStatus">
         <option  v-for="status in $store.state.allStatusesBE"
@@ -18,7 +18,7 @@
         <option v-bind:value="''">All Orders</option>
       </select>
     </td>
-    <!-- <td><input type="text" id="customerNameFilter" v-model="filter.customerName"/></td> -->
+    <td><input type="text" id="customerNameFilter" v-model="filter.customerName"/></td>
     </tbody>
     </table>
 
@@ -49,13 +49,7 @@ export default {
     }
   },
   components: { EmployeeOrderCard },
-  methods: {
-    prepareOrdersArray(){
-      EmployeeService.getAllOrders().then((response) => {
-        this.$store.commit("SET_ALL_ORDERS_ARRAY", response.data);
-      })
-    }
-  },
+ 
   created(){
     this.prepareOrdersArray();
         EmployeeService.getAllFrostings().then((response)=> {
@@ -85,28 +79,33 @@ export default {
   computed: {
     filteredList(){
       let filterOrderStatus = this.filter.orderStatus;
-      return this.$store.state.pastOrdersArrayBE.filter((order) => {
-        return  order.orderStatusID == filterOrderStatus || filterOrderStatus == '';
-      })
-  /* //   let filterPlacedAfter = this.filter.placedAfter;
+      let filterPlacedAfter = this.filter.placedAfter;
       let filterPickupOn = this.filter.pickupOn;
-     // let filterPickupBefore = this.filter.pickupBefore;
-     // 
-    //  let filterCustomerName = this.filter.customerName;
+      let filterPickupBefore = this.filter.pickupBefore;
+      let filterCustomerName = this.filter.customerName;
+      
 
       return this.$store.state.pastOrdersArrayBE.filter((order) => {
-       return ( new Date(filterPlacedAfter).valueOf() < new Date(order.orderDatePlaced).valueOf() || filterPlacedAfter == '') &&
-        (new Date(filterPickupOn).valueOf() == new Date(order.orderPickupDate).valueOf()  || filterPickupOn == '')     //   &&
-      //  new Date(filterPickupBefore).valueOf() > new Date(order.orderPickupDate).valueOf()
-      }) */
+      return ( new Date(filterPlacedAfter).valueOf() < new Date(order.orderDatePlaced).valueOf() || filterPlacedAfter == '') &&
+        (new Date(filterPickupOn).valueOf() == new Date(order.orderPickupDate).valueOf()  || filterPickupOn == '')       &&
+        (new Date(filterPickupBefore).valueOf() > new Date(order.orderPickupDate).valueOf() || filterPickupBefore == '') &&
+        (filterOrderStatus == order.orderStatus || filterOrderStatus == '') &&
+        (order.customerName.toLowerCase().includes(filterCustomerName.toLowerCase()) || filterCustomerName == '')
+      }) 
+       
+    }
+  },
+   methods: {
+
+    prepareOrdersArray(){
+      EmployeeService.getAllOrders().then((response) => {
+        this.$store.commit("SET_ALL_ORDERS_ARRAY", response.data);
+      })
     }
   }
 };
 </script>
 
 <style >
-/* div {
-border: 2px solid black;
-font: 1em 'Comic Neue',sans-serif;
-} */
+
 </style>
