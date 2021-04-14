@@ -110,6 +110,7 @@ export default {
     placeOrder() {
       if (confirm("Are you ready to place your final order? Placed orders can only be changed by calling the BeefCakes Bakeshop at 513-541-BEEF.")) {
         this.$store.commit("SET_ORDER_INFO", this.pickupInfo);
+        this.$store.commit("SET_ORDER_PRICE", this.orderPrice);
         CustomerService.sendOrderJSON(this.$store.state.currentActiveOrder)
           .then((response) => {
             if (response.status === 201) {

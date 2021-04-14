@@ -459,6 +459,9 @@ export default new Vuex.Store({
     SET_CAKE_ITEM_PRICE(state, price) {
       state.cakeItemToOrder.cakeItemPrice = price;
     },
+    SET_ORDER_PRICE(state, price){
+      state.currentActiveOrder.orderPriceTotal = price;
+    },
     SET_ORDER_INFO(state, pickupInfo) {
       state.currentActiveOrder.orderPickupDate = pickupInfo.orderPickupDate;
       state.currentActiveOrder.orderPickupTime = pickupInfo.orderPickupTime;
