@@ -63,7 +63,7 @@ export default {
         changeOrderStatus(orderID, statusID){
            EmployeeService.updateOrderStatus(orderID, statusID).then((response) => {
                 if (response.status == 200){
-                    alert('The status of the order has been changed. For now.')
+                    alert('The status of the order has been changed.')
                    
                 }
            },
