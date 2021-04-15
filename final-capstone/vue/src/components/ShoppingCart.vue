@@ -78,6 +78,10 @@ export default {
     };
   },
   components: { CustomerOrderedCakeCard },
+  /**
+   * lifecycle hook - populates the available cake component arrays so that we can display the names for all of 
+   * each cake's components - the actual JSON in the store only has the ids for each component.
+   */
   created() {
     CustomerService.getAvailableConfigs().then((response) => {
       this.$store.commit("SET_AVAILABLE_CAKE_CONFIG_ARRAY", response.data);
@@ -107,6 +111,10 @@ export default {
     });
   },
   computed: {
+    /**
+     * totals up the price of each cake in Order and displays on screen. Used to set currentActiveOrder price
+     * when placeOrder() is run.
+     */
     orderPrice() {
       let price = 0.0;
       this.$store.state.currentActiveOrder.itemsInOrder.forEach(
@@ -135,9 +143,10 @@ export default {
                   this.pickupInfo.orderPickupDate +
                   " at " + this.pickupInfo.orderPickupTime
               );
-              this.$store.commit("CLEAR_ACTIVE_ORDER");
-              //unclear why, but this isn't pushing?
+                            //unclear why, but this isn't pushing?
               this.$router.push("/");
+              this.$store.commit("CLEAR_ACTIVE_ORDER");
+
             }
           })
           .catch((error) => {
