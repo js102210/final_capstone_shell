@@ -24,18 +24,6 @@ export default new Vuex.Store({
     //used to give each cake in order a unique ID.
     cakeItemNumberForOrder: 0, 
 
-    //these JSONS are for when we need to edit/update cake attributes - will be built
-    // in appropriate employee component, then set via mutation, and the method with the API
-    //call will use what's in the store, then use the CLEAR mutate to set these
-    //back to empty objects.
-    cakeStyleJSON: {},
-    cakeSizeJSON: {},
-    cakeFlavorJSON: {},
-    cakeFrostingJSON: {},
-    cakeFillingJSON: {},
-    cakeConfigJSON: {},
-    cakeExtraJSON: {},
-
     //this will be used to populate our order history so employees will be able to work with the orders
     //to view Pending orders, change their status, do edits, etc. Single pull to get *all* orders from the system,
     //then displaying the orders will be about *filtering* this array.
@@ -121,58 +109,26 @@ export default new Vuex.Store({
       axios.defaults.headers.common = {};
     },
 
+    //used in EmployeeOrderCard component to work with designated order.
     SET_SELECTED_ORDER(state, orderJSON){
       state.selectedOrder = orderJSON;
     },
+    //future functionality - grab the message price from the database via API call and then setting
+    //it in the store.
     SET_MESSAGE_PRICE(state, price){
       state.messagePrice = price;
     },
 
-    SET_CAKE_STYLE_JSON(state, styleJSON) {
-      state.cakeStyleJSON = styleJSON;
-    },
-    SET_CAKE_SIZE_JSON(state, sizeJSON) {
-      state.cakeSizeJSON = sizeJSON;
-    },
-    SET_CAKE_FLAVOR_JSON(state, flavorJSON) {
-      state.cakeFlavorJSON = flavorJSON;
-    },
-    SET_CAKE_FROSTING_JSON(state, frostingJSON) {
-      state.cakeFrostingJSON = frostingJSON;
-    },
-    SET_CAKE_FILLING_JSON(state, fillingJSON) {
-      state.cakeFillingJSON = fillingJSON;
-    },
-    SET_CAKE_CONFIG_JSON(state, configJSON) {
-      state.cakeConfigJSON = configJSON;
-    },
-    SET_CAKE_EXTRA_JSON(state, extraJSON) {
-      state.cakeExtraJSON = extraJSON;
-    },
-    CLEAR_CAKE_STYLE_JSON(state) {
-      state.cakeStyleJSON = {};
-    },
-    CLEAR_CAKE_SIZE_JSON(state) {
-      state.cakeSizeJSON = {};
-    },
-    CLEAR_CAKE_FLAVOR_JSON(state) {
-      state.cakeFlavorJSON = {};
-    },
-    CLEAR_CAKE_FILLING_JSON(state) {
-      state.cakeFillingJSON = {};
-    },
-    CLEAR_CAKE_CONFIG_JSON(state) {
-      state.cakeConfigJSON = {};
-    },
-    CLEAR_CAKE_EXTRA_JSON(state) {
-      state.cakeExtraJSON = {};
-    },
+    //sets orders into pastOrdersArrayBE - used in EmployeeOrderList component
     SET_ALL_ORDERS_ARRAY(state, orderJSONArray){
       state.pastOrdersArrayBE = orderJSONArray;
     },
+    //sets status JSONS into statusJSONArray - used in EmployeeOrderList, EmployeeOrderCard components
     SET_ALL_STATUSES_ARRAY(state, statusJSONArray){
       state.allStatusesBE = statusJSONArray;
     },
+
+    //this group of mutations sets available / all arrays for the cake configs and components.
     SET_AVAILABLE_CAKE_CONFIG_ARRAY(state, cakeConfigJSONArray){
       state.availableCakeConfigsBE = cakeConfigJSONArray;
     },
@@ -216,6 +172,8 @@ export default new Vuex.Store({
       state.allExtrasBE = extraJSONArray;
     },
 
+    //these are used to set availability / unavailability for designated cake components
+    //in the EmpChangeCake component.
     SET_CAKE_CONFIG_IS_AVAILABLE(state, id, boolean){
       const configToSet = state.allCakeConfigsBE.find(config => config.cakeConfigID == id)
       configToSet.isAvailable = boolean;
@@ -244,18 +202,45 @@ export default new Vuex.Store({
       const flavorToSet = state.allFlavorsBE.find(flavor => flavor.flavorID == id);
       flavorToSet.isAvailable = boolean;
     },
+
+    /**
+     * This mutation takes a cakeJSON from the OrderCake component and makes it the
+     * cakeItemToOrder. Where the cake data is staged before being put in currentActiveOrder
+     * in the store
+     * @param {*} state - this store's state. 
+     * @param {*} cakeJSON - the supplied cakeJSON from the OrderCake component.
+     */
     MAKE_CAKE_ITEM(state, cakeJSON) {
       state.cakeItemToOrder = cakeJSON;
-      //creates an id for the cake item so that we can display it in the ShoppingCart properly
-      state.cakeItemToOrder.cakeItemTempOrderID = state.cakeItemNumberForOrder + 1;
+      //creates an id for the cake item so that we can display it in the ShoppingCart properly.
       state.cakeItemNumberForOrder += 1;
+      state.cakeItemToOrder.cakeItemTempOrderID = state.cakeItemNumberForOrder;
     },
+
+    /**
+     * Grabs the itemPrice calculated property from OrderCake component and puts in on cakeItemToOrder
+     * @param {*} state - this store's state.
+     * @param {*} price the price received from itemPrice on OrderCake component
+     */
     SET_CAKE_ITEM_PRICE(state, price) {
       state.cakeItemToOrder.cakeItemPrice = price;
     },
+
+    /**
+     * takes the orderPrice calculated property from the ShoppingCart component and puts it on
+     * the currentActiveOrder before currentActiveOrder is sent to the backend to place the order.
+     * @param {*} state - this store's state.
+     * @param {*} price - the price received from orderPRice on OrderCake component.
+     */
     SET_ORDER_PRICE(state, price){
       state.currentActiveOrder.orderPriceTotal = price;
     },
+    /**
+     * grabs order information from the pickupInfo data object on the ShoppingCart component and puts it on
+     * the currentActiveOrder store object before placing the order.
+     * @param {*} state - this store's state.
+     * @param {*} pickupInfo - gathered necessary order information from ShoppingCart.
+     */
     SET_ORDER_INFO(state, pickupInfo) {
       //our status table is such that Pending is always set to 1. This would need to be refactored
       //if we had a business logic change that changed what our order statuses were.
@@ -265,12 +250,18 @@ export default new Vuex.Store({
       state.currentActiveOrder.customerName = pickupInfo.customerName;
       state.currentActiveOrder.customerPhoneNumber = pickupInfo.customerPhoneNumber;
     },
+
+    /**
+     * updates the current cakeItemToOrder object and pushes it into the currentActiveOrder's
+     * itemsInOrder array.
+     * @param {*} state - this store's state.
+     * @param {*} cakeItem -the cakeJSON received from the OrderCake component.
+     */
     ADD_CAKE_ITEM_TO_ACTIVE_ORDER(state, cakeItem) {
       state.cakeItemToOrder = cakeItem;
       state.currentActiveOrder.itemsInOrder.push(cakeItem);
 
-      //again, we can actually get rid of this whole thing if we decide to pass a cakeItem in, but it's here now for reference and in case we decide to
-      //mutate the data store by properties instead of sending a whole object
+      //blanks out cakeItemToOrder so it can be reused again if customer orders multiple cakes.
       state.cakeItemToOrder =
       {
         cakeItemStyleID: null,
@@ -283,16 +274,12 @@ export default new Vuex.Store({
         cakeItemConfigID: null
       };
     },
-    FINALIZE_ACTIVE_ORDER(state, order) {
-      state.currentActiveOrder.orderStatusID = order.orderStatusID;
-      state.currentActiveOrder.orderPriceTotal = order.orderPriceTotal;
-      // state.currentActiveOrder.orderPlacedDateTime = order.orderPlacedDateTime;
-      state.currentActiveOrder.customerName = order.customerName;
-      state.currentActiveOrder.customerPhoneNumber = order.customerPhoneNumber;
 
-      //we can either push the active order in a POST request here or in the component, wherever we do it, we have to add code to set the current 
-      //active order back to its blank state
-    },
+/**
+ * blanks out the currentActiveOrder object in state. after an order has been placed so that a new order
+ * can be placed. Also resets cakeItemNumberForOrder back to 0.
+ * @param {*} state 
+ */
     CLEAR_ACTIVE_ORDER(state) {
       state.currentActiveOrder = {
         orderStatusID: null,
