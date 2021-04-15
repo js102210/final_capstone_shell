@@ -53,7 +53,9 @@ export default {
     }
   },
   components: { EmployeeOrderCard },
- 
+ /**
+  * populates the arrays in the store with all the needed info to display when this component is created
+  */
   created(){
     this.prepareOrdersArray();
         EmployeeService.getAllFrostings().then((response)=> {
@@ -81,6 +83,9 @@ export default {
 
   },
   computed: {
+    /**
+     * the filteredList is the list of all orders in the database that have not been disqualified by input in the filter fields
+     */
     filteredList(){
       let filterOrderStatus = this.filter.orderStatus;
       let filterPlacedAfter = this.filter.placedAfter;
@@ -101,13 +106,17 @@ export default {
     }
   },
    methods: {
-
+     /**
+      * populates the store with all orders from the database
+      */
     prepareOrdersArray(){
       EmployeeService.getAllOrders().then((response) => {
         this.$store.commit("SET_ALL_ORDERS_ARRAY", response.data);
       })
     },
-    //some of the filters are date fields so we need a method to clear them-- backspace doesn't work.
+   /**
+    * clears all filter fields 
+    */
     clearFilter(){
       this.filter = { placedAfter: '',
         pickupOn: '',

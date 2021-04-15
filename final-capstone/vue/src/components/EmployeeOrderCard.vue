@@ -39,13 +39,22 @@ export default {
         }
     },
     methods: {
+        /**
+         * Sets the selectedOrder container in the store with info for the Order then navigates the user to the page 
+         * displaying details on the selectedOrder
+         */
         goToSelectedOrder(){
         const idToNav = this.order.orderID;
         const orderBody = this.$store.state.pastOrdersArrayBE.find((order) => order.orderID == idToNav);
         this.$store.commit("SET_SELECTED_ORDER", orderBody);
         this.$router.push({name: 'order-details', params: {orderID: idToNav}} )
         },
-                changeOrderStatus(orderID, statusID){
+        /**
+         * Sends an an orderID and a statusID. The back-end then sets the Order to that Status. Reloads the page to display the updated status
+         * @param orderID number ID of the Order
+         * @param statusID number ID of the Status to set the Order to
+         */
+           changeOrderStatus(orderID, statusID){
            EmployeeService.updateOrderStatus(orderID, statusID).then((response) => {
                 if (response.status == 200){
                     //menu is only populated with the names of the statuses-- the statusID is only present for the current status in the JSON --

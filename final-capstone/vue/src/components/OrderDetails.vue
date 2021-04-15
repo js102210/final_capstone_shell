@@ -3,7 +3,7 @@ for display-->
 <template>
   <div class="order-details-display">
 
-        <!-- <h2>{{statusToDisplay.statusName}}</h2> -->
+      
         <h2>{{this.$store.state.selectedOrder.customerName}}</h2>
         <p>Ordered on {{this.$store.state.selectedOrder.orderDatePlaced}}</p>
       <p>To be delivered on {{this.$store.state.selectedOrder.orderPickupDate}}
@@ -44,29 +44,33 @@ export default {
             
         }
     },
+    /**
+     * gets the items in the Order and the name of the status for the Order from the store
+     */
     created(){
     this.itemsInOrder = this.$store.state.selectedOrder.itemsInOrder;
     this.getCurrentStatusName();
    
     },
     methods: {
+        /**
+         * Sends an orderID and a statusID to the back-end. The Order with that ID is then assigned that status. No need to reload the page, as we're
+         * not displaying the statusName
+         * @param orderID number ID of the Order
+         * @param statusID number ID of the Status to set the Order to
+         * 
+         */
         changeOrderStatus(orderID, statusID){
            EmployeeService.updateOrderStatus(orderID, statusID).then((response) => {
                 if (response.status == 200){
                     alert('The status of the order has been changed. For now.')
+                   
                 }
            },
            
            )  
     },
-    getCurrentStatus(){
-           
-            this.statusToDisplay = this.$store.state.allStatusesBE.find((status)=>{
-                status.statusID == this.$store.state.selectedOrder.orderStatusID
-            })
-           
-             
-     }
+
 },
 
     
