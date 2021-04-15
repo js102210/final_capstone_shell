@@ -6,9 +6,7 @@
       v-bind:cakeConfig="cakeConfig"
     />
   </div>
-  <!-- <div> --><!-- <br>
-   <button class="order-button" v-on:click="moveToOrder">Order A Cake!</button> -->
-  <!-- </div> -->
+
 </template>
 
 <script>
@@ -18,11 +16,12 @@ import CakeCard from "./CakeCard.vue";
 export default {
   components: { CakeCard },
   methods: {
-    moveToOrder() {
-      this.$router.push("/ordercake");
-    },
   },
 
+/**
+ * this lifecycle hook gets the available cake configs from the database, which are needed to display the cake cards.
+ * Affects the store's availableCakeConfigsBE array.
+ */
   created() {
     CustomerService.getAvailableConfigs().then((response) => {
       this.$store.commit("SET_AVAILABLE_CAKE_CONFIG_ARRAY", response.data);

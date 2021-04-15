@@ -20,6 +20,9 @@ export default {
         "cakeConfig"
     ],
     methods: {
+      /**
+       * moves the user to the page to order a cake when clicked
+       */
         moveToOrderPage(){
             this.$router.push('/ordercake')
         }

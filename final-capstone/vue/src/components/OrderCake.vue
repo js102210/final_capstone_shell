@@ -183,7 +183,9 @@ import CustomerService from "../services/CustomerService.js";
 export default {
   data() {
     return {
+      //this object is used to drive the cake-display logic
       selected: {},
+      //this JSON is used to store data when making cake selections before sending off to the store.
       standardCakeOrderJSON: {
         cakeItemStyleID: 1,
         cakeItemSizeID: 1,
@@ -199,6 +201,9 @@ export default {
   },
 
   name: "order-cake",
+  /**
+   * the big kahuna created lifecycle hook that sets all available cake components.
+   */
   created() {
     CustomerService.getAvailableConfigs().then((response) => {
       this.$store.commit("SET_AVAILABLE_CAKE_CONFIG_ARRAY", response.data);
