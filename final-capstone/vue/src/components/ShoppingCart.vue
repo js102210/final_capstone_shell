@@ -1,11 +1,11 @@
 <!-- Customer: references the store to see items in the active order and allow customers to finalize it-- turning it into an actual Order in the database. -->
 <template>
-  <div>
-    <h1>Your Current Order</h1>
-    <br>
-    <br>
-  <div v-if="$store.state.currentActiveOrder.itemsInOrder.length < 1">
-    <p>Your shopping cart has no delicious BeefCakes baked goods in it! Come back when you've created the perfect cake for your next cheat day.</p>
+  <div class="shopping-cart-banner">
+    <h3  v-show="!$store.state.currentActiveOrder.itemsInOrder">Your Current Order</h3>
+  <div class="where-beef" v-if="$store.state.currentActiveOrder.itemsInOrder.length < 1">
+    <h1>Where's the BeefCake?</h1>
+    <p>Your shopping cart has no delicious BeefCakes baked goods in it!</p>
+    <p>Come back when you've created the perfect cake for your next cheat day.</p>
     <router-link v-bind:to="{ name: 'order-cake' }" ><button>I want to make a cake!</button></router-link>
   </div>
     <div class="shopping-cart" v-else>
@@ -15,16 +15,16 @@
         v-bind:orderedCake="orderedCake"
       />
     </div>
-    <div class="order-price">
+    <div class="order-price" v-show="!$store.state.currentActiveOrder.itemsInOrder">
       <p>
         Your order's price is:
         <span class="calculated-price">$ {{ orderPrice }} </span>
       </p>
     </div>
-    <div class="move-back-to-order">
+    <div class="move-back-to-order" v-show="$store.state.currentActiveOrder.itemsInOrder.length">
       <router-link v-bind:to="{ name: 'order-cake' }" ><button>Add Another Cake To Order</button></router-link>
       </div>
-    <form class="finalize order" @submit="placeOrder">
+    <form class="finalize order" @submit="placeOrder"  v-show="$store.state.currentActiveOrder.itemsInOrder.length">
       <label for="customerName">Please enter your name: </label>
       <input
         name="customerName"
@@ -180,13 +180,5 @@ export default {
 </script>
 
 <style>
-.shopping-cart {
-  display: flex;
-  flex-wrap: flex;
-  justify-content: space-evenly;
-}
 
-.ordered-cake-card {
-  border: 1px black;
-}
 </style>

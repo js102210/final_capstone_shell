@@ -38,7 +38,7 @@ export default {
   backdrop-filter: blur(10px);
   padding: 15px;
   border-radius: 70px;
-  border: 7px dotted rgba(250, 44, 44, 0.466);
+  border: 7px dotted rgba(250, 44, 44, 0.329);
   font-family: 'Antic Slab', serif;
   font-size: 1rem;
   font-weight: 600;
@@ -88,4 +88,5 @@ export default {
   font-weight: 700;
   font-size: 1.6rem;
 }
+
 </style>

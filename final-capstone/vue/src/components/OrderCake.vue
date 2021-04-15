@@ -85,7 +85,7 @@ Either way, they must select a size and a style, as well as supply a name, phone
       <!-- Custom Cake section hidden when standard config not selected -->
       <section class="custom-cake-options" v-show="showCustomOptions">
         <!-- Sets the flavor for the cake to order-->
-        <label for="custom cake flavor">Select your Cake FLAVOR:</label><br />
+        <label for="custom cake flavor">* Select your Cake FLAVOR:</label><br />
         <select
           name="custom cake flavor"
           v-model="standardCakeOrderJSON.cakeItemFlavorID"
