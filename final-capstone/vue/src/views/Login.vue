@@ -11,8 +11,11 @@
         class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
+      >Thank you for registering, please sign in.
+      <br>
+      <br>
+      </div>
+      <label for="username" class="sr-only">Username: </label>
       <input
         type="text"
         id="username"
@@ -23,7 +26,7 @@
         autofocus
       /><br>
 
-      <label for="password" class="sr-only">Password</label>
+      <label for="password" class="sr-only">Password: </label>
       <input
         type="password"
         id="password"

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
+           <!-- Hide these customer-side links if Employee is logged in -->
       <div class="cust-section">
       <router-link v-bind:to="{ name: 'home' }" v-show="!$store.state.token">Home</router-link>
       <span v-show="!$store.state.token">&nbsp;|&nbsp;</span>
@@ -13,7 +14,7 @@
       <div class="emp-section">
       <router-link v-bind:to="{ name: 'login' }" v-if="!$store.state.token">Employee Login</router-link>
 
-      <!-- Hide these links if Employee is logged in -->
+ 
       <router-link v-bind:to="{ name: 'employee-landing' }"  v-if="$store.state.token != ''" >Portal</router-link>
       <span v-show="$store.state.token !=''">&nbsp;|&nbsp;</span> 
       <router-link v-bind:to="{ name: 'employee-products' }"  v-if="$store.state.token != ''" >Products</router-link>

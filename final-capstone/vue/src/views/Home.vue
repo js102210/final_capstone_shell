@@ -1,8 +1,9 @@
 <template>
   <div class="home">
    <span class="banner"><h1>BeefCakes BakeShop</h1>
-      <p>Welcome to BeefCakes BakeShop.<br>
-        Any day can be cheat day!</p></span>
+   <br>
+      <p>Welcome to BeefCakes BakeShop.<br><br>
+        Any day can be cheat day if you want it to be!</p></span>
     <img src="..\assets\beefcakes.png" />
   </div>
 </template>

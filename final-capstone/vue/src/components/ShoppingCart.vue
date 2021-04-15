@@ -5,7 +5,7 @@
     <br>
     <br>
   <div v-if="$store.state.currentActiveOrder.itemsInOrder.length < 1">
-    <p>Your shopping cart has no delicious BeefCake baked goods in it! Come back when you do.</p>
+    <p>Your shopping cart has no delicious BeefCakes baked goods in it! Come back when you've created the perfect cake for your next cheat day.</p>
     <router-link v-bind:to="{ name: 'order-cake' }" ><button>I want to make a cake!</button></router-link>
   </div>
     <div class="shopping-cart" v-else>
