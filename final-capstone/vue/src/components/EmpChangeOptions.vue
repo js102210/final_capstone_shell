@@ -1,3 +1,5 @@
+<!--Employee: This component allows employees to make any given ingredient that would go in a cake (as well as sizes and styles of cakes)
+ available or unavailable. Making an ingredient unavailable automatically makes any Cake Config that relies on it unavailable (the reverse is not true). -->
 <template>
   <div class="change-options-display">
     <p>Edit Cake Options:</p>
@@ -43,7 +45,7 @@
       </thead>
 
       <tbody>
-        <tr
+        <tr 
           v-for="frosting in $store.state.allFrostingsBE"
           v-bind:key="frosting.frostingID"
           v-bind:class="{ unavailable: !frosting.available }"
@@ -294,6 +296,12 @@ export default {
         this.$store.commit("SET_ALL_EXTRAS_ARRAY", response.data);
       });
     },
+
+    //All of the flip functions need to behave in two different ways-- if the ingredient is being made unavailable, the user should be prompted
+    // with a list of the Cake Configs that rely on it and will also be made unavailable. If the ingredient is being made available, the status can
+    //simply be flipped. Hence, the functions are passed both the id and the current availability of the ingredient
+
+
     /**
      * flips the availability of the given Size. 
      */

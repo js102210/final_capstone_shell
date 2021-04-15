@@ -1,3 +1,5 @@
+<!--Employee: Allows employees to create new types of cakes (combinations of flavor, frosting, and filling) that will populate the 
+screen customers use to order. -->
 <template>
   <div class="create-cake-display">
     <p>Create New Standard Cake:</p>
@@ -137,7 +139,8 @@ export default {
             this.$store.commit("CLEAR_CAKE_CONFIG_JSON");
             alert(this.newCake.cakeConfigName + ' can now be ordered. I hope you are ready for that.')
             this.clearNewCake();
-            location.reload(); //added to make sure that the cake config is added to store via create() lifecycle hook
+            //reloading to display the new Config in the list
+            location.reload(); 
           }
         })
         .catch((error) => {

@@ -1,3 +1,5 @@
+<!-- Employee: This component allows employees to change the availability of Cake Configs, as well as see which ones are currently available/unavailable.
+ Making a Cake Config unavailable removes it from the screen customers use to order them. -->
 <template>
   <div class="change-cake-display">
     <p>Edit Standard Cakes:</p>
@@ -56,6 +58,8 @@ export default {
     if (response.status == 202){
     this.$store.commit("SET_CAKE_CONFIG_IS_AVAILABLE", configID, response.data)
     }
+    //the Cake Config's availability is displayed during the initial setup of the Config list, so we want to call that method each time
+    //there's a change to display availability live to the user
        this.prepareArray();
       })
     }

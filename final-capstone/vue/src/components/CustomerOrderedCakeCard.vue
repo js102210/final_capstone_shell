@@ -1,3 +1,5 @@
+<!--Customer: Displays an item in the customer's current order/"shopping cart". One of these will display in the customer's ordered
+list/"shopping cart" view for each item they've added to the order. Gets passed JSON for the item from the parent for display. -->
 <template>
   <div class="ordered-cake-card">
       <p>Cake Type: {{getCakeName(orderedCake.cakeItemConfigID)}}</p>
@@ -30,6 +32,7 @@ export default {
 name: "customer-ordered-cake-card",
 props: ["orderedCake"],
 methods: {
+    //JSON represents attributes of the item as keys, so String representations must be looked up from the store
     getCakeName(id){
         let nameElement = this.$store.state.availableCakeConfigsBE.find(
             (element) =>

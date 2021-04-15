@@ -1,3 +1,5 @@
+<!--Customer: Screen where the customer sees the different kinds of cakes they can buy. Populates a Cake Card for each available 
+Cake Config and passes it the Config for display -->
 <template>
   <div class="cakes-layout">
     <cake-card

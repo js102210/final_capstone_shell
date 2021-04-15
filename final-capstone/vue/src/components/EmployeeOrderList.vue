@@ -1,3 +1,5 @@
+<!--Employee: displays a list (with filter options) of each order in the database. Populates with an OrderCard for each order. Passes 
+Order JSON to the OrderCards for display. -->
 <template>
   <div class="orders-list">
    <table id="filterOptions">
@@ -21,7 +23,7 @@
     <td><input type="text" id="customerNameFilter" v-model="filter.customerName"/></td>
     </tbody>
     </table>
-
+  <button v-on:click="clearFilter">Clear Filters</button>
 
     <employee-order-card
       v-for="order in filteredList"
@@ -38,6 +40,8 @@ import EmployeeOrderCard from './EmployeeOrderCard.vue';
 export default {
   data() {
     return {
+      //filter hosts empty strings by default but attributes are bound to input fields-- so if there's no input the filter isn't applied,
+      //if there is input then it is.
       filter: {
         placedAfter: '',
         pickupOn: '',
@@ -84,7 +88,8 @@ export default {
       let filterPickupBefore = this.filter.pickupBefore;
       let filterCustomerName = this.filter.customerName;
       
-
+    //filter to display only orders which are not disqualified by some input. A blank input field disqualifies nothing, and input in the fields
+    //disqualifies orders based on how their attributes match to the input
       return this.$store.state.pastOrdersArrayBE.filter((order) => {
       return ( new Date(filterPlacedAfter).valueOf() < new Date(order.orderDatePlaced).valueOf() || filterPlacedAfter == '') &&
         (new Date(filterPickupOn).valueOf() == new Date(order.orderPickupDate).valueOf()  || filterPickupOn == '')       &&
@@ -101,6 +106,14 @@ export default {
       EmployeeService.getAllOrders().then((response) => {
         this.$store.commit("SET_ALL_ORDERS_ARRAY", response.data);
       })
+    },
+    //some of the filters are date fields so we need a method to clear them-- backspace doesn't work.
+    clearFilter(){
+      this.filter = { placedAfter: '',
+        pickupOn: '',
+        pickupBefore: '',
+        orderStatus: '',
+        customerName: ''}
     }
   }
 };

@@ -1,3 +1,4 @@
+<!--Employee: display component for an order meant to populate the OrderList. Passed JSON for an Order from the parent for display. -->
 <template>
 <div class="order-container">
 
@@ -47,6 +48,9 @@ export default {
                 changeOrderStatus(orderID, statusID){
            EmployeeService.updateOrderStatus(orderID, statusID).then((response) => {
                 if (response.status == 200){
+                    //menu is only populated with the names of the statuses-- the statusID is only present for the current status in the JSON --
+                    //so we need to get the key from the store for a new status to send to the back-end
+                    
                    const status = this.$store.state.allStatusesBE.find((status)=> {
                         return status.statusID == this.statusToSend.statusID
                     })
@@ -60,7 +64,7 @@ export default {
     }
     },
     created(){
-        
+        //status of the order is represented as a key in the JSON, so we need to get the String representation from the store
         const status = this.$store.state.allStatusesBE.find((status) => status.statusID == this.order.orderStatusID);
         this.statusName = status.statusName;
     }
@@ -69,10 +73,7 @@ export default {
 </script>
 
 <style >
-/* .order-container > * {
-  font: 1em sans-serif;
-  
-} */
+
 
 
 </style>

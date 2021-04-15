@@ -1,3 +1,5 @@
+<!--Employee: Information about a specific item of an order. To be viewed from the order details screen, 
+which will populate with one of this component for each item in the order. Gets passed JSON for the item from the parent.-->
 <template>
 <div class="emp-order-cake-details">
     <h2>Item {{cakeItemJSON.cakeItemID}}: {{config.cakeConfigName}}</h2>
@@ -27,6 +29,7 @@ export default {
             filling: {},
             frosting: {},
             flavor: {},
+            //extras of a cake item are displayed with string concatenation and separated by pipes
             extras: '| '
         }
     },
@@ -34,8 +37,8 @@ export default {
         'cakeItemJSON'
     ],
     created(){
-    //I'm not actually sure why I have to go through the step of defining the object in data, populating it from the store, then 
-    //reading from it to set the 
+        //Item JSON passes most information as keys, so String representations of the item's attributes must be looked up in
+        //the store
     this.config = this.$store.state.allCakeConfigsBE.find(
     (config)=> config.cakeConfigID == this.cakeItemJSON.cakeItemConfigID)
     

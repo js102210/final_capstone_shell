@@ -1,3 +1,5 @@
+<!--Employee: allows employees to create new aspects of a cake to populate the various menus in the site. Each item has a priceMod attribute
+which represents how much money that ingredient adds to the price of cakes it's in. -->
 <template>
   <div class="create-options-display">
     <p>Create New Options:</p>

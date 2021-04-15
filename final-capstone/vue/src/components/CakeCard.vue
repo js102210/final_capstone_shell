@@ -1,3 +1,6 @@
+
+<!--Customer: An instance of this component will be populated for each type of cake in the store. Each card contains a button that navigates 
+to the order screen and some information about that kind of cake (referred to as Cake Config). Gets passed a Cake Config from the parent.-->
 <template>
   <div class="cake-container" tabIndex="0">
     <div class="flip-card-inner">  
