@@ -36,16 +36,21 @@ export default {
   name: "emp-change-cake",
   data() {
     return {
-      selectedCakeID: {}
     }
   },
   methods: {
 
+/**
+ * grabs all cake configs from the DB and sets them into the store.
+ */
     prepareArray(){
   EmployeeService.getAllConfigs().then((response) => {
       this.$store.commit("SET_ALL_CAKE_CONFIG_ARRAY", response.data);
     });
     },
+    /**
+     * flips the aviailability of a given cake config.
+     */
     flipStatus(configID) {
     EmployeeService.flipConfigStatus(configID).then((response) => {
     if (response.status == 202){
@@ -55,6 +60,9 @@ export default {
       })
     }
   },
+  /**
+   * lifecycle hook to populate the array for all cake configs. runs when component loads.
+   */
    created() {
    this.prepareArray();
   },

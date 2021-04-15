@@ -67,6 +67,8 @@ import EmployeeService from '../services/EmployeeService';
 export default {
   data() {
     return {
+      //these are the objects that hold the info for new components
+      //before they are sent to the database.
       newFlavor: {
         flavorName: "",
         isAvailable: true,
@@ -101,6 +103,10 @@ export default {
     }
   },
   computed:{
+    /**
+     * makes sure the new size has all needed information. returns a boolean.
+     * if it's false, the button to create the size won't work.
+     */
     createSizeFormValidated() {
        if (this.newSize.sizeName != "" && this.newSize.sizeDescription !=""
         && this.newSize.priceMod !=0.0){
@@ -109,6 +115,10 @@ export default {
         return false;
     }
     },
+    /**
+     * makes sure the new extra has all needed information. returns a boolean.
+     * if it's false, the button to create the size won't work.
+     */
     createExtraFormValidated() {
        if (this.newExtra.extraName != "" && this.newExtra.priceMod !=0.0){
         return true;
@@ -118,6 +128,9 @@ export default {
     }
   },
   methods: {
+    /**
+     * sends the new flavor to the database.
+     */
   createNewFlavor(){
     EmployeeService.createFlavor(this.newFlavor).then((response) => {
       if(response.status == 200){
@@ -125,14 +138,19 @@ export default {
       }
     })
   },
+  /**
+   * sends the new frosting to the database.
+   */
    createNewFrosting(){
          EmployeeService.createFrosting(this.newFrosting).then((response) => {
       if(response.status == 200){
         alert(this.newFrosting.frostingName + ' frosting has been added! May it give you the strength to destroy your enemies!');
       }
     })
-
   },
+  /**
+   * sends the new filling to the database.
+   */
    createNewFilling(){
          EmployeeService.createFilling(this.newFilling).then((response) => {
       if(response.status == 200){
@@ -140,26 +158,31 @@ export default {
 
       }
     })
-
   },
+  /**
+   * sends the new extra to the database.
+   */
   createNewExtra(){
          EmployeeService.createExtra(this.newExtra).then((response) => {
       if(response.status == 200){
         alert(this.newExtra.extraName + '  has been added as an Extra! May it give you the strength to destroy your enemies!');
       }
     })
-
   },
+  /**
+   * sends the new style to the database.
+   */
    createNewStyle(){
          EmployeeService.createStyle(this.newStyle).then((response) => {
       if(response.status == 200){
        alert(this.newStyle.styleName + ' style has been added! May it give you the strength to destroy your enemies!');
       }
     })
-
   },
+  /**
+   * sends the new size to the database.
+   */
    createNewSize(){
-
     EmployeeService.createSize(this.newSize).then((response) => {
       if(response.status == 200){
         alert(this.newSize.sizeName + ' size has been added! May it give you the strength to destroy your enemies!');

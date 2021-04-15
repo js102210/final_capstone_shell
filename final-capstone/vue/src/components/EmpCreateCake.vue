@@ -64,6 +64,9 @@ export default {
   name: "emp-create-cake",
   data() {
     return {
+      //the model that gets filled out with the new cake config's data via
+      //the magic of v-model. when the cake config is ready to send off,
+      //this feeds the store which then sends to server.
       newCake: {
         cakeConfigName: "",
         cakeConfigFlavorID: 1,
@@ -74,6 +77,9 @@ export default {
       },
     };
   },
+  /**
+   * gets all of the cake components and sets into store.
+   */
   created() {
 
     EmployeeService.getAllSizes().then((response) => {
@@ -99,6 +105,12 @@ export default {
     
   },
   computed: {
+    /**
+     * returns boolean value to indicate if the created cake config is
+     * valid. Valid cake configs must have a name, a chosen flavor,
+     * a URL for the picture, and a description. If this method returns false,
+     * the button to create the cake config is disabled.
+     */
     createCakeFormValidated() {
       if (
         this.newCake.cakeConfigName != "" &&
@@ -113,6 +125,10 @@ export default {
     },
   },
   methods: {
+    /**
+     * method that takes the new cake config this component has built and sends it to the store,
+     * then sends it from the store to the database. 
+     */
     createNewCakeConfig() {
       this.$store.commit("SET_CAKE_CONFIG_JSON", this.newCake);
       EmployeeService.createCakeConfig(this.$store.state.cakeConfigJSON)
@@ -128,6 +144,9 @@ export default {
           this.handleErrorResponse(error, "creating");
         });
     },
+    /**
+     * blanks out the newCake object so it can be reused.
+     */
     clearNewCake() {
       this.newCake = {
         cakeConfigName: "",
@@ -138,6 +157,9 @@ export default {
         cakeConfigDescription: "",
       };
     },
+    /**
+     * our multipurpose error handling method.
+     */
     handleErrorResponse(error, verb) {
       if (error.response) {
         this.errorMsg =

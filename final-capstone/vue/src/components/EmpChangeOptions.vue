@@ -1,6 +1,7 @@
 <template>
   <div class="change-options-display">
     <p>Edit Cake Options:</p>
+    <!-- section to edit flavor availability -->
   <h2>Flavors:</h2>
     <table id="flavors">
       <thead>
@@ -29,7 +30,7 @@
         </tr>
       </tbody>
     </table>
-
+<!-- table to edit frosting availability -->
     <h2>Frostings:</h2>
     <table id="frostings">
       <thead>
@@ -63,7 +64,7 @@
         </tr>
       </tbody>
     </table>
-
+<!-- table to affect flilling availability -->
     <h2>Fillings:</h2>
     <table id="fillings">
       <thead>
@@ -97,7 +98,7 @@
         </tr>
       </tbody>
     </table>
-
+<!-- table to affect extra availability -->
       <h2>Extras:</h2>
     <table id="extras">
       <thead>
@@ -129,7 +130,7 @@
         </tr>
       </tbody>
     </table>
-
+<!-- table to affect style availability -->
      <h2>Styles:</h2>
     <table id="styles">
       <thead>
@@ -161,7 +162,7 @@
         </tr>
       </tbody>
     </table>
-
+<!-- table to affect size availability -->
      <h2>Sizes:</h2>
     <table id="sizes">
       <thead>
@@ -206,16 +207,16 @@ export default {
 
   data() {
     return {
-      selectedSizeID: {},
-      selectedFlavorID: {},
-      selectedStyleID: {},
-      selectedFrostingID: {},
-      selectedFillingID: {},
-      selectedExtraID: {},
+      //array to place configs that use a given cake component that the employee
+      //is thinking about making unavailable. Used to drive the confirm message that displays
+      //the name of the cake configs that will be made unavailable if the component is made unavailabe
       dependentConfigs: []
     };
   },
   methods: {
+    /**
+     * gets the cake configs that use the indicated flavor
+     */
     getDependentConfigsFlavor(id){
       return this.$store.state.availableCakeConfigsBE.forEach(element => {
         if (element.cakeConfigFlavorID == id){
@@ -224,6 +225,9 @@ export default {
       })
 
     },
+    /**
+     * gets the cake configs that use the indicated frosting
+     */
     getDependentConfigsFrosting(id){
       return this.$store.state.availableCakeConfigsBE.forEach(element =>{
         if (element.cakeConfigFrostingID == id){
@@ -231,6 +235,9 @@ export default {
         }
       })
     },
+    /**
+     * gets the cake configs that use the indicated filling.
+     */
     getDependentConfigsFilling(id){
       return this.$store.state.availableCakeConfigsBE.forEach(element => {
         if (element.cakeConfigFillingID == id){
@@ -239,36 +246,57 @@ export default {
       })
     },
 
+    /**
+     * grabs all sizes from DB to populate the store.
+     */
     prepareSizesArray() {
       EmployeeService.getAllSizes().then((response) => {
         this.$store.commit("SET_ALL_SIZES_ARRAY", response.data);
       });
     },
+    /**
+     * grabs all styles from DB to populate the store.
+     */
     prepareStylesArray() {
       EmployeeService.getAllStyles().then((response) => {
         this.$store.commit("SET_ALL_STYLES_ARRAY", response.data);
       });
     },
+    /**
+     * grabs all flavors from DB to populate the store.
+     */
     prepareFlavorsArray() {
       EmployeeService.getAllFlavors().then((response) => {
         this.$store.commit("SET_ALL_FLAVORS_ARRAY", response.data);
       });
     },
+    /**
+     * grabs all frostings from DB to populate the store.
+     */
     prepareFrostingsArray() {
       EmployeeService.getAllFrostings().then((response) => {
         this.$store.commit("SET_ALL_FROSTINGS_ARRAY", response.data);
       });
     },
+    /**
+     * grabs all frostings from DB to populate the store.
+     */
     prepareFillingsArray() {
       EmployeeService.getAllFillings().then((response) => {
         this.$store.commit("SET_ALL_FILLINGS_ARRAY", response.data);
       });
     },
+    /**
+     * grabs all extras from DB to populate the store.
+     */
     prepareExtrasArray() {
       EmployeeService.getAllExtras().then((response) => {
         this.$store.commit("SET_ALL_EXTRAS_ARRAY", response.data);
       });
     },
+    /**
+     * flips the availability of the given Size. 
+     */
     flipStatusSize(id, availableBoolean) {
       switch (availableBoolean) {
         case true:
@@ -297,6 +325,9 @@ export default {
           alert("Something went wrong");
       }
     },
+    /**
+     * flips the availability of the indicated style.
+     */
     flipStatusStyle(id, availableBoolean) {
       switch (availableBoolean) {
         case true:
@@ -323,6 +354,12 @@ export default {
           alert("Something went wrong");
       }
     },
+    /**
+     * flips the availability of the given flavor. If making the flavor unavailable,
+     * confirms that you're willing to make the associated cake configs unavailable. 
+     * Confirming makes the flavor unavailable AND associated cake configs.
+     * Reloads to display new availability.
+     */
     flipStatusFlavor(id, availableBoolean) {
       this.getDependentConfigsFlavor(id);
       let configString = ''
@@ -363,6 +400,12 @@ export default {
           alert("something went wrong");
       }
     },
+    /**
+     * flips the availability of the given frosting. If making the frosting unavailable,
+     * confirms that you're willing to make the associated cake configs unavailable. 
+     * Confirming makes the frosting unavailable AND associated cake configs.
+     * Reloads to display new availability.
+     */
     flipStatusFrosting(id, availableBoolean) {
       this.getDependentConfigsFrosting(id);
       let configString = ''
@@ -377,16 +420,6 @@ export default {
             )
           ) {
             EmployeeService.flipFrostingStatus(id)
-            // .then((response) => {
-            //   if (response.status == 202) {
-            //     this.$store.commit(
-            //       "SET_FROSTING_IS_AVAILABLE",
-            //       id,
-            //       response.data
-            //     );
-            //   }
-            //   this.prepareFrostingsArray();
-            // });
             location.reload();
           }
           break;
@@ -406,6 +439,12 @@ export default {
           alert("Something went wrong");
       }
     },
+    /**
+     * flips the availability of the given filling. If making the filling unavailable,
+     * confirms that you're willing to make the associated cake configs unavailable. 
+     * Confirming makes the filling unavailable AND associated cake configs.
+     * Reloads to display new availability.
+     */
     flipStatusFilling(id, availableBoolean) {
       this.getDependentConfigsFilling(id);
       let configString = ''
@@ -444,6 +483,9 @@ export default {
           alert("Something went wrong");
       }
     },
+    /**
+     * flips the availability on a given extra.
+     */
     flipStatusExtra(id, availableBoolean) {
       switch (availableBoolean) {
         case true:
@@ -473,6 +515,9 @@ export default {
       }
     },
 
+/**
+ * meta-method to populate all cake components in store.
+ */
     prepareThePreparations() {
       this.prepareSizesArray();
       this.prepareStylesArray();
@@ -483,6 +528,9 @@ export default {
     },
   },
 
+  /**
+   * populates all cake component and config arrays in store.
+   */
   created() {
     this.prepareThePreparations();
     EmployeeService.getAvailableConfigs().then((response) => {
