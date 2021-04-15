@@ -32,7 +32,7 @@ Either way, they must select a size and a style, as well as supply a name, phone
     <form class="order-form" @submit.prevent="addCakeToCart">
       <!-- <p>Your Cake:</p> -->
 
-      <label for="cake selection">Select your cake:</label>
+      <label for="cake selection">Select your cake type:</label>
       <!-- the v-model sets the select to whatever the selected object is in the page's data. If null, it's blank.-->
       <select
         name="cake selection"
