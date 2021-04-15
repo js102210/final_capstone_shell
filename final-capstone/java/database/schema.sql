@@ -1,4 +1,3 @@
-BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS cake_item_extras CASCADE;
 DROP TABLE IF EXISTS cake_items CASCADE; 
@@ -337,23 +336,42 @@ SELECT * FROM sizes WHERE is_available = TRUE;
 SELECT * FROM extras WHERE is_available = TRUE;
 
 
-UPDATE extras
+/*UPDATE extras
 SET extra_name = '3"x5" Chocolate bunny figure',
 is_available = true,
 price_mod = 1.0
-WHERE extra_id = 2;
+WHERE extra_id = 2; */
            
-INSERT INTO cake_items (cake_style_id, cake_size_id, flavor_id, frosting_id, filling_id, message, config_id,
-item_price, order_id)
-VALUES (1, 1, 1, 1, 1, 'aaah', 1, 0.5, 1);
----inserting an order returning the id
+
+
 
 INSERT INTO orders (status_id, total_price, date_placed, pickup_date, pickup_time, customer_name, customer_phone_number)
-	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '13:00', 'Ernest Hemingway', '5138675309') RETURNING order_id;
+	VALUES (1, 14.99, '2021-4-6', '2021-4-7', '13:00', 'Franz Kafka', '5138675309'), 
+	        (2, 23.98, '2021-3-10', '2021-4-16', '11:00', 'Ada Lovelace', '4472108836'), 
+	        (3, 10.99, '2021-2-11', '2021-2-20', '10:00', 'Alan Turing', '5134467789'),
+	        (4, 12.99, '2021-4-1', '2021-4-16', '15:00', 'Eugene Ionesco', '5134478865'),
+	        (1, 26.98, '2021-4-10', '2021-4-18', '13:30', 'Nikola Tesla', '5133988675'), 
+	        (4, 13.99, '2021-4-6', '2021-4-8', '12:00', 'Orson Welles', '4407672215'); 
+	
+INSERT INTO cake_items (cake_style_id, cake_size_id, flavor_id, frosting_id, filling_id, message, config_id, item_price, order_id)
+VALUES                 (2, 2, 2, 3, 2, 'Obey Protocol', 1, 14.99, 1),  
+                       (3, 4, 3, 3, 1, '', 3, 10.99, 2),                
+                       (2, 2, 2, 1, 3, 'Happy Birthday', 1, 12.99, 2),  
+                       (5, 3, 5, 4, 1, '', 4, 10.99, 3),                
+                       (4, 2, 6, 3, 2, E'I\'m not capitulating!', 1, 12.99, 4), 
+                       (3, 4, 4, 2, 1, '', 2, 15.99, 5),               
+                       (2, 2, 5, 4, 1, '', 4, 10.99, 5),               
+                       (3, 3, 3, 4, 2, 'Rosebud', 1, 13.99, 6);        
+                       
 
 INSERT INTO cake_item_extras (cake_item_id, extra_id)
         VALUES (1,3), 
-        (1,5);
+                (1,5),
+                (3,3),
+                (4,6),
+                (7,8),
+                (8,2),
+                (8,3)
+                
+                
 
-	
-COMMIT TRANSACTION;
