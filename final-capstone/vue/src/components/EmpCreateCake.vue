@@ -132,11 +132,11 @@ export default {
      * then sends it from the store to the database. 
      */
     createNewCakeConfig() {
-      this.$store.commit("SET_CAKE_CONFIG_JSON", this.newCake);
-      EmployeeService.createCakeConfig(this.$store.state.cakeConfigJSON)
+      // this.$store.commit("SET_CAKE_CONFIG_JSON", this.newCake);
+      EmployeeService.createCakeConfig(this.newCake)
         .then((response) => {
           if (response.status === 201) {
-            this.$store.commit("CLEAR_CAKE_CONFIG_JSON");
+            // this.$store.commit("CLEAR_CAKE_CONFIG_JSON");
             alert(this.newCake.cakeConfigName + " can now be ordered. I hope you're ready for that; please check to see that we have the necessary components available!")
             this.clearNewCake();
             //reloading to display the new Config in the list
