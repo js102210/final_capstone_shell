@@ -136,7 +136,7 @@ export default {
   createNewFlavor(){
     EmployeeService.createFlavor(this.newFlavor).then((response) => {
       if(response.status == 200){
-        alert(this.newFlavor.flavorName + ' flavor has been added! May it give you the strength to destroy your enemies!');
+        alert(this.newFlavor.flavorName + ' flavor has been added! Thanks for "beefing up" our available options!');
       }
     })
   },
@@ -146,7 +146,7 @@ export default {
    createNewFrosting(){
          EmployeeService.createFrosting(this.newFrosting).then((response) => {
       if(response.status == 200){
-        alert(this.newFrosting.frostingName + ' frosting has been added! May it give you the strength to destroy your enemies!');
+        alert(this.newFrosting.frostingName + ' frosting has been added! Thanks for "beefing up" our available options!');
       }
     })
   },
@@ -156,7 +156,7 @@ export default {
    createNewFilling(){
          EmployeeService.createFilling(this.newFilling).then((response) => {
       if(response.status == 200){
-        alert(this.newFilling.fillingName + ' filling has been added! May it give you the strength to destroy your enemies!');
+        alert(this.newFilling.fillingName + ' filling has been added! Thanks for "beefing up" our available options!');
 
       }
     })
@@ -167,7 +167,7 @@ export default {
   createNewExtra(){
          EmployeeService.createExtra(this.newExtra).then((response) => {
       if(response.status == 200){
-        alert(this.newExtra.extraName + '  has been added as an Extra! May it give you the strength to destroy your enemies!');
+        alert(this.newExtra.extraName + '  has been added as an extra! Thanks for "beefing up" our available options!');
       }
     })
   },
@@ -177,7 +177,7 @@ export default {
    createNewStyle(){
          EmployeeService.createStyle(this.newStyle).then((response) => {
       if(response.status == 200){
-       alert(this.newStyle.styleName + ' style has been added! May it give you the strength to destroy your enemies!');
+       alert(this.newStyle.styleName + ' style has been added! Thanks for "beefing up" our available options!');
       }
     })
   },
@@ -187,7 +187,7 @@ export default {
    createNewSize(){
     EmployeeService.createSize(this.newSize).then((response) => {
       if(response.status == 200){
-        alert(this.newSize.sizeName + ' size has been added! May it give you the strength to destroy your enemies!');
+        alert(this.newSize.sizeName + ' size has been added! Thanks for "beefing up" our available options!');
 
       }
     })
