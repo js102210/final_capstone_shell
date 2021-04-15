@@ -340,7 +340,7 @@ export default {
       switch (availableBoolean) {
         case true:
           if (
-            confirm("Do you truly wish to make this style unavailable? Truly?")
+            confirm("Are you sure you want to make this style unavailable? Is that really what you want?")
           ) {
             EmployeeService.flipStyleStatus(id).then((response) => {
               if (response.status == 202) {

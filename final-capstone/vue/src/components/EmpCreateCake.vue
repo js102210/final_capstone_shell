@@ -137,7 +137,7 @@ export default {
         .then((response) => {
           if (response.status === 201) {
             this.$store.commit("CLEAR_CAKE_CONFIG_JSON");
-            alert(this.newCake.cakeConfigName + ' can now be ordered. I hope you are ready for that.')
+            alert(this.newCake.cakeConfigName + " can now be ordered. I hope you're ready for that; please check to see that we have the necessary components available!")
             this.clearNewCake();
             //reloading to display the new Config in the list
             location.reload(); 
