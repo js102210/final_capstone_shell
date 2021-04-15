@@ -9,7 +9,8 @@
       <span v-show="!$store.state.token">&nbsp;|&nbsp;</span>
       <router-link v-bind:to="{ name: 'order-cake' }" v-show="!$store.state.token">Order</router-link>
       <span v-show="!$store.state.token">&nbsp;|&nbsp;</span>
-      <router-link v-bind:to="{ name: 'shopping-cart' }" v-show="!$store.state.token"><img src=".\assets\shopping-cart.png"/>: {{this.$store.state.currentActiveOrder.itemsInOrder.length}} </router-link>
+      <router-link v-bind:to="{ name: 'shopping-cart' }" v-show="!$store.state.token"><img src=".\assets\shopping-cart.png"/>
+      <span class="counter" v-show="this.$store.state.currentActiveOrder.itemsInOrder.length">: {{this.$store.state.currentActiveOrder.itemsInOrder.length}}</span></router-link>
       </div>
       <div class="emp-section">
       <router-link v-bind:to="{ name: 'login' }" v-if="!$store.state.token">Employee Login</router-link>

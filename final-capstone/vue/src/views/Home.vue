@@ -1,9 +1,8 @@
 <template>
   <div class="home">
    <span class="banner"><h1>BeefCakes BakeShop</h1>
-   <br>
-      <p>Welcome to BeefCakes BakeShop.<br><br>
-        Any day can be cheat day if you want it to be!</p></span>
+      <p>Welcome to BeefCakes BakeShop.</p>
+      <p class="second-line-banner">Any day can be cheat day if you want it to be!</p></span>
     <img src="..\assets\beefcakes.png" />
   </div>
 </template>
@@ -53,13 +52,17 @@ export default {
   font-size: 1.5rem;
 }
 
+.second-line-banner {
+  margin-top: -21px;
+}
+
 @media screen and (max-width: 600px) {
   h1 {
     font-size: 2.2rem;
   }
 
   .banner p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
 }
