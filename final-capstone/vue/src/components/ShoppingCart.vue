@@ -1,6 +1,7 @@
 <!-- Customer: references the store to see items in the active order and allow customers to finalize it-- turning it into an actual Order in the database. -->
 <template>
   <div>
+    <h1>Your Current Order</h1>
     <br>
     <br>
   <div v-if="$store.state.currentActiveOrder.itemsInOrder.length < 1">
@@ -24,7 +25,7 @@
       <router-link v-bind:to="{ name: 'order-cake' }" ><button>Add Another Cake To Order</button></router-link>
       </div>
     <form class="finalize order" @submit="placeOrder">
-      <label for="customerName">Please enter your name:</label>
+      <label for="customerName">Please enter your name: </label>
       <input
         name="customerName"
         type="text"
@@ -33,7 +34,7 @@
         required
       /><br />
 
-      <label for="customerPhoneNumber">Please enter your phone number:</label>
+      <label for="customerPhoneNumber">Please enter your phone number: </label>
       <input
         name="customerPhoneNumber"
         type="tel"
@@ -43,7 +44,7 @@
 
       <!-- let's change this to separate date and time field inputs. see if we can limit time to bakery open hours-->
       <label for="pickup date and time"
-        >When do you want to pick up your cake?</label
+        >When do you want to pick up your cake? </label
       >
       <input
         name="pickup date"
@@ -132,7 +133,7 @@ export default {
      * clear the order information in the store, then pushes the user back to the home page.
      */
     placeOrder() {
-      if (confirm("Are you ready to place your final order? Placed orders can only be changed by calling the BeefCakes Bakeshop at 513-541-BEEF.")) {
+      if (confirm("Are you ready to place your final order? Placed orders can only be changed by calling the BeefCakes Bakeshop at 513-555-BEEF.")) {
         this.$store.commit("SET_ORDER_INFO", this.pickupInfo);
         this.$store.commit("SET_ORDER_PRICE", this.orderPrice);
         CustomerService.sendOrderJSON(this.$store.state.currentActiveOrder)

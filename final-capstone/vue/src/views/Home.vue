@@ -2,7 +2,7 @@
   <div class="home">
    <span class="banner"><h1>BeefCakes BakeShop</h1>
       <p>Welcome to BeefCakes BakeShop.<br>
-        You've come to the right place!</p></span>
+        Any day can be cheat day!</p></span>
     <img src="..\assets\beefcakes.png" />
   </div>
 </template>
