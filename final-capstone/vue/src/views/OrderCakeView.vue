@@ -24,23 +24,35 @@ export default {
   align-items: center;
 }
 
+.order-form select {
+  margin-top: -10px;
+}
+ 
+.custom-cake-options select {
+  margin-top: 10px;
+}
+
 .order-form {
   background: rgba(255, 255, 255, 0.349);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(10px);
-  padding: 17px;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.61);
+  padding: 15px;
+  border-radius: 70px;
+  border: 7px dotted rgba(250, 44, 44, 0.466);
   font-family: 'Antic Slab', serif;
   font-size: 1rem;
   font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.order-form input, select {
-    margin: 6px;
+.order-form input select,
+.custom-cake-options input select {
     padding: 2px;
     border-radius: 5px;
-    border: 1px solid rgb(24, 24, 24);
+    border: 1px solid rgba(24, 24, 24, 0.267);
     font-family: 'Antic Slab', serif;
     font-weight: 600;
   }
@@ -50,11 +62,11 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  width: 300px;
+  width: 260px;
   height: auto;
   border: 1px solid rgba(0, 0, 0, 0.356);
   border-radius: 40px;
-  padding: 20px;
+  padding: 30px;
   margin-top: 20px;
   background: rgba(255, 255, 255, 0.5);
   /* -webkit-backdrop-filter: blur(10px);

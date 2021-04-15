@@ -131,7 +131,7 @@ p {
   padding: 5px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   #nav, .emp-section {
     float: none;
     display: block;

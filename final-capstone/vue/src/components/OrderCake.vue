@@ -32,7 +32,7 @@ Either way, they must select a size and a style, as well as supply a name, phone
     <form class="order-form" @submit.prevent="addCakeToCart">
       <!-- <p>Your Cake:</p> -->
 
-      <label for="cake selection">Select your cake type:</label>
+      <label for="cake selection">* Select your Cake TYPE:</label><br />
       <!-- the v-model sets the select to whatever the selected object is in the page's data. If null, it's blank.-->
       <select
         name="cake selection"
@@ -57,7 +57,7 @@ Either way, they must select a size and a style, as well as supply a name, phone
         </option></select
       ><br />
       <!-- Sets the size for the cake to order-->
-      <label for="cake size">Select your size:</label>
+      <label for="cake size">* Select your Cake SIZE:</label><br />
       <select name="cake size" v-model="standardCakeOrderJSON.cakeItemSizeID">
         <option
           v-for="size in $store.state.availableCakeSizesBE"
@@ -68,7 +68,7 @@ Either way, they must select a size and a style, as well as supply a name, phone
         </option></select
       ><br />
       <!-- Sets the style for the cake to order-->
-      <label for="standard cake style">Select your cake style:</label>
+      <label for="standard cake style">* Select your Cake STYLE:</label><br />
       <select
         name="standard cake style"
         v-model="standardCakeOrderJSON.cakeItemStyleID"
@@ -83,9 +83,9 @@ Either way, they must select a size and a style, as well as supply a name, phone
       ><br />
 
       <!-- Custom Cake section hidden when standard config not selected -->
-      <section class="custom cake options" v-show="showCustomOptions">
+      <section class="custom-cake-options" v-show="showCustomOptions">
         <!-- Sets the flavor for the cake to order-->
-        <label for="custom cake flavor">Select your flavor:</label>
+        <label for="custom cake flavor">Select your Cake FLAVOR:</label><br />
         <select
           name="custom cake flavor"
           v-model="standardCakeOrderJSON.cakeItemFlavorID"
@@ -97,9 +97,9 @@ Either way, they must select a size and a style, as well as supply a name, phone
           >
             {{ flavor.flavorName }}
           </option></select
-        ><br />
+        ><br /><br />
         <!-- Sets the frosting for the cake to order-->
-        <label for="custom cake frosting">Select your frosting:</label>
+        <label for="custom cake frosting">Select your Cake FROSTING:</label><br />
         <select
           name="custom cake frosting"
           v-model="standardCakeOrderJSON.cakeItemFrostingID"
@@ -111,9 +111,9 @@ Either way, they must select a size and a style, as well as supply a name, phone
           >
             {{ frosting.frostingName }}
           </option></select
-        ><br />
+        ><br /><br />
         <!-- Sets the filling for the cake to order-->
-        <label for="custom cake filling">Select your filling:</label>
+        <label for="custom cake filling">Select your Cake FILLING:</label><br />
         <select
           name="custom cake filling"
           v-model="standardCakeOrderJSON.cakeItemFillingID"
@@ -125,14 +125,14 @@ Either way, they must select a size and a style, as well as supply a name, phone
           >
             {{ filling.fillingName }}
           </option></select
-        ><br />
+        ><br /><br />
       </section>
       <!-- End of Custom Cake section -->
 
       <!-- right now price in lable is hard coded - need to get that from store data which needs to come from back end -->
       <label for="optional message"
         >Custom Message (Optional: $1.50 extra)</label
-      >
+      ><br />
       <input
         name="message"
         type="text"
@@ -170,9 +170,7 @@ Either way, they must select a size and a style, as well as supply a name, phone
 
       <section v-else>
         <!-- note: we need to make this so it's not too wide for mobile.-->
-        <p>
-          You must select a cake style, size, and flavor in order to build your
-          cake!
+        <p>(*) Required Fields in Order to Add to Cart!
         </p>
       </section>
     </form>

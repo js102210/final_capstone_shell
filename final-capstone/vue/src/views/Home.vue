@@ -30,9 +30,9 @@ export default {
   align-items: center;
   line-height: 20px;
   margin-top: 19px;
-  border-radius: 45px;
-  border: 6px dotted rgba(252, 73, 103, 0.233);
-  padding: 9px;
+  border-radius: 49px;
+  border: 6px dotted rgba(252, 73, 103, 0.39);
+  padding: 13px;
 }
 
 .home img {
@@ -53,10 +53,10 @@ export default {
 }
 
 .second-line-banner {
-  margin-top: -21px;
+  margin-top: -20px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   h1 {
     font-size: 2.2rem;
   }
