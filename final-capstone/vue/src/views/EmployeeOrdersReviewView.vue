@@ -12,7 +12,7 @@ import EmployeeService from '../services/EmployeeService';
 export default {
   components: { EmployeeOrderList },
   created() {
-     
+     //populates status array in the store when view is initialized so we can display the string representations of the statuses
      EmployeeService.getAllStatuses().then((response) => {
         this.$store.commit("SET_ALL_STATUSES_ARRAY", response.data);
       })

@@ -1,3 +1,5 @@
+<!--Customer: allows customers to place orders for cakes. If they select an existing Cake Config, the must select Frosting Filling and Flavor.
+Either way, they must select a size and a style, as well as supply a name, phone number, and pickup time -->
 <template>
   <div class="order-display">
     <!-- the cake-display shows basic info for the currently selected cake. Defaults to showing the custom

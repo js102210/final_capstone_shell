@@ -1,3 +1,5 @@
+<!--Employee: Displays details for an Order. Displays a cakeItemDetails component for each item in the order and passes it JSON for the item
+for display-->
 <template>
   <div class="order-details-display">
 
@@ -51,7 +53,7 @@ export default {
         changeOrderStatus(orderID, statusID){
            EmployeeService.updateOrderStatus(orderID, statusID).then((response) => {
                 if (response.status == 200){
-                    alert('')
+                    alert('The status of the order has been changed. For now.')
                 }
            },
            

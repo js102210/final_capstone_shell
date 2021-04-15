@@ -1,3 +1,4 @@
+<!-- Customer: references the store to see items in the active order and allow customers to finalize it-- turning it into an actual Order in the database. -->
 <template>
   <div>
     <br>
