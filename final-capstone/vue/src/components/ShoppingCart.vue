@@ -1,7 +1,7 @@
 <!-- Customer: references the store to see items in the active order and allow customers to finalize it-- turning it into an actual Order in the database. -->
 <template>
   <div class="shopping-cart-banner">
-    <h3  v-show="!$store.state.currentActiveOrder.itemsInOrder">Your Current Order</h3>
+    <h3  v-show="$store.state.currentActiveOrder.itemsInOrder.length">Your Current Order:</h3>
   <div class="where-beef" v-if="$store.state.currentActiveOrder.itemsInOrder.length < 1">
     <h1>Where's the BeefCake?</h1>
     <p>Your shopping cart has no delicious BeefCakes baked goods in it!</p>
