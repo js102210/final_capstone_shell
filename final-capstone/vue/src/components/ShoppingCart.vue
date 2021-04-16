@@ -62,7 +62,7 @@
         required
       /><br /><br />
 
-      <button type="submit">Order Your BeefCakes!</button>
+      <button type="submit" @click="startConf">Order Your BeefCakes!</button>
     </form></div>
   </div>
 </template>
@@ -70,6 +70,8 @@
 <script>
 import CustomerOrderedCakeCard from "./CustomerOrderedCakeCard.vue";
 import CustomerService from "../services/CustomerService.js";
+
+
 export default {
   data() {
     return {
@@ -177,7 +179,14 @@ export default {
           "Error " + verb + " order. Request could not be created.";
       }
     },
+
   },
+    // startConf() {
+    //     this.$confetti.start();
+    //   },
+    // stopConf() {
+    //     this.$confetti.stop();
+    //   },
 };
 </script>
 

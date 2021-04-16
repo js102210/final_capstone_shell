@@ -31,6 +31,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .emp-order-cake-details {
@@ -68,4 +69,14 @@ export default {
   font-size: 1rem;
 }
 
+/* @media screen and (max-width: 700px) {
+.employee-order-display {
+  margin-top: 45px;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+} */
 </style>

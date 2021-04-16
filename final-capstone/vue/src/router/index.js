@@ -12,6 +12,9 @@ import EmployeeOrdersReviewView from '../views/EmployeeOrdersReviewView.vue'
 import EmployeeLandingPageView from '../views/EmployeeLandingPageView'
 import OrderDetailsView from '../views/OrderDetailsView.vue'
 import ShoppingCartView from '../views/ShoppingCartView.vue'
+// import VueConfetti from 'vue-confetti'
+// Vue.use(VueConfetti)
+
 Vue.use(Router)
 
 /**
