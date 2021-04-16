@@ -15,37 +15,39 @@
         v-bind:orderedCake="orderedCake"
       />
     </div>
-    <div class="order-price" v-show="!$store.state.currentActiveOrder.itemsInOrder">
+    <div class="order-price" v-show="$store.state.currentActiveOrder.itemsInOrder.length">
       <p>
         Your order's price is:
         <span class="calculated-price">$ {{ orderPrice }} </span>
       </p>
     </div>
     <div class="move-back-to-order" v-show="$store.state.currentActiveOrder.itemsInOrder.length">
-      <router-link v-bind:to="{ name: 'order-cake' }" ><button>Add Another Cake To Order</button></router-link>
-      </div>
-    <form class="finalize order" @submit="placeOrder"  v-show="$store.state.currentActiveOrder.itemsInOrder.length">
-      <label for="customerName">Please enter your name: </label>
+      <router-link v-bind:to="{ name: 'order-cake' }" ><button>Add Another Cake to Cart!</button></router-link>
+      </div><br />
+      
+      <div class="finalize-order">
+    <form @submit="placeOrder"  v-show="$store.state.currentActiveOrder.itemsInOrder.length">
+      <label for="customerName">Please enter your name:</label><br />
       <input
         name="customerName"
         type="text"
         placeholder="Your Name"
         v-model="pickupInfo.customerName"
         required
-      /><br />
+      /><br /><br />
 
-      <label for="customerPhoneNumber">Please enter your phone number: </label>
+      <label for="customerPhoneNumber">Please enter your phone number:</label><br />
       <input
         name="customerPhoneNumber"
         type="tel"
         v-model="pickupInfo.customerPhoneNumber"
         required
-      /><br />
+      /><br /><br/>
 
       <!-- let's change this to separate date and time field inputs. see if we can limit time to bakery open hours-->
       <label for="pickup date and time"
-        >When do you want to pick up your cake? </label
-      >
+        >When do you want to pick up your cake?</label
+      ><br />
       <input
         name="pickup date"
         type="date"
@@ -58,10 +60,10 @@
         type="time"
         v-model="pickupInfo.orderPickupTime"
         required
-      />
+      /><br /><br />
 
-      <input type="submit" value="Place Your Order!" />
-    </form>
+      <button type="submit">Order Your BeefCakes!</button>
+    </form></div>
   </div>
 </template>
 

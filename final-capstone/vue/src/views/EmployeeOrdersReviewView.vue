@@ -33,6 +33,11 @@ export default {
   justify-content: center;
 }
 
+.emp-order-cake-details {
+  border: 7px dashed rgba(0, 0, 0, 0.226);
+  padding: 20px;
+}
+
 .order-container {
   margin-top: 30px;
   border: 1px solid black;
@@ -53,6 +58,9 @@ export default {
   margin-top: 40px;
   font-family: 'Quicksand';
   font-weight: 600;
+  background: rgba(255, 255, 255, 0.534);
+  padding: 20px;
+  text-align: center;
 }
 
 .order-details-display p {

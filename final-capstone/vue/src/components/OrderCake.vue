@@ -159,7 +159,7 @@ Either way, they must select a size and a style, as well as supply a name, phone
       </div>
 
       <p class="price-display">
-        Your Order's Total is:
+        Your Item Total is:
         <span class="calculated-price">$ {{ itemPrice }} </span>
       </p>
 
@@ -170,7 +170,7 @@ Either way, they must select a size and a style, as well as supply a name, phone
 
       <section v-else>
         <!-- note: we need to make this so it's not too wide for mobile.-->
-        <p>(*) Required Fields in Order to Add to Cart!
+        <p>(*) Required Fields in Item to Add to Cart!
         </p>
       </section>
     </form>

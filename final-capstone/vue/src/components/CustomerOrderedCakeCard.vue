@@ -2,7 +2,7 @@
 list/"shopping cart" view for each item they've added to the order. Gets passed JSON for the item from the parent for display. -->
 <template>
   <div class="ordered-cake-card">
-      <p>Cake Type: {{getCakeName(orderedCake.cakeItemConfigID)}}</p>
+      <h3>Cake Type: {{getCakeName(orderedCake.cakeItemConfigID)}}</h3>
       <p>Flavor: {{getCakeFlavor(orderedCake.cakeItemFlavorID)}}</p>
       <p>Frosting: {{getCakeFrosting(orderedCake.cakeItemFrostingID)}}</p>
       <p>Filling: {{getCakeFilling(orderedCake.cakeItemFillingID)}} </p>
